@@ -25,6 +25,10 @@ Plasma is ubiquitous in our known universe and plasma provides us huge opportuni
 Lasers can do so much now and are only getting more powerful all the time thanks to CPA and since developments (discuss)
 Simulataneously our ability to understand the physics has been aided by an explosion in computing power (peter HEDP paper)
 In this thesis we discuss some of the opportunities that relativistic laser plasma physics offers us with solid density targets - note that note about solids v gases at this point. 
+Perhaps even before the debye length, define what we mean by the temperature of the plasma??
+
+An unused statement about ion immobility
+Assume for now that the ion-electron mass ratio is infinite, that is to say the ions are approximately immobile for the timescales under consideration, generally true for a fair few relativistic laser pulse cycles (In later sections the mobility of plasma ions will prove very important but for now this is ignored.).
 
 \section{\label{sec:plasma_def}The definition of a plasma}
 As outlined in F. Chen's definitive textbook `Introduction to Plasma Physics and Controlled Fusion' \cite{chen20116}, a plasma must fulfil three criteria, namely,
@@ -36,12 +40,44 @@ As outlined in F. Chen's definitive textbook `Introduction to Plasma Physics and
 \end{enumerate}
 
 \subsection{\label{sec:debye_length}The Debye length}
-The Debye length describes the extent to which a plasma can shield electromagnetic fields within a plasma and so remain quasineutral. Consider an infinite plasma where a line along $x = 0$ is held at some potential $\phi_0$ by some perfect system, then what would be the potential $\phi(x)$ perpendicular to that line? Assume that the ion-electron mass ratio is infinite, that is to say the ions are approximately immobile for the timescales under consideration. In \ac{1D}, Poisson's equation reads
-
-\begin{equation}
-	\epsilon_0
+The Debye length describes the extent to which a plasma can shield electromagnetic fields within and so remain quasineutral. Consider an infinitely extending plasma with a test charge placed at some point, then what would be the potential $\phi(\mathbf{x})$? If the plasma had no kinetic energy, the charged particles would arrange themself immediately ajacent to the test charge and once this equilibrium state was reached there would be no electromagnetic fields present. Realistically the plasma will have some temperature, likely a very large temperature and so some particles will be able to escape the potential of the test charge and thus leak electromagnetic fields into the plasma bulk. Poisson's equation reads
+\begin{equation}\label{eq:poisson}
+	\epsilon_0\nabla^2\phi = -e(Zn_i - n_e),
 \end{equation}
+where $\epsilon_0 = \qty{8.854e-12}{F.m^{-1}}$ is the permittivity of free space, $e = \qty{1.602e-19}{C}$ is the charge of an electron, $Z$ is the plasma ion charge in units of $e$ and $n_i$ and $n_e$ are the number densities of plasma ions and electrons.
 
+Since the electrons are significantly more mobile than the ions due to their lower mass, it is in general the electrons and not the ions that respond to the test charge and the ions can be assumed to provide a constant background of positive charge density.
+If the number density of electrons follows a Boltzmann temperature distribution in the presence of a potential energy $-e\phi$, then
+\begin{equation}\label{eq:nj_boltzmann}
+	n_e= n_{e,0}e^{e\phi/KT_j},
+\end{equation}
+where $n_{e,0}$ is the electron number density far from the test charge, $n_i = n_{e,0}/Z$ and $KT_e$ is the electron temperature.
+
+Substituting equation \ref{eq:nj_boltzmann} into equation \ref{eq:poisson} and Taylor expanding the exponential term in the limit that the plasma is weakly coupled ($e\phi << KT_e$), obtains 
+\begin{equation}\label{eq:poisson_debye2}
+	\nabla^2\phi = \frac{\phi}{\lambda_D^2},
+\end{equation}
+where
+\begin{equation}\label{eq:debye}
+	\lambda_D \equiv \sqrt{\frac{\epsilon_0KT_e}{n_ee^2}},
+\end{equation}
+is the \textit{Debye length} and describes the thickness of the charge sheath surrounding the test charge. For quasineutrality to hold for the plasma bulk, its spatial dimensions must extend beyond a few Debye lengths.
+
+\subsection{\label{sec:plasma_parameter}The plasma parameter}
+In order for the above description to be statistically valid, there must be a large number of charged particles within the shielding sheath. The number of particles within the \text{Debye sphere} can be computed as
+\begin{equation}\label{eq:plasma_parameter}
+	N_D = \frac{4}{3}\pi\lambda_D^3n.
+\end{equation}
+Note that, as discussed above, in most cases it is most suitable to choose the number density $n$ to be the number density of electrons. To ensure the plasma is suitably ionised (criterion 1) and that the plasma engages in collective behaviour (criterion 3),
+\begin{equation}\label{eq:plasma_parameter_condition}
+	N_D >>> 1.
+\end{equation}
+\subsection{\label{sec:plasma_frequency}Collisionality and the plasma frequency}
+Collective behaviour not only depends on the ability for large numbers of particles to interact via electromagnetic forces but that these forces dominate over collisions in describing particle trajectories. Taking $\omega$ as the typical frequency of plasma oscillations and $\tau$ as the average time between collisions, for a plasma (as opposed to a gas) must satisfy
+\begin{equation}\label{eq:plasma_frequency_condition}
+	\omega\tau > 1.
+\end{equation}
+It now remains to determine what is the typical frequency of collisions in a given plasma. As in this thesis electromagnetic waves are the focus this is what is most relevant.
 \section{Motivation}
 The rapid advance of minimally-invasive cardiac procedures promises improvements in patient safety, procedure efficacy, and access to treatment.  While percutaneous coronary intervention (PCI) has become routine and highly effective \cite{bravata_systematic_2007}, catheter procedures in areas such as electrophysiology (EP) and valve replacement are still coming of age.  This progress is driven by demographics and the improvement in general cardiac care, as patients surviving initial cardiac events go on to require treatment for sequelae \cite{foot_demographics_2000}.  The growing need for advanced treatment is being answered by developments in catheter technology and procedures.  These tools are continually advancing to access and manipulate an ever-broader range of anatomy \cite{sousa_new_2005}.
 
