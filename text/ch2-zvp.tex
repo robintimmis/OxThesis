@@ -3,11 +3,13 @@
 \minitoc
 
 \section{Introduction}
-Now is presented the Zero Vector Potential mechanism of attosecond absorption, proposed by \textit{Baeva et al} \cite{baeva2011ZeroVectorPotential} and later developed by \textit{Savin et al} \cite{savin2017AttosecondscaleAbsorptionExtreme,savin2019EnergyAbsorptionLaserQED}. Laser energy absorption in dense plasmas was first proposed by Wilks and Kruer \cite{wilks1997}, a ponderomotive mechanism where plasma electrons are heated directly by the laser pulse via the so-called $\mathbf{J}\times \mathbf{B}$ force.
+Now is presented the Zero Vector Potential mechanism of attosecond absorption, proposed by \textit{Baeva et al} \cite{baeva_2006_TheoryHighorderHarmonic} and later developed by \textit{Savin et al} \cite{savin2017AttosecondscaleAbsorptionExtreme,savin2019EnergyAbsorptionLaserQED}. Laser energy absorption in dense plasmas was first proposed by Wilks and Kruer \cite{wilks1997}, a ponderomotive mechanism where plasma electrons are heated directly by the laser pulse via the so-called $\mathbf{J}\times \mathbf{B}$ force.
 
 %At some point I should briefly chat about other absorption models (I think at the end of the intro - this will also include the stuff above. - Then I will start this chapter by talking about the case where JxB does not apply. ALso in the intro specify that for an overdense plasma, the laser does not propagate and must be reflected and hence we are generally talking about a laser-plasma surface interaction and the implications thereof.) Before this point I also want to discuss preplasmas.
 
 This thesis focuses on the so-called `post-ponderomotive' regime where the frequency of the plasma oscillations ($\omega_p \sim \sqrt{n_e}$) are greater than the $\mathbf{J}\times \mathbf{B}$ induced plasma electron oscillations at $2\omega_L$. The plasma electrons are then fast enough to compensate the ponderomotive pressure of the laser pulse with the formation of electrostatic fields between electrons and ions and so respond adiabatically to the $\mathbf{J}\times \mathbf{B}$ force. Hence plasma electrons cannot be heated directly by the laser pulse. Note that this requires a sufficiently steep density gradient around the relativistic critical density surface (where $S=1$) to shift the main interaction to a region where this condition on the overdensity is satisfied. In this case the ponderomotive pressure of the laser compresses the electrons at the front surface of the plasma and so shifts the laser-plasma surface interaction to plasma densities well beyond the relativistic critical density, leaving behind a positive space charge. This electron-ion charge separation leads to the formation of a \textit{pseudo-capacitor} electrostatic field.
+
+[Come back to this and write up stuff about actaully it being the relativistc frequncy and critical density surfaces that matter and how this does indeed put a stricter condition on the bulk S value]
 
 So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential. Consider a relativistic linearly polarised laser pulse obliquely incident, with an angle of incidence of $\theta$, on a semi-infinite plasma, existing for $x>0$. The Hamiltonian of a single electron confined within the potential well is
 \begin{equation}\label{eq:hamiltonian_general}
@@ -15,7 +17,7 @@ So we have entered a regime of adiabaticity where the plasma skin layer is confi
 \end{equation}
 Here the first term is the electron energy, $U$, extracted from the invariant of the relativistic 4-momentum of the electron, $\mathbf{P^\mu} = (U/c, \mathbf{p})$,
 \begin{equation}
-	\mathbf{P^\mu \dot P_\mu} = \frac{U^2}{c^2} - |\mathbf{p}|^2 = m^2c^2.
+	\mathbf{P^\mu \cdot P_\mu} = \frac{U^2}{c^2} - |\mathbf{p}|^2 = m^2c^2.
 \end{equation}
 Note that while there has been growing interest in the curvature of spacetime by relativistic lasers [cite edward here], for modern high power lasers this effect is small and not relevant for this thesis. Throughout the inner product of 4-vectors is defined with the Minkowski Metric. [find alex citation on pg 89 of thesis]
 
@@ -27,8 +29,42 @@ Explicitly, the Hamiltonian is now
 \begin{equation}\label{eq:hamiltonian_specific}
 	\mathcal{H} = c\sqrt{m^2_ec^2 + p^2_\mathrm{prop} + e^2A^2} + e\Phi.
 \end{equation}
-From equation \ref{eq:hamiltonian_specific} it is clear that should the vector potential pass through zero, one of the walls of the potential well is suppressed, allowing electrons in the in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeros for this violent reconstruction of the plasma surface led Baeva et al \cite{baeva2011ZeroVectorPotential} to coin the term `Zero Vector Potential' mechanism to describe this process. Indeed, while in standard calculations a laser pulse will exponentially decay within a skin layer without passing through zero, Baeva et al \cite{baeva2011ZeroVectorPotential} were able to demonstrate in \ac{PIC} simulations that for this regime, zeros are able to propagate through the skin layer of the plasma. The explanation for this difference in mechanics relies on a Doppler shift in the laser field due to the relativistic motion of the plasma surface, and the mathematical formalism of this process proceeds as follows.
+From equation \ref{eq:hamiltonian_specific} it is clear that should the vector potential pass through zero, one of the walls of the potential well is suppressed, allowing electrons in the in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeros for this violent reconstruction of the plasma surface led Baeva et al \cite{baeva2011ZeroVectorPotential} to coin the term `Zero Vector Potential' mechanism to describe this process. Indeed, while in standard calculations a laser pulse will exponentially decay within a skin layer without passing through zero, Baeva et al \cite{baeva2011ZeroVectorPotential} were able to demonstrate in \ac{PIC} simulations that for this regime, zeros are able to propagate through the skin layer of the plasma. The explanation for this difference in mechanics relies on a Doppler shift in the laser field due to the relativistic motion of the ablating plasma surface, and the mathematical formalism of this process proceeds as follows.
 
+[I think before this point it would be good to enter in the language of electron bunches or sheaths - I will continue the dicussion assuming this concept has been introduced].
+
+As the \ac{ZVP} mechanism is a relativistic phenomenon, it is essential to consider the laser pulse propagating through a relativistically ablating electron bunch (i.e. with some component of its velocity anti-parallel to the laser pulse propagation direction). Transforming to the rest frame of the ablating front, beyond the relativistic critical density surface, the vector potential of the laser pulse will be an evanescent wave, at the spatial centre of the laser pulse, it can be described simply by
 \begin{equation}
-	p_y
+	\mathbf{A}'_\mathrm{L}(t',r') = A'_0\cos(\omega'_\mathrm{L}t')\exp(-r'/\delta')\hat{\mathbf{r}}'_\mathrm{pol}= A'_\mathrm{L}\hat{\mathbf{r}}'_\mathrm{pol},
+\end{equation}
+where the primed symbols indicate that these quantities are measured in the rest frame of the expanding front, $A'_0$ is the vector potential amplitude and $\omega'_\mathrm{L}$ is the frequency of the laser pulse, $r'$ is the propagation distance of the laser into the plasma, $\delta'$ is the skin depth and $\hat{\mathbf{r}}'_\mathrm{pol}$ a unit vector defining the polarisation direction of the laser pulse. Un-primed coordinates will indicate the lab frame measurements.
+
+[For sure include a diagram of this]
+
+While in previous demonstrations of the vector potential zeros, it was assumed that the ablation occurs normal to plasma surface, it is now known that this ablation occurs in the specular reflection direction and it is necessary to confirm that zeros are still predicted. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in figure \textbf{BLAH}. The direction of polarisation is
+\begin{equation}
+	\hat{\mathbf{r}}_\mathrm{pol} = \hat{\mathbf{x}}\sin{2\theta} - \hat{\mathbf{y}}\cos{2\theta}
+\end{equation}
+and the velocity of the rest frame of the ablating front relative to the lab frame is $-v_f\hat{\mathbf{x}}$.
+
+Applying the Lorentz transformation to the electromagnetic 4-potential,
+\begin{equation}
+	\mathbf{A}_\mu = (\phi/c,\mathbf{A}),
+\end{equation}
+explicitly,
+\begin{equation}
+	\mathbf{A}'_\mu = \Lambda^\mu_\nu \mathbf{A}'_\nu,
+\end{equation}
+where $\Lambda^\mu_\nu$, the Lorentz transform in this geometry is
+\begin{equation}
+	\Lambda^\mu_\nu = \begin{pmatrix}
+			\gamma & -\beta\gamma & 0 & 0\\
+			-\beta\gamma & \gamma & 0 & 0\\
+			0 & 0& 1 & 0\\
+			0 & 0 & 0 & 1
+	\end{pmatrix}
+\end{equation}
+and here $\beta = -v_f/c$, $\gamma = 1/\sqrt{1-\beta^2}$. Immediately from the $y$-coordinate transformation,
+\begin{equation}
+	A'_\mathrm{L}\cos{2\theta'} = A_\mathrm{L}\cos{2\theta}.
 \end{equation}
