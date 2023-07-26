@@ -9,6 +9,13 @@ Now is presented the Zero Vector Potential mechanism of attosecond absorption, p
 
 This thesis focuses on the so-called `post-ponderomotive' regime where the frequency of the plasma oscillations ($\omega_p \sim \sqrt{n_e}$) are greater than the $\mathbf{J}\times \mathbf{B}$ induced plasma electron oscillations at $2\omega_L$. The plasma electrons are then fast enough to compensate the ponderomotive pressure of the laser pulse with the formation of electrostatic fields between electrons and ions and so respond adiabatically to the $\mathbf{J}\times \mathbf{B}$ force. Hence plasma electrons cannot be heated directly by the laser pulse. Note that this requires a sufficiently steep density gradient around the relativistic critical density surface (where $S=1$) to shift the main interaction to a region where this condition on the overdensity is satisfied. In this case the ponderomotive pressure of the laser compresses the electrons at the front surface of the plasma and so shifts the laser-plasma surface interaction to plasma densities well beyond the relativistic critical density, leaving behind a positive space charge. This electron-ion charge separation leads to the formation of a \textit{pseudo-capacitor} electrostatic field.
 
+
+Interestingly working through the condition between $\omega_p$ and $\omega_L$ in normalised units suggests the criterion for this regime is $S > 4$, slightly more constraining than $S>1$ as is typically stated \cite{savin2019thesis}.
+
+% at some point I must be explicitely clear about why this conditoin ad my sims with S=1 are compatible. This above criterion on S is associated with the bunch electrons. For S=1 we observe great compression of the target surface enabling us to enter the regime where the bunch S>4 whilst the bulk remains at S=1. Can thsi also be used to explain the energy absorption in phase one (bunch formation) ? Eneryg can be absorbed by JxB until the bunch density goes above some value???
+
+
+
 [Come back to this and write up stuff about actaully it being the relativistc frequncy and critical density surfaces that matter and how this does indeed put a stricter condition on the bulk S value]
 
 So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential. Consider a relativistic linearly polarised laser pulse obliquely incident, with an angle of incidence of $\theta$, on a semi-infinite plasma, existing for $x>0$. The Hamiltonian of a single electron confined within the potential well is
@@ -41,7 +48,15 @@ where the primed symbols indicate that these quantities are measured in the rest
 
 [For sure include a diagram of this]
 
-While in previous demonstrations of the vector potential zeros, it was assumed that the ablation occurs normal to plasma surface, it is now known that this ablation occurs in the specular reflection direction and it is necessary to confirm that zeros are still predicted. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in figure \textbf{BLAH}. The direction of polarisation is
+While in previous demonstrations of the vector potential zeros, it was assumed that the ablation occurs normal to plasma surface, it is now known that this ablation occurs in the specular reflection direction and it is necessary to confirm that zeros are still predicted. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in figure \ref{fig:zvp_ablatingfront}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{../diagrams/zvp_ablating_front}
+	\caption{Diagram of a $p$-polarised laser pulse incident on an ablating overdense plasma. The laser is incident obliquely at an angle of $\theta$ and is reflected specularly. The plasma ablates specularly also. The interaction geometry is confined to a 2D plane.}
+	\label{fig:zvp_ablatingfront}
+\end{figure}
+The direction of polarisation is
 \begin{equation}
 	\hat{\mathbf{r}}_\mathrm{pol} = \hat{\mathbf{x}}\sin{2\theta} - \hat{\mathbf{y}}\cos{2\theta}
 \end{equation}
@@ -64,7 +79,51 @@ where $\Lambda^\mu_\nu$, the Lorentz transform in this geometry is
 			0 & 0 & 0 & 1
 	\end{pmatrix}
 \end{equation}
-and here $\beta = -v_f/c$, $\gamma = 1/\sqrt{1-\beta^2}$. Immediately from the $y$-coordinate transformation,
-\begin{equation}
+and here $\beta = -v_\mathrm{f}/c$, $\gamma = 1/\sqrt{1-\beta^2}$. Immediately from the $y$-coordinate transformation,
+\begin{equation}\label{eq:zvp_lorentz_y}
 	A'_\mathrm{L}\cos{2\theta'} = A_\mathrm{L}\cos{2\theta}.
 \end{equation}
+Applying the headlight effect for a source moving at an angle $2\theta$ to the boosted frame,
+
+[I still need to include the headlight effect derivation]
+\begin{equation}
+	\cos{(2\theta')} = \frac{\cos{(2\theta)}-\beta}{1 - \beta\cos{(2\theta)}}
+\end{equation}
+and rearranging equation \ref{eq:zvp_lorentz_y}, the vector potential in the lab frame is
+\begin{equation}\label{eq:zvp_labA}
+	A_\mathrm{L} = \frac{1-\beta \sec{(2\theta)}}{1 - \beta\cos{(2\theta)}} A'_0\cos{(\omega'_L t')}\exp{(-r'/\delta')}.
+\end{equation}
+Writing the boosted frame space-time coordinates in terms of the lab frame coordinates,
+\begin{equation}
+	ct' = \gamma(ct-\beta x),
+\end{equation}
+\begin{equation}
+	x' = \gamma(x-\beta ct),
+\end{equation}
+yields
+\begin{equation}\label{eq:zvp_labAfull}
+	A_\mathrm{L} =  A_0\cos{(\omega_L t - kx)}\exp{\left(-\frac{\sqrt{(x-\beta ct)^2+(y/\gamma)^2}}{\delta}\right)},
+\end{equation}
+where
+\begin{equation}
+	A_0 = \frac{1-\beta \sec{(2\theta)}}{1 - \beta\cos{(2\theta)}}A'_0,
+\end{equation}
+\begin{equation}
+	\omega_L = \gamma \omega'_L,
+\end{equation}
+\begin{equation}
+	k = \frac{\beta \gamma\omega'_L}{c},
+\end{equation}
+\begin{equation}
+	\delta = \frac{\delta'}{\gamma}.
+\end{equation}
+The oscillatory term in equation \ref{eq:zvp_labAfull} demonstrates the propagation of vector potential zeros within the plasma target. From the structure of this term it would appear that these zeros are expelled from the plasma along the specular direction at a speed (recall beta is negative - change this earlier in the theory so that that negative sign is more explicit in the result.)
+\begin{equation}
+	v_\phi = \frac{\omega_L}{k} = \frac{c}{\beta} = -\frac{c^2}{v_\mathrm{f}}.
+\end{equation}
+Could also discuss here about how relativistic similarity theory derives that zeros move at speed c but how that cannot be valid since then we would always have infinitely thin radiation pulses, unless there is an extended range of zero? I suppose there is some radiation happening around the peak? Good questions..
+One remaining consideration is we require that the zero gets through the whole electron bunch which is generally at very high density but is also very thin, in a way is this skin depth not what precisely determines the bunch width? The bunch will be compressed until the skin depth goes to zero across it perhaps? Things to think about.
+
+
+
+
