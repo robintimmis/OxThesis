@@ -50,9 +50,9 @@ where $\epsilon_0 = \qty{8.854e-12}{F.m^{-1}}$ is the permittivity of free space
 Since the electrons are significantly more mobile than the ions due to their lower mass, it is in general the electrons and not the ions that respond to the test charge and the ions can be assumed to provide a constant background of positive charge density.
 If the number density of electrons follows a Boltzmann temperature distribution in the presence of a potential energy $-e\phi$, then
 \begin{equation}\label{eq:nj_boltzmann}
-	n_e= n_{e,0}e^{e\phi/KT_j},
+	n_e= n_{e,0}e^{e\phi/KT_e},
 \end{equation}
-where $n_{e,0}$ is the electron number density far from the test charge, $n_i = n_{e,0}/Z$ and $KT_e$ is the electron temperature.
+where $n_{e,0}$ is the electron number density far from the test charge, $n_i = n_{e,0}/Z$ and $KT_e$ is the electron temperature. Note that in plasmas it is very common for different species to have differing temperatures depending on the mechanism for energy absorption and the timescales for collisions compared to the timescale of the study.
 
 Substituting equation \ref{eq:nj_boltzmann} into equation \ref{eq:poisson} and Taylor expanding the exponential term in the limit that the plasma is weakly coupled ($e\phi << KT_e$), obtains 
 \begin{equation}\label{eq:poisson_debye2}
@@ -78,4 +78,29 @@ Collective behaviour not only depends on the ability for large numbers of partic
 \begin{equation}\label{eq:plasma_frequency_condition}
 	\omega\tau > 1.
 \end{equation}
-It now remains to determine what is the typical frequency of collisions in a given plasma. As in this thesis electromagnetic waves are the focus this is what is most relevant.
+It now remains to determine what is the typical frequency of collisions in a given plasma. While the types of plasma waves and their associated frequencies of oscillation are multitudinous, the characteristic frequency, the \textit{plasma frequency}, $\omega_p$, is the most straightforward. It describes the response of electrons to charge imbalances within an infinite uniform plasma at rest in the absence of magnetic fields or temperature fluctuations. As noted in section \ref{sec:debye_length}, the ions provide a constant backgorund of positive charge.
+
+Consider an semi-infinite plasma existing for $x>0$, with electron density $n_e$ and ion density $n_e/Z$ with charge state $Z$\footnote{This description has direct relevance to the Zero Vector Potential mechanism which will be made clear later.}. Suppose the electron fluid is displaced into the plasma bulk a distance $\Delta r$ as in figure \ref{fig:introplasmafrequency}. 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{../diagrams/intro_plasma_frequency}
+	\caption{Diagram to illustrate the plasma frequency derivation.}
+	\label{fig:introplasmafrequency}
+\end{figure}
+The displaced electrons will experience a restoring force, $-eE$, perpendicular to the surface due to the electron-ion charge imbalance. Applying the Lorentz force equation, the equation of motion for electrons on that surface is therefore
+\begin{equation}
+	m_e\frac{\mathrm{d}^2\Delta r}{\mathrm{d}t^2} = -eE.
+\end{equation}
+Applying Gauss' law as described in figure blah, the uncompensated charge leads to 
+\begin{equation}
+	E = \frac{en_e\Delta r}{\epsilon_0},
+\end{equation}
+therefore
+\begin{equation}\label{eq:intro_sho}
+	\frac{d^2\Delta r}{dt^2} = -\frac{e^2n_e}{m_e \epsilon_0}\Delta r.
+\end{equation}
+Equation \ref{eq:intro_sho} clearly describes a simple harmonic oscillator with a characteristic frequency given by the plasma frequency,
+\begin{equation}
+	\omega_p = \sqrt{\frac{e^2n_e}{m_e \epsilon_0}}.
+\end{equation}
+
