@@ -3,7 +3,7 @@
 \minitoc
 
 \section{Introduction}
-Now is presented the Zero Vector Potential mechanism of attosecond absorption, proposed by \textit{Baeva et al} \cite{baeva_2006_TheoryHighorderHarmonic} and later developed by \textit{Savin et al} \cite{savin2017AttosecondscaleAbsorptionExtreme,savin2019EnergyAbsorptionLaserQED}. Laser energy absorption in dense plasmas was first proposed by Wilks and Kruer \cite{wilks1997}, a ponderomotive mechanism where plasma electrons are heated directly by the laser pulse via the so-called $\mathbf{J}\times \mathbf{B}$ force.
+Of primary interest in this thesis is the interaction of a relativistically intense short pulse laser interacting with a solid density plasma target with a sharp density gradient. Now is presented the Zero Vector Potential mechanism of attosecond absorption of laser pulse energy, proposed by \textit{Baeva et al} \cite{baeva_2006_TheoryHighorderHarmonic} and later developed by \textit{Savin et al} \cite{savin2017AttosecondscaleAbsorptionExtreme,savin2019EnergyAbsorptionLaserQED}. Laser energy absorption in dense plasmas was first proposed by Wilks and Kruer \cite{wilks1997}, a ponderomotive mechanism where plasma electrons are heated directly by the laser pulse via the so-called $\mathbf{J}\times \mathbf{B}$ force.
 
 %At some point I should briefly chat about other absorption models (I think at the end of the intro - this will also include the stuff above. - Then I will start this chapter by talking about the case where JxB does not apply. ALso in the intro specify that for an overdense plasma, the laser does not propagate and must be reflected and hence we are generally talking about a laser-plasma surface interaction and the implications thereof.) Before this point I also want to discuss preplasmas.
 
@@ -52,7 +52,7 @@ While in previous demonstrations of the vector potential zeros, it was assumed t
 % TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{../diagrams/zvp_ablating_front}
+	\includegraphics[width=0.7\linewidth]{figures/zvp/zvp_ablating_front}
 	\caption{Diagram of a $p$-polarised laser pulse incident on an ablating overdense plasma. The laser is incident obliquely at an angle of $\theta$ and is reflected specularly. The plasma ablates specularly also. The interaction geometry is confined to a 2D plane.}
 	\label{fig:zvp_ablatingfront}
 \end{figure}
@@ -68,10 +68,10 @@ Applying the Lorentz transformation to the electromagnetic 4-potential,
 \end{equation}
 explicitly,
 \begin{equation}
-	\mathbf{A}'_\mu = \Lambda^\mu_\nu \mathbf{A}'_\nu,
+	\mathbf{A}'_\mu = \Lambda^\mu_\nu \mathbf{A}_\nu,
 \end{equation}
 where $\Lambda^\mu_\nu$, the Lorentz transform in this geometry is
-\begin{equation}
+\begin{equation}\label{eq:zvp_lorentz}
 	\Lambda^\mu_\nu = \begin{pmatrix}
 			\gamma & -\beta\gamma & 0 & 0\\
 			-\beta\gamma & \gamma & 0 & 0\\
@@ -84,8 +84,6 @@ and here $\beta = -v_\mathrm{f}/c$, $\gamma = 1/\sqrt{1-\beta^2}$. Immediately f
 	A'_\mathrm{L}\cos{2\theta'} = A_\mathrm{L}\cos{2\theta}.
 \end{equation}
 Applying the headlight effect for a source moving at an angle $2\theta$ to the boosted frame,
-
-[I still need to include the headlight effect derivation]
 \begin{equation}
 	\cos{(2\theta')} = \frac{\cos{(2\theta)}-\beta}{1 - \beta\cos{(2\theta)}}
 \end{equation}
@@ -125,5 +123,61 @@ Could also discuss here about how relativistic similarity theory derives that ze
 One remaining consideration is we require that the zero gets through the whole electron bunch which is generally at very high density but is also very thin, in a way is this skin depth not what precisely determines the bunch width? The bunch will be compressed until the skin depth goes to zero across it perhaps? Things to think about.
 
 
+Qualitatively, and in summary, for sufficiently intense laser pulses, electrons on the radiated surface of a solid target are accelerated by the laser to relativistic velocities at a fraction of a laser pulse cycle and therefore electrons both follow similar trajectories and are able to respond adiabatically to the $\mathbf{J}\times \mathbf{B}$ force of the laser pulse. They therefore form a high charge density thin coherent electron sheath on the front surface of the plasma but displaced inwards from the immobile ions (ions are approximately immobile on the timescale of a laser pulse cycle) via the ponderomotive pressure of the laser. This charge separation generates a longitudinal electrostatic pseudocapacitor field that confines electrons to a potential well on the front surface of the plasma, preventing further propagation of the electron bunch into the plasma bulk. When the zero of the vector potential passes through the electron bunch, the ponderomotive pressure instantaneously vanishes and electrons are ejected specularly from the target, copropagating with the zeroes and gaining energy as they discharge the pseudocapacitor field. Coherent sychrotron emission occurs concurrently. The electron bunch is then rotated by the laser pulse and launched into the bulk at high energy.
 
 
+SOmething to think about: which comes first? electron bunch acceleration across pseudo capacitor or zeros?
+Laser accelerates electorns in laser propagation direction , however cannot propagate further into the plasma so only get motion parallel to surface, once potentail well disrupted, accleration is perp to surface so combined, electrons travel in specular direction.
+So actually what we are saying is the zeros will go in whatever direction the surface ablates in, but the surface will move in a direction dependent on the components of electron 
+
+
+\subsubsection{The headlight effect}\label{sec:zvp_headlight}
+This most likely goes in the appendix. But storing here for now.
+
+The headlight effect describes the beaming of an isotropically emitting source travelling at some velocity relative to an observer. Consider the geometry of figure \ref{fig:zvp_ablatingfront} with the source (the laser pulse) travelling at an angle $2\theta$ to the observer (in this case, the ablating front). A photon with energy $E$ emitted from the rest frame of the source (in this case the lab frame) has a 4-momentum
+\begin{equation}
+	\mathbf{P}_\mu = \left(\frac{E}{c},\frac{E}{c}\cos{2\theta},\frac{E}{c}\sin{2\theta}\right).
+\end{equation}
+As the interaction geometry is confined to a 2D plane,  the $z$-component can be safely neglected. Applying the lorentz boost of equation \ref{eq:zvp_lorentz},
+\begin{equation}
+	\begin{split}
+		\frac{E'}{c} = \gamma \left( \frac{E}{c} - \beta \frac{E}{c}\cos{2\theta}\right) \\
+		\frac{E'}{c}\cos{2\theta'} = \gamma \left( \frac{E}{c}\cos{2\theta} - \beta \frac{E}{c}\right).
+	\end{split}
+\end{equation}
+Solving these equations for the angle in the boosted frame,
+\begin{equation}
+	\cos{2\theta'} = \frac{\cos{2\theta} - \beta}{1-\beta\cos{2\theta}}.
+\end{equation}
+
+\subsubsection{Conservation of generalised transverse momentum}\label{sec_app_conservation-generalised-mometum}
+This should most likely go in the appendix.
+
+Whilst it is commonly stated within the field of laser-solid interactions, it would appear that some nuance/detail is missing from the discussion which in turn shields the \ac{ZVP} mechanism in confusion.
+The Phys libre online textbook provides the following discussion, adapted here to describe a plasma.
+
+Consider a holonomic system of N particles under the influence of electromagnetic forces. A particle $j$ with charge $e_j$ experiences a scalar potential,
+\begin{equation}
+	U_{j} = e_j(\Phi - \mathbf{A} \cdot \mathbf{v_{j}})
+\end{equation}
+and hence the system is described by the Lagrangian
+\begin{equation}
+	L = \sum^N_{j=1}\left( \frac{1}{2}m_j\mathbf{v}_j\cdot \mathbf{v}_j - e_j(\Phi - \mathbf{A} \cdot \mathbf{v_{j}}) \right).
+\end{equation}
+The generalised momentum for corresponding to coordinate $x_j$ is
+\begin{equation}
+	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = m_j\dot{x}_j + e_jA_x,
+\end{equation}
+\textit{i.e.} the generalised momentum describes the linear mechanical momentum and the electromagnetic field momentum.
+Via Noether's theorem, if $L$ is independent of $x_j$, \textit{i.e.} spatially homogeneous along $x$ for particle $j$, then 
+\begin{equation}
+	\dot{p}_{j,x} = 0.
+\end{equation}
+Considering a p-polarised Gaussian laser pulse, axis of polarisation along $x$, $A_x$ will be approximately constant. Integrating and noting that initially there is no linear or electromagnetic momentum, the generalised transverse momentum conservation equation for an electron at the plasma-vacuum boundary is obtained, namely,
+\begin{equation}
+	p_mathrm{T} = eA,
+\end{equation}
+where $p_mathrm{T}$ is the electron momentum along the polarisation axis of the laser pulse. and $A$ its vector potential.
+
+Note that this is only valid provided the radiating electron does not radiate along the direction of $\mathbf{A}$ as discussed by Sokolov \textit{et al} \cite{sokolov_2009_DynamicsEmittingElectrons}. But we do know this radiation is specular so this is true for normal incidence but not specular?? Really need to consider what the EM fields are in the surface from combined Incident and reflected.
+The implications of this should maybe be considered?? Also should this discusison all be done in the relativistic case?? Also note that this is only true for gaussian pulses with spatial profiles $\gg$ than electron trajectories (\textit{i.e.} twice the relativistic larmor radius).
