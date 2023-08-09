@@ -18,9 +18,9 @@ Interestingly working through the condition between $\omega_p$ and $\omega_L$ in
 
 [Come back to this and write up stuff about actaully it being the relativistc frequncy and critical density surfaces that matter and how this does indeed put a stricter condition on the bulk S value]
 
-So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential. Consider a relativistic linearly polarised laser pulse obliquely incident, with an angle of incidence of $\theta$, on a semi-infinite plasma, existing for $x>0$. The Hamiltonian of a single electron confined within the potential well is
+So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential. Consider a relativistic linearly polarised laser pulse obliquely incident, with an angle of incidence of $\theta$, on a semi-infinite plasma, existing for $x>0$. The Hamiltonian of a single electron confined within the potential well \cite{herbert_classical_mechanics} is
 \begin{equation}\label{eq:hamiltonian_general}
-	\mathcal{H} = c\sqrt{m^2_ec^2 + |\mathbf{p}|^2} + e\Phi.
+	\mathcal{H} = c\sqrt{m^2_ec^2 + |\mathbf{p}|^2} - e\Phi.
 \end{equation}
 Here the first term is the electron energy, $U$, extracted from the invariant of the relativistic 4-momentum of the electron, $\mathbf{P^\mu} = (U/c, \mathbf{p})$,
 \begin{equation}
@@ -34,7 +34,7 @@ The second term of equation \ref{eq:hamiltonian_general} describes the contribut
 
 Explicitly, the Hamiltonian is now
 \begin{equation}\label{eq:hamiltonian_specific}
-	\mathcal{H} = c\sqrt{m^2_ec^2 + p^2_\mathrm{prop} + e^2A^2} + e\Phi.
+	\mathcal{H} = c\sqrt{m^2_ec^2 + p^2_\mathrm{prop} + e^2A^2} - e\Phi.
 \end{equation}
 From equation \ref{eq:hamiltonian_specific} it is clear that should the vector potential pass through zero, one of the walls of the potential well is suppressed, allowing electrons in the in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeros for this violent reconstruction of the plasma surface led Baeva et al \cite{baeva2011ZeroVectorPotential} to coin the term `Zero Vector Potential' mechanism to describe this process. Indeed, while in standard calculations a laser pulse will exponentially decay within a skin layer without passing through zero, Baeva et al \cite{baeva2011ZeroVectorPotential} were able to demonstrate in \ac{PIC} simulations that for this regime, zeros are able to propagate through the skin layer of the plasma. The explanation for this difference in mechanics relies on a Doppler shift in the laser field due to the relativistic motion of the ablating plasma surface, and the mathematical formalism of this process proceeds as follows.
 
@@ -151,33 +151,67 @@ Solving these equations for the angle in the boosted frame,
 \end{equation}
 
 \subsubsection{Conservation of generalised transverse momentum}\label{sec_app_conservation-generalised-mometum}
-This should most likely go in the appendix.
+This should most likely go in the appendix/ before ZVP Hamiltonian discussion.
 
-Whilst it is commonly stated within the field of laser-solid interactions, it would appear that some nuance/detail is missing from the discussion which in turn shields the \ac{ZVP} mechanism in confusion.
-The Phys libre online textbook provides the following discussion, adapted here to describe a plasma.
+Whilst it is commonly stated within the field of laser-solid interactions, it would appear that some nuance/detail is missing from the discussion which in turn shrouds the \ac{ZVP} mechanism in confusion.
 
-Consider a holonomic system of N particles under the influence of electromagnetic forces. A particle $j$ with charge $e_j$ experiences a scalar potential,
+Consider a holonomic system of N relativistic particles under the influence of electromagnetic forces. A particle $j$ with charge $e_j$ and mass $m_\mathrm{j}$ experiences a scalar potential,
 \begin{equation}
-	U_{j} = e_j(\Phi - \mathbf{A} \cdot \mathbf{v_{j}})
+	U_{j} = e_j(\Phi - \mathbf{A} \cdot \mathbf{v}_{j})
 \end{equation}
 and hence the system is described by the Lagrangian
 \begin{equation}
-	L = \sum^N_{j=1}\left( \frac{1}{2}m_j\mathbf{v}_j\cdot \mathbf{v}_j - e_j(\Phi - \mathbf{A} \cdot \mathbf{v_{j}}) \right).
+	L = \sum^N_{j=1}\left( - m_\mathrm{j}c^2\sqrt{1-\beta^2_\mathrm{j}} - e_j(\Phi - \mathbf{A} \cdot \mathbf{v}_\mathrm{j}) \right),
 \end{equation}
-The generalised momentum for corresponding to coordinate $x_j$ is
+where $\beta^2 = \mathbf{v}_\mathrm{j}\cdot\mathbf{v}_\mathrm{j} /c^2$ \cite{goldstein_classical_mechanics}.
+The generalised momentum corresponding to coordinate $x_j$ is
 \begin{equation}
 	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = m_j\dot{x}_j + e_jA_x,
 \end{equation}
-\textit{i.e.} the generalised momentum describes the linear mechanical momentum and the electromagnetic field momentum.
-Via Noether's theorem, if $L$ is independent of $x_j$, \textit{i.e.} spatially homogeneous along $x$ for particle $j$, then 
+explicitely, the generalised momentum describes both the linear mechanical momentum and the momentum of the electromagnetic field. Via Noether's theorem, if $L$ is independent of $x_j$, \textit{i.e.} spatially homogeneous along $x$ for particle $j$, then 
 \begin{equation}
 	\dot{p}_{j,x} = 0.
 \end{equation}
 Considering a p-polarised Gaussian laser pulse, axis of polarisation along $x$, $A_x$ will be approximately constant. Integrating and noting that initially there is no linear or electromagnetic momentum, the generalised transverse momentum conservation equation for an electron at the plasma-vacuum boundary is obtained, namely,
 \begin{equation}
-	p_mathrm{T} = eA,
+	p_\mathrm{T} = eA,
 \end{equation}
 where $p_mathrm{T}$ is the electron momentum along the polarisation axis of the laser pulse. and $A$ its vector potential.
 
 Note that this is only valid provided the radiating electron does not radiate along the direction of $\mathbf{A}$ as discussed by Sokolov \textit{et al} \cite{sokolov_2009_DynamicsEmittingElectrons}. But we do know this radiation is specular so this is true for normal incidence but not specular?? Really need to consider what the EM fields are in the surface from combined Incident and reflected.
-The implications of this should maybe be considered?? Also should this discusison all be done in the relativistic case?? Also note that this is only true for gaussian pulses with spatial profiles $\gg$ than electron trajectories (\textit{i.e.} twice the relativistic larmor radius).
+The implications of this should maybe be considered?? Also note that this is only true for gaussian pulses with spatial profiles $\gg$ than electron trajectories (\textit{i.e.} twice the relativistic larmor radius).
+
+\subsection{ZVP electron bunch energies}\label{sec:zvp_energies_derivation}
+In \cite{baeva_2011_ZeroVectorPotential}, Baeva \textit{et al} presented energy scalings for electron bunches produced in the \ac{ZVP} regime as a function of the laser intensity and plasma density, finding that one of the key statements of similarity theory ($p \sim a_0 S^x$, where $x$ is some integer value, THIS NEEDS A CITE I THINK IT APPEARS IN BAEVAS ORIGINAL HHG PAPER) holds for the \ac{ZVP} mechanism. Later this was then extended to \ac{3D} by Savin \textit{et al} \cite{savin_2017_AttosecondscaleAbsorptionExtreme}. What follows is that discussion with a more close consideration of the constants of proportionality.
+
+Consider a semi-infinite block of plasma existing for $x\ge0$ as that of figure \ref{fig:zvp_ablatingfront} [This discussion should be more integrated with that initial discussion ie in that initial part, the total charge and electric field are derived] with a flat surface of electron density $n_\mathrm{e}$ irradiated normally by a laser pulse with wavelength $\lambda_\mathrm{L}$ and peak electric field, $E_\mathrm{L}$. The ponderomotive pressure of the laser displaces the electron fluid by a small distance $\Delta x \hat{\mathbf{x}}$ corresponding to a tota
+
+From that section,  we have established expressions for displacedment and corresponding pseudo capacitor field.
+
+The pressure exerted on the electron bunch is blah, 
+
+which will peak at the maximum electron-ion separation at which point the pseudocapacitor field will be equal and opposite to the instantaneous ponderomotive pressure exerted by the laser = this.
+
+Applying this equality, the peak electron bunch displacement is blah.
+
+At which point the pseudo capacitor field is 
+
+blah
+
+
+
+
+
+
+Perhaps derive equivalence between res and ZVP here?
+
+
+Then section of a typical bunch properties
+
+Then Energy scalings
+
+Then QED?
+Then experiment?
+
+
+
