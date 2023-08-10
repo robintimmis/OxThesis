@@ -182,25 +182,66 @@ Note that this is only valid provided the radiating electron does not radiate al
 The implications of this should maybe be considered?? Also note that this is only true for gaussian pulses with spatial profiles $\gg$ than electron trajectories (\textit{i.e.} twice the relativistic larmor radius).
 
 \subsection{ZVP electron bunch energies}\label{sec:zvp_energies_derivation}
-In \cite{baeva_2011_ZeroVectorPotential}, Baeva \textit{et al} presented energy scalings for electron bunches produced in the \ac{ZVP} regime as a function of the laser intensity and plasma density, finding that one of the key statements of similarity theory ($p \sim a_0 S^x$, where $x$ is some integer value, THIS NEEDS A CITE I THINK IT APPEARS IN BAEVAS ORIGINAL HHG PAPER) holds for the \ac{ZVP} mechanism. Later this was then extended to \ac{3D} by Savin \textit{et al} \cite{savin_2017_AttosecondscaleAbsorptionExtreme}. What follows is that discussion with a more close consideration of the constants of proportionality.
+In \cite{baeva_2011_ZeroVectorPotential}, Baeva \textit{et al} propose energy scalings for electron bunches produced in the \ac{ZVP} regime as a function of the laser intensity and plasma density, finding that one of the key statements of similarity theory ($p \sim a_0 S^x$, where $x$ is some integer value, THIS NEEDS A CITE I THINK IT APPEARS IN BAEVAS ORIGINAL HHG PAPER) holds for the \ac{ZVP} mechanism. Later this was then extended to \ac{3D} by Savin \textit{et al} \cite{savin_2017_AttosecondscaleAbsorptionExtreme}. What follows is that discussion with a more close consideration of the both consequences and constants of proportionality.
 
-Consider a semi-infinite block of plasma existing for $x\ge0$ as that of figure \ref{fig:zvp_ablatingfront} [This discussion should be more integrated with that initial discussion ie in that initial part, the total charge and electric field are derived] with a flat surface of electron density $n_\mathrm{e}$ irradiated normally by a laser pulse with wavelength $\lambda_\mathrm{L}$ and peak electric field, $E_\mathrm{L}$. The ponderomotive pressure of the laser displaces the electron fluid by a small distance $\Delta x \hat{\mathbf{x}}$ corresponding to a tota
+(Pherhaps I should redo this discussion condering infinitessimal areas of the plasma surface to show how variation can exist across the surface) Defo do this! And say that provided the variation is small, rel to what though? the surface remains approximately flat -> that is totally not true
 
-From that section,  we have established expressions for displacedment and corresponding pseudo capacitor field.
+Consider again the semi-infinite block of plasma proposed in figure \ref{fig:zvp_ablatingfront}, normally irradiated by a laser pulse with wavelength $\lambda_\mathrm{L}$ and peak electric field, $E_\mathrm{L}$. It is now the ponderomotive pressure of the laser that displaces the electron fluid. Consider ust one laser cycle. The electron surface moves inwards until the pressure exerted by the peak instantaneous ponderomotive pressure of the laser pulse cycle,
+\begin{equation}
+	\mathbf{P}_\mathrm{L} = \epsilon_0 E^2_\mathrm{L} \hat{\mathbf{x}} = \epsilon_0 \left(\frac{a_0\omega_\mathrm{L}m_\mathrm{e}c}{e}\right)^2 \hat{\mathbf{x}}
+\end{equation}
+is equal and opposite to the pressure exerted by the pseudo-capacitor field,
+\begin{equation}
+	\mathbf{P}_\mathrm{C} = \frac{QE}{\sigma} \hat{\mathbf{x}}= -\frac{(en_\mathrm{e}\Delta x)^2}{\epsilon_0}\hat{\mathbf{x}}
+\end{equation} 
+using equations \ref{eq:intro_Q} and \ref{eq:intro_E}. Equating the magnitudes of $\mathbf{P}_\mathrm{L}$ and $\mathbf{P}_\mathrm{C}$, the maximum displacement inwards of electrons is
+\begin{equation}\label{eq:zvp_dx}
+	\Delta x \hat{\mathbf{x}} = \frac{c}{\omega_\mathrm{L}}\frac{a_0}{\bar{n}_\mathrm{e}}\hat{\mathbf{x}}  = \frac{1}{kS}\hat{\mathbf{x}},
+\end{equation}
+where $k$ is the wave-vector of the laser pulse. Correspondingly,
+\begin{equation}\label{eq:zvp_E}
+	E = \frac{en_\mathrm{e}}{\epsilon_0}\Delta x = \frac{\omega_\mathrm{L}cm_\mathrm{e}a_0}{e} = E_\mathrm{L}.
+\end{equation}
+Applying the results of equations \ref{eq:zvp_dx} and \ref{eq:zvp_E}, when the ponderomotive pressure vanishes and the electron bunch is launched across the pseudo-capacitor, the relativistic kinetic energy gained by a single electron is
+\begin{equation}\label{eq:zvp_T}
+	T =  \int \mathbf{F}\cdot\mathrm{d}\mathbf{s} = \int^0_{\Delta x} -eEdx = \int^0_{\Delta x}-\frac{en_\mathrm{e}x}{\epsilon_0}dx = \frac{1}{2}m_\mathrm{e}c^2\frac{a^2_0}{\bar{n}_\mathrm{e}}
+\end{equation}
+or an electron gamma factor,
+\begin{equation}
+	\gamma = \frac{1}{\sqrt{1-\beta^2}} = 1 + \frac{a_0^2}{2\bar{n}_\mathrm{e}}.
+\end{equation}
+Assuming all displaced electrons are captured by the pseudo-capacitor field and launched as a coherent bunch, the total kinetic energy of the electron bunch is
+\begin{equation}\label{eq:zvp_U}
+	U_\mathrm{ZVP} = n_\mathrm{e}\sigma\Delta x T = \frac{\sigma n_\mathrm{c}}{k}\times m_\mathrm{e}c^2 \frac{a^3_0}{\bar{n}_\mathrm{e}}.
+\end{equation}
+It is now interesting to compare equation \ref{eq:zvp_U} to the laser energy deposited upon the plasma surface and therefore consider what fraction of the laser energy can be absorbed via the \ac{ZVP} mechanism. Using $E = E_\mathrm{L}$, \ref{eq:zvp_U} can be rewritten as
+\begin{equation}
+	U_\mathrm{ZVP} = \frac{1}{2\omega_\mathrm{L} S}\sigma c \epsilon_0 E^2_\mathrm{L}.
+\end{equation}
+For the case of normal incidence, bunches are produced at a frequency of $2\omega_\mathrm{L}$, naturally following the frequncy of the $\mathbf{J}\times \mathbf{B}$ force. Assuming a sinusoidal plane wave incident with surface area $\sigma$, the energy absorbed in half a laser cycle is
+\begin{equation}
+	 U_\mathrm{L,1/2} = \sigma \frac{T}{2}\langle I_\mathrm{L}\rangle = \frac{2\pi}{4\omega_\mathrm{L}}\sigma c\epsilon_0E^2_\mathrm{L}.
+\end{equation}
+Hence,
+\begin{equation}
+	\eta_\mathrm{ZVP} = \frac{U_\mathrm{ZVP}}{U_\mathrm{L,1/2}} = \frac{1}{\pi S}.
+\end{equation}
+Interestingly, this new analytical result predicts the trend observed by A. Savin \cite{savin_2019_ModellingLaserPlasmaInteractions} in \ac{PIC} simulations both in magnitude and in scaling. Indeed, A. Savin demonstrated 
+\begin{equation}
+	\eta_\mathrm{ZVP} \sim S^{-1.000(3)},
+\end{equation}
+however, this result led A. Savin to conclude increasing $S$ increases the energy in the reflected \ac{HHG} beam thus increasing high harmonic efficiency, seemingly in tension with the vast majority of the work on this regime [CITE CITE CITE]. The resolution arises from the follwoing: there are two distinct conversion efficiencies which describe the reflected harmonic spectrum. The conversion efficiency into the whole reflected beam and the conversion efficiency into individual harmonics. While the total conversion into reflected beam decreases for decreasing $S$, the slope of the harmonic spectrum also decreases and therefore while A. Savin is absolutely correct, the imporant parameter (the slope of the harmonic spectra) follows the opposite trend.
 
-The pressure exerted on the electron bunch is blah, 
-
-which will peak at the maximum electron-ion separation at which point the pseudocapacitor field will be equal and opposite to the instantaneous ponderomotive pressure exerted by the laser = this.
-
-Applying this equality, the peak electron bunch displacement is blah.
-
-At which point the pseudo capacitor field is 
-
-blah
+Indeed high X-ray harmonic efficiency neccesitates high inefficiencies in the production of ZVP electron bunches as higher energy bunches produce more coherent reflected radiation, a caveat not often considered in the quest for higher-order harmonics.
 
 
 
+Next up: the unification of RES and ZVP.
 
+Also mention alex's piont about using 2D simulations.
+
+
+Earlier write something along the lines of explaining while ZVP absorption does represent laser energy absorption, bulk heating occurs rather indirectly.
 
 
 Perhaps derive equivalence between res and ZVP here?

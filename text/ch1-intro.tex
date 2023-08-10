@@ -80,24 +80,24 @@ Collective behaviour not only depends on the ability for large numbers of partic
 \end{equation}
 It now remains to determine what is the typical frequency of collisions in a given plasma. While the types of plasma waves and their associated frequencies of oscillation are multitudinous, the characteristic frequency, the \textit{plasma frequency}, $\omega_p$, is the most straightforward. It describes the response of electrons to charge imbalances within an infinite uniform plasma at rest in the absence of magnetic fields or temperature fluctuations. As noted in section \ref{sec:debye_length}, the ions provide a constant backgorund of positive charge.
 
-Consider an semi-infinite plasma existing for $x>0$, with electron density $n_e$ and ion density $n_e/Z$ with charge state $Z$\footnote{This description has direct relevance to the Zero Vector Potential mechanism which will be made clear later.}. Suppose the electron fluid is displaced into the plasma bulk a distance $\Delta r$ as in figure \ref{fig:introplasmafrequency}. 
+Consider an semi-infinite plasma existing for $x>0$, with electron density $n_e$ and ion density $n_e/Z$ of charge state $Z$\footnote{This description has direct relevance to the Zero Vector Potential mechanism which will be made clear later.}. Suppose the electron fluid is displaced by some perfectly isotropic force into the plasma bulk a distance $(\Delta x) \hat{\mathbf{x}}$ as in figure \ref{fig:introplasmafrequency}. 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/intro/intro_plasma_frequency}
-	\caption{Diagram to illustrate the plasma frequency derivation.}
+	\caption{Diagram to illustrate the plasma frequency derivation.THIS FIGURE NEEDS E POINTING THE OTHER WAY}
 	\label{fig:introplasmafrequency}
 \end{figure}
-The displaced electrons will experience a restoring force, $-eE$, perpendicular to the surface due to the electron-ion charge imbalance. Applying the Lorentz force equation, the equation of motion for electrons on that surface is therefore
-\begin{equation}
-	m_e\frac{\mathrm{d}^2\Delta r}{\mathrm{d}t^2} = -eE.
+The total charge of displaced electrons within a surface area of $\sigma$ is 
+\begin{equation}\label{eq:intro_Q}
+	Q = -en_\mathrm{e}\sigma\Delta x.
 \end{equation}
-Applying Gauss' law as described in figure blah, the uncompensated charge leads to 
-\begin{equation}
-	E = \frac{en_e\Delta r}{\epsilon_0},
+Applying Gauss' law to the surface detailed in figure \ref{fig:introplasmafrequency}, the uncompensated charge leads to 
+\begin{equation}\label{eq:intro_E}
+	-\sigma E\hat{\mathbf{x}}= \frac{Q}{\epsilon_0}\hat{\mathbf{x}} = -\frac{en_e\sigma\Delta x}{\epsilon_0}\hat{\mathbf{x}}
 \end{equation}
-therefore
+at the electron surface. By the Lorentz force, the displaced electrons will experience a restoring force, $-eE\hat{\mathbf{x}}$, perpendicular to the surface due to the electron-ion charge imbalance. The equation of motion for electrons on that surface is therefore
 \begin{equation}\label{eq:intro_sho}
-	\frac{d^2\Delta r}{dt^2} = -\frac{e^2n_e}{m_e \epsilon_0}\Delta r.
+	m_e\frac{\mathrm{d}^2\Delta x}{\mathrm{d}t^2} = -eE = -\frac{e^2n_e}{m_e \epsilon_0}\Delta x.
 \end{equation}
 Equation \ref{eq:intro_sho} clearly describes a simple harmonic oscillator with a characteristic frequency given by the plasma frequency,
 \begin{equation}
