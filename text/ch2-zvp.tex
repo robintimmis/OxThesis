@@ -230,15 +230,127 @@ Interestingly, this new analytical result predicts the trend observed by A. Savi
 \begin{equation}
 	\eta_\mathrm{ZVP} \sim S^{-1.000(3)},
 \end{equation}
-however, this result led A. Savin to conclude increasing $S$ increases the energy in the reflected \ac{HHG} beam thus increasing high harmonic efficiency, seemingly in tension with the vast majority of the work on this regime [CITE CITE CITE]. The resolution arises from the follwoing: there are two distinct conversion efficiencies which describe the reflected harmonic spectrum. The conversion efficiency into the whole reflected beam and the conversion efficiency into individual harmonics. While the total conversion into reflected beam decreases for decreasing $S$, the slope of the harmonic spectrum also decreases and therefore while A. Savin is absolutely correct, the imporant parameter (the slope of the harmonic spectra) follows the opposite trend.
+however, this result led A. Savin to conclude increasing $S$ increases the energy in the reflected \ac{HHG} beam thus increasing high harmonic efficiency, seemingly in tension with the vast majority of the work on this regime [CITE CITE CITE]. The resolution arises from the follwoing: there are two distinct conversion efficiencies which describe the reflected harmonic spectrum: the conversion efficiency into the whole reflected beam and the conversion efficiency into individual harmonics. While the total conversion into the reflected beam decreases for decreasing $S$, the slope of the harmonic spectrum also decreases and therefore while A. Savin is absolutely correct, the imporant parameter (the slope of the harmonic spectra) follows the opposite trend.
 
 Indeed high X-ray harmonic efficiency neccesitates high inefficiencies in the production of ZVP electron bunches as higher energy bunches produce more coherent reflected radiation, a caveat not often considered in the quest for higher-order harmonics.
 
 
+[Side note for my reference: bunch is made and at peak compression at peak of laser pulse. then laser field oscillates,inside the bunch they experience an a0 = 0(? maybe) outside there is a minimum in the field, then the bunch is rotated back when it hits the next peak of the laser pulse (ie a0=0? outside plasma?) the upshot of this is I can then say there is a distance of lambda/2 between bunch peak displacement and radiation point and since peak displacement = 1/kS, for all S, the pseudocapacitor has been completely discharged and therefore there has been the maximum energy gain before HHG production - important for electron bunch gamma factor discusion.]
+
 
 Next up: the unification of RES and ZVP.
 
-Also mention alex's piont about using 2D simulations.
+\subsection{ZVP bunches oblique incidence scaling and internal bunch structure}
+This section is inspired by \cite{gonoskov_2011_UltrarelativisticNanoplasmonicsRoute} and \cite{vincenti_2014_OpticalPropertiesRelativistic} supplementary material but different where I believe they have gone wrong to generalise the \ac{ZVP} mechanism energy scalings.
+
+The below section needs cleaning up of minus signs etc, take the convention laser propagates in the positive direction therefore drift of electrons and ions in frame with normal incidence is in negative direction.
+
+As has previously been stated, if the plasma-vacuum boundary is sufficiently steep, the plasma electrons will respond adiabatically to the laser pulse and arrange themselves to form a pseudocapacitor longitudinal electric field $E_\mathrm{C}$ at the plasma surface. At all points in this adiabatic phase, the surface electrons will be in a quasi-static equilibrium \textit{i.e.} there will be a balance between the electromagnetic forces on them. Consider again a laser pulse incident on a solid density plasma existing for $x>0$ at angle $\theta$. Transforming to the reference frame where the laser is incident normally (quantities in this frame are indicated by the primed symbol), the electron and ion bulk plasma species are now streaming with a velocity $\mathbf{v}_\mathrm{d} = -c \sin\theta \hat{\mathbf{y}}$.  From the Lorentz force law along the longitudinal direction ($\hat{\mathbf{x}}$), for a displacement of the electron fluid $x'_\mathrm{e}$ (one assumes that the expression for a single electron at the surface describes the surface as via relativity all electrons follow similar trajectories), travelling at speed $\mathbf{v'}$
+\begin{equation}\label{eq:zvp_eq}
+	-e(\mathbf{v'}(x'_\mathrm{e})\times (\mathbf{B}'_\mathrm{L}(x'_\mathrm{e}) + \mathbf{B}'_\mathrm{i}(x'_\mathrm{e}))\cdot \hat{\mathbf{x}} + E'_\mathrm{C}(x'_\mathrm{e}) )= 0,
+\end{equation}
+where 
+\begin{equation}\label{eq:zvp_Bl}
+	B'_\mathrm{L} = \frac{m_\mathrm{e} \omega'_\mathrm{L}a_0\sin(\omega'_\mathrm{L}t'-k'x'_\mathrm{e})}{e} \hat{\mathbf{z}}
+\end{equation}
+and $B_\mathrm{i}$ originates from the uncompensated ion current, $\mathbf{J_\mathrm{i}} =  Zen'_\mathrm{i}(x'_\mathrm{e}) \mathbf{v}_\mathrm{d}$, where the electron fluid has been displaced. As before, from equation \ref{eq:intro_E},
+\begin{equation}\label{eq:zvp_Ec}
+	E'_\mathrm{C} = \frac{en'_\mathrm{e}x'_\mathrm{e}}{\epsilon_0}.
+\end{equation}
+Note that there is no contribution to the laser magnetic field here from the reflected laser pulse since the assumption is that during this pushing phase all laser pulse energy is converted into electrostatic potential energy, this is supported by the attosecond duration of the reflected harmonic beam (\textit{i.e.} it is not produced during this phase). Maxwell-Ampère's Law states
+\begin{equation}\label{eq:zvp_maxwellampere}
+	\nabla \times \mathbf{B} = \mu_0 \mathbf{J}.
+\end{equation}
+Noting that by symmetry there can be no variation in the magnetic field with $y'$ or $z'$ it becomes clear that
+\begin{equation}\label{eq:zvp_BiJi}
+	-\frac{\mathrm{d}(\mathbf{B}'_\mathrm{i})_{z'}}{\mathrm{d} x'} = \mu_0 (\mathbf{J}_\mathrm{i})_{y'}.
+\end{equation}
+Integrating equation \ref{eq:zvp_BiJi} from $-\infty$ to $x'_\mathrm{e}$, noting that $\mathbf{B}_\mathrm{i} = 0$ at infinity and assuming a constant density profile $n'_\mathrm{i}$ for $x>0$,
+\begin{equation}\label{eq:zvp_Bi}
+	\mathbf{B}'_\mathrm{i}(x'_\mathrm{e}) = \mu_0 en'_\mathrm{e}x'_\mathrm{e}c\sin(\theta)\hat{\mathbf{z}}.
+\end{equation}
+Using equations \ref{eq:zvp_Bl}, \ref{eq:zvp_Ec} and \ref{eq:zvp_Bi} and making the very reasonable approximation that the relativistic electrons on the surface move at speed $v'_y \approx \pm c$ at peak displacement ($x'_\mathrm{e} = x'_\mathrm{p}$), \ref{eq:zvp_eq} can be written as
+\begin{equation}
+	-e\left(\pm c\left(\pm\frac{m_\mathrm{e}\omega'_\mathrm{L}a_0}{e} + \mu_0 en'_\mathrm{e} x'_\mathrm{p}c\sin\theta\right)+\frac{en'_\mathrm{e}x'_\mathrm{p}}{\epsilon_0}\right) = 0.
+\end{equation}
+Note that to be in the laser pushing phase the first term must be negative, corresponding to $\mathbf{v'}$ and $\mathbf{B}'_\mathrm{L}$ having the opposite sign, hence,
+\begin{equation}
+	 c\left(-\frac{m_\mathrm{e}\omega'_\mathrm{L}a_0}{e} \pm \mu_0 en'_\mathrm{e} x'_\mathrm{p}c\sin\theta\right)+\frac{en'_\mathrm{e}x'_\mathrm{p}}{\epsilon_0} = 0,
+\end{equation}
+where here the $\pm$ tracks the sign of $\mathbf{v}'$. After some maniputation, one arrives at
+\begin{equation}
+	x'_\mathrm{p} = \frac{1}{k'S' (1\pm \sin\theta)}.
+\end{equation}
+Transforming back to the lab frame, naturally,
+\begin{equation}
+	x_\mathrm{p} = \frac{1}{kS(1\pm \sin\theta)}.
+\end{equation}
+Already this is quite a result, reducing to equation \ref{eq:zvp_dx} for $\theta =0$ and predicting the suppression and enhancement of the two surface oscillations per laser puse cycle. Explicitely, for a laser pulse propagating at $y = x\tan\theta$, the peak displacement of the electron surface is enhanced for $\mathbf{B}_\mathrm{L}$ in the $+\hat{\mathbf{z}}$-direction and suppressed for $\mathbf{B}_\mathrm{L}$ in the $-\hat{\mathbf{z}}$-direction.
+
+Consider now acceleration of the electron bunch across the pseudocapacitor field in the boosted frame,
+\begin{equation}\label{eq:zvp_Tp}
+	T' = \int \mathbf{F}'\cdot \mathrm{d} \mathbf{s}' = \int^0_{x'_\mathrm{p}} -eE'_\mathrm{C}(x'_\mathrm{e}) \mathrm{d}x'_\mathrm{e} =  \frac{en'_\mathrm{e}(x'_\mathrm{p})^2}{2\epsilon_0}=\frac{1}{2}m_\mathrm{e}c^2\frac{a^2_0}{\bar{n}'_\mathrm{e}(1\pm \sin\theta)^2}.
+\end{equation}
+Again, transforming back to the lab frame, noting the gain in energy from crossing the pseudo-capacitor 
+
+
+The linearity of four-vectors ensures 
+\begin{equation}
+	\mathbf{\Delta P}^\mathrm{\mu} = (\frac{\Delta E}{c}, \mathbf{\Delta p})
+\end{equation}
+is also a four-vector. The Lorentz transform for change in energy is thus
+\begin{equation}
+	\Delta E = \gamma \left(\Delta E' - \frac{\mathbf{v}_\mathrm{d}}{c}\cdot \mathbf{\Delta p'}\right),
+\end{equation}
+where 
+\begin{equation}\label{eq:zvp_gamma}
+	\gamma = \frac{1}{\sqrt{1+\sin^2\theta}} = \frac{1}{\cos\theta}.
+\end{equation}
+Hence for energy gain $\Delta E' = T'$ in the boosted frame (where $\Delta p_y = 0$),
+\begin{equation}
+	T = \gamma T'.
+\end{equation}
+Using equations \ref{eq:zvp_Tp} and \ref{eq:zvp_gamma} and recalling $\bar{n}_\mathrm{e} = \bar{n}'_\mathrm{e}/\gamma$,
+\begin{equation}
+	T =m_\mathrm{e}c^2 \frac{a_0S}{2(1\pm\sin\theta)^2}
+\end{equation}
+Nb this could have simply been established in the lab frame and considering F.ds which is just the same[The electron bunch then accelerates across the pseudo-capacitor in the specular direction, the force ] maybe put this derivation in appendix.
+
+Therefore, as with peak displacement, the energy gained by the electron bunch via the ZVP mechanism is suppressed in one half cycle and enhanced in the second.
+
+Currently this model favours an angle of incidence of $\pi/2$, however this does not match with observations. The resolution comes by considering the maximum energy gained crossing the pseudocapacitor before interaction with the next peak of the laser pulse (and therefore launching of the electron bunch back towards the plasma bulk). If both electron bunch and laser pulse move at speed $c$, the electron bunch will reach the next peak of the laser pulse after propagating a distance $\lambda_\mathrm{L}/4$ along the $x$-axis. Adusting the limits of equation \ref{eq:zvp_Tp},
+
+hmmm no this is wrong, think about wavefronts propagating at an angle. It would appear that for theta>45, the wavefront lambda/2 behind cannot catch up with teh electrons if they are travelling at speed c. If there are actually accelerating from rest and spend a reasonable amount of time below c then larger angles could catch up... think about this some more....
+
+
+\begin{equation}
+	T =
+	\begin{cases}
+		m_\mathrm{e}c^2 \frac{a_0S}{2(1\pm\sin\theta)^2} & x_\mathrm{p} \ge \lambda_\mathrm{L}/4\\
+		m_\mathrm{e}c^2 \frac{a_0S}{2(1\pm\sin\theta)^2} -  & x_\mathrm{p} < \lambda_\mathrm{L}/4\\
+	\end{cases}       
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+Big note:
+The highest electron gamma factors comes from those electrons at the very front surface who are accelerated before high density is reached and quasistatic equilibrium reached (there are therefore very few of them), these few electrons do not satisfy ZVP relation for energy, instead 
+ponderomotvie + ZVP which at most would be twice the predicted gamma which is quite some difference HOWEVER for all experiments so far, ZVP energy gain is small since S large so ponderomotive is more sensible.
+
+
+
+
+
+
+Also mention alex's point about using 2D simulations.
 
 
 Earlier write something along the lines of explaining while ZVP absorption does represent laser energy absorption, bulk heating occurs rather indirectly.
