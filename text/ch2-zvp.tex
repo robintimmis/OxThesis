@@ -212,7 +212,7 @@ or an electron gamma factor,
 \end{equation}
 Assuming all displaced electrons are captured by the pseudo-capacitor field and launched as a coherent bunch, the total kinetic energy of the electron bunch is
 \begin{equation}\label{eq:zvp_U}
-	U_\mathrm{ZVP} = n_\mathrm{e}\sigma\Delta x T = \frac{\sigma n_\mathrm{c}}{k}\times m_\mathrm{e}c^2 \frac{a^3_0}{\bar{n}_\mathrm{e}}.
+	U_\mathrm{ZVP} = n_\mathrm{e}\sigma\Delta x T = \frac{\sigma n_\mathrm{e}}{k}\times m_\mathrm{e}c^2 \frac{a^3_0}{\bar{n}_\mathrm{e}}.
 \end{equation}
 It is now interesting to compare equation \ref{eq:zvp_U} to the laser energy deposited upon the plasma surface and therefore consider what fraction of the laser energy can be absorbed via the \ac{ZVP} mechanism. Using $E = E_\mathrm{L}$, \ref{eq:zvp_U} can be rewritten as
 \begin{equation}
@@ -311,33 +311,31 @@ Hence for energy gain $\Delta E' = T'$ in the boosted frame (where $\Delta p_y =
 	T = \gamma T'.
 \end{equation}
 Using equations \ref{eq:zvp_Tp} and \ref{eq:zvp_gamma} and recalling $\bar{n}_\mathrm{e} = \bar{n}'_\mathrm{e}/\gamma$,
-\begin{equation}
-	T =m_\mathrm{e}c^2 \frac{a_0S}{2(1\pm\sin\theta)^2}
+\begin{equation}\label{eq:zvp_Tzvp_theta}
+	T =m_\mathrm{e}c^2 \frac{a_0}{2S(1\pm\sin\theta)^2}
 \end{equation}
 Nb this could have simply been established in the lab frame and considering F.ds which is just the same[The electron bunch then accelerates across the pseudo-capacitor in the specular direction, the force ] maybe put this derivation in appendix.
 
+Also note that when doing this transformation, T is the energy gained but there is another term in the momentum from the transform, since now $v_y = c\sin\theta$. This is unrelated to the energy gain from crossing the pseudo capacitor. There is no explanation of where this energy comes from, just that in order for the bunch to travel in the -x direction in the boosted frame - not sure what real explanation there is for this to occur, also confusion here since is this actually contained within the gamma expression or not, im lost come back to this. Maybe actualyl this is fine. We jsut take the gamma factor associated with the py gain ($=\sec\theta$ - corresponding to a gamma of 1.4 at 45 degrees) and add the delta gamma from the pseudo capacitor and that should be fine.
+
+Also need to go back through this section and make clear which gamma is which in this section
+
 Therefore, as with peak displacement, the energy gained by the electron bunch via the ZVP mechanism is suppressed in one half cycle and enhanced in the second.
 
-Currently this model favours an angle of incidence of $\pi/2$, however this does not match with observations. The resolution comes by considering the maximum energy gained crossing the pseudocapacitor before interaction with the next peak of the laser pulse (and therefore launching of the electron bunch back towards the plasma bulk). If both electron bunch and laser pulse move at speed $c$, the electron bunch will reach the next peak of the laser pulse after propagating a distance $\lambda_\mathrm{L}/4$ along the $x$-axis. Adusting the limits of equation \ref{eq:zvp_Tp},
+While this model would suggest an optimal angle for electron energy and therefore \ac{HHG} of $\pi/2$, if $\theta > \pi/4$, then, if the relativistic electron bunch is travelling at $c$ along the specular reflection direction, the subsequent laser peak amplitude will never `catch up' with the electron bunch, and electrons will escape through the antinodes (?) of the electric field [CITE KRUSHELNICK PAPER GRAZING INCIDENCE ELECTRONS], generating high charge electron bunches in reflection, but decreasing \ac{HHG efficiency}.
 
-hmmm no this is wrong, think about wavefronts propagating at an angle. It would appear that for theta>45, the wavefront lambda/2 behind cannot catch up with teh electrons if they are travelling at speed c. If there are actually accelerating from rest and spend a reasonable amount of time below c then larger angles could catch up... think about this some more....
-
-
-\begin{equation}
-	T =
-	\begin{cases}
-		m_\mathrm{e}c^2 \frac{a_0S}{2(1\pm\sin\theta)^2} & x_\mathrm{p} \ge \lambda_\mathrm{L}/4\\
-		m_\mathrm{e}c^2 \frac{a_0S}{2(1\pm\sin\theta)^2} -  & x_\mathrm{p} < \lambda_\mathrm{L}/4\\
-	\end{cases}       
+Finally, moving on to the calculation of total bunch energy as a function of $\theta$. Since the total number of electrons in the accelerating bunch must be invariant,
+\begin{equation}\label{eq:zvp_Uzvp_theta}
+	U_\mathrm{ZVP}(\theta) = n_\mathrm{e}\sigma\Delta x T(\theta) =  \frac{\sigma n_\mathrm{e}}{k}\times m_\mathrm{e}c^2\frac{a_0}{2S^2(1\pm \sin\theta)^3}.
 \end{equation}
+What we can see from this is this enables a larger fraction of the laser energy to be absorbed at high $S$ pushing the currently experimentally accessible regime into the most efficient regime.
+
+I want to move on, but return to this section and sort out the following. 
 
 
+Another concern: peter showed me sims that suggested that increasing S incerased the suppressed oscillations more RELATIVE to the main oscilisations, perhaps need to look at the internal bunch structure?
 
-
-
-
-
-
+Also see if can do a second order calculation through the electron bunch to see if can calculate its structure.
 
 
 
@@ -347,19 +345,34 @@ ponderomotvie + ZVP which at most would be twice the predicted gamma which is qu
 
 
 
-
-
-
-Also mention alex's point about using 2D simulations.
-
-
 Earlier write something along the lines of explaining while ZVP absorption does represent laser energy absorption, bulk heating occurs rather indirectly.
 
+\section{Defining characteristics of the ZVP mechanism}
+In her original paper, T. Baeva \textit{et al} \cite{baeva_2011_ZeroVectorPotential} outlined 6 defining characteristics of the \ac{ZVP} mechanism, namely,
+\begin{enumerate}
+	\item The existance of vector potential zeros moving through the skin layer in the laboratory frame;
+	\item The existance of zeroes in the incident laser pulse vector potential required for the formation of fast electron bunches;
+	\item The generation of fast electron bunches with ultra-short temporal duration;
+	\item Such bunches should be described by the expressions for average \ref{eq:zvp_Tzvp_theta} and total energy \ref{eq:zvp_Uzvp_theta};
+	\item An intrinsic link must exist between the fast electron bunches and coherent X-ray \ac{HHG};
+	\item Injection of the fast electron bunches along the propagation axis of the laser pulse;
+\end{enumerate}
+with the essential point being it is the moving zeros within the skin layer being the defining delineator between this post-ponderomotive regime of laser pulse energy absorption and all other proposed mechanisms. While such observational requirements are far beyond the reaches of currently experimental know-how, numerical simulations in both 1- \cite{baeva_2011_ZeroVectorPotential} and 2-dimensions \cite{savin_2017_AttosecondscaleAbsorptionExtreme} have confirmed the above points. Now is presented the first \ac{3D} simulations to demonstrate the \ac{ZVP} mechanism.
 
-Perhaps derive equivalence between res and ZVP here?
+\section{Numerical simulations of the ZVP mechanism}
+\subsection{The ZVP mechanism in 3D}
 
 
-Then section of a typical bunch properties
+
+
+\subsection{Typical ZVP electron bunch properties}
+Then section of a typical bunch properties 
+While much has been stated of the high energy and short duration of ZVP bunches in the previous work, the specific properties of such bunches has largely avoided interrogation.
+
+\subsection{Parameter scan of electron bunch mean energy}
+
+\subsection{Total electron bunch energy scaling}
+
 
 Then Energy scalings
 
