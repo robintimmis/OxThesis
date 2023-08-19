@@ -10,6 +10,12 @@ I will have a whole subsection devoted to the different frames of reference of r
 I will try to use a consistent convention for coordinate system as much as possible.
 
 \subsection{Frames of reference}
+Other frames of reference include, HB front surface at rest frame, ablating front frame, smilei frames. 
+
+When writing out the pistoning equation in full in thesis, include analysis in Robinson 2009 to do it for multiple ion species.
+
+
+
 I should go over this and use third year relativity notes to formalised and make more consistent.
 
 While some of this section may seem trivial, it is frequently miscalculated in the literature, it therefore seems of great importance to provide a full derivation.
@@ -61,7 +67,10 @@ leading to the perhaps unexpected
 \begin{equation}
 	\bar{n}'_\mathrm{e} = \frac{\bar{n}_\mathrm{e}}{\cos^3\theta}.
 \end{equation}
-
+Time is dilated 
+\begin{equation}
+	t' = \frac{t}{\cos\theta}.
+\end{equation}
 
 Consider now the more general case (I should jsut simply replace my diagram with a 3D one that incorporates this initially) where the photon's electric field is rotated out of the $x$-$y$ plane, \textit{i.e.}
 \begin{equation}
@@ -104,9 +113,51 @@ it follows that
 	S' = \frac{S}{\cos^3\theta}.
 \end{equation}
 
+\subsection{ORION interaction geometry}
+The ORION target chamber has its own defined geometry with the target located at the origin, described in figure \ref{fig:miscoriontargetchambergeometry}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/misc/misc_ORION_target_chamber_geometry}
+	\caption{ORION target chamber geometry showing the location of the target (TCC) and OHREX spectrometer and the green (SP1) and infra-red (SP2) beamlines and their corresponding polarisations.}
+	\label{fig:miscoriontargetchambergeometry}
+\end{figure}
+The polarisation angles are $\phi_1 = \qty{11.8}{\degree}$ and $\phi_2 = \qty{16.4}{\degree}$. Following reflection of the infra-red beam off the plasma mirror, both the green and infra-red lasers propagate in the -$\hat{\mathbf{x}}$-direction  towards the origin. The OHREX crystal is located at 
+\begin{equation}
+	\mathbf{r}_\mathrm{OHREX} = r_0(\cos B\cos A,-\cos B\sin A, \sin B),
+\end{equation}
+where $r_0 = \qty{2.4}{m}$, $A = \qty{26.82} {\degree} $ and $B = \qty{18.15}{\degree}$, setting the rotation angle of the target. This was achieved using the ORION Multi-Target-Mounts. Alignment was performed by Ed Gumbrell and no further details will be provided here on that process. 
+
+The interaction plane is therefore defined by the vector
+\begin{equation}
+	\mathbf{n} = \frac{\mathbf{r}_\mathrm{OHREX}}{r_0} \times  \hat{\mathbf{x}} = (0,\sin B, \cos B\sin A).
+\end{equation}
+The cosine rule can be applied to determine the polarisation of the laser pulses in the interaction plane, for polarisation vector $\hat{\mathbf{E}}$,
+\begin{equation}
+	\frac{\mathbf{n}}{|\mathbf{n}|}\cdot\hat{\mathbf{E}} = \cos\theta,
+\end{equation}
+where $\theta$ defines the angle between the polarisation vector and the vector normal to the interaction plane. This corresponds to angles out of the interaction plane of 42.2 \degree for the SP1 beam (rotating anticlockwise out of the interaction plane when looking from TCC to parabola) and 19.6 \degree for the SP2 beam (rotating clockwise out of the interaction plane when looking from TCC to parabola). Again applying the cosine rule, the angle of incidence is 16\degree .
+
+
+Next up: Polarisation on OHREX interaction plane.
+
+The same method can be applied to determine the polarisation of the OHREX crystal interaction plane. The OHREX crystals have a nominal Bragg angle of 51.3\degree.
+
+I still need to know the exact orientation of the OHREX but assuming it is vertical, the interaction plane is defined by
+\begin{equation}
+	\mathbf{n}_\mathrm{O} =  \frac{\mathbf{r}_\mathrm{OHREX}}{r_0} \times \hat{\mathbf{z}}= (-\sin A, -\cos A, 0),
+\end{equation}
+once it has been normalised.
+
+Then again applying the cosine rule, this plane corresponds to angles out of the interaction plane of \qty{10.5}{\degree} for SP1 and \qty{58.9}{\degree} for SP2.
+
+Is has been assumed that the non-linear RPM mechanism retains the polarisation of the incident laser pulse in the reflected harmonic beam.
+
+Then since the OHREX crystal reflection is a linear process, we can decompose our incident beam into its polarisation constituents and consider what their combined intensity post reflection at the detector plane will be.
+
 Also discuss the fabulous result that generally one can simply extract the results in the Smilei units and multiply by the relevant factors of the frame of interest and thus not worry too much about frame transformations.
 
-
+Also check the boosted frame results against the bouchard thesis.
 
 
 Once I have finished this section I must redo boosted section since I have made a mistake there and rethink a bit about optimum theta.

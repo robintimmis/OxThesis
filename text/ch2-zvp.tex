@@ -3,14 +3,14 @@
 \minitoc
 
 \section{Introduction}
-Of primary interest in this thesis is the interaction of a relativistically intense short pulse laser interacting with a solid density plasma target with a sharp density gradient. Now is presented the Zero Vector Potential mechanism of attosecond absorption of laser pulse energy, proposed by \textit{Baeva et al} \cite{baeva_2006_TheoryHighorderHarmonic} and later developed by \textit{Savin et al} \cite{savin2017AttosecondscaleAbsorptionExtreme,savin2019EnergyAbsorptionLaserQED}. Laser energy absorption in dense plasmas was first proposed by Wilks and Kruer \cite{wilks1997}, a ponderomotive mechanism where plasma electrons are heated directly by the laser pulse via the so-called $\mathbf{J}\times \mathbf{B}$ force.
+Of primary interest in this thesis is the interaction of a relativistically intense short pulse laser interacting with a solid density plasma target with a sharp density gradient. Now is presented the Zero Vector Potential mechanism of attosecond absorption of laser pulse energy, proposed by \textit{Baeva et al} \cite{baevaTheoryHighorderHarmonic2006} and later developed by \textit{Savin et al} \cite{savinAttosecondscaleAbsorptionExtreme2017,savinEnergyAbsorptionLaserQED2019}. Laser energy absorption in dense plasmas was first proposed by Wilks and Kruer \cite{wilksAbsorptionUltraIntenseLaser1992}, a ponderomotive mechanism where plasma electrons are heated directly by the laser pulse via the so-called $\mathbf{J}\times \mathbf{B}$ force.
 
 %At some point I should briefly chat about other absorption models (I think at the end of the intro - this will also include the stuff above. - Then I will start this chapter by talking about the case where JxB does not apply. ALso in the intro specify that for an overdense plasma, the laser does not propagate and must be reflected and hence we are generally talking about a laser-plasma surface interaction and the implications thereof.) Before this point I also want to discuss preplasmas.
 
 This thesis focuses on the so-called `post-ponderomotive' regime where the frequency of the plasma oscillations ($\omega_p \sim \sqrt{n_e}$) are greater than the $\mathbf{J}\times \mathbf{B}$ induced plasma electron oscillations at $2\omega_L$. The plasma electrons are then fast enough to compensate the ponderomotive pressure of the laser pulse with the formation of electrostatic fields between electrons and ions and so respond adiabatically to the $\mathbf{J}\times \mathbf{B}$ force. Hence plasma electrons cannot be heated directly by the laser pulse. Note that this requires a sufficiently steep density gradient around the relativistic critical density surface (where $S=1$) to shift the main interaction to a region where this condition on the overdensity is satisfied. In this case the ponderomotive pressure of the laser compresses the electrons at the front surface of the plasma and so shifts the laser-plasma surface interaction to plasma densities well beyond the relativistic critical density, leaving behind a positive space charge. This electron-ion charge separation leads to the formation of a \textit{pseudo-capacitor} electrostatic field.
 
 
-Interestingly working through the condition between $\omega_p$ and $\omega_L$ in normalised units suggests the criterion for this regime is $S > 4$, slightly more constraining than $S>1$ as is typically stated \cite{savin2019thesis}.
+Interestingly working through the condition between $\omega_p$ and $\omega_L$ in normalised units suggests the criterion for this regime is $S > 4$, slightly more constraining than $S>1$ as is typically stated \cite{savinModellingLaserPlasmaInteractions2019}.
 
 % at some point I must be explicitely clear about why this conditoin ad my sims with S=1 are compatible. This above criterion on S is associated with the bunch electrons. For S=1 we observe great compression of the target surface enabling us to enter the regime where the bunch S>4 whilst the bulk remains at S=1. Can thsi also be used to explain the energy absorption in phase one (bunch formation) ? Eneryg can be absorbed by JxB until the bunch density goes above some value???
 
@@ -18,7 +18,7 @@ Interestingly working through the condition between $\omega_p$ and $\omega_L$ in
 
 [Come back to this and write up stuff about actaully it being the relativistc frequncy and critical density surfaces that matter and how this does indeed put a stricter condition on the bulk S value]
 
-So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential. Consider a relativistic linearly polarised laser pulse obliquely incident, with an angle of incidence of $\theta$, on a semi-infinite plasma, existing for $x>0$. The Hamiltonian of a single electron confined within the potential well \cite{herbert_classical_mechanics} is
+So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential. Consider a relativistic linearly polarised laser pulse obliquely incident, with an angle of incidence of $\theta$, on a semi-infinite plasma, existing for $x>0$. The Hamiltonian of a single electron confined within the potential well \cite{goldsteinClassicalMechanics2013} is
 \begin{equation}\label{eq:hamiltonian_general}
 	\mathcal{H} = c\sqrt{m^2_ec^2 + |\mathbf{p}|^2} - e\Phi.
 \end{equation}
@@ -36,7 +36,7 @@ Explicitly, the Hamiltonian is now
 \begin{equation}\label{eq:hamiltonian_specific}
 	\mathcal{H} = c\sqrt{m^2_ec^2 + p^2_\mathrm{prop} + e^2A^2} - e\Phi.
 \end{equation}
-From equation \ref{eq:hamiltonian_specific} it is clear that should the vector potential pass through zero, one of the walls of the potential well is suppressed, allowing electrons in the in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeros for this violent reconstruction of the plasma surface led Baeva et al \cite{baeva2011ZeroVectorPotential} to coin the term `Zero Vector Potential' mechanism to describe this process. Indeed, while in standard calculations a laser pulse will exponentially decay within a skin layer without passing through zero, Baeva et al \cite{baeva2011ZeroVectorPotential} were able to demonstrate in \ac{PIC} simulations that for this regime, zeros are able to propagate through the skin layer of the plasma. The explanation for this difference in mechanics relies on a Doppler shift in the laser field due to the relativistic motion of the ablating plasma surface, and the mathematical formalism of this process proceeds as follows.
+From equation \ref{eq:hamiltonian_specific} it is clear that should the vector potential pass through zero, one of the walls of the potential well is suppressed, allowing electrons in the in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeros for this violent reconstruction of the plasma surface led Baeva et al \cite{baevaZeroVectorPotential2011} to coin the term `Zero Vector Potential' mechanism to describe this process. Indeed, while in standard calculations a laser pulse will exponentially decay within a skin layer without passing through zero, Baeva et al \cite{baevaZeroVectorPotential2011} were able to demonstrate in \ac{PIC} simulations that for this regime, zeros are able to propagate through the skin layer of the plasma. The explanation for this difference in mechanics relies on a Doppler shift in the laser field due to the relativistic motion of the ablating plasma surface, and the mathematical formalism of this process proceeds as follows.
 
 [I think before this point it would be good to enter in the language of electron bunches or sheaths - I will continue the dicussion assuming this concept has been introduced].
 
@@ -163,7 +163,7 @@ and hence the system is described by the Lagrangian
 \begin{equation}
 	L = \sum^N_{j=1}\left( - m_\mathrm{j}c^2\sqrt{1-\beta^2_\mathrm{j}} - e_j(\Phi - \mathbf{A} \cdot \mathbf{v}_\mathrm{j}) \right),
 \end{equation}
-where $\beta^2 = \mathbf{v}_\mathrm{j}\cdot\mathbf{v}_\mathrm{j} /c^2$ \cite{goldstein_classical_mechanics}.
+where $\beta^2 = \mathbf{v}_\mathrm{j}\cdot\mathbf{v}_\mathrm{j} /c^2$ \cite{goldsteinClassicalMechanics2013}.
 The generalised momentum corresponding to coordinate $x_j$ is
 \begin{equation}
 	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = m_j\dot{x}_j + e_jA_x,
@@ -178,11 +178,11 @@ Considering a p-polarised Gaussian laser pulse, axis of polarisation along $x$, 
 \end{equation}
 where $p_mathrm{T}$ is the electron momentum along the polarisation axis of the laser pulse. and $A$ its vector potential.
 
-Note that this is only valid provided the radiating electron does not radiate along the direction of $\mathbf{A}$ as discussed by Sokolov \textit{et al} \cite{sokolov_2009_DynamicsEmittingElectrons}. But we do know this radiation is specular so this is true for normal incidence but not specular?? Really need to consider what the EM fields are in the surface from combined Incident and reflected.
+Note that this is only valid provided the radiating electron does not radiate along the direction of $\mathbf{A}$ as discussed by Sokolov \textit{et al} \cite{sokolovDynamicsEmittingElectrons2009}. But we do know this radiation is specular so this is true for normal incidence but not specular?? Really need to consider what the EM fields are in the surface from combined Incident and reflected.
 The implications of this should maybe be considered?? Also note that this is only true for gaussian pulses with spatial profiles $\gg$ than electron trajectories (\textit{i.e.} twice the relativistic larmor radius).
 
 \subsection{ZVP electron bunch energies}\label{sec:zvp_energies_derivation}
-In \cite{baeva_2011_ZeroVectorPotential}, Baeva \textit{et al} propose energy scalings for electron bunches produced in the \ac{ZVP} regime as a function of the laser intensity and plasma density, finding that one of the key statements of similarity theory ($p \sim a_0 S^x$, where $x$ is some integer value, THIS NEEDS A CITE I THINK IT APPEARS IN BAEVAS ORIGINAL HHG PAPER) holds for the \ac{ZVP} mechanism. Later this was then extended to \ac{3D} by Savin \textit{et al} \cite{savin_2017_AttosecondscaleAbsorptionExtreme}. What follows is that discussion with a more close consideration of the both consequences and constants of proportionality.
+In \cite{baevaZeroVectorPotential2011}, Baeva \textit{et al} propose energy scalings for electron bunches produced in the \ac{ZVP} regime as a function of the laser intensity and plasma density, finding that one of the key statements of similarity theory ($p \sim a_0 S^x$, where $x$ is some integer value, THIS NEEDS A CITE I THINK IT APPEARS IN BAEVAS ORIGINAL HHG PAPER) holds for the \ac{ZVP} mechanism. Later this was then extended to \ac{3D} by Savin \textit{et al} \cite{savinAttosecondscaleAbsorptionExtreme2017}. What follows is that discussion with a more close consideration of the both consequences and constants of proportionality.
 
 (Pherhaps I should redo this discussion condering infinitessimal areas of the plasma surface to show how variation can exist across the surface) Defo do this! And say that provided the variation is small, rel to what though? the surface remains approximately flat -> that is totally not true
 
@@ -226,7 +226,7 @@ Hence,
 \begin{equation}
 	\eta_\mathrm{ZVP} = \frac{U_\mathrm{ZVP}}{U_\mathrm{L,1/2}} = \frac{1}{\pi S}.
 \end{equation}
-Interestingly, this new analytical result predicts the trend observed by A. Savin \cite{savin_2019_ModellingLaserPlasmaInteractions} in \ac{PIC} simulations both in magnitude and in scaling. Indeed, A. Savin demonstrated 
+Interestingly, this new analytical result predicts the trend observed by A. Savin \cite{savinModellingLaserPlasmaInteractions2019} in \ac{PIC} simulations both in magnitude and in scaling. Indeed, A. Savin demonstrated 
 \begin{equation}
 	\eta_\mathrm{ZVP} \sim S^{-1.000(3)},
 \end{equation}
@@ -241,7 +241,7 @@ Indeed high X-ray harmonic efficiency neccesitates high inefficiencies in the pr
 Next up: the unification of RES and ZVP.
 
 \subsection{ZVP bunches oblique incidence scaling and internal bunch structure}
-This section is inspired by \cite{gonoskov_2011_UltrarelativisticNanoplasmonicsRoute} and \cite{vincenti_2014_OpticalPropertiesRelativistic} supplementary material but different where I believe they have gone wrong to generalise the \ac{ZVP} mechanism energy scalings.
+This section is inspired by \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011} and \cite{vincentiOpticalPropertiesRelativistic2014} supplementary material but different where I believe they have gone wrong to generalise the \ac{ZVP} mechanism energy scalings.
 
 The below section needs cleaning up of minus signs etc, take the convention laser propagates in the positive direction therefore drift of electrons and ions in frame with normal incidence is in negative direction.
 
@@ -318,6 +318,10 @@ Nb this could have simply been established in the lab frame and considering F.ds
 
 Also note that when doing this transformation, T is the energy gained but there is another term in the momentum from the transform, since now $v_y = c\sin\theta$. This is unrelated to the energy gain from crossing the pseudo capacitor. There is no explanation of where this energy comes from, just that in order for the bunch to travel in the -x direction in the boosted frame - not sure what real explanation there is for this to occur, also confusion here since is this actually contained within the gamma expression or not, im lost come back to this. Maybe actualyl this is fine. We jsut take the gamma factor associated with the py gain ($=\sec\theta$ - corresponding to a gamma of 1.4 at 45 degrees) and add the delta gamma from the pseudo capacitor and that should be fine.
 
+Another note: this dependence on theta ($1\pm \sin\theta$) can be explained as an increase due to the electric field having a component acting either in or out from the plasma surface either assisting or counteracting the magnetic field.
+
+Idea: Can one use an external constant magnetic field to obtain the same results for normal incidence?
+
 Also need to go back through this section and make clear which gamma is which in this section
 
 Therefore, as with peak displacement, the energy gained by the electron bunch via the ZVP mechanism is suppressed in one half cycle and enhanced in the second.
@@ -348,7 +352,7 @@ ponderomotvie + ZVP which at most would be twice the predicted gamma which is qu
 Earlier write something along the lines of explaining while ZVP absorption does represent laser energy absorption, bulk heating occurs rather indirectly.
 
 \section{Defining characteristics of the ZVP mechanism}
-In her original paper, T. Baeva \textit{et al} \cite{baeva_2011_ZeroVectorPotential} outlined 6 defining characteristics of the \ac{ZVP} mechanism, namely,
+In her original paper, T. Baeva \textit{et al} \cite{baevaZeroVectorPotential2011} outlined 6 defining characteristics of the \ac{ZVP} mechanism, namely,
 \begin{enumerate}
 	\item The existance of vector potential zeros moving through the skin layer in the laboratory frame;
 	\item The existance of zeroes in the incident laser pulse vector potential required for the formation of fast electron bunches;
@@ -357,13 +361,13 @@ In her original paper, T. Baeva \textit{et al} \cite{baeva_2011_ZeroVectorPotent
 	\item An intrinsic link must exist between the fast electron bunches and coherent X-ray \ac{HHG};
 	\item Injection of the fast electron bunches along the propagation axis of the laser pulse;
 \end{enumerate}
-with the essential point being it is the moving zeros within the skin layer being the defining delineator between this post-ponderomotive regime of laser pulse energy absorption and all other proposed mechanisms. While such observational requirements are far beyond the reaches of currently experimental know-how, numerical simulations in both 1- \cite{baeva_2011_ZeroVectorPotential} and 2-dimensions \cite{savin_2017_AttosecondscaleAbsorptionExtreme} have confirmed the above points. Now is presented the first \ac{3D} simulations to demonstrate the \ac{ZVP} mechanism.
+with the essential point being it is the moving zeros within the skin layer being the defining delineator between this post-ponderomotive regime of laser pulse energy absorption and all other proposed mechanisms. While such observational requirements are far beyond the reaches of currently experimental know-how, numerical simulations in both 1- \cite{baevaZeroVectorPotential2011} and 2-dimensions \cite{savinAttosecondscaleAbsorptionExtreme2017} have confirmed the above points. Now is presented the first \ac{3D} simulations to demonstrate the \ac{ZVP} mechanism.
 
 \section{Numerical simulations of the ZVP mechanism}
 \subsection{The ZVP mechanism in 3D}
+Note that the bounds for the plots of KE dens have been chosen to enable observation of both hot electron bunches through centre and around sides (those to the sides have dramatically higher energy densities - related in part due to the maintenance of the as duraction.)
 
-
-
+Interesting result of the 3D sim: Can see bunch on front surface and laser clearly propagating behind it. Is this since in this new regime (ZVP dominating HHG) the thin bunch barely attenuates (ie reflects) the laser pulse when it is accelerating across the pseudo capacitor, hence the laser is still effectively able to compress the plasma surface and keep the process going. Meanwhile the reflected HHG light comes mostly from converting bunch KE into HHG.
 
 \subsection{Typical ZVP electron bunch properties}
 Then section of a typical bunch properties 
