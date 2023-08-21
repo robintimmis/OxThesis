@@ -364,7 +364,18 @@ In her original paper, T. Baeva \textit{et al} \cite{baevaZeroVectorPotential201
 with the essential point being it is the moving zeros within the skin layer being the defining delineator between this post-ponderomotive regime of laser pulse energy absorption and all other proposed mechanisms. While such observational requirements are far beyond the reaches of currently experimental know-how, numerical simulations in both 1- \cite{baevaZeroVectorPotential2011} and 2-dimensions \cite{savinAttosecondscaleAbsorptionExtreme2017} have confirmed the above points. Now is presented the first \ac{3D} simulations to demonstrate the \ac{ZVP} mechanism.
 
 \section{Numerical simulations of the ZVP mechanism}
+This thesis relies throughout on the analysis of 1,2 and 3D \ac{PIC} simulations, primarily using the massively-parallel and open-source simulation code Smilei \cite{derouillatSmileiCollaborativeOpensource2018}. Simulation parameters will be provided throughout.
 \subsection{The ZVP mechanism in 3D}
+Results are presented in figure \ref{fig:zvp3d}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{../figures/zvp_3D}
+	\caption{Simulation results from a 3D \ac{PIC} simulation of the \ac{ZVP} mechanism. a) The initialised electron number density. b) The electron number density several cycles later, the plasma bulk is intact, however there is evidence of instabilities and electron bunches propagating through and around the plasma. c) The electron kinetic energy density at the same timestep. Note that the scale has been clipped to enable observation of both electron bunches propagating through and around the plasma bulk. Significantly higher energy density, corresponding to a higher charge density and attosecond duration for the electron bunches propagating around the bulk. d-f) Plots clipped through $z=0$ for a-c) respectively for better clarity on the internal structure of the plasma bulk.}
+	\label{fig:zvp3d}
+\end{figure}
+
+
 Note that the bounds for the plots of KE dens have been chosen to enable observation of both hot electron bunches through centre and around sides (those to the sides have dramatically higher energy densities - related in part due to the maintenance of the as duraction.)
 
 Interesting result of the 3D sim: Can see bunch on front surface and laser clearly propagating behind it. Is this since in this new regime (ZVP dominating HHG) the thin bunch barely attenuates (ie reflects) the laser pulse when it is accelerating across the pseudo capacitor, hence the laser is still effectively able to compress the plasma surface and keep the process going. Meanwhile the reflected HHG light comes mostly from converting bunch KE into HHG.
