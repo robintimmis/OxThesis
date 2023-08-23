@@ -380,6 +380,21 @@ Note that the bounds for the plots of KE dens have been chosen to enable observa
 
 Interesting result of the 3D sim: Can see bunch on front surface and laser clearly propagating behind it. Is this since in this new regime (ZVP dominating HHG) the thin bunch barely attenuates (ie reflects) the laser pulse when it is accelerating across the pseudo capacitor, hence the laser is still effectively able to compress the plasma surface and keep the process going. Meanwhile the reflected HHG light comes mostly from converting bunch KE into HHG.
 
+
+\subsubsection{Convergence of 3D simulations}
+The 3D simulation parameters were chosen to be consistent with previous work on the \ac{ZVP} mechanism, however, such simulations are cumbersome, limiting the number of simulations it is feasible to run. Certainly parameter scans are not currently available. In order to query the defining characteristics outlined by Baeva, a smaller simulation was run with similar parameters to the initial simulation (this is 9/18compare) but at lower resolution. 
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{../figures/zvp_3D_compare_lowres}
+	\caption{Comparison between the initial 3D simulation and a lower resolution version. a) Electron number density. b) Kinetic energy density. c) and d) are slices of a) and b) respectively. $i$) Initial simulation. $ii$) Lower resolution simulation. Good convergence is demonstrated.}
+	\label{fig:zvp3dcomparelowres}
+\end{figure}
+The two simulations are compared in figure \ref{fig:zvp3dcomparelowres}. Good convergence is qualitatively demonstrated by the presence of characteristic features of the ZVP mechanism. While the instabilities are similar in structure, the change in seeding changes their exact positions. As instabilities are not the focus of this thesis this variation is of no concern.
+
+
+Maybe mention somewhere that I would als add pseudocapacitor field as an essential characteristic of the ZVP mechanism that should generally be identified.
+
 \subsection{Typical ZVP electron bunch properties}
 Then section of a typical bunch properties 
 While much has been stated of the high energy and short duration of ZVP bunches in the previous work, the specific properties of such bunches has largely avoided interrogation.
@@ -395,4 +410,5 @@ Then QED?
 Then experiment?
 
 
+To do: convergence of electron bunch energies with nppc and sim resolution.
 
