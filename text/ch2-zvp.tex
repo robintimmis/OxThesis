@@ -367,10 +367,12 @@ with the essential point being it is the moving zeros within the skin layer bein
 This thesis relies throughout on the analysis of 1,2 and 3D \ac{PIC} simulations, primarily using the massively-parallel and open-source simulation code Smilei \cite{derouillatSmileiCollaborativeOpensource2018}. Simulation parameters will be provided throughout.
 \subsection{The ZVP mechanism in 3D}
 Results are presented in figure \ref{fig:zvp3d}.
-% TODO: \usepackage{graphicx} required
+
+Discuss choice of S parameter somewhere. Also note that these parameters are currently accessible on ELI-NP.
+
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../figures/zvp_3D}
+	\includegraphics[width=1\linewidth]{figures/zvp/zvp_3D}
 	\caption{Simulation results from a 3D \ac{PIC} simulation of the \ac{ZVP} mechanism. a) The initialised electron number density. b) The electron number density several cycles later, the plasma bulk is intact, however there is evidence of instabilities and electron bunches propagating through and around the plasma. c) The electron kinetic energy density at the same timestep. Note that the scale has been clipped to enable observation of both electron bunches propagating through and around the plasma bulk. Significantly higher energy density, corresponding to a higher charge density and attosecond duration for the electron bunches propagating around the bulk. d-f) Plots clipped through $z=0$ for a-c) respectively for better clarity on the internal structure of the plasma bulk. The accompanying plots for figures e) and f) are corresponding 2D PIC simulation results.}
 	\label{fig:zvp3d}
 \end{figure}
@@ -388,7 +390,7 @@ The 3D simulation parameters were chosen to be consistent with previous work on 
 % TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../figures/zvp_3D_compare_lowres}
+	\includegraphics[width=1\linewidth]{figures/zvp/zvp_3D_compare_lowres}
 	\caption{Comparison between the initial 3D simulation and a lower resolution version. a) Electron number density. b) Kinetic energy density. c) and d) are slices of a) and b) respectively. $i$) Initial simulation. $ii$) Lower resolution simulation. Good convergence is demonstrated.}
 	\label{fig:zvp3dcomparelowres}
 \end{figure}
@@ -399,28 +401,39 @@ Maybe mention somewhere that I would als add pseudocapacitor field as an essenti
 
 Following the success in reproducing the key features of the \ac{ZVP} mechanism and demonstrated consistency between 2 and 3D equivalent simulations, the remainder of this chapter will predominantly utilise 2D simulations to interrogate the mechanism further.
 \subsection{The ZVP electron bunch}
- Although much has been stated of the high energy and short duration of ZVP electron bunches in the previous work, until now much of the quantitative discussion of the properties of such bunches has avoided interrogation. A ZVP electron bunch is an electron bunch produced via the ZVP mechanism. Once produced and accelerated across the pseudocapacitor field, it is launched back in the laser propagation direction. While the bunch has no spatial separation over energies when propagating with the zero of the vector potential, the turning point of the electrons is longitudinal momentum dependent due to the Coulomb attraction of the ions after overshooting the pseudocapacitor field. Baeva \textit{et al} showed that the electron bunch has a quasi-monoenergetic spectrum: there is a one-to-one relationship between energy and position with the higher energies trailing the lower energies. The full bunch is confined to 130 as while a single energy confined to 5 as. If, however, the plasma bulk is transversely mass-limited relative to the laser spot size, some of the electron bunch when it is rotated back towards the plasma block will overshoot and escape the potential well without significant stretching of the bunch in time. as can be seen in figure \ref{fig:zvp3d}. Such electron bunches (retain the initial energy spread???? ie fast first as disucssed in RES paper) retain their high charge density and ultra-short duration. So there are two types of ZVP electron bunch that can be created: ultra high charge ultra short duraction electron bunches from mass limited targets, of interest due to their unique properties and bulk propagating bunches, which have lower charge densities, are imprinted with instabilities and are instead of interest due to their connection to energy absorption and reflection in this post-ponderomotive regime.
+ Although much has been stated of the high energy and short duration of ZVP electron bunches in the previous work, until now much of the quantitative discussion of the properties of such bunches has avoided interrogation. A ZVP electron bunch is an electron bunch produced via the ZVP mechanism. Once produced and accelerated across the pseudocapacitor field, it is launched back in the laser propagation direction. While the bunch has no spatial separation over energies when propagating with the zero of the vector potential, the turning point of the electrons is longitudinal momentum dependent due to the Coulomb attraction of the ions after overshooting the pseudocapacitor field. Baeva \textit{et al} showed that the electron bunch has a quasi-monoenergetic spectrum: there is a one-to-one relationship between energy and position with the higher energies trailing the lower energies. The full bunch is confined to 130 as while a single energy confined to 5 as. If, however, the plasma bulk is transversely mass-limited relative to the laser spot size,when rotated back towards the plasma block, some of the electron bunch will overshoot and escape the potential well without significant stretching of the bunch in time as can be seen in figure \ref{fig:zvp3d}. Such electron bunches (retain the initial energy spread???? ie fast first as disucssed in RES paper) retain their high charge density and ultra-short duration. ZVP electron bunches can therefore be placed into two categories: ultra-high charge, ultra-short duraction electron bunches from mass-limited targets, hereafter labelled mass-limited electron bunches, of interest due to their unique properties and bulk propagating bunches, hereafter labelled bulk bunches, which have lower charge densities, are imprinted with instabilities and are instead of interest due to their connection to energy absorption and reflection in this post-ponderomotive regime.
  
  To investigate these two bunch types further, 2D PIC simulations were performed, see appendix for parameters. Figure blah is reprentative.
  
- \subsection{Attosecond nano-Coulomb electron bunches}
-
-NOw for properties. Would be good to look in more detail, see if actually is anything in quasimonoenergetic nature.
-SHould probs include density as well as KE.
-
+ \subsubsection{Attosecond nano-Coulomb mass-limited electron bunches}
+[Include figure describing typical bunch, use four figure in paper and add two additional plots: e density and 3D transverse emittance.] The presented electron bunch is ultra-relativistic with a mean energy of \qty{51\pm 11}{MeV} and a duration of 35 as. The bunch propagates at an angle of -393 rad relative to the laser propagation direction , \textit{i.e.} the $x$-axis, and a transverse geometric emittance in the simulation plane (the $x$-$y$ plane) of \qty{35 \pm 7}{nm.rad}. A definition of the transverse geometric emitance, a measure of the quality of the electron beam, is given in the appendix. For an equivalent bunch in a corresponding 3D simulation, the transverse geometric emittance in the $z$ plane is \qty{15\pm 11}{nm.rad}. This electron bunch has a total charge of 0.35 nC for a slab of plasma of thickness $0.75\lambda$ in the $z$-direction. Noting again the two-dimensional nature of the interaction geometry, and that electrons less than twice the relativistic Larmor radius, 
 \begin{equation}
-	x \sim \frac{\lambda a_0n_\mathrm{c}}{n_\mathrm{e}}
+	r_\mathrm{l} = \frac{\gamma m_\mathrm{e}v}{eB},
 \end{equation}
-
+where $\gamma$ and $v$ correspond to the electron velocity and $B$ is the magnetic field of the laser pulse, when rotated back towards the plasma will escape to the side, the total number of electrons in the mass-limited bunch is
 \begin{equation}
-	T \sim \frac{a_0^2n_\mathrm{c}}{n_\mathrm{e}}
+	N = 2 n_\mathrm{e} r_\mathrm{l} L_z \Delta x,
 \end{equation}
-
-\begin{equation}
-	U \sim \frac{a_0^3n_\mathrm{c}}{n_\mathrm{e}}
+where $L_z$ is the width of the plasma in the $z$-direction. Using equation \ref{eq:zvp_dx} for $\Delta x$ and \ref{eq:zvp_gamma} for $\gamma$ and appproximating $v \approx c$ for the ultra-relativistic electron bunch, 
+\begin{equation}\label{eq:zvp_N}
+	N = 2 \gamma n_\mathrm{c} \frac{L_z}{k^2}.
 \end{equation}
+For these simulation parameters, this corresponds to a total bunch charge, $Q = eN$, of 0.37 nC, a remarkably successful prediction of the ZVP model. Equation \ref{eq:zvp_N} tells us there is no limit to the 
 
-Those high energy ZVP electron bunches 
+Equation \ref{eq:zvp_N} can be rewritten in terms of fundamental constants as
+\begin{equation}\label{eq:zvp_N2}
+	N = 2 (1+0.5\frac{a^2_0}{\bar{n}_\mathrm{e}}) L_z \frac{m_\mathrm{e}\epsilon_0c^2}{e^2}.
+\end{equation}
+Almost counterintuitively, it would appear the total charge scales inversely with the plasma density. Instead, charge can be increased either by increasing the laser pulse intensity or $L_z$. Indeed, provided the laser pulse intensity remains relativistic, the focal spot can be increased indefinitely and there is no limit to the mass-limited electron bunch total charge. For a realistic laser pulse with beam width $10 \lambda$ incident on a larger laser block, equation \ref{eq:zvp_N2} predicts a charge of 9.3 nC.
+
+
+Discuss use cases of the electron bunches.
+Transverse emittance caluclation in the appendix.
+DIscuss if  bunch quasi-monoenergetic.
+
+Figure blah blah compares the electorn bunch energy to an equivalent\footnote{A circularly polarised laser pulse will expel electrons from a mass-limited target in a corkscrew shape, the bunch is therefore only loosely equivalent} bunch produced by a circularly polarised laser pulse. The mean electron bunch energy is over three times lower as there is no ZVP acceleration phase and there is no quasi-monochromatic nature \cite{baevaZeroVectorPotential2011}. 
+
+Also do the large parameter scan.
 
 \subsection{Parameter scan of electron bunch mean energy}
 
