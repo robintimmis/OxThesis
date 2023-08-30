@@ -5,10 +5,55 @@ The heart of animals is the foundation of their life, the sovereign of everythin
   \qauthor{--- William Harvey \cite{harvey_exercitatio_1628}}
 \end{savequote}
 
-\chapter{\label{app:1-cardiophys}Review of Cardiac Physiology and Electrophysiology}
+\chapter{\label{app:1-basics}General plasma physics}
 
 \minitoc
 
-Appendices are just like chapters.  Their sections and subsections get numbered and included in the table of contents; figures and equations and tables added up, etc.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et dui sem. Aliquam dictum et ante ut semper. Donec sollicitudin sed quam at aliquet. Sed maximus diam elementum justo auctor, eget volutpat elit eleifend. Curabitur hendrerit ligula in erat feugiat, at rutrum risus suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer risus nulla, facilisis eget lacinia a, pretium mattis metus. Vestibulum aliquam varius ligula nec consectetur. Maecenas ac ipsum odio. Cras ac elit consequat, eleifend ipsum sodales, euismod nunc. Nam vitae tempor enim, sit amet eleifend nisi. Etiam at erat vel neque consequat.
+\section{\label{app:1-basics-transverse_emittance}Geometric transverse emittance}
+A beam\footnote{In this section it is electron beams and not bunches that a referred to to demonstrate the generality of these concepts.} of particles is fully described by its six-dimensional particle phase space distribution
+\begin{equation}
+	\rho(\mathbf{x}, \mathbf{p}) = \rho(x,p_x,y,p_y,z,p_z),
+\end{equation}
+where $\mathbf{p} = p_x \hat{\mathbf{x}} +  p_y \hat{\mathbf{y}} +  p_z \hat{\mathbf{z}}$ is the canonical momentum \cite{mcDonald Methods of emittance measurement 122-132 Springer, 1989}. Under the Hamilton formalism, for ideal conditions, the six-dimensional volume of the beam in this space, termed the \textit{emittance}, arises as a conserved quantity and is therefore a useful quantity to describe the beam quality. 
+(something to do with it affecting the ability to focus the beam?? check the papers)
+It is useful to rotate the coordinate system so as to align with the beam's propagation. The distribution can be written as
+\begin{equation}
+	\rho(\mathbf{x'}, \mathbf{p'})  = \rho(x_\mathrm{L},p_\mathrm{L},x_\mathrm{T},p_\mathrm{T},x_\mathrm{T'},p_\mathrm{T'}),
+\end{equation}
+where L is longitudinal to the beam's propagation direction, and T and T$'$ are two orthogonal directions transverse to the beam's propagation. Where discussed in this thesis, T$'$ will unanimously refer to the $z$-direction, that is, the additional direction in 3D simulations, all such simulations are designed such that the $z$-direction is transverse to the beam propagation direction.
+
+Recording a six-dimensional phase space in experiment is impossible while in simulations it is almost prohibitively costly in terms of data storage. Hence, it is common practice to project the distribution onto three orthogonal sub-spaces corresponding to each spatial axis, L, T and T$'$ and compute the area on each. Note that since the electron beam is ultra-relativistic, all electrons propagate at approximately c and therefore it is the transverse and not the longitudinal emittance that describes the beam's quality. As a particle beam does not typically exist with well-defined borders, the area used to describe the emittance is restricted to an ellipse containing only the high-density core of the distribution. For a subspace $i$, where $i = $ T or T$'$, Floettmann \textit{et al} \cite{floettmannBasicFeaturesBeam2003} derive the \textit{transverse normalised emittance} as
+\begin{equation}\label{eq:app_epsilon_n}
+	\epsilon^i_\mathrm{n,rms} = \frac{1}{m_\mathrm{e}c} \sqrt{\langle x^2_i\rangle\langle p^2_i\rangle - \langle x_ip_i\rangle^2},
+\end{equation}
+where $\langle\rangle$ is the second central moment of the particle distribution,
+\begin{equation}
+	\langle ab \rangle = \frac{\int ab\rho(\mathbf{x}',\mathbf{p}')dV}{\int \rho (\mathbf{x}',\mathbf{p}')dV} - \frac{\int a\rho(\mathbf{x}',\mathbf{p}')dV\int a\rho(\mathbf{x}',\mathbf{p}')dV}{(\int \rho (\mathbf{x}',\mathbf{p}')dV)^2},
+\end{equation}
+here $dV = \Pi_jdx_jdp_j$ for $j = $L, T, T$'$.
+
+When working with emittances, most frequently in the literature it is the \textit{transverse geometric emittance}, $\epsilon^i_\mathrm{rms}$ that is discussed. This is a natural consequence of it being more readily accessible in experiments \cite{mcDonald Methods of emittance measurement 122-132 Springer, 1989}. The geometric and normalised emittances are related via
+\begin{equation}
+	\epsilon^i_\mathrm{rms} = \frac{\epsilon^i_\mathrm{rms}}{\gamma \beta_\mathrm{L}},
+\end{equation}
+where $\gamma = 1/\sqrt{1-\beta^2}$ refers to the beam's energy and $\beta_\mathrm{L} \approx c$ is the ultrarelativistic beam's longitudinal speed.
+
+The Courant-Snyder invariant which describes the ellipse that corresponds to the emittance is
+\begin{equation}
+	\epsilon^i_\mathrm{rms}  = \gamma x_i^2 + 2\alpha x x' \beta x_i'^2,
+\end{equation}
+here the coordinates are $x_i$ and $x'_i = p_i/p_\mathrm{L}$ \cite{wiedemann_2015_ParticleAcceleratorPhysics}. The Twiss parameters are
+\begin{equation}
+	\alpha = - \frac{\langle x_i x'_i \rangle}{	\epsilon^i_\mathrm{rms} },
+\end{equation}
+\begin{equation}
+	\beta = \frac{\langle x_i \rangle}{	\epsilon^i_\mathrm{rms} }
+\end{equation}
+and
+\begin{equation}
+	\gamma = \frac{\langle x_i'^2 \rangle}{	\epsilon^i_\mathrm{rms} }.
+\end{equation}
+Thus the shape of the ellipse and the divergence of the beam can be determined.
+
 
 
