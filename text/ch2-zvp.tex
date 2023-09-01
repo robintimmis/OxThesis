@@ -53,7 +53,7 @@ While in previous demonstrations of the vector potential zeros, it was assumed t
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/zvp/zvp_ablating_front}
-	\caption{Diagram of a $p$-polarised laser pulse incident on an ablating overdense plasma. The laser is incident obliquely at an angle of $\theta$ and is reflected specularly. The plasma ablates specularly also. The interaction geometry is confined to a 2D plane.}
+	\caption[Diagram of a $p$-polarised laser pulse incident on an ablating overdense plasma.]{Diagram of a $p$-polarised laser pulse incident on an ablating overdense plasma. The laser is incident obliquely at an angle of $\theta$ and is reflected specularly. The plasma ablates specularly also. The interaction geometry is confined to a 2D plane.}
 	\label{fig:zvp_ablatingfront}
 \end{figure}
 The direction of polarisation is
@@ -373,7 +373,7 @@ Discuss choice of S parameter somewhere. Also note that these parameters are cur
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/zvp/zvp_3D}
-	\caption{Simulation results from a 3D \ac{PIC} simulation of the \ac{ZVP} mechanism. a) The initialised electron number density. b) The electron number density several cycles later, the plasma bulk is intact, however there is evidence of instabilities and electron bunches propagating through and around the plasma. c) The electron kinetic energy density at the same timestep. Note that the scale has been clipped to enable observation of both electron bunches propagating through and around the plasma bulk. Significantly higher energy density, corresponding to a higher charge density and attosecond duration for the electron bunches propagating around the bulk. d-f) Plots clipped through $z=0$ for a-c) respectively for better clarity on the internal structure of the plasma bulk. The accompanying plots for figures e) and f) are corresponding 2D PIC simulation results.}
+	\caption[Simulation results from a 3D \ac{PIC} simulation of the \ac{ZVP} mechanism. ]{Simulation results from a 3D \ac{PIC} simulation of the \ac{ZVP} mechanism. a) The initialised electron number density. b) The electron number density several cycles later, the plasma bulk is intact, however there is evidence of instabilities and electron bunches propagating through and around the plasma. c) The electron kinetic energy density at the same timestep. Note that the scale has been clipped to enable observation of both electron bunches propagating through and around the plasma bulk. Significantly higher energy density, corresponding to a higher charge density and attosecond duration for the electron bunches propagating around the bulk. d-f) Plots clipped through $z=0$ for a-c) respectively for better clarity on the internal structure of the plasma bulk. The accompanying plots for figures e) and f) are corresponding 2D PIC simulation results.}
 	\label{fig:zvp3d}
 \end{figure}
 I will finish this section once the results of the rest of the 3D sim stuff is done. One thing to remark:
@@ -391,7 +391,7 @@ The 3D simulation parameters were chosen to be consistent with previous work on 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/zvp/zvp_3D_compare_lowres}
-	\caption{Comparison between the initial 3D simulation and a lower resolution version. a) Electron number density. b) Kinetic energy density. c) and d) are slices of a) and b) respectively. $i$) Initial simulation. $ii$) Lower resolution simulation. Good convergence is demonstrated.}
+	\caption[Comparison between the initial 3D simulation and a lower resolution version.]{Comparison between the initial 3D simulation and a lower resolution version. a) Electron number density. b) Kinetic energy density. c) and d) are slices of a) and b) respectively. $i$) Initial simulation. $ii$) Lower resolution simulation. Good convergence is demonstrated.}
 	\label{fig:zvp3dcomparelowres}
 \end{figure}
 The two simulations are compared in figure \ref{fig:zvp3dcomparelowres}. Good convergence is qualitatively demonstrated by the presence of characteristic features of the ZVP mechanism. While the instabilities are similar in structure, the change in seeding changes their exact positions. As instabilities are not the focus of this thesis this variation is of no concern.
@@ -406,7 +406,15 @@ Following the success in reproducing the key features of the \ac{ZVP} mechanism 
  To investigate these two bunch types further, 2D PIC simulations were performed, see appendix for parameters. Figure blah is reprentative.
  
  \subsubsection{Attosecond nano-Coulomb mass-limited electron bunches}
-[Include figure describing typical bunch, use four figure in paper and add two additional plots: e density and 3D transverse emittance.] The presented electron bunch is ultra-relativistic with a mean energy of \qty{51\pm 11}{MeV} and a duration of 35 as. The bunch propagates at an angle of -393 rad relative to the laser propagation direction , \textit{i.e.} the $x$-axis, and a transverse geometric emittance in the simulation plane (the $x$-$y$ plane) of \qty{35 \pm 7}{nm.rad}. A definition of the transverse geometric emitance, a measure of the quality of the electron beam, is given in the appendix. For an equivalent bunch in a corresponding 3D simulation, the transverse geometric emittance in the $z$ plane is \qty{15\pm 11}{nm.rad}. This electron bunch has a total charge of 0.35 nC for a slab of plasma of thickness $0.75\lambda$ in the $z$-direction. Noting again the two-dimensional nature of the interaction geometry, and that electrons less than twice the relativistic Larmor radius, 
+ Figure \ref{fig:zvptypicalbunch} describes a typical mass-limited ZVP electron bunch qualitatively.
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/zvp/zvp_typical_bunch}
+	\caption[2D PIC simulation results qualitatively describing typical mass-limited ZVP electron bunch structure.]{2D PIC simulation results qualitatively describing typical mass-limited ZVP electron bunch structure. a) Electron energy density for the full simulation window, corresponds to figure \ref{fig:zvp3d}f).  The box highlights the bunch presented in the following plots. b) Electron number density of the electron bunch. c) Electron energy density of the electron bunch, the colourbar scale has been increased compared to figure a) to demonstrate the internal structure. d) The mean electron energy across the electron bunch, suggesting a position dependent energy or quasi-monoenergetic nature to the electron bunch \cite{baevaZeroVectorPotential2011}. Cells with no macroparticles are black. e) The transverse phase space in the 2D simulation plane. The ellipse describes the calculated emittance. The skew of the ellipse is a consequence of a low density tail on the phase space beyond the bottom left corner. f) This plot was extracted from the equivalent 3D simulation and describes the transverse emittance in the $z$-direction. Again the ellipse marks the emittance. The relatively well-defined border to the phase space and the mild tilt (indicating only mild divergence) are direct consequences of the 2D nature of the interaction.}
+	\label{fig:zvptypicalbunch}
+\end{figure}
+The electron bunch under interrogation is ultra-relativistic with a mean energy of \qty{51\pm 11}{MeV} and a duration of 35 as. It propagates at an angle of -393 rad relative to the laser propagation direction , \textit{i.e.} the $x$-axis, and a transverse geometric emittance in the simulation plane (the $x$-$y$ plane) of \qty{35 \pm 7}{nm.rad}. A definition of the transverse geometric emitance, a measure of the quality of the electron beam, is given in appendix \ref{app:1-basics-transverse_emittance}. For an equivalent bunch in a corresponding 3D simulation, the transverse geometric emittance in the $z$ plane is \qty{15\pm 11}{nm.rad}. This electron bunch has a total charge of 0.35 nC for a slab of plasma of thickness $0.75\lambda$ in the $z$-direction. Noting again the two-dimensional nature of the interaction geometry, and that electrons less than twice the relativistic Larmor radius, 
 \begin{equation}
 	r_\mathrm{l} = \frac{\gamma m_\mathrm{e}v}{eB},
 \end{equation}
@@ -414,7 +422,7 @@ where $\gamma$ and $v$ correspond to the electron velocity and $B$ is the magnet
 \begin{equation}
 	N = 2 n_\mathrm{e} r_\mathrm{l} L_z \Delta x,
 \end{equation}
-where $L_z$ is the width of the plasma in the $z$-direction. Using equation \ref{eq:zvp_dx} for $\Delta x$ and \ref{eq:zvp_gamma} for $\gamma$ and appproximating $v \approx c$ for the ultra-relativistic electron bunch, 
+where $L_z$ is the width of the plasma in the $z$-direction. Using equation \ref{eq:zvp_dx} for $\Delta x$ and \ref{eq:zvp_gamma} for $\gamma$ and approximating $v \approx c$ for the ultra-relativistic electron bunch, 
 \begin{equation}\label{eq:zvp_N}
 	N = 2 \gamma n_\mathrm{c} \frac{L_z}{k^2}.
 \end{equation}
@@ -428,14 +436,27 @@ Almost counterintuitively, it would appear the total charge scales inversely wit
 
 
 Discuss use cases of the electron bunches.
-Transverse emittance caluclation in the appendix.
 DIscuss if  bunch quasi-monoenergetic.
 
 Figure blah blah compares the electorn bunch energy to an equivalent\footnote{A circularly polarised laser pulse will expel electrons from a mass-limited target in a corkscrew shape, the bunch is therefore only loosely equivalent.} bunch produced by a circularly polarised laser pulse. The mean electron bunch energy is over three times lower as there is no ZVP acceleration phase and there is no quasi-monochromatic nature \cite{baevaZeroVectorPotential2011}. 
 
 Also do the large parameter scan.
 
-\subsection{Parameter scan of electron bunch mean energy}
+\subsubsection{Parameter scan of electron bunch mean energy}
+Since ZVP energy scaling is a fundamental identifier of ZVP bunches, it is important to confirm that mass-limited electron bunches follow the same scaling relations as has previously been confirmed for bulk ZVP electrons in both 1D \cite{baevaZeroVectorPotential2011} and 2D \cite{savinAttosecondscaleAbsorptionExtreme2017} PIC simulations. The mean mass-limited electron bunch energies were extracted from 120 2D PIC simulations and are plotted in figure \ref{fig:zvpmeangammas}. 
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/zvp/zvp_mean_gammas}
+	\caption[Mean mass-limited ZVP electron bunch energies extracted from 2D PIC simulations.]{Mean mass-limited ZVP electron bunch energies extracted from 2D PIC simulations. The bunch detailed in figure \ref{fig:zvptypicalbunch} is highlighted.}
+	\label{fig:zvpmeangammas}
+\end{figure}
+The dependence on both $a_0$ and $n_\mathrm{e}$ demonstrates these electron bunches are accelerated by a non-pondermotive mechanism. The parameter scan ranged plasma block density ranging from the critical plasma density to well-beyond solid density for the aluminium target and with laser pulse peak intensity ranging from non-relativistic ($a_0 < 1$) through to the \ac{QED} plasma regime ($a_0 > 300$) up to a peak $a_0 = 5000$ to investigate the change in scaling observed by Savin \textit{et al} \cite{savinEnergyAbsorptionLaserQED2019} at the onset of QED effects. This study is also the first to extract specific bunch energies as opposed to total simulation box energy gain, representing a far more stringent test of ZVP theory.
+
+Slightly unfortunately, the energy of such electron bunches cannot be directly compared to the ZVP energy relations as as aforementioned after escaping the potential, the electron bunch experiences further direct laser acceleration before reaching the detection point. Indeed, Thévenet \textit{et al} \cite{thevenetVacuumLaserAcceleration2016} suggested that attosecond electron bunches produced in reflection exhibit precisely the phase and energy properties required to `surf' the reflected laser pulse and experience vast acceleration gradients over the Rayleigh length of the laser pulse. This process is known as Vacuum Laser Acceleration. It seems highly likely that this process occurs for electron bunches produced in transmission. This seemingly unfortunately situation in reality provided a fully optical scheme to create GeV nano-Coulomb electron bunches from the most simple of setups: a laser interacting with a mass limited solid target (thus reducing the alignment complexity.). 
+
+Returning to the determination of the electron bunch energy at the measurement point, consider now the journey of the electron bunch after expulsion from the plasma bulk. It is rotated back towards the plasma bulk by the magnetic field of the subsequent peak of the laser pulse, then travelling at approximately $c$ it surfs the peak, experiencing an approximately constant accelerating electric field from the laser pulse at some fraction $f$ of the laser field peak. The work done by this field is then
+
 
 \subsection{Total electron bunch energy scaling}
 
@@ -448,3 +469,7 @@ Then experiment?
 
 To do: convergence of electron bunch energies with nppc and sim resolution.
 
+
+At aome point mention:
+
+Note that ZVP does not describe the peak energies in the bunches, then JxB applies, since there are always some electrons outside of the well defined sharp boundary when the density is not high enough to impose adiabaticity. 
