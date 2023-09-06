@@ -210,9 +210,13 @@ or an electron gamma factor,
 \begin{equation}
 	\gamma = \frac{1}{\sqrt{1-\beta^2}} = 1 + \frac{a_0^2}{2\bar{n}_\mathrm{e}}.
 \end{equation}
-Assuming all displaced electrons are captured by the pseudo-capacitor field and launched as a coherent bunch, the total kinetic energy of the electron bunch is
+Assuming all displaced electrons are captured by the pseudo-capacitor field and launched as a coherent bunch, the total number of electrons in the bunch is
+\begin{equation}\label{eq:zvp-Ne}
+	N_\mathrm{e} = n_\mathrm{e} \sigma \Delta x = \frac{\sigma a_0 n_\mathrm{c}}{k}  = \sigma \epsilon_0 E_\mathrm{L}
+\end{equation}
+and hence, the total kinetic energy of the electron bunch is
 \begin{equation}\label{eq:zvp_U}
-	U_\mathrm{ZVP} = n_\mathrm{e}\sigma\Delta x T = \frac{\sigma n_\mathrm{e}}{k}\times m_\mathrm{e}c^2 \frac{a^3_0}{\bar{n}_\mathrm{e}}.
+	U_\mathrm{ZVP} = N_\mathrm{e} T = \frac{\sigma n_\mathrm{c}}{k}\times \frac{1}{2}m_\mathrm{e}c^2 \frac{a^3_0}{\bar{n}_\mathrm{e}}.
 \end{equation}
 It is now interesting to compare equation \ref{eq:zvp_U} to the laser energy deposited upon the plasma surface and therefore consider what fraction of the laser energy can be absorbed via the \ac{ZVP} mechanism. Using $E = E_\mathrm{L}$, \ref{eq:zvp_U} can be rewritten as
 \begin{equation}
@@ -493,14 +497,53 @@ Look again at just fitting the region where expression is valid.
 Temporal effects (non-existant, discuss)
 
 
-\subsection{Total electron bunch energy scaling}
+\subsection{Energy absorption in the ZVP regime}\label{sec:zvp-energyabsorption}
+As stated previously the laser-plasma coupling exists in a state of adiabaticity with the exception of the ZVP acceleration phase and hence equation \ref{eq:zvp_U} describes the absorption of energy to plasma electrons. For normal incidence, the rate of energy transfer is therefore
+\begin{equation}\label{eq:zvp-rate}
+	R = \frac{U\omega_\mathrm{L}}{\pi},
+\end{equation}
+since two bunches are produced per laser cycle. To demonstrate the scaling for $U$ in 2D PIC simulations, peak instantaneous electron bunch energies escaping to the rear of the bulk were extracted from those PIC simulations with $S=1$. For constant $S$, 
+\begin{equation}
+	U \sim a^2_0.
+\end{equation}
+Eneriges are plotted in figure \ref{fig:zvppeakgamma}
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/zvp/zvp_peak_gamma}
+	\caption[Peak instantaneous bulk electron bunch total energy escaping to the plasma bulk rear.]{Peak instantaneous bulk electron bunch total energy escaping to the plasma bulk rear.}
+	\label{fig:zvppeakgamma}
+\end{figure}
 
 
-Then Energy scalings
+Chat about this figure
+Fit is to the region defined to be the ZVP regime.
+
+
+
+While equation \ref{eq:zvp_U} describes energy absorption into hot electron bunches, the coupling of such hot collisionless electrons to the bulk plasma given the lack of collisionality is necessarily indirect. There are two key mechanisms \cite{sherlock_2014_IndepthPlasmawaveHeating}. Firstly, via a cooler resistive return current of electrons that neutralises the current of the injected hot electrons that escape the potential well of the front surface (cite this, the refernce in sherlock 2014 is not great). Since all hot electrons travel at approximately speed $c$, the magnitude of the return current depends not on the total energy absorbed but instead on the total number of electrons injected, as given by equation \ref{eq:zvp-Ne}, depending linearly on laser spot area and the electric field magnitude and not on the plasma density\footnote{Note that for a sufficiently thin target, the return current induces an electrostatic field on the back surface of the target which can then reflect hot electron bunches and decelerate them to the point of a return to collisionality. This is a reality for the PIC simulations explored in this thesis, however, since realistic targets are much thicker this shall be neglected.}. Secondly, via the formation of large amplitude bulk plasma waves induced in the wake of the hot electron bunches. Sherlock \textit{et al} \cite{sherlock_2014_IndepthPlasmawaveHeating} calculate the magnitude of the induced wakefield to be
+\begin{equation}
+	E_\mathrm{W} = \frac{eN_\mathrm{e}c}{\omega_\mathrm{p}\epsilon_0} = \sigma \sqrt{\frac{m_\mathrm{e}\epsilon_0}{n_\mathrm{e}}}E_\mathrm{L},
+\end{equation}where here the bunch velocity has been set to $c$, bulk electrons will be accelerated by $E_\mathrm{W}$ and their kinetic energy converted to heat via collisions. Interestingly, this reproduces the mid temperature electon scaling with density that was observed by Chrisman \textit{et al} \cite{chrisman_2008_IntensityScalingHot} in their study of hot electron energy coupling in cone-guided fast ignition of inertial fusion targets. This is a significantly different possible explanation to their self-declared 'hand waving argument'. Excluding this study, such formulations for heat transfer to the plasma bulk within the ZVP regime remain untested in simulations.
+
+
+Note also that as the laser pulse intensity rises, the fraction of energy absorbed by the ion species increases. Savin \cite{savin_2019_ModellingLaserPlasmaInteractions} determined for $S=1/2$, $a_0 = 100$, that this would be almost 20\%. Energy is absorbed by ions via the hole boring mechanism as described elsewhere in this thesis.
+
+
+Ion absorption increasing with intensity
+Plot of energy absrption
+
+
+
+
+
+
+
 
 Then QED?
 Then experiment?
 
+Numerical heating: it is not sufficient to simply run simulations without the laser pulse to determine heating. The effect of numerical heating will be most damning for the ultra-high charge density electron bunches.
 
 To do: convergence of electron bunch energies with nppc and sim resolution.
 
