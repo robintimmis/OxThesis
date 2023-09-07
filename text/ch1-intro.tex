@@ -118,3 +118,40 @@ The Lawson-Woodward theorem states that there can be no net electron energy gain
 Several of these will be applicable to the various accelerations of electrons considered. It is this final condition that is most damning, throughout this thesis the ultra-relativistic laser pulses under consideration ensure non-linear effects cannot be neglected. It is indeed such non-linearities that are of interest.
 
 
+
+\section{QED effects}
+We are now at the cusp of \ac{SF-QED} laser-plasma physics. Access to this regime will enable the testing of decades old theoretical predictions. Already Fedeli \textit{et al} have shown in simulations that current PW-class laser facilities can access the regime using an all-optical set up based on laser-solid surface interactions \cite{fedeli_2020_ProbingStrongfieldQED}. The primary two SF-QED phenomena to be accessed are Radiation Reaction and multi-photon Breit-Wheeler electron pair production. Brief introductions to these phenomena are now presented.
+
+
+\subsection{High-energy photon emission and radiation reaction}
+When a charged particle undergoes an acceleration, it emits electromagnetic radiation. If the electromagnetic field is sufficiently strong, \textit{i.e.} approaching the Schwinger Limit in the rest frame of the particle, then a non-neglible fraction of particle momentum can be transferred to the emitted high energy photon via inverse Compton scattering, substantially impacting the dynamics of the accelerated particle. This back reaction is known as Radiation Reaction.
+
+
+
+Note for in simulation section: 'The processes discussed in this section bring into play a characteristic length [the classical radius of the electron 
+
+in classical electrodynamics (CED) or the standard Compton wavelength 
+
+in quantum electrodynamics (QED)]. As a result, a simulation will require the user to define the absolute scale of the system by defining the referencangularfrequencySI parameter' '
+Also there are a list of assumptions in smilei that I should state in the simulation section and demonstrate they are all fine.
+
+\subsection{Multi-photon Breit-Wheeler pair production}
+
+(This has been written up from smilei but should probs get reference elsewhere??) > check out savin thesis
+
+Multi-photon Breit-Wheeler pair production, also known as non-linear Breit-Wheeler is the decay of a high energy photon, typically produced via \ac{RR}, into an electron-positron pair in the presence of a strong electromagnetic field, explicitely,
+\begin{equation}
+	\gamma + n\omega \to e^- + e^+.
+\end{equation}
+The strength of the effect is dependent on the lorentz invariant photon quantum parameter,
+\begin{equation}
+	\chi_\gamma = \frac{\gamma_\gamma}{E_\mathrm{s}} \sqrt{(\mathbf{E}_\perp + \mathbf{c}\times \mathbf{B}}^2},
+\end{equation}
+where $E_\mathrm{s} = \qty{1.3e18}{V.m^{-1}}$ is the Schwinger electric field, $\gamma_\gamma = \epsilon_\gamma /m_\mathrm{e}c^2$, the normalised photon energy and $\mathbf{E}_\perp$ the electric field perpendicular to the photon propagation direction. Cite Smilei and say, in a constant E-field, the rate of pair production increases rapidly up to $\chi_\gamma \approx 10$ at which point it saturates and slowly reduces.
+
+
+If the electron radiates all its energy to the photon, for the ZVP mechanism, at the point of emission one finds,
+\begin{equation}
+	\chi_\gamma = |\mathbf{E}|\frac{1 + \frac{a^2_0}{\bar{n}_\mathrm{e}}{E_\mathrm{s}} \sqrt{2},
+\end{equation}
+The chi parameter will change rapidly once the transition to QED ZVP has occured due to the change in scaling.

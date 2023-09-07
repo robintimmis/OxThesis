@@ -498,7 +498,7 @@ Temporal effects (non-existant, discuss)
 
 
 \subsection{Energy absorption in the ZVP regime}\label{sec:zvp-energyabsorption}
-As stated previously the laser-plasma coupling exists in a state of adiabaticity with the exception of the ZVP acceleration phase and hence equation \ref{eq:zvp_U} describes the absorption of energy to plasma electrons. For normal incidence, the rate of energy transfer is therefore
+As stated previously the laser-plasma coupling exists in a state of adiabaticity with the exception of the ZVP acceleration phase and hence equation \ref{eq:zvp_U} describes the absorption of laser pulse energy. For normal incidence, the rate of energy transfer is therefore
 \begin{equation}\label{eq:zvp-rate}
 	R = \frac{U\omega_\mathrm{L}}{\pi},
 \end{equation}
@@ -506,7 +506,7 @@ since two bunches are produced per laser cycle. To demonstrate the scaling for $
 \begin{equation}
 	U \sim a^2_0.
 \end{equation}
-Eneriges are plotted in figure \ref{fig:zvppeakgamma}
+Eneriges are plotted in figure \ref{fig:zvppeakgamma}.
 % TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
@@ -514,12 +514,11 @@ Eneriges are plotted in figure \ref{fig:zvppeakgamma}
 	\caption[Peak instantaneous bulk electron bunch total energy escaping to the plasma bulk rear.]{Peak instantaneous bulk electron bunch total energy escaping to the plasma bulk rear.}
 	\label{fig:zvppeakgamma}
 \end{figure}
-
-
-Chat about this figure
-Fit is to the region defined to be the ZVP regime.
-
-
+Fitting the total energy within the range of validity established for the ZVP model finds
+\begin{equation}
+	U \sim a^{2.01\pm0.003}_0,
+\end{equation}
+reproducing with great success the anticipated scaling within the ZVP regime. It is also quite satisfying that the number of electrons and bunch mean energies both follow their anticipated ZVP scalings, further evidence this is not a simple ponderomotive effect. By extracting specific bunch total energies, rather than just the peak energies of the plasma block as a whole as was performed in previous studies, this is a far more direct confirmation of energy absorption by the ZVP mechanism into electron bunches. This is highlighted by the difference in results obtained for this study compared to a previous study by Savin \textit{et al} \cite{savin_2019_EnergyAbsorptionLaserQED} when investigating the QED regime as will be discussed later. It was not possible to reproduce the constants of equation \ref{eq:zvp_U} as the neutralising return current in the plasma bulk generates an electrostatic field on the rear side of the plasma block, decelerating bulk electron bunches as they escape the plasma. It should be possible to calculate the deceleration by considering the number of electrons expelled by the plasma. It is however, clear from the simulations that at least some electrons in the escaping bunch are trapped by this rear-side potential well reducing its magnitude.
 
 While equation \ref{eq:zvp_U} describes energy absorption into hot electron bunches, the coupling of such hot collisionless electrons to the bulk plasma given the lack of collisionality is necessarily indirect. There are two key mechanisms \cite{sherlock_2014_IndepthPlasmawaveHeating}. Firstly, via a cooler resistive return current of electrons that neutralises the current of the injected hot electrons that escape the potential well of the front surface (cite this, the refernce in sherlock 2014 is not great). Since all hot electrons travel at approximately speed $c$, the magnitude of the return current depends not on the total energy absorbed but instead on the total number of electrons injected, as given by equation \ref{eq:zvp-Ne}, depending linearly on laser spot area and the electric field magnitude and not on the plasma density\footnote{Note that for a sufficiently thin target, the return current induces an electrostatic field on the back surface of the target which can then reflect hot electron bunches and decelerate them to the point of a return to collisionality. This is a reality for the PIC simulations explored in this thesis, however, since realistic targets are much thicker this shall be neglected.}. Secondly, via the formation of large amplitude bulk plasma waves induced in the wake of the hot electron bunches. Sherlock \textit{et al} \cite{sherlock_2014_IndepthPlasmawaveHeating} calculate the magnitude of the induced wakefield to be
 \begin{equation}
@@ -530,10 +529,35 @@ While equation \ref{eq:zvp_U} describes energy absorption into hot electron bunc
 Note also that as the laser pulse intensity rises, the fraction of energy absorbed by the ion species increases. Savin \cite{savin_2019_ModellingLaserPlasmaInteractions} determined for $S=1/2$, $a_0 = 100$, that this would be almost 20\%. Energy is absorbed by ions via the hole boring mechanism as described elsewhere in this thesis.
 
 
+\subsection{Unpacking the QED effects of figure \ref{fig:zvppeakgamma}}
+In Savin's influential paper \cite{savin_2019_EnergyAbsorptionLaserQED}, he determined theoretically and demonstrated in simulation that at $a_0 = 300$, $n_\mathrm{e} = 50 n_\mathrm{c}$, there is a transition from standard ZVP scalings to an enhance QED scaling associated with \ac{BW} electrons increasing the pseudocapacitor plate charge. Explicitely,
+\begin{equation}
+	T \sim \frac{a^5_0}{\bar{n}_\mathrm{e}}.
+\end{equation}
+Such a scaling shift was not observed for the large parameter scan presented in figure \ref{fig:zvpmeangammas}. Simulations revealed this was likely due to few \ac{BW} pairs produced towards the plasma edges and hence no additional gain in energy from crossing the pseudocapacitor. Another concern is Savin's study was conducted within the regime of relativistic transparency where it is unclear whether the ZVP potential well can be maintained and was not explored in this study. The final consideration is the well known effect of radiation trapping due to the radiation reaction \cite{jiRadiationReactionTrappingElectrons2014}, also observed in these PIC simulations. After acceleration across the pseudocapacitor, the electron bunch encounters the subsequent laser peak. If the electron bunch gamma factor and laser intensity are both large enough (include chi requirement), electrons radiate a significant fraction of their energy and are thus stopped in their tracks. Unable to now escape the potential well at the plasma surface they remain trapped and are not observed to escape the plasma until the laser pulse intensity reduces. Such an effect would not impact Savin's scalings but would of course inhibit the observation of the scaling for electrons escaping to the sides and rear of the plasma block.
+
+Returning now to figure \ref{fig:zvppeakgamma}, there are two interesting aspects. Firstly the sudden jump in total energy at $a_0 \approx$ 300. This cannot be explained by ZVP theory nor QED theory since the jump is observed with QED effects switched off. 
+
+Secondly, the even sharper jump in total electron bunch energy above $a_0 = 1000$. Decomposing the total energy into bulk electrons and those produced via the BW process, this is clearly a QED effect. Energy in BW pairs scales at a staggering
+\begin{equation}
+	U_\mathrm{BW} \sim a^{11.3\pm 0.8}_0,
+\end{equation}
+while energy in plasma electrons descreases. Perhaps this is a signal of Savin's QED ZVP electron bunches only at a higher energy due to the substantially greater plasma density of these simulations. Following Savin's theory,
+\begin{equation}
+	U_\mathrm{QED} \sim \frac{a^7_0}{S}.
+\end{equation}
 
 
+The reduction in plasma electron energy can be attributed to an oversaturation of the front surface with BW electrons. The surface now consists of mostly BW electrons. Could this replacement explain the increase in scaling observed vs the theory or can it be explained by radiation reaction or is there some other deeper effect at work?
 
-Then QED?
+Doubtless, the advent of next generation exa-watt scale lasers and the ability to explore this regime will be exceedingly interesting if such scalings in bunch energy can be maintained.
+
+
+Discuss region of BW pair projection maximisation and where we expect saturation.
+
+To do: Explore transition regions, do MORE simulations to fill in the gaps.
+
+
 Then experiment?
 
 Numerical heating: it is not sufficient to simply run simulations without the laser pulse to determine heating. The effect of numerical heating will be most damning for the ultra-high charge density electron bunches.
