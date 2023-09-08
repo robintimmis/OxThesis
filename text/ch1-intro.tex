@@ -145,13 +145,100 @@ Multi-photon Breit-Wheeler pair production, also known as non-linear Breit-Wheel
 \end{equation}
 The strength of the effect is dependent on the lorentz invariant photon quantum parameter,
 \begin{equation}
-	\chi_\gamma = \frac{\gamma_\gamma}{E_\mathrm{s}} \sqrt{(\mathbf{E}_\perp + \mathbf{c}\times \mathbf{B}}^2},
+	\chi_\gamma = \frac{\gamma_\gamma}{E_\mathrm{s}} \sqrt{(\mathbf{E}_\perp + \mathbf{c}\times \mathbf{B}^2},
 \end{equation}
 where $E_\mathrm{s} = \qty{1.3e18}{V.m^{-1}}$ is the Schwinger electric field, $\gamma_\gamma = \epsilon_\gamma /m_\mathrm{e}c^2$, the normalised photon energy and $\mathbf{E}_\perp$ the electric field perpendicular to the photon propagation direction. Cite Smilei and say, in a constant E-field, the rate of pair production increases rapidly up to $\chi_\gamma \approx 10$ at which point it saturates and slowly reduces.
 
 
 If the electron radiates all its energy to the photon, for the ZVP mechanism, at the point of emission one finds,
 \begin{equation}
-	\chi_\gamma = |\mathbf{E}|\frac{1 + \frac{a^2_0}{\bar{n}_\mathrm{e}}{E_\mathrm{s}} \sqrt{2},
+	\chi_\gamma = |\mathbf{E}|\frac{1 + \frac{a^2_0}{\bar{n}_\mathrm{e}}}{E_\mathrm{s}} \sqrt{2},
 \end{equation}
 The chi parameter will change rapidly once the transition to QED ZVP has occured due to the change in scaling.
+
+
+\section{Simulations}
+\subsection{Particle-In-Cell codes}
+
+I think put this in the main intro section. Then start PIC codes with discretisation of the Vlasov-Maxwell system of equations.
+
+\subsubsection{The Vlasov-Maxwell system of equations}
+A collisionless and fully ionised plasma, as relevant to this thesis, is fully described in the kinetic description by the Vlasov-Maxwell system of equations \cite{derouillat_2018_SmileiCollaborativeOpensource}. Each plasma species, $s$, of particles with mass $m_s$ and charge $q_s$ is described by its distribution fucntion $f_s(t,\mathbf{x},\mathbf{p})$ at time $t$, position $\mathbf{x}$ and momentum $\mathbf{p}$. The distribution satisfies the Vlasov equation, that is,
+\begin{equation}
+	(\partial_t + \frac{\mathbf{p}}{m_s\gamma} \cdot \nabla + \mathbf{F}_\mathrm{L} \cdot \nabla_\mathbf{p})f_s = 0,
+\end{equation}
+where $\gamma = \sqrt{1+\mathbf{p}^2/(m_sc)^2}$ is the relativistic Lorentz or gamma factor and 
+\begin{equation}
+	\mathbf{F}_\mathrm{L} = q_s(\mathbf{E} + \mathbf{v} \times \mathbf{B})
+\end{equation}
+is the Lorentz force that acts on a particle with velocity $\mathbf{v}  = \mathbf{p}/m_s\gamma$. The electric $\mathbf{E}(t,\mathbf{x})$ and magnetic $\mathbf{B}(t,\mathbf{x})$ fields that create the force must satisfy Maxwell's equations,
+\begin{equation}
+	\nabla \cdot \mathbf{B} = 0,
+\end{equation}
+\begin{equation}
+	\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0},
+\end{equation}
+\begin{equation}
+	\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \partial_t \mathbf{E},
+\end{equation}
+\begin{equation}
+	\nabla \times \mathbf{E} =-\partial_t \mathbf{B}.
+\end{equation}
+Here $\epsilon_0$ and $\mu_0$ are the vacuum permittivity and permeability respectively.
+
+This self-consistent system of equations describes the dynamics of plasma particles within electromagnetic fields. The particles then modify the fields via their charge and current densities,
+\begin{equation}
+	\rho(t,\mathbf{x}) = \sum_s q_s \int d^3pf_s(t,\mathbf{x},\mathbf{p}),
+\end{equation}
+and 
+\begin{equation}
+	\mathbf{J}(t,\mathbf{x}) = \sum_s q_s \int d^3p\mathbf{v}f_s(t,\mathbf{x},\mathbf{p}),
+\end{equation}
+respectively.
+
+\subsubsection{Discretisation of the Vlasov-Maxwell equations}
+
+
+
+
+
+\subsubsection{Smilei}
+Smilei (for Simulating Matter Irradiated by Light at Extreme Intensities) is a modern collaborative, massively-parallel, fully relativistic and open source plasma physics PIC code and was the main workhorse for this thesis\footnote{At points benchmarks agaist the EPOCH and Osiris PIC codes were performed.}. Produced by M. Grech's team(CHECK THIS) at École Polytechnique \cite{derouillat_2018_SmileiCollaborativeOpensource}, its development was motivated by the rapid development of multi-petawatt facilities globally including their local Apollon laser and by supercomputing power which has `skyrocketed' in recent years \cite{derouillat_2018_SmileiCollaborativeOpensource}. Indeed, the work in this thesis with 3D simulations required over \qty{1e6}{cores}.
+
+
+\subsubsection{Reference quantities}
+This needs rewording so as not to be the same as paper.
+
+With the vast range of magnitudes associated with multi-petawatt and femtosecond laser pulses, solid density plasmas, micrometre wavelengths and attosecond bunches, it is much more efficient to convert to dimensionless normalised quantities. The standard four that describe the dynamics of the system \cite{BOUCHARD THESIS??} correspond directly to each of these. The three asso- ciated with the laser are: the temporal parameter, ωLτ, where τ is the pulse duration, the spatial parameter, λL/R, where λL is the wavelength and R the beam width, and the intensity parameter, the normalised vector po- tential, a0 = eEL/(mecωL), where EL is the peak laser electric field strength, and e and me are the charge and mass of an electron.
+For the plasma, the key parameter is the density rel- ative to the critical density, n ̄e = ne/nc, here ne is the electron density and nc = ε0 me ωL2 /e2 is the critical den- sity at which the plasma becomes opaque to the laser electric field, assuming relativistic effects can be ignored.
+Relativistic similarity theory states that the laser- plasma interaction does not depend on n ̄e and a0 inde- pendently but via the relativistic similarity parameter
+S=n ̄e, (1) a0
+essentially accounting for relativistic effects in the over- density of the plasma. Previous work on the ZVP mech- anism has suggested that the ZVP regime is valid for relativistic interactions, a0 > 1, with S ≥ 1. For S < 1, the onset of relativistically self-induced transparency ef- fects [42] renders the model invalid. Equally, for large a0, the onset of QED effects should cause breakdown of rel- ativistic similarity. Here the validity of the ZVP model is tested across this parameter space for the first time.
+
+\subsubsection{Reference units}
+To great convenience, Smilei operates in normalised units. This normalisation is not chosen \textit{a priori}, instead results can be scaled by an arbitrary reference angular frequency. This is extremely useful when working with boosted frames of reference. As this thesis focuses on the interaction of a laser pulse with plasma, the laser pulse angular frequency, $\omega_\mathrm{L}$ is set as the frequency of reference. A list of the most common normalisations are given in table \ref{tab:intro-normalisations}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ccc}
+	 \hline \hline
+	Units of & SI units & Normalisation \\
+	\hline
+	velocity & \unit{m.s^{-1}} & $c$ \\
+	charge & C & $e$ \\
+	mass & kg & $m_\mathrm{e}$ \\
+	momentum & \unit{kg.m.s^{-1}} & $m_\mathrm{e}c$ \\
+	energy/temperature & J & $m_\mathrm{e}c^2$ \\
+	time & s & $\omega^{-1}_\mathrm{L}$ \\
+	length & m & $c/\omega_\mathrm{L}$ \\
+	number density & \unit{m^{-3}} & $n_\mathrm{c}$ \\
+	electric field & \unit{V.m^{-1}} & $m_\mathrm{e}c\omega_\mathrm{L}/e$ \\
+	\hline \hline
+\end{tabular}
+	\caption{\label{tab:intro-normalisations} Smilei normalisations for common quantities with the laser angular frequency $\omega_\mathrm{L}$ set at the reference angular frequency.}
+\end{center}
+\end{table}
+
+
+
+
