@@ -9,6 +9,23 @@ The heart of animals is the foundation of their life, the sovereign of everythin
 
 \minitoc
 
+\section{The headlight effect}\label{sec:app_headlight}
+The headlight effect describes the beaming of an isotropically emitting source travelling at some velocity relative to an observer. Consider the geometry of figure \ref{fig:zvp_ablatingfront} with the source (the laser pulse) travelling at an angle $2\theta$ to the observer (in this case, the ablating front). A photon with energy $E$ emitted from the rest frame of the source (the laboratory frame in this case) has a 4-momentum
+\begin{equation}
+	\mathbf{P}_\mu = \left(\frac{E}{c},\frac{E}{c}\cos{2\theta},\frac{E}{c}\sin{2\theta}\right).
+\end{equation}
+As the interaction geometry is confined to a 2D plane,  the $z$-component can be safely neglected. Applying the lorentz boost of equation \ref{eq:zvp_lorentz},
+\begin{equation}
+	\begin{split}
+		\frac{E'}{c} = \gamma \left( \frac{E}{c} - \beta \frac{E}{c}\cos{2\theta}\right) \\
+		\frac{E'}{c}\cos{2\theta'} = \gamma \left( \frac{E}{c}\cos{2\theta} - \beta \frac{E}{c}\right).
+	\end{split}
+\end{equation}
+Solving these equations for the angle in the boosted frame,
+\begin{equation}
+	\cos{2\theta'} = \frac{\cos{2\theta} - \beta}{1-\beta\cos{2\theta}}.
+\end{equation}
+
 \section{\label{app:1-basics-transverse_emittance}Geometric transverse emittance}
 A beam\footnote{In this section it is electron beams and not bunches that a referred to to demonstrate the generality of these concepts.} of particles is fully described by its six-dimensional particle phase space distribution
 \begin{equation}

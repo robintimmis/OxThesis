@@ -21,7 +21,7 @@ Of primary interest in this thesis is the interaction of a relativistically inte
 
 This thesis is interested in the `post-ponderomotive' regime where the frequency of the relativistic plasma oscillations ($\omega_\mathrm{p} \sim \sqrt{S}$) are greater than the $\mathbf{J}\times \mathbf{B}$ induced plasma electron oscillations at $2\omega_\mathrm{L}$. The plasma electrons' response is then fast enough to compensate the ponderomotive pressure of the laser pulse with the formation of electrostatic fields between electrons and ions and so respond adiabatically to the applied $\mathbf{J}\times \mathbf{B}$ force. Hence, plasma electrons cannot be heated directly by the laser pulse. Interestingly, working through this condition suggests the criterion for the \ac{ZVP} regime is $S > 4$, slightly more constraining than $S>1$ as is typically stated for the \ac{ZVP} regime \cite{savinModellingLaserPlasmaInteractions2019}. The resolution comes from understanding the plasma response. The bulk plasma must have $S>1$ to prevent relativistic transparency and so ensure a laser-surface interaction. Then the ponderomotive pressure of the laser is able to compress the front surface to densities such that the overdensity condition is satisfied. Note that to neglect the pre-adiabatic formation phase requires a sufficiently steep density gradient around the relativistic critical density surface (where $S=1$) to shift the main interaction to a region where this condition on the overdensity is satisfied. Pre-plasma formation and scale length will be discussed in great detail in a later chapter.
 
-Provided all conditions are met, the ponderomotive pressure of the laser compresses the electrons at the front surface of the plasma and so shifts the laser-plasma surface interaction to plasma densities well beyond the relativistic critical density, leaving in its wake a positive space charge. This electron-ion charge separation leads to the formation of a \textit{pseudo-capacitor} electrostatic field. So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential of the pseudocapacitor field.
+Provided all conditions are met, the ponderomotive pressure of the laser compresses the electrons at the front surface of the plasma and so shifts the laser-plasma surface interaction to plasma densities well beyond the relativistic critical density, leaving in its wake a positive space charge. This electron-ion charge separation leads to the formation of a \textit{pseudo-capacitor} electrostatic field. So we have entered a regime of adiabaticity where the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure and the Coulomb potential of the pseudocapacitor field. Thus is formed a high density and spatially thin electron bunch (sometimes referred to as an electron sheath in the literature \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011}) at the plasma surface.
 
 To understand this system, consider now a relativistic linearly polarised laser pulse obliquely incident, at an angle of incidence $\theta$, on a semi-infinite plasma, existing for $x\ge0$ as in figure \ref{fig:zvpforcesppol}.
 % TODO: \usepackage{graphicx} required
@@ -36,12 +36,12 @@ The Hamiltonian of a single electron confined within the potential well \cite{go
 	\mathcal{H} = c\sqrt{m^2_\mathrm{e}c^2 + |\mathbf{p}|^2} - e\Phi.
 \end{equation}
 Here, the second term of equation \ref{eq:hamiltonian_general} describes the contribution to the electron's energy from the electrostatic potential, $\Phi$, of the pseudo-capacitor. The first term is the electron energy, $U$, extracted from the invariant of the relativistic 4-momentum of the electron, $\mathbf{P^\mu} = (U/c, \mathbf{p})$,
-\begin{equation}
+\begin{equation}\label{eq:zvp-energy_invariant}
 	\mathbf{P^\mu \cdot P_\mu} = \frac{U^2}{c^2} - |\mathbf{p}|^2 = m^2_\mathrm{e}c^2.
 \end{equation}
 Note that while there has been growing interest in the curvature of spacetime by relativistic lasers \textbf{[cite edward here]}, for modern high power lasers, this effect remains undetectable. Thus, throughout this thesis the inner product of 4-vectors is defined using the Minkowski Metric \cite{steaneRelativityMadeRelatively2012}.
 
-Decomposing the electron's 3-momentum into orthogonal components: $p_\mathrm{prop}$, along the laser propagation direction, $p_\mathrm{pol}$, along the polarisation axis of the laser pulse and $p_\perp$, perpendicular to both, there are two simplifications to be made. Firstly, by canonical conservation of transverse momentum, $p_\mathrm{pol} = eA$, where $A$ is the laser vector potential amplitude. Secondly, in the case of a p-polarised laser pulse (the known optimum for ZVP electron bunch generation \cite{savinAttosecondscaleAbsorptionExtreme2017} and \ac{HHG} \cite{baevaTheoryHighorderHarmonic2006}), with reference to figure \ref{fig:zvpforcesppol} and the Lorentz force law, the forces at play confine the electron trajectory to the  $p_\mathrm{prop}$-$p_\mathrm{pol}$ plane and the essential interaction geometry is two-dimensional. This is provided one considers length scales much smaller than the focal spot of the laser pulse on the target thus pondermotive pressure is normal to the target surface.
+Decomposing the electron's 3-momentum into orthogonal components: $p_\mathrm{prop}$, along the laser propagation direction, $p_\mathrm{pol}$, along the polarisation axis of the laser pulse and $p_\perp$, perpendicular to both, there are two simplifications to be made. Firstly, by canonical conservation of transverse momentum, $p_\mathrm{pol} = eA$, where $A$ is the laser vector potential amplitude. Secondly, in the case of a p-polarised laser pulse (the known optimum for ZVP electron bunch generation \cite{savinAttosecondscaleAbsorptionExtreme2017} and \ac{HHG} \cite{baevaTheoryHighorderHarmonic2006}), with reference to figure \ref{fig:zvpforcesppol} and the Lorentz force law, the forces at play confine the electron trajectory to the  $p_\mathrm{prop}$-$p_\mathrm{pol}$ plane and the essential interaction geometry is two-dimensional. This is provided one considers length scales smaller than the focal spot of the laser pulse on the target such that the pondermotive pressure is normal to the target surface.
 
 Explicitly, the Hamiltonian can be written as
 \begin{equation}\label{eq:hamiltonian_specific}
@@ -49,17 +49,34 @@ Explicitly, the Hamiltonian can be written as
 \end{equation}
 From equation \ref{eq:hamiltonian_specific} it is clear that should the vector potential pass through zero, one of the walls of the potential well is totally suppressed, allowing electrons in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeros for this violent reconstruction of the plasma surface led Baeva \textit{et al} \cite{baevaZeroVectorPotential2011} to coin the term `Zero Vector Potential' mechanism to describe this process. Indeed, while elementary electromagnetism tells us a laser pulse will exponentially decay within a skin layer of a plasma without passing through zero, Baeva \textit{et al} \cite{baevaZeroVectorPotential2011} were able to demonstrate in \ac{PIC} simulations that for this regime, zeros do exist and do propagate through the skin layer. The explanation relies on a Doppler shift in the laser field due to the relativistic motion of the ablating plasma surface, and the mathematical formalism of this process proceeds as follows.
 
-[I think before this point it would be good to enter in the language of electron bunches or sheaths - I will continue the dicussion assuming this concept has been introduced].
+\textbf{**Must also discuss the impact of relativity in creating the observed phenomena, probably at energy scaling section?**}
 
-As the \ac{ZVP} mechanism is a relativistic phenomenon, it is essential to consider the laser pulse propagating through a relativistically ablating electron bunch (i.e. with some component of its velocity anti-parallel to the laser pulse propagation direction). Transforming to the rest frame of the ablating front, beyond the relativistic critical density surface, the vector potential of the laser pulse will be an evanescent wave, at the spatial centre of the laser pulse, it can be described simply by
+As the \ac{ZVP} mechanism is a relativistic phenomenon, it is essential to perform this analysis relativistically. Since all electrons are accelerated by the relativistic laser pulse to approximately speed $c$, surface electrons undergo similar trajectories and act collectively, oscillating in the laser pulse field. Consider first a transformation to the frame of reference where the laser pulse is normally incident to the plasma surface, this frame travels at velocity $\mathbf{v} = (c\sin\theta )\hat{\mathbf{y}}$ with electrons streaming at $-\mathbf{v}$. Using equation \ref{eq:zvp-energy_invariant} and $U = \gamma m_\mathrm{e} c^2$,
+\begin{equation}
+	\gamma^2 = 1 + a^2_0 + \left(\frac{p_\mathrm{prop}}{m_\mathrm{e}c}\right)^2,
+\end{equation}
+where all parameters are in the boosted frame. Using $\mathbf{p} = \gamma m_\mathrm{e} \mathbf{v}$, the longitudinal velocity is
+\begin{equation}
+	v_\mathrm{prop} = \frac{\tilde{p}_\mathrm{prop}c}{\sqrt{1 + a^2_0 + \tilde{p}^2_\mathrm{prop}}},
+\end{equation}
+where $\tilde{p}_\mathrm{prop} = p_\mathrm{prop}/m_\mathrm{e}c$. Thus, should the vector potential pass through zero, the surface is able to propagate towards the laser pulse at very close to speed $c$. Transforming back to the laboratory frame at the peak of ablation ($\mathbf{u}\approx -c\hat{\mathbf{x}}$) and using the equations for relativistic velocity addition,
+\begin{equation}\label{eq:zvp_velocityaddition1}
+	\mathbf{u}'_{\|} = \frac{\mathbf{u}-\mathbf{v}}{1- \mathbf{u}\cdot\mathbf{v}/c^2},
+\end{equation}
+\begin{equation}\label{eq:zvp_velocityaddition2}
+	\mathbf{u}'_{\perp} = \frac{\mathbf{u}_\perp}{\gamma_v(1- \mathbf{u}\cdot\mathbf{v}/c^2)},
+\end{equation}
+where $\gamma_v = 1/\sqrt{1-|\mathbf{v}|^2/c^2}$ \cite{steaneRelativityMadeRelatively2012}, one finds that this peak ablation at speed $\approx c$ occurs now in the specular reflection direction. Simultaneity is broken and ripples co-move along the surface with the incident laser pulse wavefronts.
+
+Transform now to the rest frame of the ablating front. Beyond the relativistic critical density surface, the vector potential of the laser pulse decays evanescently. At the spatial centre of the laser pulse, it can be described simply by
 \begin{equation}
 	\mathbf{A}'_\mathrm{L}(t',r') = A'_0\cos(\omega'_\mathrm{L}t')\exp(-r'/\delta')\hat{\mathbf{r}}'_\mathrm{pol}= A'_\mathrm{L}\hat{\mathbf{r}}'_\mathrm{pol},
 \end{equation}
 where the primed symbols indicate that these quantities are measured in the rest frame of the expanding front, $A'_0$ is the vector potential amplitude and $\omega'_\mathrm{L}$ is the frequency of the laser pulse, $r'$ is the propagation distance of the laser into the plasma, $\delta'$ is the skin depth and $\hat{\mathbf{r}}'_\mathrm{pol}$ a unit vector defining the polarisation direction of the laser pulse. Un-primed coordinates will indicate the lab frame measurements.
 
-[For sure include a diagram of this]
+\textbf{**For sure include a diagram of lorentz boost and change of structure in ablating front, also PIC simulation of surface ripples?**}
 
-While in previous demonstrations of the vector potential zeros, it was assumed that the ablation occurs normal to plasma surface, it is now known that this ablation occurs in the specular reflection direction and it is necessary to confirm that zeros are still predicted. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in figure \ref{fig:zvp_ablatingfront}.
+While previous demonstrations of the existance of vector potential zeros assumed that the ablation occurs normal to plasma surface, it is necessary to confirm that zeros are still predicted for specular ablation. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in figure \ref{fig:zvp_ablatingfront}.
 % TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
@@ -72,6 +89,8 @@ The direction of polarisation is
 	\hat{\mathbf{r}}_\mathrm{pol} = \hat{\mathbf{x}}\sin{2\theta} - \hat{\mathbf{y}}\cos{2\theta}
 \end{equation}
 and the velocity of the rest frame of the ablating front relative to the lab frame is $-v_f\hat{\mathbf{x}}$.
+
+\textbf{**Include a section in the intro describing laser reflection off a plasma, including calculation of skin depth and once have calculated bunch thickness using oblique thing, determine skin depth etc**}
 
 Applying the Lorentz transformation to the electromagnetic 4-potential,
 \begin{equation}
@@ -94,7 +113,7 @@ and here $\beta = -v_\mathrm{f}/c$, $\gamma = 1/\sqrt{1-\beta^2}$. Immediately f
 \begin{equation}\label{eq:zvp_lorentz_y}
 	A'_\mathrm{L}\cos{2\theta'} = A_\mathrm{L}\cos{2\theta}.
 \end{equation}
-Applying the headlight effect for a source moving at an angle $2\theta$ to the boosted frame,
+Applying the headlight effect for a source moving at an angle $2\theta$ to the boosted frame (a full derivation is given in Appendix \ref{sec:app_headlight}),
 \begin{equation}
 	\cos{(2\theta')} = \frac{\cos{(2\theta)}-\beta}{1 - \beta\cos{(2\theta)}}
 \end{equation}
@@ -126,74 +145,19 @@ where
 \begin{equation}
 	\delta = \frac{\delta'}{\gamma}.
 \end{equation}
-The oscillatory term in equation \ref{eq:zvp_labAfull} demonstrates the propagation of vector potential zeros within the plasma target. From the structure of this term it would appear that these zeros are expelled from the plasma along the specular direction at a speed (recall beta is negative - change this earlier in the theory so that that negative sign is more explicit in the result.)
+The oscillatory term in equation \ref{eq:zvp_labAfull} demonstrates the propagation of vector potential zeros within the plasma target. From the structure of this term it would appear that these zeros are expelled from the plasma along the specular direction at a speed
 \begin{equation}
 	v_\phi = \frac{\omega_L}{k} = \frac{c}{\beta} = -\frac{c^2}{v_\mathrm{f}}.
 \end{equation}
-Could also discuss here about how relativistic similarity theory derives that zeros move at speed c but how that cannot be valid since then we would always have infinitely thin radiation pulses, unless there is an extended range of zero? I suppose there is some radiation happening around the peak? Good questions..
-One remaining consideration is we require that the zero gets through the whole electron bunch which is generally at very high density but is also very thin, in a way is this skin depth not what precisely determines the bunch width? The bunch will be compressed until the skin depth goes to zero across it perhaps? Things to think about.
 
+\textbf{**Could also discuss here about how relativistic similarity theory derives that zeros move at speed c but how that cannot be valid since then we would always have infinitely thin radiation pulses, unless there is an extended range of zero? I suppose there is some radiation happening around the peak? Good questions..
+One remaining consideration is we require that the zero gets through the whole electron bunch which is generally at very high density but is also very thin, in a way is this skin depth not what precisely determines the bunch width? The bunch will be compressed until the skin depth goes to zero across it perhaps? Things to think about.**}
 
-Qualitatively, and in summary, for sufficiently intense laser pulses, electrons on the radiated surface of a solid target are accelerated by the laser to relativistic velocities at a fraction of a laser pulse cycle and therefore electrons both follow similar trajectories and are able to respond adiabatically to the $\mathbf{J}\times \mathbf{B}$ force of the laser pulse. They therefore form a high charge density thin coherent electron sheath on the front surface of the plasma but displaced inwards from the immobile ions (ions are approximately immobile on the timescale of a laser pulse cycle) via the ponderomotive pressure of the laser. This charge separation generates a longitudinal electrostatic pseudocapacitor field that confines electrons to a potential well on the front surface of the plasma, preventing further propagation of the electron bunch into the plasma bulk. When the zero of the vector potential passes through the electron bunch, the ponderomotive pressure instantaneously vanishes and electrons are ejected specularly from the target, copropagating with the zeroes and gaining energy as they discharge the pseudocapacitor field. Coherent sychrotron emission occurs concurrently. The electron bunch is then rotated by the laser pulse and launched into the bulk at high energy.
-
-
-SOmething to think about: which comes first? electron bunch acceleration across pseudo capacitor or zeros?
-Laser accelerates electorns in laser propagation direction , however cannot propagate further into the plasma so only get motion parallel to surface, once potentail well disrupted, accleration is perp to surface so combined, electrons travel in specular direction.
-So actually what we are saying is the zeros will go in whatever direction the surface ablates in, but the surface will move in a direction dependent on the components of electron 
-
-
-\subsubsection{The headlight effect}\label{sec:zvp_headlight}
-This most likely goes in the appendix. But storing here for now.
-
-The headlight effect describes the beaming of an isotropically emitting source travelling at some velocity relative to an observer. Consider the geometry of figure \ref{fig:zvp_ablatingfront} with the source (the laser pulse) travelling at an angle $2\theta$ to the observer (in this case, the ablating front). A photon with energy $E$ emitted from the rest frame of the source (in this case the lab frame) has a 4-momentum
-\begin{equation}
-	\mathbf{P}_\mu = \left(\frac{E}{c},\frac{E}{c}\cos{2\theta},\frac{E}{c}\sin{2\theta}\right).
-\end{equation}
-As the interaction geometry is confined to a 2D plane,  the $z$-component can be safely neglected. Applying the lorentz boost of equation \ref{eq:zvp_lorentz},
-\begin{equation}
-	\begin{split}
-		\frac{E'}{c} = \gamma \left( \frac{E}{c} - \beta \frac{E}{c}\cos{2\theta}\right) \\
-		\frac{E'}{c}\cos{2\theta'} = \gamma \left( \frac{E}{c}\cos{2\theta} - \beta \frac{E}{c}\right).
-	\end{split}
-\end{equation}
-Solving these equations for the angle in the boosted frame,
-\begin{equation}
-	\cos{2\theta'} = \frac{\cos{2\theta} - \beta}{1-\beta\cos{2\theta}}.
-\end{equation}
-
-\subsubsection{Conservation of generalised transverse momentum}\label{sec_app_conservation-generalised-mometum}
-This should most likely go in the appendix/ before ZVP Hamiltonian discussion.
-
-Whilst it is commonly stated within the field of laser-solid interactions, it would appear that some nuance/detail is missing from the discussion which in turn shrouds the \ac{ZVP} mechanism in confusion.
-
-Consider a holonomic system of N relativistic particles under the influence of electromagnetic forces. A particle $j$ with charge $e_j$ and mass $m_\mathrm{j}$ experiences a scalar potential,
-\begin{equation}
-	U_{j} = e_j(\Phi - \mathbf{A} \cdot \mathbf{v}_{j})
-\end{equation}
-and hence the system is described by the Lagrangian
-\begin{equation}
-	L = \sum^N_{j=1}\left( - m_\mathrm{j}c^2\sqrt{1-\beta^2_\mathrm{j}} - e_j(\Phi - \mathbf{A} \cdot \mathbf{v}_\mathrm{j}) \right),
-\end{equation}
-where $\beta^2 = \mathbf{v}_\mathrm{j}\cdot\mathbf{v}_\mathrm{j} /c^2$ \cite{goldsteinClassicalMechanics2013}.
-The generalised momentum corresponding to coordinate $x_j$ is
-\begin{equation}
-	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = m_j\dot{x}_j + e_jA_x,
-\end{equation}
-explicitely, the generalised momentum describes both the linear mechanical momentum and the momentum of the electromagnetic field. Via Noether's theorem, if $L$ is independent of $x_j$, \textit{i.e.} spatially homogeneous along $x$ for particle $j$, then 
-\begin{equation}
-	\dot{p}_{j,x} = 0.
-\end{equation}
-Considering a p-polarised Gaussian laser pulse, axis of polarisation along $x$, $A_x$ will be approximately constant. Integrating and noting that initially there is no linear or electromagnetic momentum, the generalised transverse momentum conservation equation for an electron at the plasma-vacuum boundary is obtained, namely,
-\begin{equation}
-	p_\mathrm{T} = eA,
-\end{equation}
-where $p_mathrm{T}$ is the electron momentum along the polarisation axis of the laser pulse. and $A$ its vector potential.
-
-Note that this is only valid provided the radiating electron does not radiate along the direction of $\mathbf{A}$ as discussed by Sokolov \textit{et al} \cite{sokolovDynamicsEmittingElectrons2009}. But we do know this radiation is specular so this is true for normal incidence but not specular?? Really need to consider what the EM fields are in the surface from combined Incident and reflected.
-The implications of this should maybe be considered?? Also note that this is only true for gaussian pulses with spatial profiles $\gg$ than electron trajectories (\textit{i.e.} twice the relativistic larmor radius).
+To summarise, for a sufficiently intense laser pulse, electrons on the radiated surface of a solid target are accelerated by the laser to relativistic velocities at a fraction of a laser pulse cycle and therefore electrons both follow similar trajectories and are able to respond adiabatically to the $\mathbf{J}\times \mathbf{B}$ force of the laser pulse. They form into a high charge density spatially thin coherent electron bunch on the front surface of the plasma but displaced inwards from the approximately immobile ions via the ponderomotive pressure of the laser. This charge separation generates a longitudinal electrostatic pseudocapacitor field that confines electrons to a potential well on the front surface of the plasma, preventing further propagation of the electron bunch into the plasma bulk. When the zero of the vector potential passes through the electron bunch, the ponderomotive pressure instantaneously vanishes and electrons are ejected specularly from the target, copropagating with the zeroes and gaining energy as they discharge the pseudocapacitor field. The electron bunch is then rotated by the laser pulse and launched into the bulk at high energy, as it does so emitting coherent synchrotron radiation in transmission and reflection.
 
 \subsection{ZVP electron bunch energies}\label{sec:zvp_energies_derivation}
-In \cite{baevaZeroVectorPotential2011}, Baeva \textit{et al} propose energy scalings for electron bunches produced in the \ac{ZVP} regime as a function of the laser intensity and plasma density, finding that one of the key statements of similarity theory ($p \sim a_0 S^x$, where $x$ is some integer value, THIS NEEDS A CITE I THINK IT APPEARS IN BAEVAS ORIGINAL HHG PAPER) holds for the \ac{ZVP} mechanism. Later this was then extended to \ac{3D} by Savin \textit{et al} \cite{savinAttosecondscaleAbsorptionExtreme2017}. What follows is that discussion with a more close consideration of the both consequences and constants of proportionality.
+In \cite{baevaZeroVectorPotential2011}, Baeva \textit{et al} propose energy scalings for electron bunches produced in the \ac{ZVP} regime as a function of the incident laser pulse intensity and plasma density, finding that one of the key statements of similarity theory ($p \sim a_0 S^x$, where $x$ is some integer value, \textbf{THIS NEEDS A CITE I THINK IT APPEARS IN BAEVAS ORIGINAL HHG PAPER}) holds for the \ac{ZVP} mechanism. Later this was then extended to \ac{3D} by Savin \textit{et al} \cite{savinAttosecondscaleAbsorptionExtreme2017}. What follows is that discussion with a close consideration of the both consequences and constants of proportionality.
+
 
 (Pherhaps I should redo this discussion condering infinitessimal areas of the plasma surface to show how variation can exist across the surface) Defo do this! And say that provided the variation is small, rel to what though? the surface remains approximately flat -> that is totally not true
 

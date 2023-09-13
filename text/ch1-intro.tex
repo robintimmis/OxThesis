@@ -117,7 +117,55 @@ The Lawson-Woodward theorem states that there can be no net electron energy gain
 \end{enumerate}
 Several of these will be applicable to the various accelerations of electrons considered. It is this final condition that is most damning, throughout this thesis the ultra-relativistic laser pulses under consideration ensure non-linear effects cannot be neglected. It is indeed such non-linearities that are of interest.
 
+\section{Relativistic effects}
+The descriptor `Relativistic' is applied liberally in this thesis. When applied to electromagnetic fields or laser pulses it refers to 
+\begin{equation}
+	a_0 \gg 1.
+\end{equation}
+When applied to particles, their speeds are
+\begin{equation}
+	v \approx c.
+\end{equation}
+A relativistic laser pulse will accelerate electrons to relativistic velocities in a fraciton of a laser pulse cycle. Consider an electron in the presence of a uniform electric field of magnitude $a_0 = 100$, an intensity accessible by current state of the art laser facilities. The work done on that particle by the field is 
+\begin{equation}
+	U = (\gamma -1)m_\mathrm{e}c^2 = \int \mathbf{E}\cdot \mathrm{d} \mathbf{x},
+\end{equation}
+where 
+\begin{equation}
+	\gamma = \frac{1}{\sqrt{1-\beta^2}}.
+\end{equation}
+The field will accelerate an electron to a $\beta = 0.99$, corresponding to $\gamma \approx 7$, in less than 1 \% of a corresponding laser pulse wavelength.
 
+\subsection{Conservation of generalised transverse momentum}\label{sec:intro_conservation-generalised-mometum}
+Consider a holonomic system of $N$ relativistic particles under the influence of electromagnetic forces. A particle $j$ with charge $e_j$ and mass $m_\mathrm{j}$ experiences a scalar potential,
+\begin{equation}
+	U_{j} = e_j(\Phi - \mathbf{A} \cdot \mathbf{v}_{j})
+\end{equation}
+and hence the system is described by the Lagrangian
+\begin{equation}
+	L = \sum^N_{j=1}\left( - m_\mathrm{j}c^2\sqrt{1-\beta^2_\mathrm{j}} - e_j(\Phi - \mathbf{A} \cdot \mathbf{v}_\mathrm{j}) \right),
+\end{equation}
+where $\beta^2_j = \mathbf{v}_\mathrm{j}\cdot\mathbf{v}_\mathrm{j} /c^2$ and $\mathbf{v}_j = \mathrm{d}\mathbf{x}_j/\mathrm{d}t$ \cite{goldsteinClassicalMechanics2013}.
+The generalised momentum corresponding to coordinate $x_j$ is
+\begin{equation}
+	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = m_j\dot{x}_j + e_jA_x,
+\end{equation}
+thus, the generalised momentum describes both the linear mechanical momentum and the momentum of the electromagnetic field. Via Noether's theorem, if $L$ is independent of $x_j$, \textit{i.e.} spatially homogeneous along $x$ for particle $j$, then 
+\begin{equation}\label{eq:intro-transverse_momentum_differential_equation}
+	\dot{p}_{j,x} = 0
+\end{equation}
+since
+\begin{equation}
+	\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial \dot{x}_j}\right) = \frac{\partial L}{\partial x_j}.
+\end{equation}
+
+Consider a linearly polarised Gaussian laser pulse, with axis of polarisation along $x$ incident on a solid target at rest. Then $A_x$ is approximately constant along $x$ near the beam centre\footcite{Constant relative to the scale of typical electron trajectories in such an interaction.}. Integrating equation \ref{eq:intro-transverse_momentum_conservation_no_initial_momentum} and noting that initially there is no linear or electromagnetic momentum at the target, the generalised transverse momentum conservation equation for an electron in the laser field is
+\begin{equation}\label{eq:intro-transverse_momentum_conservation_no_initial_momentum}
+	p_\mathrm{T} = eA,
+\end{equation}
+where $p_\mathrm{T}$ is the electron momentum along the polarisation axis of the laser pulse and $A$ it the laser pulse vector potential.
+
+Note that this is only valid provided the electron does not radiate along the direction of polarisation as discussed by Sokolov \textit{et al} \cite{sokolovDynamicsEmittingElectrons2009}. The implications of `Radiation Reaction' are discussed in the following section.
 
 \section{QED effects}
 We are now at the cusp of \ac{SF-QED} laser-plasma physics. Access to this regime will enable the testing of decades old theoretical predictions. Already Fedeli \textit{et al} have shown in simulations that current PW-class laser facilities can access the regime using an all-optical set up based on laser-solid surface interactions \cite{fedeli_2020_ProbingStrongfieldQED}. The primary two SF-QED phenomena to be accessed are Radiation Reaction and multi-photon Breit-Wheeler electron pair production. Brief introductions to these phenomena are now presented.
@@ -163,11 +211,11 @@ The chi parameter will change rapidly once the transition to QED ZVP has occured
 I think put this in the main intro section. Then start PIC codes with discretisation of the Vlasov-Maxwell system of equations.
 
 \subsubsection{The Vlasov-Maxwell system of equations}
-A collisionless and fully ionised plasma, as relevant to this thesis, is fully described in the kinetic description by the Vlasov-Maxwell system of equations \cite{derouillat_2018_SmileiCollaborativeOpensource}. Each plasma species, $s$, of particles with mass $m_s$ and charge $q_s$ is described by its distribution fucntion $f_s(t,\mathbf{x},\mathbf{p})$ at time $t$, position $\mathbf{x}$ and momentum $\mathbf{p}$. The distribution satisfies the Vlasov equation, that is,
+A collisionless and fully ionised plasma, as relevant to this thesis, is fully described in the kinetic description by the Vlasov-Maxwell system of equations \cite{derouillatSmileiCollaborativeOpensource2018}. Each plasma species, $s$, of particles with mass $m_s$ and charge $q_s$ is described by its distribution function $f_s(t,\mathbf{x},\mathbf{p})$ at time $t$, position $\mathbf{x}$ and momentum $\mathbf{p}$. The distribution satisfies the Vlasov equation, that is,
 \begin{equation}
 	(\partial_t + \frac{\mathbf{p}}{m_s\gamma} \cdot \nabla + \mathbf{F}_\mathrm{L} \cdot \nabla_\mathbf{p})f_s = 0,
 \end{equation}
-where $\gamma = \sqrt{1+\mathbf{p}^2/(m_sc)^2}$ is the relativistic Lorentz or gamma factor and 
+where $\gamma = \sqrt{1+\mathbf{p}^2/(m_sc)^2}$ is the relativistic Lorentz or gamma factor of the distribution and 
 \begin{equation}
 	\mathbf{F}_\mathrm{L} = q_s(\mathbf{E} + \mathbf{v} \times \mathbf{B})
 \end{equation}
@@ -197,13 +245,23 @@ and
 respectively.
 
 \subsubsection{Discretisation of the Vlasov-Maxwell equations}
+Finding numerical solutions to the Vlasov-Maxwell equations is no straightforward task, there are codes that are capable such as Valis \textbf{**CITE**}, however, the requirement for very high resolution in both position and momentum is exceedingly costly and use of such codes are limited in their size, duration and spatial dimensions. A more tractable approach is to discretise the distribution function into $N_s$ `quasi-particles'\footnote{Originally introduced by Langdon and Birdsall as `clouds' \cite{langdonTheoryPlasmaSimulation1970}.}  (often referred to as `macro-particles' in practice as they typically represent a large number of real particles), such that
+\begin{equation}
+	f_s(t,\mathbf{x},\mathbf{p}) = \sum^{N_s}_{p=1} w_p S(\mathbf{x}-\mathbf{x}_p(t))\delta (\mathbf{p}-\mathbf{p}_p(t)),
+\end{equation}
+where $w_p$ is the quasi-particle's weight, $\mathbf{x}_p$ and $\mathbf{p}_p$ are its position and momentum respectively, $\delta$ is the Dirac-delta distribution and $S(\mathbf{x})$ the shape-function chosen to represent the quasi-particle. The Vlasov equation is then integrated along the continuous trajectories of the quasi-particles while Maxwell's equations are solved on a discrete spatial grid of `cells'. Such a code is aptly named a `\ac{PIC}' code.
 
-
-
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/intro/intro_PIC_cycle-01}
+	\caption[Diagram of the PIC code algorithm]{Diagram of the PIC code algorithm}
+	\label{fig:intropiccycle-01}
+\end{figure}
 
 
 \subsubsection{Smilei}
-Smilei (for Simulating Matter Irradiated by Light at Extreme Intensities) is a modern collaborative, massively-parallel, fully relativistic and open source plasma physics PIC code and was the main workhorse for this thesis\footnote{At points benchmarks agaist the EPOCH and Osiris PIC codes were performed.}. Produced by M. Grech's team(CHECK THIS) at École Polytechnique \cite{derouillat_2018_SmileiCollaborativeOpensource}, its development was motivated by the rapid development of multi-petawatt facilities globally including their local Apollon laser and by supercomputing power which has `skyrocketed' in recent years \cite{derouillat_2018_SmileiCollaborativeOpensource}. Indeed, the work in this thesis with 3D simulations required over \qty{1e6}{cores}.
+Smilei (for Simulating Matter Irradiated by Light at Extreme Intensities) is a modern collaborative, massively-parallel, fully relativistic and open source plasma physics PIC code and was the main workhorse for this thesis\footnote{At points benchmarks agaist the EPOCH and Osiris PIC codes were performed.}. Produced by M. Grech's team(CHECK THIS) at École Polytechnique \cite{derouillatSmileiCollaborativeOpensource2018}, its development was motivated by the rapid development of multi-petawatt facilities globally including their local Apollon laser and by supercomputing power which has `skyrocketed' in recent years \cite{derouillatSmileiCollaborativeOpensource2018}. Indeed, the work in this thesis with 3D simulations required over \qty{1e6}{cores}.
 
 
 \subsubsection{Reference quantities}
