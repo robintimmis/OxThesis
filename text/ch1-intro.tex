@@ -208,10 +208,11 @@ The chi parameter will change rapidly once the transition to QED ZVP has occured
 \section{Simulations}
 \subsection{Particle-In-Cell codes}
 
+\textbf{Other considerations:(At some point list all the other sources of potential error, including ignoring ionisation, ionisation states, collisions.)}
 I think put this in the main intro section. Then start PIC codes with discretisation of the Vlasov-Maxwell system of equations.
 
 \subsubsection{The Vlasov-Maxwell system of equations}
-A collisionless and fully ionised plasma, as relevant to this thesis, is fully described in the kinetic description by the Vlasov-Maxwell system of equations \cite{derouillatSmileiCollaborativeOpensource2018}. Each plasma species, $s$, of particles with mass $m_s$ and charge $q_s$ is described by its distribution function $f_s(t,\mathbf{x},\mathbf{p})$ at time $t$, position $\mathbf{x}$ and momentum $\mathbf{p}$. The distribution satisfies the Vlasov equation, that is,
+A collisionless and fully ionised plasma is fully described in the kinetic description by the Vlasov-Maxwell system of equations \cite{derouillatSmileiCollaborativeOpensource2018}. Each plasma species, $s$, of particles with mass $m_s$ and charge $q_s$ is described by its distribution function $f_s(t,\mathbf{x},\mathbf{p})$ at time $t$, position $\mathbf{x}$ and momentum $\mathbf{p}$. The distribution satisfies the Vlasov equation, that is,
 \begin{equation}
 	(\partial_t + \frac{\mathbf{p}}{m_s\gamma} \cdot \nabla + \mathbf{F}_\mathrm{L} \cdot \nabla_\mathbf{p})f_s = 0,
 \end{equation}
@@ -245,12 +246,11 @@ and
 respectively.
 
 \subsubsection{Discretisation of the Vlasov-Maxwell equations}
-Finding numerical solutions to the Vlasov-Maxwell equations is no straightforward task, there are codes that are capable such as Valis \textbf{**CITE**}, however, the requirement for very high resolution in both position and momentum is exceedingly costly and use of such codes are limited in their size, duration and spatial dimensions. A more tractable approach is to discretise the distribution function into $N_s$ `quasi-particles'\footnote{Originally introduced by Langdon and Birdsall as `clouds' \cite{langdonTheoryPlasmaSimulation1970}.}  (often referred to as `macro-particles' in practice as they typically represent a large number of real particles), such that
+Finding numerical solutions to the Vlasov-Maxwell equations is no straightforward task, there are codes that are capable such as Valis \textbf{**CITE**}, however, the requirement of high resolution in both position and momentum is exceedingly costly and use of such codes are limited in their size, duration and spatial dimensions. A more tractable approach is to discretise the distribution function into $N_s$ `quasi-particles'\footnote{Originally introduced by Langdon and Birdsall as `clouds' \cite{langdonTheoryPlasmaSimulation1970}.}  (often referred to as `macro-particles' in practice, typically representing a large number of real particles), such that
 \begin{equation}
 	f_s(t,\mathbf{x},\mathbf{p}) = \sum^{N_s}_{p=1} w_p S(\mathbf{x}-\mathbf{x}_p(t))\delta (\mathbf{p}-\mathbf{p}_p(t)),
 \end{equation}
-where $w_p$ is the quasi-particle's weight, $\mathbf{x}_p$ and $\mathbf{p}_p$ are its position and momentum respectively, $\delta$ is the Dirac-delta distribution and $S(\mathbf{x})$ the shape-function chosen to represent the quasi-particle. The Vlasov equation is then integrated along the continuous trajectories of the quasi-particles while Maxwell's equations are solved on a discrete spatial grid of `cells'. Such a code is aptly named a `\ac{PIC}' code.
-
+where $w_p$ is the quasi-particle's weight, $\mathbf{x}_p$ and $\mathbf{p}_p$ are its position and momentum respectively, $\delta$ is the Dirac-delta distribution and $S(\mathbf{x})$ the shape-function chosen to represent the quasi-particle. The Vlasov equation is then integrated along the continuous trajectories of the quasi-particles while Maxwell's equations are solved on a discrete spatial grid of `cells'. Such a code is aptly named a `\ac{PIC}' code. A schematic of the PIC code algorithm is presented in figure \ref{fig:intropiccycle-01}. 
 % TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
@@ -258,6 +258,15 @@ where $w_p$ is the quasi-particle's weight, $\mathbf{x}_p$ and $\mathbf{p}_p$ ar
 	\caption[Diagram of the PIC code algorithm]{Diagram of the PIC code algorithm}
 	\label{fig:intropiccycle-01}
 \end{figure}
+After initialising particles, Maxwell's equations are solved with the \ac{FDTD} approach \cite{tafloveComputationalElectromagneticsFiniteDifference2005} where electromagnetic fields are discretised the staggered `Yee grid'. This ensures 
+
+HMM Im confused... read langdon maybe and redo this section then?
+
+To ensure space and time centering of the electromagnetic field derivatives in Maxwell's equations, electric and magnetic fields are discretised on the staggered `Yee grid'. Electric fields are defined at integer time steps, $n$ while magnetic fields at half-integeter ($n + 1/2$) time steps. Note, for the particle pusher it is also required that the magnetic fields also be defined at integer steps. Particles are advanced in time using a `leap-frog' scheme, where positions are defined at integer timesteps and momenta at half integer.
+
+Using a momentum and charge conserving scheme (cite Esekipov sheme for charge conservation used by Smilei.).
+
+Well known Boris pusher
 
 
 \subsubsection{Smilei}
@@ -299,4 +308,37 @@ To great convenience, Smilei operates in normalised units. This normalisation is
 
 
 
+\subsubsection{General simulation parameters}\label{sec:intro-general_simulation_paramers}
+\textbf{Boundary conditions}
+"Silver-M$\ddot{\mathrm{u}}$ller" boundary conditions for the simulation box edges \textbf{cite - H Barucq Asymptomatic analysis 1997}. These are able to absorp and inject electromagnetic waves and particles. Note that there can be non-physical reflection of electromagnetic waves at such boundaries leading to error.
+
+\textbf{Shape function} The quasi-particle shape function $S(\mathbf{x})$ describes how to project charge onto the grid. It is symmetric in all dimensions with respect to $\mathbf{x}$ and extends over $n$ cells of width $\Delta x$ in each direction where $n$ is the interpolation order. It can be written as a product across $D$ dimensions,
+\begin{equation}
+	S(\mathbf{x}) = \Pi^D_{\mu = 1}s^{(n)}(x^\mu).
+\end{equation}
+Smilei implements orders 2, 3 and 4, the explicit shape functions are
+\begin{subequations}
+	\begin{align}
+	s^2 (n) &= \begin{cases}
+		\frac{1}{\Delta x}\left(1-\left|\frac{x}{\Delta x}\right| \right)  & \text{if } |x| \le \Delta x, \\
+		0  & \text{otherwise,}
+	\end{cases} \\
+	s^3(n) &= \begin{cases}
+		\frac{3}{4\Delta x}\left(1-\frac{4}{3}\left(\frac{x}{\Delta x}\right)^2 \right)  & \text{if } |x| \le \frac{1}{2}\Delta x, \\
+		\frac{9}{8\Delta x}\left(1-\frac{2}{3}\left|\frac{x}{\Delta x}\right| \right)^2  & \text{if } \frac{1}{2}\Delta x <|x| \le \frac{3}{2} \Delta x, \\
+		0  & \text{otherwise,}
+	\end{cases}  \\
+		s^4(n) &= \begin{cases}
+		\frac{2}{3 \Delta x}\left( 1-\frac{3}{2}\left(\frac{x}{\Delta x}\right)^2 + \frac{3}{4}\left| \frac{x}{\Delta x}\right| ^3 \right)  & \text{if } |x| \le \Delta x, \\
+		\frac{4}{3 \Delta x}\left(1-\frac{1}{2}\left|\frac{x}{\Delta x}\right| ^3 \right)  & \text{if } \Delta x <|x| \le 2\Delta x, \\
+		0  & \text{otherwise.}
+	\end{cases} 
+	\end{align}
+\end{subequations}
+
+\subsubsection{Parallelisation}
+Modern \ac{HPC} systems are poised to enter the exascale regime ($> 10^{18}$ Floating Point Operations Per Second). With limited improvements in microprocessor technoligies, such power is acheived through massive parallelisation across processing units. To enable the study of the dynamics of up to billions of macroparticles, PIC codes test the limits of current supercomputing architectures. 
+
+\subsubsection{Supercomputing resources}\label{sec:intro-archer}
+ARCHER2, the UK's national supercomputer came online in November 2021, with it delivering over ten times the reseources of its predecessor (ARCHER) \cite{ARCHER2}. An HPE Cray EX supercomputing system with a peak performance estimated at \qty{28}{Pflops.s^{-1}} across 5860 nodes each with dual AMD EPYCTM 7742 64-core processor for a total of 750,080 cores, ARCHER2 was able to supply the resources required to run the costly PIC simulations for this research. The substantially cheaper HYADES simulations were performed using the Rutherford Appleton Laboratory's SCARF \ac{HPC} cluster \cite{SCARFOverview}.
 
