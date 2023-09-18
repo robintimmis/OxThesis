@@ -400,6 +400,10 @@ Simulation parameters in table \ref{tab:parameters}, such parameters are compati
 \end{table}
 Figure \ref{fig:zvp3d}c) clearly demonstrates the existence of high energy density electron bunches propagating through the plasma bulk in the direction of the laser pulse. Note that this ZVP criterion is required by conservation of transverse momentum inside the plasma bulk where the laser fields cannot propagate. Figure \ref{fig:zvp3d}b) shows these bunches escape to the rear of the bulk but lose energy as they do so. Looking now at figure \ref{fig:zvp3d}e) and the internal structure of the plasma bulk. These bunches drive two-stream and filamentation instabilities \cite{bretMultidimensionalElectronBeamplasma2010}. The bulk propagating bunches are accompanied by higher density electron buches to either side of the plasma block with the side switching every half laser pulse cycle. 
 
+The thickness of the target does not impact the interaction and is chosen for computational efficiency, indeed it is standard to consider such targets of thickness $\ge \lambda_\mathrm{L}$ as bulk targets \cite{dollar_2017_EnhancedLaserAbsorption}, however, for sufficiently long pulse durations, the effect of hole boring necessitates thicker targets to make this approximation.
+
+
+
 The plasma specifications were chosen to minimise computational load while ensuring numerical convergence, requiring over 100 billion macroparticles. The electron temperature is raised significantly higher than that which would be expected in such a laser-plasma system so as to resolve the Debye length. Anticipated plasma temperatures are calculated using 1D HYADES simulations in the following chapter. While this temperature is unphysical and will lead to some small plasma expansion over course of the simulation, the temperature remains negligible compared to that imparted to the electron bunches by the laser pulse. The striking similarity between the 2 and 3D simulation results is a natural consequence of the 2D nature of the interaction geometry. It is however still reassuring to note that previous work withstands the stringent test of the real universe geometry and not lost in the chaos.
 
 \subsubsection{Convergence of 3D simulations}
@@ -578,3 +582,37 @@ To do: convergence of electron bunch energies with nppc and sim resolution.
 At aome point mention:
 
 Note that ZVP does not describe the peak energies in the bunches, then JxB applies, since there are always some electrons outside of the well defined sharp boundary when the density is not high enough to impose adiabaticity. 
+
+
+
+
+\section{Planned future work}\label{sec:zvp-future_work}
+As Niels Bohr famously said, `Nothing exists until it is measured'. While this statement was in reference to quantum mechanics, perhaps the proliferation of sources of uncertainty inherent to state-of-the-art PIC codes justifies application of the statement to this work. After a successful proposal application, four weeks of beam time have been award on the GEMINI-PW laser facility at the \ac{CLF} \cite{__LaserSystemGemini}. Next July, the study of mass-limited ZVP electron bunches will be put to the test as part of a three-pronged experimental campaign. These are
+\begin{enumerate}
+	\item Characterise the X-ray \ac{HHG} emission from the reflection of a relativistic laser of a solid target, following on from a recent experiment at the ORION laser facility at AWE \cite{hopps_2013_OverviewLaserSystems}, which is discussed in great detail in the following chapter;
+	\item Simultaneously measure and correlate \ac{HHG} and the ZVP electron bunches responsible for the \ac{HHG} using a novel experimental setup;
+	\item Apply the attosecond X-ray \ac{HHG} beam as a diagnostic tool in a proof of principle warm dense matter experiment.
+\end{enumerate}
+Preparations are now underway. The requirements for this experiment are simple: a relativistically intense high contrast laser pulse ($a_0 \ge 10$) of a few femtoseconds duration incident on a solid target with surface perturbations small compared to the wavelength of the laser pulse. A simulation describing the experimental setup for the ZVP bunch measurement is given in figure \ref{fig:experimentsetuphhgbunches2}. 
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/zvp/Experiment_setup_HHG_bunches2}
+	\caption[Planned GEMINI-PW experimental setup for the measurement of ZVP electron bunches.]{A simulation of the planned GEMINI-PW experimental setup for the measurement of ZVP electron bunches. This novel setup enables the simultaneous measurement of attosecond ZVP electron bunches and their coherent emission of X-ray light. The GEMINI-PW laser pulse is incident at 45\degree on the low density polyethylene target with a preplasma scale length of $0.2\lambda_\mathrm{L}$. For this angle of incidence, transmitted bunches and specularly reflected X-ray harmonics are produced at a frequency of $\omega_\mathrm{L}$.}
+	\label{fig:experimentsetuphhgbunches2}
+\end{figure}
+By focusing the laser onto the edge of a transversely mass-limited target, the emitted electron bunch energies will be maximised. Simulations suggest it should be possible to simultaneously measure the specularly reflected \ac{HHG} and the attosecond ZVP electron bunches that produce it. Directly linking the bunch qualities to the properties of the \ac{HHG}. 
+
+Remaining actions include the performance of PIC code simulation parameter scans in the new geometry. While normal incidence was most convenient for these initial simulations, oblique incidence is more optimal for \ac{HHG} \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011, edwardsXRayEmissionEffectiveness2020} and as can be understood from equations \ref{eq:zvp_Tzvp_theta} and \ref{eq:zvp_Uzvp_theta}, the new energy scaling expressions for the ZVP mechanism at oblique incidence. Not only is oblique preferable but it is essential to mitigate damage to the laser optics via back-reflection. The \ac{HHG} beam intensity at focus can be over 1000 times that of the incident laser pulse \cite{quereReflectingPetawattLasers2021}. It is necessary, therefore, to test the new predictions for oblique incidence energy scalings and total electron bunch charge as well as the angle of bunch ejection, the non-zero transverse vector potential of the laser will prevent the bunch from propagating directly along the transmission axis. It would also be useful to perform a parameter scan of preplasma scale length. In this work so far, it was assumed that the optima for electron bunch production are simply those for \ac{HHG} given the intrinsic link between the two. \textbf{CITE THESE}. 
+
+\subsection{GEMINI-PW laser facility}
+
+\subsubsection{Targets}
+A range of thick, flat solid targets are proposed to probe the density parameter space: diamond, a selection of plastics (polymethyl methacrylate, low and high density polyethylene and polycarbonate) and mirrored targets, which produced interesting and slightly unexpected results in the ORION experiment. Target wheels will be used to take full advantage of the high shot rate of the GEMINI-PW laser. It is anticipated that due to focal spot jitter, not all shots will hit the target edges. 
+
+\subsubsection{Diagnostics}
+The electron bunches will be measured using an electron spectrometer placed a few centimetres from the target to measure the time-integrated energy spectrum. The spectrometer will be shielded from the laser pulse and any \ac{HHG} in transmission using a flash coated kapton foil which should not significantly hinder the MeV electron bunches. Mordovanakis \textit{et al} used Image Plate stacks to obtain the electron bunch structure and emission angle, it may be necessary to perform this first to ensure the bunches are captured by the spectrometer. While resolving attosecond durations remains an outstanding challenge of experimental science, it may be possible to measure the total duration of the train of attosecond electron bunches by measuring the characteristics of coherent optical transition radiation produced by the electrons upon incidence on a secondary target \cite{linIsolatedAttosecondElectron2020}. The X-ray \ac{HHG} emission will be measured using the OHREX spectrometer \cite{beiersdorferLineshapeSpectroscopyVery2016}, a spherically bent crystal spectrometer with ultra-high resolution and high-signal-to-noise ratio. Lower order harmonics will be measured using angularly resolving EUV spectrometers. Note that in the absence of attosecond resolution diagnostics, measuring the harmonic spectrum of the coherent \ac{HHG} is the only way to reconstruct the temporal shape of the pulse. Simulations have suggested that the reflected spectrum produced by Coherent Synchrotron Emission of the electron bunches is approximately Fourier-limited \cite{cousensElectronTrajectoriesAssociated2020}.
+
+
+
+\section{Conclusion}
