@@ -360,9 +360,9 @@ Simulation parameters in table \ref{tab:parameters}, such parameters are compati
 		Parameters                                        & Real                                 & Sim                         \\ \hline
 		Wavelength, $\lambda$ (nm)                        & 1060                                 & 2$\pi$                      \\
 		Angular frequency, $\omega_\mathrm{L}$ (fs$^{-1}$)         & 1.8                                  & 1                           \\
-		Beam waist, $L_0$ (nm)                            & 6$\lambda$                           & 12$\pi$                     \\
-		Focal point, ($f_x$, $f_y$, $f_z$) (nm)                  & (0.5$\lambda$, 5$\lambda$, $0.5\lambda$)             & ($\pi$, 10$\pi$, $\pi$)           \vspace{0.25cm}\\ 
-		Spatial envelope, $E_i$, $i = y,z$                           & \multicolumn{2}{l}{$E_i \sim e^{-(i-f_i)^2/L_0^2}$}                \\
+		Beam waist, $w_\mathrm{L}$ (nm)                            & 6$\lambda$                           & 12$\pi$                     \\
+		Focal point, ($x_f$, $y_f$, $z_f$) (nm)                  & (0.5$\lambda$, 5$\lambda$, $0.5\lambda$)             & ($\pi$, 10$\pi$, $\pi$)           \vspace{0.25cm}\\ 
+		Spatial envelope, $E_i$, $i = y,z$                           & \multicolumn{2}{l}{$E_i \sim e^{-(i-i_f)^2/w_\mathrm{L}^2}$}                \\
 		Temporal envelope, $E_t$                          & \multicolumn{2}{l}{$E_t \sim e^{-(t-4\lambda/c)^2/(4\lambda/3c)^2}$} \vspace{0.15cm}\\ \hline \hline
 		\multicolumn{3}{c}{Simulation box}   \\ \hline
 		Size, $x \times y\times z$ (nm)                           & $2\lambda \times 9\lambda \times \lambda$          & $4\pi \times 18\pi \times 2\pi$         \\
@@ -468,9 +468,9 @@ Following the success in reproducing the key features of the \ac{ZVP} mechanism 
 \end{figure}
 The electron bunch under interrogation is ultra-relativistic with a mean energy of \qty{51\pm 11}{MeV} and a duration of 35 as. It propagates at an angle of -393 rad relative to the laser propagation direction, \textit{i.e.} the $x$-axis, and a transverse geometric emittance in the simulation plane (the $x$-$y$ plane) of \qty{35 \pm 7}{nm.rad}. A definition of the transverse geometric emitance, a measure of the quality of the electron beam, is given in appendix \ref{app:1-basics-transverse_emittance}. Note that while the bunch does not propagate in the laser propagation direction, this does not mean it must be rejected under consideration of the ZVP bunch conditions. Indeed, the bunch must propagate at some angle to the laser since conservation of canonical momentum while it remains in thrall of the laser pulse it must have some transverse component of momentum. The more standard ZVP bunches passing through the bulk again by conservation of momentum must propagate along the axis, as is observed in simulation. For an equivalent bunch in a corresponding 3D simulation, the transverse geometric emittance in the $z$ plane is \qty{15\pm 11}{nm.rad}. This electron bunch has a total charge of 0.35 nC for a slab of plasma of thickness $0.75\lambda$ in the $z$-direction. Noting again the two-dimensional nature of the interaction geometry, and that electrons less than twice the relativistic Larmor radius, 
 \begin{equation}
-	r_\mathrm{l} = \frac{\gamma m_\mathrm{e}v}{eB},
+	r_\mathrm{L} = \frac{\gamma m_\mathrm{e}v}{e|\mathbf{B}|},
 \end{equation}
-where $\gamma$ and $v$ correspond to the electron velocity and $B$ is the magnetic field of the laser pulse, when rotated back towards the plasma will escape to the side, the total number of electrons in the mass-limited bunch is
+where $\gamma$ and $v$ correspond to the electron velocity, when rotated back towards the plasma will escape to the side, the total number of electrons in the mass-limited bunch is
 \begin{equation}
 	N = 2 n_\mathrm{e} r_\mathrm{l} L_z \Delta x,
 \end{equation}
