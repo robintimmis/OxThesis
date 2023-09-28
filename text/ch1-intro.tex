@@ -38,7 +38,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 \begin{enumerate}
 	\item HYADES simulations
 	\item Add more citations
-	\item Similarity theory
+	\item Similarity theory details in appendix
 	\item Add details on CPA and OPCPA
 	\item Simulation algorithms (details in appendix?)
 	\item Velocity transformations derivation (appendix)
@@ -48,6 +48,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 	\item Particle merging
 	\item Radiating particles and relativistic larmor radius
 	\item smieli performance plot
+	\item A collisionless fully ionised plasma
 \end{enumerate}
 
 On the ZVP front
@@ -255,11 +256,11 @@ Modern high-power lasers operate in the domain of relativistic mechanics and in 
 
 Many useful quantities can be arranged into contravariant four-vectors that undergo a Lorentz transformation for a change of frame of reference \cite{steaneRelativityMadeRelatively2012}, specifically, 
 \begin{equation}
-	\mathbf{A}'^\mu = \Lambda^\mu_\nu \mathbf{A}^\mu,
+	\mathbf{A}'^\mu =\Lambda_\mu^\nu \mathbf{A}^\mu,
 \end{equation}
 where $\Lambda^\mu_\nu$ is the appropriate Lorentz transformation, and primed symbols typically denote boosted frames of reference. Without loss of generality, the coordinate system can be defined such that the boosted frame travels along the $\mathbf{x}$-axis with respect to the initial frame. Thus, the Lorentz transformation is defined
 \begin{equation}\label{eq:zvp_lorentz}
-	\Lambda^\mu_\nu = \begin{pmatrix}
+	\Lambda_\mu^\nu = \begin{pmatrix}
 		\gamma & -\beta\gamma & 0 & 0\\
 		-\beta\gamma & \gamma & 0 & 0\\
 		0 & 0& 1 & 0\\
@@ -389,7 +390,7 @@ and hence the system is described by the Lagrangian \cite{goldsteinClassicalMech
 \end{equation}
 The generalised momentum corresponding to coordinate $x_j$ is
 \begin{equation}
-	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = m_j\dot{x}_j + e_jA_x,
+	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = \frac{m_j\dot{x}_j }{\gamma_j}+ e_jA_x,
 \end{equation}
 thus, the generalised momentum describes both the linear mechanical momentum and the momentum of the electromagnetic field. Via Noether's theorem, if $L$ is independent of $x_j$, \textit{i.e.} spatially homogeneous along $x$ for particle $j$, then 
 \begin{equation}\label{eq:intro-transverse_momentum_differential_equation}

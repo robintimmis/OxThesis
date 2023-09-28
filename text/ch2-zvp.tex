@@ -37,7 +37,7 @@ The Hamiltonian of a single electron confined within the potential well \cite{go
 \end{equation}
 Here, the second term of equation \ref{eq:hamiltonian_general} describes the contribution to the electron's energy from the electrostatic potential, $\Phi$, of the pseudo-capacitor. The first term is the electron energy, $U$, extracted from the invariant of the relativistic 4-momentum of the electron, $\mathbf{P^\mu} = (U/c, \mathbf{p})$,
 \begin{equation}\label{eq:zvp-energy_invariant}
-	\mathbf{P^\mu \cdot P_\mu} = \frac{U^2}{c^2} - |\mathbf{p}|^2 = m^2_\mathrm{e}c^2.
+	\mathbf{P_\mu  P^\mu} = \frac{U^2}{c^2} - |\mathbf{p}|^2 = m^2_\mathrm{e}c^2.
 \end{equation}
 
 Decomposing the electron's 3-momentum into orthogonal components: $p_\mathrm{prop}$, along the laser propagation direction, $p_\mathrm{pol}$, along the polarisation axis of the laser pulse and $p_\perp$, perpendicular to both, there are two simplifications to be made. Firstly, by canonical conservation of transverse momentum, $p_\mathrm{pol} = eA$, where $A$ is the laser vector potential amplitude. Secondly, in the case of a p-polarised laser pulse (the known optimum for ZVP electron bunch generation \cite{savinAttosecondscaleAbsorptionExtreme2017} and \ac{HHG} \cite{baevaTheoryHighorderHarmonic2006}), with reference to figure \ref{fig:zvpforcesppol} and the Lorentz force law, the forces at play confine the electron trajectory to the  $p_\mathrm{prop}$-$p_\mathrm{pol}$ plane and the essential interaction geometry is two-dimensional. This is provided one considers length scales smaller than the focal spot of the laser pulse on the target such that the pondermotive pressure is normal to the target surface.
@@ -50,17 +50,16 @@ From equation \ref{eq:hamiltonian_specific} it is clear that should the vector p
 
 \textbf{**Must also discuss the impact of relativity in creating the observed phenomena, probably at energy scaling section?**}
 
-As the \ac{ZVP} mechanism is a relativistic phenomenon, it is essential to perform this analysis relativistically. Since all electrons are accelerated by the relativistic laser pulse to approximately speed $c$, surface electrons undergo similar trajectories and act collectively, oscillating in the laser pulse field. Consider first a transformation to the frame of reference where the laser pulse is normally incident to the plasma surface, this frame travels at velocity $\mathbf{v} = (c\sin\theta )\hat{\mathbf{y}}$ with electrons streaming at $-\mathbf{v}$. 
-\textbf{**This needs adjusting for transverse momentum when there is an initial component that is non zero**}
-Using equation \ref{eq:zvp-energy_invariant} and $U = \gamma m_\mathrm{e} c^2$,
+As the \ac{ZVP} mechanism is a relativistic phenomenon, it is essential to perform a relativistic analysis. Since all electrons are accelerated by the relativistic laser pulse to approximately speed $c$, surface electrons undergo similar trajectories and act collectively, oscillating in the laser pulse field. Consider first a transformation to the frame of reference where the laser pulse is normally incident to the plasma surface, this frame travels at velocity $\mathbf{v} = (c\sin\theta )\hat{\mathbf{y}}$ with electrons streaming at $-\mathbf{v}$. 
+Using equation \ref{eq:zvp-energy_invariant}, $U = \gamma m_\mathrm{e} c^2$ and integrating equation \ref{eq:intro-transverse_momentum_differential_equation} in the boosted frame,
 \begin{equation}
-	\gamma^2 = 1 + a^2_0 + \left(\frac{p_\mathrm{prop}}{m_\mathrm{e}c}\right)^2,
+	\gamma^2 = 1 + (a_0 + \sin\theta\cos\theta)^2 + \left(\frac{p_\mathrm{prop}}{m_\mathrm{e}c}\right)^2,
 \end{equation}
 where all parameters are in the boosted frame. Using $\mathbf{p} = \gamma m_\mathrm{e} \mathbf{v}$, the longitudinal velocity is
 \begin{equation}
-	v_\mathrm{prop} = \frac{\tilde{p}_\mathrm{prop}c}{\sqrt{1 + a^2_0 + \tilde{p}^2_\mathrm{prop}}},
+	v_\mathrm{prop} = \frac{\tilde{p}_\mathrm{prop}c}{\sqrt{1 + (a_0 + \sin\theta\cos\theta)^2 + \tilde{p}^2_\mathrm{prop}}},
 \end{equation}
-where $\tilde{p}_\mathrm{prop} = p_\mathrm{prop}/m_\mathrm{e}c$. Thus, should the vector potential pass through zero, the surface is able to propagate towards the laser pulse at very close to speed $c$. Transforming back to the laboratory frame at the peak of ablation ($\mathbf{u}\approx -c\hat{\mathbf{x}}$) and using the equations for relativistic velocity addition,
+where $\tilde{p}_\mathrm{prop} = p_\mathrm{prop}/m_\mathrm{e}c$. Thus, should the vector potential pass through $-\sin\theta\cos\theta$, zero for normal incidence, the surface is able to propagate towards the laser pulse at very close to speed $c$. Transforming back to the laboratory frame at the peak of ablation ($\mathbf{u}\approx -c\hat{\mathbf{x}}$) and using the equations for relativistic velocity addition,
 \begin{equation}\label{eq:zvp_velocityaddition1}
 	\mathbf{u}'_{\|} = \frac{\mathbf{u}-\mathbf{v}}{1- \mathbf{u}\cdot\mathbf{v}/c^2},
 \end{equation}
@@ -93,24 +92,7 @@ and the velocity of the rest frame of the ablating front relative to the lab fra
 
 \textbf{**Include a section in the intro describing laser reflection off a plasma, including calculation of skin depth and once have calculated bunch thickness using oblique thing, determine skin depth etc**}
 
-Applying the Lorentz transformation to the electromagnetic 4-potential,
-\begin{equation}
-	\mathbf{A}_\mu = (\phi/c,\mathbf{A}),
-\end{equation}
-explicitly,
-\begin{equation}
-	\mathbf{A}'_\mu = \Lambda^\mu_\nu \mathbf{A}_\nu,
-\end{equation}
-where $\Lambda^\mu_\nu$, the Lorentz transform in this geometry is
-\begin{equation}\label{eq:zvp_lorentz}
-	\Lambda^\mu_\nu = \begin{pmatrix}
-			\gamma & -\beta\gamma & 0 & 0\\
-			-\beta\gamma & \gamma & 0 & 0\\
-			0 & 0& 1 & 0\\
-			0 & 0 & 0 & 1
-	\end{pmatrix}
-\end{equation}
-and here $\beta = -v_\mathrm{f}/c$, $\gamma = 1/\sqrt{1-\beta^2}$. Immediately from the $y$-coordinate transformation,
+Applying the Lorentz transformation to the electromagnetic 4-potential, $\mathbf{A}^\mu$, where $\Lambda_\mu^\nu$ is given by equation \ref{eq:zvp_lorentz}, immediately from the $y$-coordinate transformation,
 \begin{equation}\label{eq:zvp_lorentz_y}
 	A'_\mathrm{L}\cos{2\theta'} = A_\mathrm{L}\cos{2\theta}.
 \end{equation}
