@@ -60,6 +60,7 @@ On the ZVP front
 	\item Check out new sims
 	\item Conclusion
 	\item Shape of transverse momentum (more parabolic compared to linear and explanaition of bunch holding together), Shrp front edge then parabolic (or even exponential decay - it is defo expoenential)
+	\item a0 convention, when max and when varying in time
 	\item Editing
 \end{enumerate}
 
@@ -554,7 +555,7 @@ Each task (MPI process) handles one \textit{MPI patch collection}. Threads work 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/intro/intro_smilei_parallelisation_complex}
-	\caption[Representation of the interaction of the ARCHER2 hardware and software components when running Smilei.]{Representation of the interaction of the ARCHER2 hardware and software components when running Smilei.}
+	\caption[Representation of the interaction of the ARCHER2 hardware and software components when running Smilei.]{Representation of the interaction of the ARCHER2 hardware and software components when running Smilei. Each CPU is assigned a thread, each task is carried out by one socket. A task tackles one MPI patch collection with threads working through patches.}
 	\label{fig:introsmileiparallelisationcomplex}
 \end{figure}
 Threads do not need to wait for other threads in their process to tackle new patches in their MPI patch collection. This is a form of local \textit{dynamic load balancing}. If an MPI patch collection is overloaded, a patch is offloaded to a contiguous MPI patch collection.

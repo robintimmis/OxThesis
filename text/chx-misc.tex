@@ -20,6 +20,10 @@ I should go over this and use third year relativity notes to formalised and make
 
 While some of this section may seem trivial, it is frequently miscalculated in the literature, it therefore seems of great importance to provide a full derivation.
 
+The following is inspired by \cite{bourdierObliqueIncidenceStrong1983}, here they give the formula for k and omega.
+
+In \cite{bourdierDynamicsChargedParticle2001} they determine the normalised vector potential, if defined similarly in the new frame, then it is frame invariant. This fails to consider what about the fact that the vector potential is in reality more complex and is not simply the temporal integral of the electric field. Nonetheless it is still reasonable to define it so if what is of real importance (as is usually important) is in fact the fields and it is simply being used as a way to normalise the field intensity.
+
 Consider a photon incident on a plasma block at angle $\theta$ as in figure \ref{fig:miscreferenceframesboosted1d}.
 % TODO: \usepackage{graphicx} required
 \begin{figure}
@@ -112,6 +116,25 @@ it follows that
 \begin{equation}
 	S' = \frac{S}{\cos^3\theta}.
 \end{equation}
+
+
+\subsubsection{Four-potential transformation}
+Consider a laser pulse obliquely incident, angle $\theta$, it has 4-vector potential $\mathbf{A}^\mu = (0, A\sin\theta,A\cos\theta,0)$, where $A = A_0\sin(\mathbf{k}\cdot\mathbf{x} - \omega t)$ and $\mathbf{k} = (k\cos\theta,k\sin\theta,0)$. Applying the lorentz transformation, in the frame where the laser pulse is normally incident,
+\begin{equation}
+	\mathbf{A}'^\mu = (-\gamma\beta A\cos\theta/c,  - A\sin\theta, \gamma A\cos\theta,0) = (-A\sin\theta, -A\sin\theta, A,0) 
+\end{equation}
+since $\beta = \sin\theta$ in the positive $y$ direction and $\gamma = 1/\cos\theta$.
+
+Therefore,
+\begin{equation}
+	\mathbf{E}'/\cos(\mathbf{k}\cdot\mathbf{x} - \omega t) = --\sin\theta\cos\theta k A_0\hat{\mathbf{x}} --- \sin\theta\cos\theta \omega A_0\hat{\mathbf{x}} + A_0\omega\cos\theta = A_0\omega',
+\end{equation}
+since $\sin(\mathbf{k}\cdot\mathbf{x} - \omega t) = \sin(x'k\cos\theta-\omega t'\cos\theta)$
+Note I have been sloppy here with factors of $c$.
+
+Do it does look at though the vector potential amplitude is unchanged by the transformation but it is more subtle, it is useful to define an $a_0' = eE/m_\mathrm{e}\omega$ to normalise the electric field intensity but note that this cannot be converted into the actual vector potential, it is just a useful construct.
+
+Also note that whatever the transverse vector potential is in the boosted normal incidence frame is simply whatever the amplitude of the vector potential is in the oblique incidence frame.
 
 \subsection{ORION interaction geometry}
 The ORION target chamber has its own defined geometry with the target located at the origin, described in figure \ref{fig:miscoriontargetchambergeometry}.
@@ -206,3 +229,27 @@ composite mass density $\rho = \sum_i m_i n_i$, $m_i = A_i/N_\mathrm{A}$ and $A_
 
 
 
+
+\section{Thinking about the ZVP calculation}
+When I run sims on oblique incidence, this is another theorem that could be interesting to test.
+
+Consider now that the surface moves inwards at speed $c$. In a time $\Delta t$, an energy $\sim B_\mathrm{L}^2\Delta t$ is incident on the surface. If at such a point, there exists a pseudocapacitor with electric field $E_\mathrm{C} \sim n_\mathrm{e}x_\mathrm{e}$, then the work done by pushing it inwards is $\sim E_\mathrm{C} n_\mathrm{e}x_\mathrm{e} \Delta x \ sim E_\mathrm{C}^2\Delta t$, since surface moving inwards at speed $c$. Thus by conservation of energy, the reflected field is $B_\mathrm{R}^2 = B_\mathrm{L}^2 - E_\mathrm{C}^2$. Note that at max displacement this cannot possibly be the case and we do see that the surface stops moving inwards, however this could be due to a reduction in the laser pulse intensity since the peak has passed. Thus this could be a reasonable approximation of the phenomena.
+
+Then the force equilibrium expression in the boosted frame is
+\begin{equation}
+	-B_\mathrm{L} - \sqrt{B_\mathrm{L}^2 - E_\mathrm{C}^2} \pm B_\mathrm{i} + E_\mathrm{C}
+\end{equation}
+working this through one finds,
+\begin{equation}
+	x_\mathrm{p} = \frac{\cos^2\theta}{kS}\frac{2(1\pm \sin\theta)}{\sin^2\theta \pm 2\sin\theta +2}
+\end{equation}
+\begin{equation}
+	T \sim \left(\frac{\cos^2\theta}{kS}\frac{2(1\pm \sin\theta)}{\sin^2\theta \pm 2\sin\theta +2}\right)
+\end{equation}
+And thus now predicting an optimum for electron energy at $\theta \approx 30$\degree. That is quite different. It also looks nicer so I would like this to be right.
+
+Another thing I still need to do is gonoskov technique to get bunch thickness, also do ZVP calculation in the exponential preplasma.
+
+
+\section{Things I may want to include or random notes}
+Note that ZVP does not describe the peak energies in the bunches, then JxB applies, since there are always some electrons outside of the well defined sharp boundary when the density is not high enough to impose adiabaticity. 
