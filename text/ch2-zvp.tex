@@ -62,7 +62,7 @@ where $\tilde{p}_\mathrm{prop} = p_\mathrm{prop}/m_\mathrm{e}c$. Thus, should th
 \begin{equation}\label{eq:zvp_velocityaddition2}
 	\mathbf{u}'_{\perp} = \frac{\mathbf{u}_\perp}{\gamma_v(1- \mathbf{u}\cdot\mathbf{v}/c^2)},
 \end{equation}
-where $\gamma_v = 1/\sqrt{1-|\mathbf{v}|^2/c^2}$ \cite{steaneRelativityMadeRelatively2012}, one finds that this peak ablation at speed $\approx c$ occurs now in the specular reflection direction. Simultaneity is broken and ripples co-move along the surface with the incident laser pulse wavefronts.
+where $\gamma_v = 1/\sqrt{1-|\mathbf{v}|^2/c^2}$ \cite{steaneRelativityMadeRelatively2012}, one finds that this peak ablation at speed $\approx c$ occurs now in the specular reflection direction. Simultaneity is broken and co-move along the surface with the incident laser pulse wavefronts.
 
 Transform now to the rest frame of the ablating front. Beyond the relativistic critical density surface, the vector potential of the laser pulse decays evanescently. At the spatial centre of the laser pulse, it can be described simply by
 \begin{equation}
@@ -70,7 +70,7 @@ Transform now to the rest frame of the ablating front. Beyond the relativistic c
 \end{equation}
 where the primed symbols indicate that these quantities are measured in the rest frame of the expanding front, $A'_0$ is the vector potential amplitude and $\omega'_\mathrm{L}$ is the frequency of the laser pulse, $r'$ is the propagation distance of the laser into the plasma, $\delta'$ is the skin depth and $\hat{\mathbf{r}}'_\mathrm{pol}$ a unit vector defining the polarisation direction of the laser pulse. Un-primed coordinates will indicate the lab frame measurements.
 
-\textbf{**For sure include a diagram of lorentz boost and change of structure in ablating front, also PIC simulation of surface ripples?**}
+% TODO PIC simulation of surface ripples?
 
 While previous demonstrations of the existance of vector potential zeros assumed that the ablation occurs normal to plasma surface, it is necessary to confirm that zeros are still predicted for specular ablation. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in figure \ref{fig:zvp_ablatingfront}.
 
@@ -477,70 +477,63 @@ Note also that as the laser pulse intensity rises, the fraction of energy absorb
 
 
 \subsection{Unpacking the QED effects of figure \ref{fig:zvppeakgamma}}
-In Savin's influential paper \cite{savin_2019_EnergyAbsorptionLaserQED}, he determined theoretically and demonstrated in simulation that at $a_0 = 300$, $n_\mathrm{e} = 50 n_\mathrm{c}$, there is a transition from standard ZVP scalings to an enhance QED scaling associated with \ac{BW} electrons increasing the pseudocapacitor plate charge. Explicitely,
+In Savin's acclaimed paper \cite{savinEnergyAbsorptionLaserQED2019}, they determined theoretically and demonstrated in simulation that at $a_0 = 300$, $n_\mathrm{e} = 50 n_\mathrm{c}$, there is a transition from standard ZVP scalings to an enhanced QED scaling associated with \ac{BW} electrons increasing the pseudocapacitor plate charge. Explicitely,
 \begin{equation}
 	T \sim \frac{a^5_0}{\bar{n}_\mathrm{e}}.
 \end{equation}
-Such a scaling shift was not observed for the large parameter scan presented in figure \ref{fig:zvpmeangammas}. Simulations revealed this was likely due to few \ac{BW} pairs produced towards the plasma edges and hence no additional gain in energy from crossing the pseudocapacitor. Another concern is Savin's study was conducted within the regime of relativistic transparency where it is unclear whether the ZVP potential well can be maintained and was not explored in this study. The final consideration is the well known effect of radiation trapping due to the radiation reaction \cite{jiRadiationReactionTrappingElectrons2014}, also observed in these PIC simulations. After acceleration across the pseudocapacitor, the electron bunch encounters the subsequent laser peak. If the electron bunch gamma factor and laser intensity are both large enough (include chi requirement), electrons radiate a significant fraction of their energy and are thus stopped in their tracks. Unable to now escape the potential well at the plasma surface they remain trapped and are not observed to escape the plasma until the laser pulse intensity reduces. Such an effect would not impact Savin's scalings but would of course inhibit the observation of the scaling for electrons escaping to the sides and rear of the plasma block.
+Such a scaling shift was not observed for the large parameter scan presented in figure \ref{fig:zvpmeangammas}. Simulations revealed this was likely due to only few \ac{BW} pairs being produced towards the plasma edges and hence no additional gain in energy from crossing the pseudocapacitor at those points. Another concern is Savin's study was conducted within the regime of relativistic transparency where it is unclear whether the ZVP potential well can be maintained and was not explored in this study. The final consideration is the well known effect of radiation trapping due to \ac{RR} \cite{jiRadiationReactionTrappingElectrons2014}, also observed in these PIC simulations. After acceleration across the pseudocapacitor, the electron bunch encounters the subsequent laser peak. If the electron bunch gamma factor and laser intensity are both large enough, electrons radiate a significant fraction of their energy and are thus stopped in their tracks. Unable now escape the potential well at the plasma surface they are trapped and are not observed to escape the plasma until the laser pulse intensity reduces. Such an effect would not impact Savin's scalings but would of course inhibit the observation of the scaling for electrons escaping to the sides and rear of the plasma block. Note that should this be the case and the collisionless electron bunches remain within the plasma bulk, Savin's ZVP QED model truly applies directly to energy absorption by the plasma bulk.
 
-Returning now to figure \ref{fig:zvppeakgamma}, there are two interesting aspects. Firstly the sudden jump in total energy at $a_0 \approx$ 300. This cannot be explained by ZVP theory nor QED theory since the jump is observed with QED effects switched off. 
-
-Secondly, the even sharper jump in total electron bunch energy above $a_0 = 1000$. Decomposing the total energy into bulk electrons and those produced via the BW process, this is clearly a QED effect. Energy in BW pairs scales at a staggering
+Returning now to figure \ref{fig:zvppeakgamma}, there are two interesting aspects. Firstly the sudden jump in total energy at $a_0 \approx$ 300. This cannot be explained by ZVP theory nor QED theory since the jump is observed with QED effects switched off. Secondly, the even sharper jump in total electron bunch energy above $a_0 = 1000$. Decomposing the total energy into bulk electrons (here refering to electrons from the plasma bulk that undergo ZVP) and those produced via the BW process, this is clearly a QED effect. Energy in BW produced electrons scales at a staggering
 \begin{equation}
 	U_\mathrm{BW} \sim a^{11.3\pm 0.8}_0,
 \end{equation}
-while energy in plasma electrons descreases. Perhaps this is a signal of Savin's QED ZVP electron bunches only at a higher energy due to the substantially greater plasma density of these simulations. Following Savin's theory,
+while the energy of bulk plasma electrons decreases. Perhaps this is a signal of Savin's QED ZVP electron bunches only at a higher energy due to the substantially greater plasma density of these simulations. The reduction in bulk electron energy can be attributed to an oversaturation of the front surface with BW electrons.
+
+Combining equations \ref{eq:intro-photonchi} and \ref{eq:zvp_U} and assuming the electron radiates all its energy to the photon, for the ZVP mechanism, at the point of emission one finds
 \begin{equation}
-	U_\mathrm{QED} \sim \frac{a^7_0}{S}.
+	\chi_\gamma =\frac{ \sqrt{2} |\mathbf{E}|}{E_\mathrm{S}}\frac{a^2_0}{\bar{n}_\mathrm{e}}.
 \end{equation}
+The probability of \ac{BW} pair production begins to rapidly increase around $\chi =1$, therefore, the transition to QED will occur at
+\begin{equation}
+	a_0 \approx \left(\frac{ E_\mathrm{S}}{\sqrt{2}}\frac{e\bar{n}_\mathrm{e}}{m_\mathrm{e}c\omega_\mathrm{L}}\right)^{1/3} = \left(\frac{a_\mathrm{s}\bar{n}_\mathrm{e}}{\sqrt{2}}\right)^{\frac{1}{3}},
+\end{equation}
+where $a_\mathrm{S} = \num{7.73e5}$ is the normalised vector potential associated with the Schwinger Field, thus explaining the transition to QED at higher intensities in this work compared to Savin's. Following Savin's theory, one expects
+\begin{equation}
+	U_\mathrm{QED} \sim \frac{a^7_0}{S},
+\end{equation}
+therefore much work is required to understand and unify these results, starting with the application of the methods of this analysis to the parameter space explored by Savin. Undoubtedly, the advent of next generation exa-watt scale lasers and access to this regime will be exceedingly interesting if such scalings in bunch energy can be maintained.
 
-% TODO
-
-The reduction in plasma electron energy can be attributed to an oversaturation of the front surface with BW electrons. The surface now consists of mostly BW electrons. Could this replacement explain the increase in scaling observed vs the theory or can it be explained by radiation reaction or is there some other deeper effect at work?
-
-Doubtless, the advent of next generation exa-watt scale lasers and the ability to explore this regime will be exceedingly interesting if such scalings in bunch energy can be maintained.
-
-
-Discuss region of BW pair projection maximisation and where we expect saturation.
-
- Linear Breit-Wheeler can safely be neglected, as there is simply not enough energy in the system. For two interacting photons of energy $E_1$, $E_2$, by consideration of four-momenta, the threshold condition for pair production is 
+Linear Breit-Wheeler can safely be neglected, there is simply not enough energy in the system. For two interacting photons of energy $E_1$, $E_2$, by consideration of four-momenta, the threshold condition for pair production is 
 \begin{equation}
 	E_1E_2 \ge (m_\mathrm{e}c^2)^2.
 \end{equation}
-For a near-infrared laser photon of energy $\hbar \omega_\mathrm{L}$, the interacting photon must have an energy in excess of 200 GeV. Despite the extreme acceleration gradients considered in this thesis, the Zero Vector Potential mechanism discussed in detail in the following chapter for the explored parameter space, photons of energies no greater than 10 GeV can be expected and thus linear Breit-Wheeler is suppressed.
+For a near-infrared laser photon of energy $\hbar \omega_\mathrm{L}$, the interacting photon must have an energy in excess of 200 GeV. Despite the extreme acceleration gradients considered in this thesis, the ZVP mechanism predicts photons of energies no greater than 10 GeV and thus linear Breit-Wheeler is suppressed.
 
 He \textit{et al} \cite{heSinglelaserSchemeObservation2021} identified an alternative mechanism for linear \ac{BW} using solid density targets, where forwards- and back-scattered high energy radiation reaction produced photons interact within a hollowed out plasma channel. In the geometry of interest in this thesis, while photons are produced in both directions, their production is localised to the plasma surface and at no points do their paths cross and thus this mechanism does not occur.
 
 % TODO: Explore transition regions, do MORE simulations to fill in the gaps.
 
-
-% TODO: Numerical heating: it is not sufficient to simply run simulations without the laser pulse to determine heating. The effect of numerical heating will be most damning for the ultra-high charge density electron bunches.
-
-To do: convergence of electron bunch energies with nppc and sim resolution.
-
-
-% TODO f the electron radiates all its energy to the photon, for the ZVP mechanism, at the point of emission one finds,
-\begin{equation}
-	\chi_\gamma = |\mathbf{E}|\frac{\frac{a^2_0}{\bar{n}_\mathrm{e}}}{E_\mathrm{s}} \sqrt{2},
-\end{equation}
-thus at $\chi =10$,
-\begin{equation}
-	a_0 = \left(\frac{10 E_\mathrm{S}}{\sqrt{2}}\frac{e}{m_\mathrm{e}c\omega_\mathrm{L}\bar{n}_\mathrm{e}}\right)^{1/3}
-\end{equation}
-
-The chi parameter will change rapidly once the transition to QED ZVP has occured due to the change in scaling.
-Calculate this
+% TODO To do: convergence of electron bunch energies with nppc and sim resolution.
 
 \subsection{Errors}
+To get some sense of the stability of the parameter scan, new simulations with tweaked parameters were created to explore the effects of including collisions, increasing the temperature to resolve the Debye length and particle merging. The results are presented in figure \ref{fig:zvperrorsources}. 
+% TODO: Make this plot fraction errors instead
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/zvp/zvp_error_sources}
+	\caption[An exploration of ZVP 2D PIC simulation stability.]{An exploration of ZVP 2D PIC simulation stability. a) Electron bunch mean energies extracted from simulations with $a_0$, $\bar{n}_\mathrm{e} =100$. Here, the $x$-axis is the normalised vector potential of the laser pulse cycle that made them, this is why there appears to be results stacked. b) Electron bunch mean energies extracted from simulations with $a_0$, $\bar{n}_\mathrm{e} =1800$ both with and without particle merging.}
+	\label{fig:zvperrorsources}
+\end{figure}
+In general including collisions had little to no effect on the results and changing the Debye length had a small but not systematic effect on the results. Note that while numerical heating is not directly dependent on laser intensity, increases to $a_0$ would increase the electron bunch density. Thus, resolving the Debye length of the ultra-high density (orders of magnitude greater than solid density) electron bunches produced by the higher laser pulse intensities considered here is a non-trivial but potentially interestig exercise. Particle merging was essential for simulations with $a_0 > 1800$. At least at $a_0 = 1800$ it would appear particle merging had negligible impact, however it is likely the error would increase with $a_0$.
+
 % TODO Next: finish QED discussion and QED section then do errors, then go through paper see if anything to add.
 
-% TODO Discuss error plots here
 % TODO Also perhaps put in the plot of a laser of constant intensity and variation between bunches.
 
 % TODO Also look again at fitting just to region where expression is valid.
 
 \section{Planned future work}\label{sec:zvp-future_work}
-Nothing is true unless it is measured and by now the reader should have a healthy level of skepticism for state-of-the-art PIC codes and their inherent proliferation of sources of uncertainty. After a successful proposal application, four weeks of beam time have been awarded on the GEMINI-PW laser facility at the \ac{CLF} \cite{LaserSystemGemini}. Next July, the study of mass-limited ZVP electron bunches will be put to the test as part of a three-pronged experimental campaign, the main experimental goals are
+Nothing is true unless it is measured and by now the reader should have a healthy level of skepticism for state-of-the-art PIC codes and their inherent proliferation of uncertainty. After a successful proposal application, four weeks of beam time have been awarded on the GEMINI-PW laser facility at the \ac{CLF} \cite{LaserSystemGemini}. Next July, the study of mass-limited ZVP electron bunches will be put to the test as part of a three-pronged experimental campaign, the main experimental goals are
 \begin{enumerate}
 	\item to characterise the X-ray \ac{HHG} emission from the reflection of a relativistic laser of a solid target, following on from a recent experiment at the ORION laser facility at AWE \cite{hoppsOverviewLaserSystems2013}, which is discussed in great detail in the following chapter;
 	\item to simultaneously measure and correlate \ac{HHG} and the ZVP electron bunches responsible for the \ac{HHG} using a novel experimental setup;
@@ -565,7 +558,7 @@ The GEMINI-PW laser facility housed at the \ac{CLF} is a petawatt class facility
 A range of thick, flat solid targets are proposed to probe the density parameter space: diamond, a selection of plastics (polymethyl methacrylate, low and high density polyethylene and polycarbonate) and mirrored targets, which produced interesting and slightly unexpected results in the ORION experiment. It would also be interesting to produce foam targets gaining access the optimal low $S$ regime \cite{bataniPhysicsIssuesShock2014}. Target wheels will be used to take full advantage of the high shot rate of the GEMINI-PW laser. It is anticipated that due to focal spot jitter, not all shots will hit the target edges. 
 
 \subsubsection{Diagnostics}
-The electron bunches will be measured using an electron spectrometer placed a few centimetres from the target to measure the time-integrated energy spectrum. The spectrometer will be shielded from the laser pulse and any \ac{HHG} in transmission using a flash coated kapton foil which should not significantly hinder the MeV electron bunches produced in the interaction. Mordovanakis \textit{et al} used Image Plate stacks to obtain the electron bunch structure and emission angle, it may be necessary to perform this first to accurately position the spectrometer. While resolving attosecond durations remains an outstanding challenge of experimental science, it may be possible to measure the total duration of the train of attosecond electron bunches by measuring the characteristics of coherent optical transition radiation produced by the electrons upon incidence on a secondary target \cite{linIsolatedAttosecondElectron2020}. The X-ray \ac{HHG} emission will be measured using the OHREX spectrometer \cite{beiersdorferLineshapeSpectroscopyVery2016} on loan from ORION, a spherically bent crystal spectrometer with ultra-high resolution and high-signal-to-noise ratio. Lower order harmonics will be measured using angularly resolved EUV spectrometers. Note that in the absence of attosecond resolution diagnostics, measuring the harmonic spectrum of the coherent \ac{HHG} is the only way to reconstruct the temporal shape of the pulse. Simulations have suggested that the reflected spectrum produced by Coherent Synchrotron Emission of the electron bunches is approximately Fourier-limited \cite{cousensElectronTrajectoriesAssociated2020}. Off-axis spectrometers should be used to compare the signals to the background emission and to measure the plasma temperature \cite{akli_2010_DualChannelXray}. A quarter wave plate could be used to convert the incoming laser pulse to a circular polarisation to compare the signals to those detected in the absence of zeros in the vector potential.
+The electron bunches will be measured using an electron spectrometer placed a few centimetres from the target to measure the time-integrated energy spectrum. The spectrometer will be shielded from the laser pulse and any \ac{HHG} in transmission using a flash coated kapton foil which should not significantly hinder the MeV electron bunches produced in the interaction. Mordovanakis \textit{et al} used Image Plate stacks to obtain the electron bunch structure and emission angle, it may be necessary to perform this first to accurately position the spectrometer. While resolving attosecond durations remains an outstanding challenge of experimental science, it may be possible to measure the total duration of the train of attosecond electron bunches by measuring the characteristics of coherent optical transition radiation produced by the electrons upon incidence on a secondary target \cite{linIsolatedAttosecondElectron2020}. The X-ray \ac{HHG} emission will be measured using the OHREX spectrometer \cite{beiersdorferLineshapeSpectroscopyVery2016} on loan from ORION, a spherically bent crystal spectrometer with ultra-high resolution and high-signal-to-noise ratio. Lower order harmonics will be measured using angularly resolved EUV spectrometers. Note that in the absence of attosecond resolution diagnostics, measuring the harmonic spectrum of the coherent \ac{HHG} is the only way to reconstruct the temporal shape of the pulse. Simulations have suggested that the reflected spectrum produced by Coherent Synchrotron Emission of the electron bunches is approximately Fourier-limited \cite{cousensElectronTrajectoriesAssociated2020}. Off-axis spectrometers should be used to compare the signals to the background emission and to measure the plasma temperature \cite{akliDualChannelXray2010}. A quarter wave plate could be used to convert the incoming laser pulse to a circular polarisation to compare the signals to those detected in the absence of zeros in the vector potential.
 
 \subsubsection{Preplasma scale lengths and prepulse control}
 Observation of the ZVP mechanism requires a sufficiently steep density gradients at the laser-plasma interface. A potential drawback of \ac{CPA} laser systems is the existence of prepulses that heat targets, causing them to expand significantly before arrival of the main pulse. To increase the laser contrast, to the point where there is no preplasma formation, GEMINI-PW utilises a Double Plasma Mirror setup \cite{doumyCompleteCharacterizationPlasma2004}. Each mirror is an anti-reflection coated optic placed in the path of the laser beam, acting as an optical switch. As the laser fluence passes the damage threshold of the optic, plasma forms on the front surface and the mirror starts to reflect. As it has been suggested that there is an optimum scale length for \ac{HHG}, the second GEMINI-PW beam will be used to generate a controllable prepulse to tailor the plasma surface. Investigation of preplasma generation will occur in parallel to the main experimental goals.
