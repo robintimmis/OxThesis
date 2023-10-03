@@ -1,15 +1,8 @@
-\begin{savequote}[8cm]
-\textlatin{Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...}
-
-There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
-  \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
-\end{savequote}
-
 \chapter{\label{ch:1-intro}Introduction} 
 
 \minitoc
 
-
+% TODO 
 %{A plan}
 %Actually the very first thing to say will be the stuff about light i think, about diagnostic tools essentially always being about controlling the various properties of light (ie electromagnetic waves)
 
@@ -33,42 +26,8 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 %Assume for now that the ion-electron mass ratio is infinite, that is to say the ions are approximately immobile for the timescales under consideration, generally true for a fair few relativistic laser pulse cycles (In later sections the mobility of plasma ions will prove very important but for now this is ignored.).
 % I should also discuss ionisation and laser surface plasma interaction?/
 
-\section{To do}
-
-\begin{enumerate}
-	\item HYADES simulations
-	\item Add more citations
-	\item Similarity theory details in appendix
-	\item Add details on CPA and OPCPA
-	\item Simulation algorithms (details in appendix?)
-	\item Velocity transformations derivation (appendix)
-	\item Sources of error system
-	\item Ponderomotive heating mechanisms
-	\item Fix QED section
-	\item Particle merging
-	\item Radiating particles and relativistic larmor radius
-	\item smieli performance plot
-	\item A collisionless fully ionised plasma
-\end{enumerate}
-
-On the ZVP front
-\begin{enumerate}
-	\item Go through derivations
-	\item Fix diagrams
-	\item Go through discussions
-	\item Add errrors plot
-	\item Check out new sims
-	\item Conclusion
-	\item Shape of transverse momentum (more parabolic compared to linear and explanaition of bunch holding together), Shrp front edge then parabolic (or even exponential decay - it is defo expoenential)
-	\item a0 convention, when max and when varying in time
-	\item Editing
-\end{enumerate}
-
-
-
 \section{High-energy-density physics}
 We sit on the verge of the exa-scale revolution both in terms of computing \cite{kotheExascaleComputingUnited2019} and laser power. With rapid adoption of the pioneering advancements of Chirped Pulse Amplification (CPA) by Strickland and Mourou \cite{stricklandCompressionAmplifiedChirped1985} and of Optical Parametric Chirped Pulse Amplification \cite{rossOpticalParametricChirped2000}, multi-petawatt facilities have now been commissioned and built across the globe and plans for sub-exawatt facilities are underway. Figure \ref{fig:intro_lasersystems} details the parameter space accessible by current and proposed facilities \cite{stricklandCompressionAmplifiedChirped1985, fourmauxPedestalCleaningHigh2011, wang085PWLaser2017, tiscarenoOhioStateUniversity2020, sung42PW202017, rossGenerationTerawattPulses2000, yangMultiterawattLaserSystem2002, witte2006source, stoecklHighEnergyPetawattProject2006, lozhkarevCompact56Petawatt2007, herrmannGenerationSubthreecycle162009, andriukaitis90GWPeak2011, zhaoGeneration120GW2013, hoppsOverviewLaserSystems2013, hoppsOverviewLaserSystems2013, thire10MJ5cycle2015, yinHighefficiencyOpticalParametric2016, galesExtremeLightInfrastructure2018, OMEGAFacility, renCompactDoublepassRaman2008, lanciaExperimentalEvidenceShort2010, lanciaSignaturesSelfSimilarRegime2016, marquesJouleLevelHighEfficiencyEnergy2019, thebergeTunableUltrashortLaser2006, trushinSub10fsSupercontinuumRadiation2007, ohIntenseTerahertzGeneration2013, horioGenerationSub17Fs2014, takahashiGeneration10uJCoherent2002, goulielmakisSingleCycleNonlinearOptics2008, skantzakisCoherentContinuumExtreme2009, ferrariHighenergyIsolatedAttosecond2010, takahashiAttosecondNonlinearOptics2013, popmintchevUltravioletSurpriseEfficient2015, nomuraAttosecondPhaseLocking2009, bierbachGeneration10Relativistic2012, heisslerMultimJHarmonicEmission2015, yeungExperimentalObservationAttosecond2017, jahnIntenseIsolatedAttosecond2019, rusEfficientHighbrightnessSoftxray1997, sebbanFullCharacterizationHighgain2000, rusMultimillijouleHighlyCoherent2002, zeitounHighintensityHighlyCoherent2004, wangHighBrightnessInjectionSeededSoftXRayLaser2006, rohringerAtomicInnershellXray2012, ayvazyanFirstOperationFreeelectron2006, ackermannOperationFreeelectronLaser2007, emmaFirstLasingOperation2010, FlashFreeElectronLaser, FlashFreeElectronLaser, FELIXLaboratoryOverview, FELIXLaboratoryOverview, FELIXLaboratoryOverview, kneipObservationSynchrotronRadiation2008, kneipBrightSpatiallyCoherent2010, juEnhancementXraysGenerated2012, chenBrightBetatronXray2013, wangQuasimonoenergeticLaserplasmaAcceleration2013, coleLaserwakefieldAcceleratorsHard2015, wenzQuantitativeXrayPhasecontrast2015, taphuocAllopticalComptonGammaray2012, chenMeVEnergyRaysInverse2013, tsaiCompactTunableCompton2015, polyanskiyPicosecondPulseAmplification2011, haberbergerFifteenTerawattPicosecond2010, glowniaAmplification193nmFemtosecond1992, kandoEnhancementPhotonNumber2009, obenschainHighenergyKryptonFluoride2015, trinesSimulationsEfficientRaman2011, trinesSimulationsEfficientRaman2011, kawanakaConceptualDesignSubexawatt2016, tajimaMarriage20keVSuperconducting2018}, clearly, there is no indication of wavering interest or support for the field of \ac{HED} physics. 
-% TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/intro/laser_systems}
@@ -411,42 +370,44 @@ where $p_\mathrm{T}$ is the electron momentum along the polarisation axis of the
 Note that this is only valid provided the electron does not radiate along the direction of polarisation as discussed by Sokolov \textit{et al} \cite{sokolovDynamicsEmittingElectrons2009}. The implications of \textit{Radiation Reaction }are discussed in the following section.
 
 \section{QED effects}
-We are now at the cusp of \ac{SF-QED} laser-plasma physics. Access to this regime will enable the testing of decades old theoretical predictions. Already Fedeli \textit{et al} have shown in simulations that current PW-class laser facilities can access the regime using an all-optical set up based on laser-solid surface interactions \cite{fedeliProbingStrongfieldQED2020}. The primary two SF-QED phenomena to be accessed are Radiation Reaction and multi-photon Breit-Wheeler electron pair production. Brief introductions to these phenomena are now presented.
-
+Next generation laser facilities will enable the testing of decades old theoretical predictions of \ac{SF-QED}. Already Fedeli \textit{et al} have shown in simulations that current PW-class laser facilities can access the regime using an all-optical set up based on laser-solid surface interactions \cite{fedeliProbingStrongfieldQED2020}. The Schwinger Limit \textbf{CITE} $E_\mathrm{S} = \qty{1.32e18}{V.m^{-1}}$ is field intensity at which the vacuum becomes non-linear. If by some means an electron can be directed towards a plane electromagnetic wave, by consideration of the Lorentz transformations of electromagnetic fields (equations \ref{eq:app-maxwell_transformation}), it is possible that provided the electron is sufficiently relativistic, in its own frame of rest it will `see' electromagnetic fields intense enough to access vacuum non-linearities. The first two frontiers of SF-QED that will be accessible are Radiation Reaction and multi-photon Breit-Wheeler electron pair production. Brief introductions to these phenomena are now presented.
 
 \subsection{High-energy photon emission and radiation reaction}
-When a charged particle undergoes an acceleration, it emits electromagnetic radiation. If the electromagnetic field is sufficiently strong, \textit{i.e.} approaching the Schwinger Limit in the rest frame of the particle, then a non-neglible fraction of particle momentum can be transferred to the emitted high energy photon via inverse Compton scattering, substantially impacting the dynamics of the accelerated particle. This back reaction is known as Radiation Reaction.
+When a charged particle undergoes an acceleration, it emits electromagnetic radiation. If the electromagnetic field is sufficiently strong, \textit{i.e.} approaching the Schwinger Limit in the rest frame of the particle, then a non-neglible fraction of the particle momentum can be transferred to the emitted high energy photon, substantially impacting the dynamics of the accelerated particle. This back reaction is known as \ac{RR}. In laser-solid interactions this can lead to radiation trapping of electrons on the front surface\textbf{CITE}.
 
-
-
-Note for in simulation section: 'The processes discussed in this section bring into play a characteristic length [the classical radius of the electron 
-
-in classical electrodynamics (CED) or the standard Compton wavelength 
-
-in quantum electrodynamics (QED)]. As a result, a simulation will require the user to define the absolute scale of the system by defining the referencangularfrequencySI parameter' '
-Also there are a list of assumptions in smilei that I should state in the simulation section and demonstrate they are all fine.
+Smilei (detailed in the following section) implements the process of high-energy photon emission as Inverse Compton Scattering on the basis of several assumptions \cite{nielQuantumClassicalModeling2018}, namely,
+\begin{enumerate}
+	\item radiating particles are ultra-relativistic and therefore radiation is emitted in the direction of travel of the particle;
+	\item the field varies slowly over the timescale of photon emission, this is the \textit{locally-constant field approximation} and requires ultra-relativistic field strengths;
+	\item but they are small with respect to the Schwinger Limit, specifically requiring the invariants $\sqrt{c^2\mathbf{B^2} + \mathbf{E}^2}$ and $\sqrt{c\mathbf{B}\cdot\mathbf{E}} < E_\mathrm{S}$;
+	\item real particles radiated independently of their neighbours, this requires the emitted wavelength being shorter than the typical inter-particle spacing.
+\end{enumerate}
+Provided such conditions hold, the rate of photon emission depends on two invariants \cite{ritusQuantumEffectsInteraction1985}, the electron quantum parameter
+\begin{equation}
+	\chi = \frac{\gamma}{E_\mathrm{S}}\sqrt{(\mathbf{E} + \mathbf{v}\times\mathbf{B})^2- (\mathbf{v}\cdot\mathbf{E})^2/c^2},
+\end{equation}
+where $\mathbf{v}$ is the electron velocity and the emitted photon quantum parameter
+\begin{equation}\label{eq:intro-photonchi}
+	\chi_\gamma = \frac{\gamma_\gamma}{E_\mathrm{S}}\sqrt{(\mathbf{E}_\perp + \mathbf{c}\times\mathbf{B})^2- (\mathbf{c}\cdot\mathbf{E})^2/c^2},
+\end{equation}
+where $\gamma_\gamma$ is the normalised photon energy $=\hbar \omega_\gamma /m_\mathrm{e}c^2$. The exact relationship is complex and in the the fully quantum domain ($\chi > 1$), is it not practical to solve the integrations required for all particles and instead values are extracted from precalculated tables and into a Monte-Carlo algorithm. 
 
 \subsection{Multi-photon Breit-Wheeler pair production}
-
-(This has been written up from smilei but should probs get reference elsewhere??) > check out savin thesis
-
 Multi-photon Breit-Wheeler pair production, also known as non-linear Breit-Wheeler is the decay of a high energy photon, typically produced via \ac{RR}, into an electron-positron pair in the presence of a strong electromagnetic field, explicitely,
 \begin{equation}
 	\gamma + n\omega \to e^- + e^+.
 \end{equation}
-The strength of the effect is dependent on the Lorentz invariant photon quantum parameter,
+The strength of the effect is dependent on the Lorentz invariant photon quantum parameter, equation \ref{eq:intro-photonchi} Cite Smilei and say, in a constant E-field, the rate of pair production increases rapidly up to $\chi_\gamma \approx 10$ at which point it saturates and slowly reduces.
+
+% TODO \textbf{Perhaps include feynmann diagrams, see what savin did.}
+
+The aforementioned QED processes of Inverse Compton scattering and non-linear Breit-Wheeler pair production are included in the simulations presented in this thesis using the built-in Smilei packages \cite{derouillatSmileiCollaborativeOpensource2018}. Linear Breit-Wheeler can safely be neglected, as there is simply not enough energy in the system. For two interacting photons of energy $E_1$, $E_2$, by consideration of four-momenta, the threshold condition for pair production is 
 \begin{equation}
-	\chi_\gamma = \frac{\gamma_\gamma}{E_\mathrm{s}} \sqrt{(\mathbf{E}_\perp + \mathbf{c}\times \mathbf{B}^2},
+	E_1E_2 \ge (m_\mathrm{e}c^2)^2.
 \end{equation}
-where $E_\mathrm{s} = \qty{1.3e18}{V.m^{-1}}$ is the Schwinger electric field, $\gamma_\gamma = U_\gamma /m_\mathrm{e}c^2$, the normalised photon energy and $\mathbf{E}_\perp$ the electric field perpendicular to the photon propagation direction. Cite Smilei and say, in a constant E-field, the rate of pair production increases rapidly up to $\chi_\gamma \approx 10$ at which point it saturates and slowly reduces.
+For a near-infrared laser photon of energy $\hbar \omega_\mathrm{L}$, the interacting photon must have an energy in excess of 200 GeV. Despite the extreme acceleration gradients considered in this thesis, the Zero Vector Potential mechanism discussed in detail in the following chapter for the explored parameter space, photons of energies no greater than 10 GeV can be expected and thus linear Breit-Wheeler is suppressed.
 
-
-If the electron radiates all its energy to the photon, for the ZVP mechanism, at the point of emission one finds,
-\begin{equation}
-	\chi_\gamma = |\mathbf{E}|\frac{1 + \frac{a^2_0}{\bar{n}_\mathrm{e}}}{E_\mathrm{s}} \sqrt{2},
-\end{equation}
-The chi parameter will change rapidly once the transition to QED ZVP has occured due to the change in scaling.
-
+He \textit{et al} \cite{heSinglelaserSchemeObservation2021} identified an alternative mechanism for linear \ac{BW} using solid density targets, where forwards- and back-scattered high energy radiation reaction produced photons interact within a hollowed out plasma channel. In the geometry of interest in this thesis, while photons are produced in both directions, their production is localised to the plasma surface and at no points do their paths cross and thus this mechanism does not occur.
 
 \section{Simulating the interaction}
 Modelling laser-plasma interactions is a notoriously challenging endeavour; due to the complexity of the many-bodied systems involved (a fully ionised centimetre cubed block of plastic contains on the order of $10^23$ particles) and the stochasticity of particle motion, it is frequently impossible to construct models \textit{ab initio}. Instead, hydrodynamic simulation codes such as HYADES \cite{larsenHYADESPlasmaHydrodynamics1994} and FLASH \cite{fryxellFLASHAdaptiveMesh2000} and Particle-In-Cell simulation codes such as Smilei \cite{derouillatSmileiCollaborativeOpensource2018}, Osiris \cite{fonsecaOSIRISThreeDimensionalFully2002} and EPOCH \cite{bennett2017users} are used to construct phenomenological models and to direct experimentation. 
@@ -456,13 +417,20 @@ Modelling laser-plasma interactions is a notoriously challenging endeavour; due 
 Modern \ac{HPC} systems are poised to enter the exascale regime ($> 10^{18}$ Floating Point Operations Per Second). With limited improvements in microprocessor technologies, such power is achieved through massive parallelisation across processing units. To enable the study of the dynamics of up to billions of macroparticles, PIC codes test the limits of current supercomputing architectures. ARCHER2, the UK's national supercomputer came online in November 2021, with it delivering over ten times the reseources of its predecessor (ARCHER) \cite{ARCHER2}. An HPE Cray EX supercomputing system with a peak performance estimated at \qty{28}{Pflops.s^{-1}} across 5860 nodes each with dual AMD EPYCTM 7742 64-core processor for a total of 750,080 cores, ARCHER2 was able to supply the resources required to run the costly PIC simulations for this research. The substantially cheaper HYADES simulations were performed using the Rutherford Appleton Laboratory's SCARF \ac{HPC} cluster \cite{SCARFOverview}.
 
 \subsection{Particle-In-Cell codes}
+% TODO 
+Finish ZVP conclusion
+PIC code errors
+Citations
+QED
+ZVP errors.
+
+
 \subsubsection{Discretisation of the Vlasov-Maxwell equations}
 Finding numerical solutions to the Vlasov-Maxwell equations is no straightforward task, while codes exist that are capable, such as Valis \cite{sircombeVALISSplitconservativeScheme2009}, the requirement of high resolution in both position and momentum is exceedingly costly and the use of such codes is limited with respect to their size, duration and spatial dimensions. A more tractable approach is to discretise the distribution function into $N_s$ \textit{quasi-particles}\footnote{Originally introduced by Langdon and Birdsall as \textit{clouds} \cite{langdonTheoryPlasmaSimulation1970}.} . These are often referred to as \textit{macro-particles} in practice and typically represent a large number of real particles, such that
 \begin{equation}
 	f_s(t,\mathbf{x},\mathbf{p}) = \sum^{N_s}_{p=1} w_p S(\mathbf{x}-\mathbf{x}_p(t))\delta (\mathbf{p}-\mathbf{p}_p(t)),
 \end{equation}
 where $w_p$ is the quasi-particle's weight, $\mathbf{x}_p$ and $\mathbf{p}_p$ are its position and momentum respectively, $\delta$ is the Dirac-delta distribution and $S(\mathbf{x})$ the shape-function chosen to represent the quasi-particle. The Vlasov equation is then integrated along the continuous trajectories of the quasi-particles while Maxwell's equations are solved on a discrete spatial grid of \textit{cells}. Such a code is aptly named a\textit{ Particle-In-Cell} (PIC) code. A schematic of the standard PIC code algorithm is presented in figure \ref{fig:intropiccycle-01}. 
-% TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/intro/intro_PIC_cycle}
@@ -477,7 +445,6 @@ After particle and field initialisation, fields are interpolated at particle pos
 	\label{fig:introyeegrid}
 \end{figure}
 with electric fields defined at integer time steps and magnetic fields at half-integer time steps.
-
 
 \subsubsection{Smilei}
 Smilei (for Simulating Matter Irradiated by Light at Extreme Intensities) is a modern collaborative, massively-parallel, fully relativistic and open source plasma physics PIC code and the major workhorse for this thesis\footnote{At points benchmarks agaist the EPOCH and Osiris PIC codes were performed.}. Produced by M. Grech's team(CHECK THIS) at École Polytechnique \cite{derouillatSmileiCollaborativeOpensource2018}, its recent development was motivated by the rapid advancements of multi-petawatt facilities both globally and locally with the recent completion of the 10 PW Apollon laser facility and by the availability of supercomputing power which has `skyrocketed' in recent years \cite{derouillatSmileiCollaborativeOpensource2018}. Indeed, the 3D \ac{PIC} simulations discussed in this thesis required the parallelisation of almost 20 \% of the computing resources available on ARCHER2.
@@ -505,8 +472,6 @@ Given the broad range of magnitudes linked to multi-petawatt and femtosecond las
 	\caption{\label{tab:intro-normalisations} Smilei normalisations for common quantities with the laser angular frequency $\omega_\mathrm{L}$ set at the reference angular frequency.}
 \end{center}
 \end{table}
-
-
 
 \subsubsection{General simulation parameters}\label{sec:intro-general_simulation_paramers}
 \textbf{Boundary conditions}
@@ -536,10 +501,8 @@ Smilei implements orders 2, 3 and 4, the explicit shape functions are
 	\end{align}
 \end{subequations}
 
-
 \subsubsection{Parallelisation in practice}
 In the following discussion, where differences in language occur, objects are given as their ARCHER2 (Smilei) names. The Smilei simulation box consists of a grid of cells as in figure \ref{fig:introsmileiparallelisation}.
-% TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/intro/intro_smilei_parallelisation}
@@ -551,7 +514,6 @@ The box is decomposed into \textit{patches} consisting of many cells. Patches ar
 Archer consists of many \textit{CPUs (cores)} that can each perform computational tasks. CPUs are grouped together into \textit{nodes}. Memory is shared within a node such that all CPUs (cores) in a node can operate on the same data. When optimised, ARCHER2’s memory in each node is split into 8 \textit{sockets}. These 8 sockets each perform a \textit{task (MPI process)}. Each task (MPI process) has 16 CPUs (cores) assigned that each perform a \textit{thread}. A thread is a sequence of instructions from the program.
 
 Each task (MPI process) handles one \textit{MPI patch collection}. Threads work through patches. Figure \ref{fig:introsmileiparallelisationcomplex} represents this division of labour.
-% TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/intro/intro_smilei_parallelisation_complex}
@@ -563,13 +525,20 @@ Threads do not need to wait for other threads in their process to tackle new pat
 There are several considerations for simulation optimisation. Tasks (MPI processes) should always be assigned more patches than threads. To apply the Hilbert curve, it is necessary that the number of patches in each dimension is a power of 2. The less cells in a patch, the more efficient the load balancing, however, the cost of synchronisation between patches increases, although generally the gain in efficiency from load balancing by increasing patch number will win out at later times with increasing efficiency for increased frequency of load balancing \cite{derouillatSmileiCollaborativeOpensource2018}. Note that smaller patches are preferable when there are small regions with large numbers of particles, as in laser-solid surface interactions, however, the minimum patch size is dependent on the shape function of the macro-particles.
 
 \subsubsection{Sources of error inherent to PIC codes}
+Despite their straightforward interpretation, PIC codes are famously finickety and prone to errors, most notably that of numerical self heating. There are three conditions required for stability.
 
-\textbf{Other considerations:(At some point list all the other sources of potential error, including ignoring ionisation, ionisation states, collisions.)}
 
-Boris pusher
-
-Other Bits.
+% TODO \textbf{Other considerations:(At some point list all the other sources of potential error, including ignoring ionisation, ionisation states, collisions.)}
 
 
 
 Numerical heating, 
+
+There is great debate over the general accuracy of the Boris pusher at the extreme laser field intensities that are investigated in this work due to the non-commutativity of its discretisations of electric field boosts and magnetic field rotations \cite{arefievTemporalResolutionCriterion2015, gordonSpecialUnitaryParticle2021}. Arefiev \textit{et al} derive the criterion 
+\begin{equation}\label{eq:intro-boris_condition}
+	\frac{c\Delta t }{\lambda_\mathrm{L}} \ll \frac{1}{a_0}
+\end{equation}
+for underdense plasma \cite{arefievTemporalResolutionCriterion2015}, however they emphasise that it is unclear whether the error is equally catastrophic or even significant at all in the overdense regime that is the focus of this thesis and caution is thus advised. Gordon \textit{et al} provide a promising accuracy condition on the resolution and commutations of the electromagnetic field tensors that is valid for all plasmas \cite{gordonSpecialUnitaryParticle2021}, however, unfortunately this cannot be solved to extract a straightforward condition reminiscent of equation \ref{eq:intro-boris_condition}.
+
+
+\textbf{INTRO CONCLUSION}
