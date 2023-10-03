@@ -418,7 +418,6 @@ Modern \ac{HPC} systems are poised to enter the exascale regime ($> 10^{18}$ Flo
 
 \subsection{Particle-In-Cell codes}
 % TODO 
-Finish ZVP conclusion
 PIC code errors
 Citations
 QED
@@ -525,20 +524,43 @@ Threads do not need to wait for other threads in their process to tackle new pat
 There are several considerations for simulation optimisation. Tasks (MPI processes) should always be assigned more patches than threads. To apply the Hilbert curve, it is necessary that the number of patches in each dimension is a power of 2. The less cells in a patch, the more efficient the load balancing, however, the cost of synchronisation between patches increases, although generally the gain in efficiency from load balancing by increasing patch number will win out at later times with increasing efficiency for increased frequency of load balancing \cite{derouillatSmileiCollaborativeOpensource2018}. Note that smaller patches are preferable when there are small regions with large numbers of particles, as in laser-solid surface interactions, however, the minimum patch size is dependent on the shape function of the macro-particles.
 
 \subsubsection{Sources of error inherent to PIC codes}
-Despite their straightforward interpretation, PIC codes are famously finickety and prone to errors, most notably that of numerical self heating. There are three conditions required for stability.
+Despite their relatively intuitive interpretation, PIC codes are famously finickety and prone to errors, most notably that of numerical self heating\footnote{Standard PIC code algorithms are charge and momentum conserving but not energy conserving \cite{derouillatSmileiCollaborativeOpensource2018}.}. There are three conditions required for stability.
+
+To ensure stability, or at least to minimise instability, there are several conditions which must be met. Naturally, the time step, $\Delta t$, and cell size ($\Delta x$x$\Delta y$x$\Delta z$) must adequately capture all interesting features of a given simulation. Typically such features are plasma wave oscilations,
+\begin{equation}
+	\Delta t \omega_\mathrm{p} \ll 1,
+\end{equation} 
+and laser pulse electromagnetic field oscillations or higher order harmonics of the laser pulse if that is of interest, for the $n$th harmonic
+\begin{equation}
+	\Delta t\omega_\mathrm{L}n \ll 1.
+\end{equation} 
+Note this also ensures that macroparticles are smaller than the wavelengths of the system, a requirement to ensure they mimic real particles \cite{okudaCollisionsPlasmaFiniteSize1970}. Relativistic PIC codes must satisfy the much-acclaimed \cite{demouraCourantFriedrichsLewy2013} Courant-Friedrichs-Lewy condition,
+\begin{equation}
+	\frac{1}{(c\Delta t)^2} > \sqrt{\frac{1}{(\Delta x)^2}+\frac{1}{(\Delta y)^2}+\frac{1}{(\Delta z)^2}},
+\end{equation}
+thus preventing light and relativistic particles from crossing a cell in one timestep and generating numerical Cerenkov radiation \cite{birdsall2004plasma}. As with real plasmas and real particles, to avoid numerical charge fluctuation and ensure collective behaviour of macroparticles,
+\begin{equation}
+	\frac{4}{3}\pi\lambda_\mathrm{D}^3n_\mathrm{macro} = N_\mathrm{D,macro} \ggg 1,
+\end{equation}
+where $n_\mathrm{macro}$ is the macroparticle density \cite{birdsall2004plasma}. To avoid numerical heating, the cell size must resolve the Debye length,
+\begin{equation}
+	\frac{\lambda_\mathrm{D}}{\Delta x} \ge 1,
+\end{equation}
+failure to do so may cause plasma self-heating until the Debye length matches the cell size \cite{birdsall2004plasma}. Interestingly, Brackbill \textit{et al} \cite{brackbillEnergyMomentumConservation2016} observed in their simulations that setting $\lambda_\mathrm{D}/\Delta x =1$ was most effective at reducing spurious heating. Arber \textit{et al} \cite{arberContemporaryParticleincellApproach2015} performed extensive simulations exploring this instability. If the Debye length is not resolved, after an initial period of rapid self-heating, the temperature increases linearly and can be modelled as
+\begin{equation}\label{eq:intro-selfheating}
+	\frac{\mathrm{d} T_\mathrm{eV}{\mathrm{d}t_\mathrm{ps}} = \alpha_\mathrm{H} \frac{n^{3/2}_{23} \Delta x^2_\mathrm{nm}}{N_\mathrm{ppc}},
+\end{equation}
+where $T_\mathrm{eV}$ is the temperature in electron volts, $t_\mathrm{ps}$ is the time in picoseconds, $n$ is the plasma electron number density in units of \qty{10^{23}}{cm^{-3}}, $\Delta x_\mathrm{nm}$ is the cell size in nanometres and $N_\mathrm{ppc}$ is the number of macroparticles per cell with $\alpha_\mathrm{H}$, the heating coefficient, determined from their simulations. For a top-hat macroparticle shape function they found $\alpha_\mathrm{H} = 3000$ with an order of magnitude reduction for every increase in order of the shape function and further improvements from using current smoothing techniques. Note that the heating curves are roughly self similar at all points and thus while equation \ref{eq:intro-selfheating} was established in the linear regime only, its scalings remain useful to compare simulations at all times.
+
+The final instabililty that shall be discussed is the \textit{finite grid instability}. This is the aliasing error associated with particles properties being deposited at grid points. Is most catastrophic for cold drifting plasmas and depends on the \textit{beam Debye length},
+\begin{equation}
+	B = \frac{u}{\omega_p \Delta x},
+\end{equation}
+where $u$ is the beam speed. While their theory predicts stability for $B > 0.25$, Brackbill \textit{et al} \cite{brackbillEnergyMomentumConservation2016} observed instability growth for all beam temperatures in their simulations, although they found the percentage error is a small fraction for $B>10$.
+
 
 
 % TODO \textbf{Other considerations:(At some point list all the other sources of potential error, including ignoring ionisation, ionisation states, collisions.)}
 
 
-
-Numerical heating, 
-
-There is great debate over the general accuracy of the Boris pusher at the extreme laser field intensities that are investigated in this work due to the non-commutativity of its discretisations of electric field boosts and magnetic field rotations \cite{arefievTemporalResolutionCriterion2015, gordonSpecialUnitaryParticle2021}. Arefiev \textit{et al} derive the criterion 
-\begin{equation}\label{eq:intro-boris_condition}
-	\frac{c\Delta t }{\lambda_\mathrm{L}} \ll \frac{1}{a_0}
-\end{equation}
-for underdense plasma \cite{arefievTemporalResolutionCriterion2015}, however they emphasise that it is unclear whether the error is equally catastrophic or even significant at all in the overdense regime that is the focus of this thesis and caution is thus advised. Gordon \textit{et al} provide a promising accuracy condition on the resolution and commutations of the electromagnetic field tensors that is valid for all plasmas \cite{gordonSpecialUnitaryParticle2021}, however, unfortunately this cannot be solved to extract a straightforward condition reminiscent of equation \ref{eq:intro-boris_condition}.
-
-
-\textbf{INTRO CONCLUSION}
+% TODO: \textbf{INTRO CONCLUSION}
