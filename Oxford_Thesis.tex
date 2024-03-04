@@ -95,7 +95,9 @@
 % This is a good place to dump your own LaTeX macros as they come up.
 \usepackage[nolist]{acronym}
 \usepackage{siunitx}
+\usepackage{booktabs}
 
+\renewcommand{\arraystretch}{1.3}
 
 % To make text superscripts shortcuts
 	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
@@ -200,9 +202,10 @@
 %%%%% CHAPTERS
 % Add or remove any chapters you'd like here, by file name (excluding '.tex'):
 \flushbottom
-\include{text/ch1-intro}
-\include{text/ch2-zvp}
-\include{text/chx-misc}
+%\include{text/ch1-intro}
+%\include{text/ch2-zvp}
+\include{text/ch3-orion}
+%\include{text/chx-misc}
 
 
 %% APPENDICES %% 
@@ -210,8 +213,8 @@
 %    page that just says "Appendices" to signal the end of your main text.
 \startappendices
 % Add or remove any appendices you'd like here:
-\include{text/appendix-1}
-\include{text/appendix-2}
+%\include{text/appendix-1}
+%\include{text/appendix-2}
 
 %%%%% REFERENCES
 

@@ -1,0 +1,170 @@
+\chapter{\label{ch:3-orion}Attosecond X-ray harmonics on the ORION laser facility} 
+
+\minitoc
+
+\section{A plan}
+This chapter reports on the March 2023 experiment at the ORION laser facility, AWE, Aldermaston. The UK's most powerful sub-picosecond laser.
+
+Important sections include:
+HYADES scale length sims, ORION parameters and description of the setup, targets etc, data analysis after, beamlet sims, HHG theory
+
+
+I think the appropriate order would be theory, simulation, experiment layout, data analysis since then I can use all things inferred from theory and simulation to justify the data analysis. It also means ending well.
+
+\section{\label{ch:3-sec:data_processing}Experimental data processing}
+
+\subsection{Image plate calibration}
+Image plates (IPs) are reusable recording media that detect ionising radiation and are particularly suitable for the detection of X-rays produced in laser-plasma interactions. Their response is well understood and their sensitivities to a wide spectrum photon energies have been absolutely calibrated on the ORION facility \cite{meadowcroftEvaluationSensitivityFading2008}. Albeit for the FLA3000 scanner not the FLA7000 used in this experiment. However, the deviation in response is negligible for the photon energies measured. In this experiment the Fuji Biological Analysis System (BAS) TR-type IPs were used. They have a phosphor layer composed of $\mathrm{BaFBr_{0.085}I_{0.15}}$ with density \qty{2.61}{g.cm^{-3}} and thickness \qty{60}{\mu m} but no mylar layer. This makes them suitable for low energy X-ray detection. When scanned, the IP releases blue photons via photostimuated luminescence (PSL), which is then collected by a photomultiplier tube. The PSL value is generalised across scanner types from the measured `Grey' ($G$) value by
+\begin{equation}
+	\mathrm{PSL} = (0.23284G^2\times 10^{-9})\left(\frac{\Delta x}{100}\right)^2W\times 10^{-L/2},
+\end{equation}
+where $\Delta x$ is the scanner resolution (= \qty{25}{\mu m} in this experiment), $L$ is the latitude parameter, and
+\begin{equation}
+	W = 0.092906 + 1370.8e^{-0.014874V} +  654.24e^{-0.011026},
+\end{equation}
+where $V$ is the scanner voltage \cite{golovinCalibrationImagingPlates2021}.
+
+IP photon sensitivity, $\psi$, the number of PSLs per incident photon, is dependent on photon energy. Meadowcroft \textit{et al} modelled this as,
+\begin{equation}
+	\psi_j = \eta(m_jh\nu + c_j),
+\end{equation}
+where $h\nu$ is the photon energy and $m_j$ and $c_j$ are linear fit parameters valid for specific energy ranges, $j$. For the Fuji BAS TR-type IP and for X-rays in the range 0-6.0 keV, $m_j = \qty{0.54\pm0.05}{mPSL.keV^{-1}}$ and $c_j = \qty{0.02\pm0.002}{mPSL}$. The IP absorption efficiency in mPSL per photon is
+\begin{equation}
+	\eta(h\nu,T_i,T_s) = \exp{(-n_\mathrm{i}\Phi_\mathrm{i} (h\nu)T_\mathrm{i})}[1-\exp{(-n_\mathrm{s}\Phi_\mathrm{s}(h\nu)T_\mathrm{s})}],
+\end{equation}
+where $n$ is the layer density, $\Phi(h\nu)$ is the total cross-section of the layer, $T$ the effective layer thickness, s and i correspond to the sensitive (phosphor) and insensitive (mylar) layers of the IP respectively \cite{izumiApplicationImagingPlates2006}. The first term is neglected in the absence of an insensitive (mylar) layer in TR-type IP. Below 50 keV, the dominant mode for X-ray absorption into the IP is the photo-electric effect, where
+\begin{equation}
+	\Phi_\mathrm{ph} \approx \num{3e12}\frac{Z^4}{(h\nu)^{3.5}}   
+\end{equation}
+and $Z$ is the atomic number \cite{fornalskiSimpleEmpiricalCorrection2018} and $\Phi_\mathrm{ph}$ is given in units of Barn per atom. At 2.4 keV, that corresponds to a sensitivity of 1.32 mPSL per incident photon.
+
+It is generally inevitable that some time will elapse between laser shot and IP scan. For this experiment 30 minutes was typical, in which time some fading of the IP occurs that must be accounted for. IP fading can be modelled as an attenuation factor,
+\begin{equation}\label{eq:orion.Ft}
+	F(t) = A\exp{(-t/\tau)} + B,
+\end{equation}
+where $t$ is the time between shot and scan and $A$, $\tau$ and $B$ are found from fits to experimental data. A key aspect of the exponential decay is that the attenuation depends only on the signal at that moment in time and not the initial conditions. This has been shown to be true in experiment \cite{meadowcroftEvaluationSensitivityFading2008}.
+
+At \qty{20}{\degree C} at the ORION facility \textit{Meadowcroft et al} \cite{meadowcroftEvaluationSensitivityFading2008} determined that for the Fuji BAS TR-type IP, the optimum fit for the parameters of equation \ref{eq:orion.Ft} is $A = \num{0.347\pm0.022}$, $B = \num{0.693\pm0.011}$ and $\tau = \qty{35.5\pm5.3}{minutes}$. Therefore at 30 minutes, $F(t) = 0.84$.
+
+In summary, the number of PSL measured on an IP can be converted to an incident number of photons via
+\begin{equation}
+	N(h\nu) = \frac{\mathrm{PSL}}{F(t)}\frac{10^3}{\psi(h\nu)} = P(h\nu) \mathrm{PSL}.
+\end{equation}
+
+\subsection{OHREX calibration}
+% TODO Reword note on illuminating crystal once I have written up about hole boring.
+The Orion High REsolution X-ray spectrometer (OHREX), housed on the ORION laser target chamber outer wall, utilises a spherically bent crystal geometry to spatially focus and spectrally analyse photons from the target chamber \cite{beiersdorferLineshapeSpectroscopyVery2016} with a high signal-to-noise ratio. The measured signal has been absolutely calibrated for a range of energies using a variety of crystals \cite{macdonaldAbsoluteThroughputCalibration2021}. The OHREX can hold two crystals at a time. At each crystal's spatial focal plane a two-dimensional image is formed, one dimension is spatial, the other spectral. The energy range accessed by a given crystal is determined by the crystal rotation but all OHREX crystals are designed for operation at a nominal central Bragg angle of $\theta_\mathrm{B} = 51.3$\degree with the corresponding wavelength determined from Bragg's Law, $n\lambda = 2d\sin\theta_\mathrm{B}$, for the appropriate crystal plane. The range around that central photon energy is determined by the crystal width in the spectral dimension.
+
+MacDonald \textit{et al} determined a quadratic fit for each crystal's dispersion relation to connect position along the image to photon energy \cite{macdonaldAbsoluteThroughputCalibration2021}. Unfortunately in this experiment, the image lengths varied from those in the previous experiment, a likely consequence of slight defocusing of the optic. Note that the OHREX geometry is designed such that precise focus is not necessary to achieve good results \cite{beiersdorferLineshapeSpectroscopyVery2016}.
+
+Instead, a simple linear dispersion relation based on the known maximum and minimum energies accessed by the crystal was applied across the crystal images, a reasonable approximation to the dispersion relation determined by MacDonald \textit{et al} \cite{macdonaldAbsoluteThroughputCalibration2021} (the quadratic correction is small). The energy ranges for the three lowest energy OHREX crystals are given in table \ref{tab:dispersion}.
+\begin{table}
+	\centering
+\begin{tabular}{ccc}
+	\hline \hline
+	Crystal               & Range, $n=1$ (eV) & Range, $n=2$ (eV) \\ \hline
+	KAP (100)             & 585-625          & 1170-1245        \\
+	Quartz ($10\bar{1}0$) & 1830-1950        & 3660-3900        \\
+	Quartz ($10\bar{1}1$) & 2330-2480        & 4660-4960  \\     \hline \hline
+\end{tabular}
+	\caption{\label{tab:dispersion} Photon energy ranges captured by the three lowest energy OHREX crystals when operating at their nominal central Bragg angle of 51.3\degree for first and second diffraction orders, $n$.}
+\end{table}
+
+Provided full illumination of the \qty{6}{cm} $\times$ \qty{4}{cm} crystal, the spatial dimension can be safely integrated over to calculate the measured signal, $M(h\nu)$ in \unit{J.mm^{-1}} and remove uncertainty from the IP drifting from the ideal focal plane. (In this experiment we assume that the harmonic beam width at the crystal position is larger than the size of the crystal, a reasonable assumption since beam divergence $\approx$ \qty{10}{\degree} and the \qty{6}{cm} x \qty{4}{cm} crystal sits \qty{2.4}{m} from the target.). This corresponds to a source spetral intensity incident on the crystal $S(h\nu)$ measured in \unit{J.keV^{-1}.sr^{-1}} via the spectrometer response, $G(h\nu)$, explicitly,
+\begin{equation}
+	M(h\nu) = S(h\nu)G(h\nu).
+\end{equation}
+The absolute throughput of the crystals was measured by MacDonald \textit{et al} in a previous ORION experiment and fit parameters for 
+\begin{equation}
+	G(h\nu) = A(h\nu)^2 + B(h\nu) + C,
+\end{equation}
+where $(h\nu)$ is the photon energy measured in eV, determined for both p- and s-polarised incident light and for first and second diffraction orders \cite{macdonaldAbsoluteThroughputCalibration2021}. The parameters for the lowest few energy crystals are presents in Table \ref{tab:orion_OHREX}.
+\begin{table}
+\centering
+\begin{tabular}{cccccc}
+	\hline \hline
+	Crystal               & Order & Polarisation & $A$            & $B$             & $C$            \\
+	\hline
+	KAP             & 1     & s            & \num{1.72e-15} & \num{-4.69e-12} & \num{2.89e-9}  \\
+	(100) &       & p            & \num{1.40e-14} & \num{-1.74e-11} & \num{5.42e-9}  \\
+	& 2     & s            & \num{3.64e-16} & \num{-9.64e-13} & \num{6.95e-10} \\
+	&       & p            & \num{5.03e-10} & \num{8.09e-13}  & \num{5.03e-10} \\
+	Quartz  & 1     & s            & $\cdots$       & $\cdots$        & $\cdots$       \\
+	  ($10\bar{1}0$)&     & p            & $\cdots$       & $\cdots$        & $\cdots$       \\
+	& 2     & s            & \num{4.50e-15} & \num{-3.40e-11} & \num{6.52e-8}  \\
+	&       & p            & \num{1.13e-15} & \num{-8.86e-12} & \num{1.73e-8}  \\
+	Quartz  & 1     & s            & \num{1.00e-16} & \num{-1.74e-12} & \num{4.93e-9}  \\
+	  ($10\bar{1}1$)&     & p            & \num{2.78e-15} & \num{-1.41e-11} & \num{1.79e-8}  \\
+	& 2     & s            & \num{4.70e-16} & \num{-4.50e-12} & \num{1.11e-8}  \\
+	&       & p            & \num{2.10e-16} & \num{2.11e-12}  & \num{5.30e-9}  \\
+	\hline \hline
+\end{tabular}
+\caption{Sensitivity fit parameters as a function of photon energy, $h\nu$ in electron-volts ($G(h\nu) = A(h\nu)^2 + B(h\nu) + C$) for the three lowest energy OHREX crystals for p- and s-polarised incident photons and first and second diffraction orders \cite{macdonaldAbsoluteThroughputCalibration2021}. Note that no data is available for the first order of the quartz ($10\bar{1}0$) crystal.}
+\label{tab:orion_OHREX}
+\end{table}
+There is unfortunately no spectrometer response data for the $10\bar{1}0$ crystal to first order due to the Si K edge sitting within the energy range and the dramatic effect this has on absorption in its vicinity \cite{hellCalibrationOHREXHighresolution2016}.
+
+
+The OHREX is equiped with a \qty{50}{\mu m} Beryllium filter to protect the crystals. The corresponding signal attenuation can be calculated using X-ray transmission data \cite{henkeXRayInteractionsPhotoabsorption1993a}.
+
+\subsection{Extracting the data}
+The quartz OHREX crystals, $10\bar{1}0$ and $10\bar{1}1$ were fielded on the experiment. Crystal images were recorded with BasTR2040 Fuji Image Plate. A typical shot image scanned with the FLA7000 scanner and converted to photostimulated luminescence units (PSLs) is given in figure \ref{fig:orionohrexshot28psl}.
+%todo point out both crystal images and label them
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{../figures/orion_OHREX_shot28_psl}
+	\caption[Unprocessed IP from ORION experiment]{Unprocessed shot data from a FLA7000 scanned image plate converted to PSLs. The image plate and two crystal images are clearly visible.}
+	\label{fig:orionohrexshot28psl}
+\end{figure}
+
+The data was extracted from the two crystal images and then the average background signal subtracted. The $x$- and $y$-axes were converted to mm using the scanner resolution, (\qty{25}{\mu m.px^{-1}}) and then energies using the appropriate dispersion relations. The data was then integrated over $y$ to obtain the intensity in units of \unit{PSL.mm^{-1}} across each crystal image. Then the corresponding source signal is
+\begin{equation}
+	S(h\nu) = \frac{d\mathrm{PSL}}{dx}\frac{P(h\nu)}{G(h\nu)}h\nu,
+\end{equation}
+which can then be converted to a measured spectral intensity, ready to be directly compared to the theory,
+\begin{equation}
+	I^\mathrm{meas}_\mathrm{n} = S(h\nu)\frac{d\Omega}{dA}\frac{dh\nu(keV)}{dn}.
+\end{equation}
+The incident solid angle on the spherically bent crystal is related to the incident area by
+\begin{equation}
+	d\Omega = 4\pi \frac{dA}{A}\hat{\mathbf{r}}\cdot \hat{\mathbf{n}}= \frac{0.78}{0.672^2}dA,
+\end{equation}
+where $A = 4\pi r^2$, $r = \qty{67.2}{cm}$ for the OHREX crystal, and $\hat{\mathbf{r}}\cdot \hat{\mathbf{n}} = \cos{\theta}$, the angle of incidence (the Bragg angle for the crystal is 51.3\unit{\degree}).
+
+\subsubsection{Calibration and polarisation}
+The OHREX response to p-polarised light is approximately an order of magnitude lower than for s-polarised light. Assuming that the HHG beam retains the polarisation of the incident laser pulse, the polarisation of the HHG beam relative to the OHREX plane of incidence and reflection is \qty{10.5}{\degree} out of the plane. Unlike for the RPM interaction, the OHREX crystal reflection is an entirely linear process and it is therefore acceptable to decompose the laser pulse into its constituents, explicitly, the field incident on the crystal is
+\begin{equation}
+	\mathbf{E} = \mathbf{E}_\mathrm{s} + \mathbf{E}_\mathrm{p}.
+\end{equation}
+After interaction with the crystal the field is
+\begin{equation}
+	\mathbf{E}_\mathrm{detector} = \alpha_\mathrm{s}(h\nu)\mathbf{E}_\mathrm{s} + \alpha_\mathrm{p}(h\nu)\mathbf{E}_\mathrm{p},
+\end{equation}
+where $\alpha_i(h\nu)$ is the energy dependent $(h\nu)$ sensitivity of the reflection for s- and p-polarised respectively. Since the two polarisations are orthogonal, the intensity is
+\begin{equation}
+	I = \alpha^2_\mathrm{s}(h\nu)|\mathbf{E}_\mathrm{s}|^2 + \alpha^2_\mathrm{p}(h\nu)|\mathbf{E}_\mathrm{p}|^2.
+\end{equation}
+Noting that $\alpha^2_i(h\nu)$ are the calibration factors, $G_i(h\nu)$, and that
+\begin{equation}
+	|\mathbf{E}_\mathrm{s}| = |\mathbf{E}|\sin\phi
+\end{equation}
+and
+\begin{equation}
+	|\mathbf{E}_\mathrm{p}| = |\mathbf{E}|\cos\phi,
+\end{equation}
+where $\phi$ is the angle out of the interaction plane,
+\begin{equation}
+	I_\mathrm{detector} = (G_\mathrm{s}(h\nu)\sin^2\phi + G_\mathrm{p}(h\nu)\cos^2\phi)|\mathbf{E}|^2 = f(h\nu)|\mathbf{E}|^2,
+\end{equation}
+where $f(h\nu)$ is the energy dependent calibration factor for this orientation of the OHREX.
+
+Shots were also taken through the OHREX port, we had hoped to capture the beam divergence however, the beam was larger than initially expected and we were unable to distinguish much. Mention saturation.
+
+
+Once done all this analysis, present the data.. Integrated signal across crystal, discuss no harmonics but that is expected and then present the final table and discuss. 
+
+Include a table detailing error contributions? Also need to add reflectivity error to the rest.
+
+Discuss mirrored targets and brems emission.
+
+Then go back and do the theory. then sims.
