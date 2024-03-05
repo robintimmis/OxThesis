@@ -105,58 +105,75 @@ where $(h\nu)$ is the photon energy measured in eV, determined for both p- and s
 There is unfortunately no spectrometer response data for the $10\bar{1}0$ crystal to first order due to the Si K edge sitting within the energy range and the dramatic effect this has on absorption in its vicinity \cite{hellCalibrationOHREXHighresolution2016}.
 
 
-The OHREX is equiped with a \qty{50}{\mu m} Beryllium filter to protect the crystals. The corresponding signal attenuation can be calculated using X-ray transmission data \cite{henkeXRayInteractionsPhotoabsorption1993a}.
+The OHREX is equipped with a \qty{50}{\mu m} Beryllium filter to protect the crystals. The corresponding signal attenuation can be calculated using X-ray transmission data \cite{henkeXRayInteractionsPhotoabsorption1993a}.
 
 \subsection{Extracting the data}
-The quartz OHREX crystals, $10\bar{1}0$ and $10\bar{1}1$ were fielded on the experiment. Crystal images were recorded with BasTR2040 Fuji Image Plate. A typical shot image scanned with the FLA7000 scanner and converted to photostimulated luminescence units (PSLs) is given in figure \ref{fig:orionohrexshot28psl}.
+The quartz OHREX crystals $10\bar{1}0$ and $10\bar{1}1$ were fielded on the experiment. Crystal images were recorded with BasTR2040 Fuji Image Plate. A typical shot image scanned with the FLA7000 scanner and converted to photostimulated luminescence units (PSLs) is given in figure \ref{fig:orionohrexshot28psl}.
 %todo point out both crystal images and label them
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{../figures/orion_OHREX_shot28_psl}
+	\includegraphics[width=0.5\linewidth]{figures/orion/orion_OHREX_shot28_psl}
 	\caption[Unprocessed IP from ORION experiment]{Unprocessed shot data from a FLA7000 scanned image plate converted to PSLs. The image plate and two crystal images are clearly visible.}
 	\label{fig:orionohrexshot28psl}
 \end{figure}
+The average background signal was subtracted. The $x$- and $y$-axes were converted from pixels to to mm using the scanner resolution, (\qty{25}{\mu m.px^{-1}}) and then energies using the appropriate dispersion relations. The data was then integrated over $y$ to obtain the intensity in units of \unit{PSL.mm^{-1}} across each crystal image. Then the corresponding source signal is
+\begin{equation}
+	S(h\nu)[\unit{J.keV^{-1}.sr^{-1}}] = \frac{d\mathrm{PSL}}{dx}\frac{P(h\nu)}{G(h\nu)}h\nu,
+\end{equation}
+which can then be converted to a measured spectral intensity per harmonic at distance $r=1$ from the source, ready to be directly compared to the theory,
+\begin{equation}
+	I^\mathrm{meas}_\mathrm{n}|_{(r = \qty{1}{m})} = S(h\nu)\frac{dh\nu(keV)}{dn}.
+\end{equation}
 
-The data was extracted from the two crystal images and then the average background signal subtracted. The $x$- and $y$-axes were converted to mm using the scanner resolution, (\qty{25}{\mu m.px^{-1}}) and then energies using the appropriate dispersion relations. The data was then integrated over $y$ to obtain the intensity in units of \unit{PSL.mm^{-1}} across each crystal image. Then the corresponding source signal is
-\begin{equation}
-	S(h\nu) = \frac{d\mathrm{PSL}}{dx}\frac{P(h\nu)}{G(h\nu)}h\nu,
-\end{equation}
-which can then be converted to a measured spectral intensity, ready to be directly compared to the theory,
-\begin{equation}
-	I^\mathrm{meas}_\mathrm{n} = S(h\nu)\frac{d\Omega}{dA}\frac{dh\nu(keV)}{dn}.
-\end{equation}
-The incident solid angle on the spherically bent crystal is related to the incident area by
-\begin{equation}
-	d\Omega = 4\pi \frac{dA}{A}\hat{\mathbf{r}}\cdot \hat{\mathbf{n}}= \frac{0.78}{0.672^2}dA,
-\end{equation}
-where $A = 4\pi r^2$, $r = \qty{67.2}{cm}$ for the OHREX crystal, and $\hat{\mathbf{r}}\cdot \hat{\mathbf{n}} = \cos{\theta}$, the angle of incidence (the Bragg angle for the crystal is 51.3\unit{\degree}).
+No sensitivity data is available for the $10\bar{1}0$ quartz crystal, instead this lower energy crystal was fielded to attempt resolving of the X-ray harmonics. At the experiment planning stage it was unknown if this would be possible. Now that the simulations have been performed, we know that the non-optimal ORION target chamber geometry leads to merging of the harmonics even before the water window at 282 eV. This is consistent with the findings, Figure \ref{fig:orionq1010} is a typical integrated signal in \unit{PSL.mm} and the corresponding Fourier transform for the quartz ($10\bar{1}0$) crystal image.
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/orion/orion_q1010}
+	\caption[Typical ORION experiment uncalibrated IP response quartz ($10\bar{1}0$) crystal and Fourier transform]{\textbf{Typical (SP1, PMMA) uncalibrated shot data for the quartz ($10\bar{1}0$) image} a) IP spatial axis integrated signal with dispersion axis. b) Fourier transform of a) with no evidence of harmonics.}
+	\label{fig:orionq1010}
+\end{figure}
 
 \subsubsection{Calibration and polarisation}
-The OHREX response to p-polarised light is approximately an order of magnitude lower than for s-polarised light. Assuming that the HHG beam retains the polarisation of the incident laser pulse, the polarisation of the HHG beam relative to the OHREX plane of incidence and reflection is \qty{10.5}{\degree} out of the plane. Unlike for the RPM interaction, the OHREX crystal reflection is an entirely linear process and it is therefore acceptable to decompose the laser pulse into its constituents, explicitly, the field incident on the crystal is
+% TODO reference simulation figure that shows only p pol light reflected.
+% TODO write up the OHREX polarisation stuff
+% TODO put efficiency of only p pol reflected into the theory prediction, I think at this moment I am coming at it from the experiment side which is wrong.
+% TODO add in polarisations of SP1 and SP2 for the OHREX angles out of the plane.
+The choice of the spectrometer response function, $G(h\nu)$, is non-trivial. One must firstly be assured that the second order contribution is small relative to the first, true for this source spectrum. And also think carefully about the anticipated polarisation in the OHREX interaction plane. The OHREX response to p-polarised light is approximately an order of magnitude lower than for s-polarised light. From Figure X we are assured that only the p-polarised (with respect to the target interaction plane) X-rays are specularly reflected to the OHREX. Corresponding polarisation out of the OHREX interaction plane is calculated in the Appendix. The polarisation of the HHG beam relative to the OHREX plane of incidence and reflection is \qty{10.5}{\degree} out of the plane. Unlike for the RPM interaction, the OHREX crystal reflection is an entirely linear process and it is therefore acceptable to decompose the laser pulse into its constituents, explicitly, the field incident on the crystal is
 \begin{equation}
-	\mathbf{E} = \mathbf{E}_\mathrm{s} + \mathbf{E}_\mathrm{p}.
+	\mathbf{E_\mathrm{O}} = \mathbf{E}_\mathrm{O,\, s} + \mathbf{E}_\mathrm{O,\, p}.
 \end{equation}
 After interaction with the crystal the field is
 \begin{equation}
-	\mathbf{E}_\mathrm{detector} = \alpha_\mathrm{s}(h\nu)\mathbf{E}_\mathrm{s} + \alpha_\mathrm{p}(h\nu)\mathbf{E}_\mathrm{p},
+	\mathbf{E}_\mathrm{detector} = \alpha_\mathrm{s}(h\nu)\mathbf{E}_\mathrm{O,\, s} + \alpha_\mathrm{p}(h\nu)\mathbf{E}_\mathrm{O,\, p},
 \end{equation}
-where $\alpha_i(h\nu)$ is the energy dependent $(h\nu)$ sensitivity of the reflection for s- and p-polarised respectively. Since the two polarisations are orthogonal, the intensity is
+where $\alpha_i(h\nu)$ is the energy dependent $(h\nu)$ amplitude sensitivity of the reflection for s- and p-polarised respectively. Since the two polarisations are orthogonal, the intensity is
 \begin{equation}
-	I = \alpha^2_\mathrm{s}(h\nu)|\mathbf{E}_\mathrm{s}|^2 + \alpha^2_\mathrm{p}(h\nu)|\mathbf{E}_\mathrm{p}|^2.
+	I = \alpha^2_\mathrm{s}(h\nu)|\mathbf{E}_\mathrm{O,\, s}|^2 + \alpha^2_\mathrm{p}(h\nu)|\mathbf{E}_\mathrm{O,\, p}|^2.
 \end{equation}
 Noting that $\alpha^2_i(h\nu)$ are the calibration factors, $G_i(h\nu)$, and that
 \begin{equation}
-	|\mathbf{E}_\mathrm{s}| = |\mathbf{E}|\sin\phi
+	|\mathbf{E}_\mathrm{O,\, s}| = |\mathbf{E_\mathrm{O}}|\sin\phi
 \end{equation}
 and
 \begin{equation}
-	|\mathbf{E}_\mathrm{p}| = |\mathbf{E}|\cos\phi,
+	|\mathbf{E}_\mathrm{O,\, p}| = |\mathbf{E_\mathrm{O}}|\cos\phi,
 \end{equation}
 where $\phi$ is the angle out of the interaction plane,
 \begin{equation}
-	I_\mathrm{detector} = (G_\mathrm{s}(h\nu)\sin^2\phi + G_\mathrm{p}(h\nu)\cos^2\phi)|\mathbf{E}|^2 = f(h\nu)|\mathbf{E}|^2,
+	I_\mathrm{detector} = (G_\mathrm{s}(h\nu)\sin^2\phi + G_\mathrm{p}(h\nu)\cos^2\phi)|\mathbf{E_\mathrm{O}}|^2 = F(h\nu)|\mathbf{E_\mathrm{O}}|^2,
 \end{equation}
-where $f(h\nu)$ is the energy dependent calibration factor for this orientation of the OHREX.
+where $F(h\nu) =  (G_\mathrm{s}(h\nu)\sin^2\phi + G_\mathrm{p}(h\nu)\cos^2\phi$ is the energy dependent calibration factor for this OHREX orientation.
+
+
+Figure \ref{fig:orionq1011} is a typical calibrated signal from the quartz ($10\bar{1}1$) crystal, ready for comparison to the theoretical prediction.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/orion/orion_q1011}
+	\caption[Typical ORION experiment calibrated IP response for the quartz ($10\bar{1}1$) crystal.]{Typical (SP1, PMMA) ORION experiment calibrated IP response for the quartz ($10\bar{1}1$) crystal.}
+	\label{fig:orionq1011}
+\end{figure}
+
+
 
 Shots were also taken through the OHREX port, we had hoped to capture the beam divergence however, the beam was larger than initially expected and we were unable to distinguish much. Mention saturation.
 
@@ -168,3 +185,5 @@ Include a table detailing error contributions? Also need to add reflectivity err
 Discuss mirrored targets and brems emission.
 
 Then go back and do the theory. then sims.
+
+Also in sims look at reconstructing a filtered pulse
