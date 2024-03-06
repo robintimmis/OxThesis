@@ -11,6 +11,121 @@ HYADES scale length sims, ORION parameters and description of the setup, targets
 
 I think the appropriate order would be theory, simulation, experiment layout, data analysis since then I can use all things inferred from theory and simulation to justify the data analysis. It also means ending well.
 
+
+\section{\label{ch:3-sec:theory}Theory}
+
+\subsubsection{Hole boring}
+% TODO add reference to ZVP plots demonstrating hole boring.
+As observed in the ZVP plots, on long timescales relative to the laser pulse cycles, via the ponderomotive pressure of the laser, the plasma front moves inwards. This is hole boring \cite{wilksAbsorptionUltraIntenseLaser1992}. One can derive a hole boring velocity by considering conservation of momentum in this quasi-static state. Since the hole boring velocity is laser pulse intensity dependent, the spatial profile of the laser will be imprinted on the surface. Typically Gaussian in shape, for high power laser systems, this can to first order generate a focusing \ac{RPM} and a beaming of the specularly reflected signal, as in Figure \ref{fig:orionholeboring}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/orion/orion_hole_boring}
+	\caption[2D PIC simulation of HHG beaming effect via hole boring.]{Electromagnetic field intensity in a 2D PIC simulation of a relativistic ($a_0 = 30$) laser pulse incident on a solid density plasma. The incoming beam is specularly reflected off the target which is curved by the radiation pressure leading to beaming in the reflected harmonic beam.}
+	\label{fig:orionholeboring}
+\end{figure}
+To access the highest possible electromagnetic field intensities, the laser pulse is focused on target to the diffraction limit. However, since the diffraction limit scales linearly with the wavelength, higher-order harmonics can be refocused to a smaller spot via this mechanism allowing access to unprecedented peak intensities. Vincenti \textit{et al} demonstrated intensity gains of over 1000 with currently accessible parameters in \ac{3D} \ac{PIC} simulations \cite{vincentiAchievingExtremeLight2019}, suggesting a realistic route to the Schwinger Limit using next-generation laser facilities. Regardless of any blue-skies purposes, it is clear any prediction of \ac{HHG} beam intensity must account for hole boring and is therefore an essential component of the ORION experiment analysis.
+
+% TODO I might want to flesh out the hole boring analysis but it already takes up so much space so idk...
+Applying momentum balance between the laser pulse and particles in the rest frame of the \ac{RPM} surface, the hole boring velocity is
+\begin{equation}\label{eq:v_HB}
+	\frac{v_\mathrm{HB}}{c} = \sqrt{\frac{R\cos\theta}{2}\frac{Zm_\mathrm{e}}{Am_\mathrm{p}}\frac{n_\mathrm{c}}{n_\mathrm{e}(x_\mathrm{i}(t,y))}}a_L(t,y) = \Pi a_L(t,y),
+\end{equation}
+where $R$ is the RPM reflectivity, $\theta$ is the angle of incidence, \qty{16}{\degree} in the ORION experiment, $Z$ and $A$ are the atomic and atomic mass numbers respectively for the plasma ions, $n_\mathrm{c}$ is the plasma critical density, $n_\mathrm{e}(x_\mathrm{i}(t,y))$ the electron number density and $x_\mathrm{i}(t,y)$
+the depth of hole boring, from the Supplementary Material \cite{vincentiOpticalPropertiesRelativistic2014}. For the ORION laser pulse parameter space $\Pi \ll a_\mathrm{L}$, hence the relativistic correction derived by Robinson \textit{et al} \cite{robinsonRelativisticallyCorrectHoleboring2009} to Equation \ref{eq:v_HB} can be neglected. Due to the high contrast and long duration of the ORION beamlines, there is effectively no pre-plasma formation on the front surface and therefore the number density is simply the number density of the material in solid form and $n_\mathrm{e}$ is independent of $x_\mathrm{i}(t,y)$. Robinson \textit{et al} \cite{robinsonHoleboringRadiationPressure2009} calculated a generalisation of momentum conservation to multiple species, simply replace the mass density with the composite mass density $\rho = \sum_j m_{\mathrm{i}j}n_{\mathrm{i}j}$, then
+\begin{equation}
+	\frac{An_\mathrm{e}}{Z} \to \sum_j \frac{A_jn_{\mathrm{e}j}}{Z_j},
+\end{equation}
+where $n_{\mathrm{e}j}$ is the number density of electrons that originated from the $j$ ion.
+
+
+%TODO (This analysis can be done by taking the Vincenti 2014 derivation and taking $R =1$, since that applied to ORION parameter space, replace ion terms with sums over ions and make the important assumption: all ions reflected at the same velocity (reasonable), note that this might be a tricky to do to electrons when there is significant electron heating and so $R < 1$, may need to return to this for thesis... manipulating the expression arrives at the desired form)
+
+The spatio-temporal envelope of the normalised vector potential of the laser pulse incident on the target surface is modelled as
+\begin{equation}
+	a_\mathrm{L}(t,y) = a_0e^{-\frac{y^2}{2w_\mathrm{L}^2}}g(t-t_0)
+\end{equation}
+where $w_\mathrm{L}$ is the beam waist on target and $g(t)$ the temporal envelope, a Gaussian or $\sech$ profile and $t_0$ the main pulse peak time.
+
+Integrating equation \ref{eq:v_HB},
+\begin{equation}\label{eq:xi_t}
+	x_\mathrm{i}(y) = \int v_\mathrm{HB}\mathrm{d}t = \Pi \int^t_{-\infty} a_L(t,y)c\mathrm{d}t.
+\end{equation}
+
+At the peak of the main pulse,
+\begin{equation}
+	x_\mathrm{i}(y) = \Pi a_0ce^{-\frac{y^2}{w_L^2}} G,
+\end{equation}
+where $G = \int_\infty^{t_0} g(t-t_0) \mathrm{d} t \sim t_\mathrm{p}$, where $t_\mathrm{p}$ is the pulse duration.
+
+The total denting is a combination of the peak electron-ion charge separation, $x_\mathrm{e}$ (which leads to the intrinsic phase imprint on the HHG beam) and equation \ref{eq:xi_t}. Note that for the long pulse duration of the ORION laser, $x_\mathrm{i} \gg x_\mathrm{e}$ and therefore $x_\mathrm{e}$ can be neglected.
+
+Applying a Taylor expansion to the spatial profile of equation \ref{eq:xi_t} around the laser spot centre,
+\begin{equation}
+	x_\mathrm{i} = \mathrm{constant} - \frac{y^2}{4f_\mathrm{p}} + \mathcal{O}(y^4),
+\end{equation}
+where, to first order, this is the equation of a parabolic mirror with focal length
+\begin{equation}
+	f_\mathrm{p}(t) = \frac{w_\mathrm{L}^2}{4\Pi\int^t_{-\infty} a_0\exp({-t^2/2t^2_\mathrm{p}})c\mathrm{d}t}.
+\end{equation}
+
+Following the Vincenti \textit{et al} derivation \cite{vincentiOpticalPropertiesRelativistic2014}, the denting parameter is defined as,
+\begin{equation}
+	\delta_\mathrm{T} =  x_\mathrm{i}|_{(y=0)} - x_\mathrm{i}|_{(y=\sqrt{2}\omega_\mathrm{L})}.
+\end{equation}
+Hence,
+\begin{equation}
+	\delta_\mathrm{T} = \frac{w_\mathrm{L}^2}{2f_\mathrm{p}} = 2\Pi \int^t_{-\infty} a_0 e^{-t^2/2t^2_\mathrm{p}}c\mathrm{d}t,
+\end{equation}
+and is independent of laser focal spot size. 
+
+If the spatial profile of the $n^\mathrm{th}$ harmonic beam can be adequately described by a Gaussian at the plasma mirror plane, with a beam width described by the harmonic source size, $w_n$,
+\begin{equation}
+	h_n \sim e^{-r^2/w_n^2},
+\end{equation}
+then the beam profile is known at all distances, $z$ from the target. Its divergence, defined as 
+\begin{equation}
+	\theta_n = \lim_{z\to\infty} \frac{w_n(z)}{z},
+\end{equation}
+is therefore
+\begin{equation}
+	\theta_n = \theta^0_n\sqrt{1+\Psi^2_n},
+\end{equation}
+where $\theta^0_n = \lambda_n/\pi w_n$ is the harmonic divergence in the absence of RPM denting and
+\begin{equation}
+	\Psi_n = \frac{2\pi}{\cos\theta}\left(\frac{w_n(0)}{w_L}\right)^2\frac{\delta_T}{\lambda_n}
+\end{equation}
+is the dimensionless focusing parameter. If $\Psi_n \gg 1$, as is true for the short wavelength X-ray harmonics of interest, 
+\begin{equation}
+	\theta_n \approx \frac{w_n(0)}{f_\mathrm{p}\cos\theta}
+\end{equation}
+and the divergence is dominated by RPM curvature. 
+
+Far from focus, at the detector plane $z =$ 2.4 m from the target,
+\begin{equation}
+	w_{n} \approx z\tan\theta_n.
+\end{equation}
+The corresponding magnification factor at detection is thus 
+\begin{equation}
+	\gamma_n(z) = \frac{w_n(z)}{w_n(0)},
+\end{equation}
+thus the laser intensity at detection is reduced by a factor $\gamma_n(z)^{-2}$.
+
+Note that at large distances,
+\begin{equation}
+	\gamma_n \approx \frac{z\tan(w_n(0)/(f_\mathrm{p}\cos\theta}{w_n(0))},
+\end{equation}
+Taylor expanding the tangent, one sees that the magnification factor is only weakly dependent on the harmonic source size ($f_\mathrm{p}$ is independent of the source size), whereas the magnification is strongly dependent on the the laser spot size ($\sim w_\mathrm{L}^4$).
+
+
+At the new focal point, $z = z_\mathrm{f}$, the demagnification factor is \cite{vincentiOpticalPropertiesRelativistic2014}
+\begin{equation}
+	\gamma_n(z_\mathrm{f}) = \frac{1}{\sqrt{1+\Psi_n^2}},
+\end{equation}
+this determines the new peak intensity accessible using this technique.
+
+
+%TODO mention intrinsic phase and explain neglections.
+
 \section{\label{ch:3-sec:data_processing}Experimental data processing}
 
 \subsection{Image plate calibration}
