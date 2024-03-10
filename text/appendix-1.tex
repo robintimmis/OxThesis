@@ -71,7 +71,7 @@ When working with emittances, most frequently in the literature it is the \texti
 \end{equation}
 where $\gamma = 1/\sqrt{1-\beta^2}$ refers to the beam's mean energy and $\beta_\mathrm{L} \approx c$ is the ultrarelativistic beam's longitudinal speed.
 
-The Courant-Snyder invariant which describes the ellipse that corresponds to the emittance is\footnote{Regrettably $\beta$ and $\gamma$ are the standard notations for the Twiss parameters, at all other locations in this thesis, these parameters will refer to the standard relativistic beta and gamma factors of objects respectively.}
+The Courant-Snyder invariant which describes the ellipse that corresponds to the emittance is\footnote{Regrettably $\beta$ and $\gamma$ are the standard notations for the Twiss parameters, at all other locations in this Thesis, these parameters will refer to the standard relativistic beta and gamma factors of objects respectively.}
 \begin{equation}
 	\epsilon^i_\mathrm{rms}  = \gamma x_i^2 + 2\alpha x x' \beta x_i'^2,
 \end{equation}
@@ -86,7 +86,13 @@ and
 \begin{equation}
 	\gamma = \frac{\langle x_i'^2 \rangle}{	\epsilon^i_\mathrm{rms} }.
 \end{equation}
-Thus the shape of the ellipse and the divergence of the beam can be determined.
-
+Thus the shape of the ellipse and the divergence of the beam can be determined. The elliptical contour defining the emittance of an ideal Gaussian phase-space distribution is given in Figure \ref{fig:emittancenormal}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/appendix/emittance_normal}
+	\caption[Emittance calculation for an ideal Gaussian distribution in phase space.]{Emittance calculation for an ideal Gaussian distribution in phase space, $f_\mathrm{n}(z,p_z) = 1/(2\pi s_zs_{pz})\exp[-((z-m_z)^2/(2s_z^2) + (p_z-m_{pz})^2/(2s_{pz}^2))]$, centred at ($m_z$,$m_{pz}$) = (3,0) with standard deviations ($s_z$,$s_{pz}$) = (1,10).}
+	\label{fig:emittancenormal}
+\end{figure}
+The contour is numerically calculated to contain \qty{39.4 \pm .1}{\%} of the particles, compared to 39.3 \% from theory. Here the discrepancy arises from the finite grid on which the distribution is defined.
 
 
