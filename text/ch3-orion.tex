@@ -50,7 +50,7 @@ up to the cutoff, $n_\mathrm{C}$. Here $S_n(\omega/\omega_\mathrm{L}-n)$ is the 
 	\int I_\omega(\omega) \mathrm{d}\omega \mathrm{d} A = ER,
 \end{equation}
 % TODO Simulation showing long pulse vs short pulse spectral shape functions relative sizes
-where $E$ the total energy of the laser pulse and $R$ is the reflectivity of the \ac{RPM}. Intuition suggests the spectral shape function for the $n^\mathrm{th}$ harmonic retains the spectral shape of the incident laser pulse, \textit{i.e.} for a laser pulse with a Gaussian temporal profile, this corresponds to a Gaussian centred at $n\omega_\mathrm{L}$ of width $\sigma_\mathrm{L} = 1/t_\mathrm{L}$, where $t_\mathrm{L}$ is the laser pulse width. Simulations show this is a reasonable approximation.
+where $E$ the total energy of the laser pulse and $R$ is the reflectivity of the \ac{RPM}. Intuition suggests the spectral shape function for the $n^\mathrm{th}$ harmonic retains the spectral shape of the incident laser pulse, \textit{i.e.} for a laser pulse with a Gaussian temporal profile, this corresponds to a Gaussian centred at $n\omega_\mathrm{L}$ of width $\sigma_\mathrm{L} = 1/t_\mathrm{L}$, where $t_\mathrm{L}$ is the laser pulse width. Simulations show this is a reasonable approximation for ORION parameters \footnote{Hole boring discussed in the following section can lead to a Doppler shift in harmonic energy across the laser pulse corresponding to a Doppler broadening of the spectral shape function in reciprocal space, however, unlike the ZVP simulations of the previous chapter, this is negligible for ORION parameters.}.
 
 Simulations also show that for the SP1 laser, the incident laser pulse significantly suppresses the even harmonics, hence,
 \begin{equation}
@@ -102,7 +102,7 @@ The spatio-temporal envelope of the normalised vector potential of the laser pul
 \end{equation}
 where $w_\mathrm{L}$ is the beam waist on target and $g(t)$ the temporal envelope, a Gaussian or $\sech$ profile and $t_0$ the main pulse peak time.
 
-Integrating equation \ref{eq:v_HB},
+Integrating Equation \ref{eq:v_HB},
 \begin{equation}\label{eq:xi_t}
 	x_\mathrm{i}(y) = \int v_\mathrm{HB}\mathrm{d}t = \Pi \int^t_{-\infty} a_L(t,y)c\mathrm{d}t.
 \end{equation}
@@ -113,9 +113,9 @@ At the peak of the main pulse,
 \end{equation}
 where $G = \int_\infty^{t_0} g(t-t_0) \mathrm{d} t \sim t_\mathrm{L}$ and $t_\mathrm{L}$ is the laser pulse temporal width.
 
-The total denting is a combination of the peak electron-ion charge separation, $x_\mathrm{e}$ (which leads to the intrinsic phase imprint on the HHG beam) and equation \ref{eq:xi_t}. Note that for the long pulse duration of the ORION laser, $x_\mathrm{i} \gg x_\mathrm{e}$ and therefore $x_\mathrm{e}$ can be neglected.
+The total denting is a combination of the peak electron-ion charge separation, $x_\mathrm{e}$ (which leads to the intrinsic phase of the HHG beam \cite{anderbruggePropagationRelativisticSurface2007}) and Equation \ref{eq:xi_t}. Note that for the long pulse duration of the ORION laser, $x_\mathrm{i} \gg x_\mathrm{e}$ and therefore $x_\mathrm{e}$ can be neglected.
 
-Applying a Taylor expansion to the spatial profile of equation \ref{eq:xi_t} around the laser spot centre,
+Applying a Taylor expansion to the spatial profile of Equation \ref{eq:xi_t} around the laser spot centre,
 \begin{equation}
 	x_\mathrm{i} = \mathrm{constant} - \frac{y^2}{4f_\mathrm{p}} + \mathcal{O}(y^4),
 \end{equation}
@@ -179,8 +179,16 @@ At the new \ac{RPM} focal point, $z = z_\mathrm{f}$, the demagnification factor 
 \end{equation}
 this determines the new peak intensity accessible via hole boring.
 
+\subsection{Harmonic source size}
 
-%TODO mention intrinsic phase and explain neglections.
+Include plots and fits for near roll off.
+
+\section{\label{ch:3-sec:simulations}Simulations}
+\subsection{1D PIC simulations of HHG}
+
+
+\subsection{Hydrodynamic simulations of preplasma formation}
+
 
 \section{\label{ch:3-sec:data_processing}Experimental data processing}
 
@@ -215,7 +223,7 @@ It is generally inevitable that some time will elapse between laser shot and IP 
 \end{equation}
 where $t$ is the time between shot and scan and $A$, $\tau$ and $B$ are found from fits to experimental data. A key aspect of the exponential decay is that the attenuation depends only on the signal at that moment in time and not the initial conditions. This has been shown to be true in experiment \cite{meadowcroftEvaluationSensitivityFading2008}.
 
-At \qty{20}{\degree C} at the ORION facility \textit{Meadowcroft et al} \cite{meadowcroftEvaluationSensitivityFading2008} determined that for the Fuji BAS TR-type IP, the optimum fit for the parameters of equation \ref{eq:orion.Ft} is $A = \num{0.347\pm0.022}$, $B = \num{0.693\pm0.011}$ and $\tau = \qty{35.5\pm5.3}{minutes}$. Therefore at 30 minutes, $F(t) = 0.84$.
+At \qty{20}{\degree C} at the ORION facility \textit{Meadowcroft et al} \cite{meadowcroftEvaluationSensitivityFading2008} determined that for the Fuji BAS TR-type IP, the optimum fit for the parameters of Equation \ref{eq:orion.Ft} is $A = \num{0.347\pm0.022}$, $B = \num{0.693\pm0.011}$ and $\tau = \qty{35.5\pm5.3}{minutes}$. Therefore at 30 minutes, $F(t) = 0.84$.
 
 In summary, the number of PSL measured on an IP can be converted to an incident number of photons via
 \begin{equation}
@@ -279,7 +287,7 @@ There is unfortunately no spectrometer response data for the $10\bar{1}0$ crysta
 The OHREX is equipped with a \qty{50}{\mu m} Beryllium filter to protect the crystals. The corresponding signal attenuation can be calculated using X-ray transmission data \cite{henkeXRayInteractionsPhotoabsorption1993a}.
 
 \subsection{Extracting the data}
-The quartz OHREX crystals $10\bar{1}0$ and $10\bar{1}1$ were fielded on the experiment. Crystal images were recorded with BasTR2040 Fuji Image Plate. A typical shot image scanned with the FLA7000 scanner and converted to photostimulated luminescence units (PSLs) is given in figure \ref{fig:orionohrexshot28psl}.
+The quartz OHREX crystals $10\bar{1}0$ and $10\bar{1}1$ were fielded on the experiment. Crystal images were recorded with BasTR2040 Fuji Image Plate. A typical shot image scanned with the FLA7000 scanner and converted to photostimulated luminescence units (PSLs) is given in Figure \ref{fig:orionohrexshot28psl}.
 %todo point out both crystal images and label them
 \begin{figure}
 	\centering
