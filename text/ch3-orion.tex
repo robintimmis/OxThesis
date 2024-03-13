@@ -17,6 +17,15 @@ The early developments in the field are outlined by Teubner \textit{et al} \cite
 
 HHG from solids has demonstrated significantly higher conversion efficiencies than for HHG from gases nor are there any limitations to the applied laser intensity \cite{teubnerHighorderHarmonicsLaserirradiated2009}. SHHG has thus been a field of huge interest over the past three decades for the production of bright coherent attosecond harmonics.
 
+
+\section{The experiment}
+The experiment goal was
+
+The ORION target chamber
+
+Details and layout
+
+
 \section{\label{ch:3-sec:theory}Theory}
 
 
@@ -62,11 +71,11 @@ The integral and summation order can be reversed. Since $\sigma_\mathrm{L} \ll \
 \end{equation}
 thus,
 \begin{equation}
-	ER \approx I_0 \sqrt{\pi}\sigma_\mathrm{L} ((1-2^{-p})\zeta(p) - 2^{-p}\zeta(p,\frac{n_\mathrm{C} + 1}{2})),
+	ER \approx I_0 \sqrt{\pi}\sigma_\mathrm{L}\omega_\mathrm{L} ((1-2^{-p})\zeta(p) - 2^{-p}\zeta(p,\frac{n_\mathrm{C} + 1}{2})),
 \end{equation}
 where $\zeta(p)$ and $\zeta(p,(n_\mathrm{C} + 1)/2)$ are the Riemann Zeta and Hurwitz Zeta functions respectively. The final term can be neglected for a petawatt class laser pulse where $n_\mathrm{C} \gg 1$. In the case of an ideal $p$-polarised laser pulse,
 \begin{equation}
-	ER \approx I_0 \sqrt{\pi}\sigma_\mathrm{L} \zeta(p).
+	ER \approx I_0 \sqrt{\pi}\sigma_\mathrm{L} \omega_\mathrm{L}\zeta(p).
 \end{equation}
 For the \ac{ROM} regime, $p = 8/3$ and the \ac{RPM} is extremely efficient, $R \approx 1$. Thus, $I_0$ can be estimated from the system parameters.
 
@@ -185,7 +194,74 @@ Include plots and fits for near roll off.
 
 \section{\label{ch:3-sec:simulations}Simulations}
 \subsection{1D PIC simulations of HHG}
+Numerical simulations of the SP1 and SP2 interactions with CVD and PMMA were performed using the Smilei PIC code to confirm the results of the previous section for ORION beamline parameters. Application of the Bourdier method enabled the accurate and computationally efficient reconstruction of the interactions in 1D, a necessity for the sub-ps ORION laser pulse duration. Despite the 1D geometry and optimised supercomputer architecture, resolution numerical heating and noise remained a serious issue. Edwards and Mikhailova noted for their single laser pulse cycle simulations that the highest resolved harmonic required 10 cells per wavelength and up to 5000 particles per cell was necessary for their noise requirements \cite{edwardsXRayEmissionEffectiveness2020} while numerical heating scales linearly with time. The fourth interpolation order for the particle shape function was found to be an efficient choice for the minimisation of numerical heating.
 
+Fortunately, to make comparisons to the derivations of the previous section only a low resolution is necessary. Simulation parameters are details in Table \ref{tab:orion-parameters}.
+\begin{table}[]
+	\begin{center}
+		\begin{tabular}{lll}
+			\hline \hline
+			\multicolumn{3}{c}{SP1 Laser (1D, \qty{16}{\degree} angle of incidence)}   \\
+			Parameters                                        & Real                                 & Smilei                         \\ \hline
+			Wavelength, $\lambda$ (nm)                        & 527                                 & 2$\pi$                      \\
+			Angular frequency, $\omega_\mathrm{L}$ (fs$^{-1}$)         & 3.58                                  & 1                           \\
+			Polarisation, $\phi$ (\unit{\degree})        & -42.2                                 &                           \\
+			Normalised vector potential, $a_0$     & 7 - 10                               &                           \\
+			Temporal FWHM, $t_\mathrm{FW}$ (fs)       & 470                                 &      1690                    \\
+			Temporal envelope, $E_t$                          & \multicolumn{2}{l}{$E_t \sim e^{-(t-t_\mathrm{FW})^2\ln 2 /t_\mathrm{FW}^2}$} \vspace{0.15cm}\\ \hline \hline
+			\multicolumn{3}{c}{SP2 Laser (1D, \qty{16}{\degree} angle of incidence)}      \\ \hline
+			Wavelength, $\lambda$ (nm)                        & 1053                                 & 2$\pi$                      \\
+			Angular frequency, $\omega_\mathrm{L}$ (fs$^{-1}$)         & 1.79                                  & 1                           \\
+			Polarisation, $\phi$ (\unit{\degree})          &        19.6                           &                            \\
+			Normalised vector potential, $a_0$     & 7 - 10                               &                           \\
+			Temporal FWHM, $t_\mathrm{FW}$ (fs)       & 470                                 &      1690                    \\
+			Temporal envelope, $E_t$                          & \multicolumn{2}{l}{$E_t \sim e^{-(t-t_\mathrm{FW})^2\ln 2 /t_\mathrm{FW}^2}$} \vspace{0.15cm}\\ \hline \hline
+			\multicolumn{3}{c}{Simulation box}   \\ \hline
+			Size, $x $ (nm)                           & $10 \lambda$          & $20\pi$         \\
+			Sim length (fs)                                   & 35.22                                & 20$\pi$                     \\
+			Spatial resolution, $\Delta x$ (nm)               & $\lambda/128$ = 8.28                 & 0.0491                      \\
+			Temporal resolution, $\Delta t$ (as)              & $\Delta x/11c$ = 2.51               & 0.00446         \\          			Macro-electrons per cell                       & \multicolumn{2}{l}{1000}                                                               \\
+			Macro-ions per cell                               & 1000                                   &  \\
+			Ion temperature, $T_\mathrm{i}$ (keV)              &     0             &  0                         \\
+			Electron temperature, $T_\mathrm{e}$ (keV)              &     0.115             &  \num{2.25e-4}                         \vspace{0.15cm}  \\ \hline \hline
+			\multicolumn{3}{c}{Collisionless, pre-ionised, randomly-initialised plasma}                                               \\ \hline
+			CVD density, $n_\mathrm{e}$                               & \num{1.05e24}                                   &  \\
+			PMMA density, $n_\mathrm{e}$                               & \num{1.05e24}                                   &  \\
+			Electron $x$ profile, $n(x)$                             & \multicolumn{2}{l}{$n_\mathrm{e} \text{ for $\lambda \le x \le 9\lambda$}$}                                               \\
+			CVD carbon ion profile, $n_\mathrm{i}(x)$                                & \multicolumn{2}{l}{$n_\mathrm{i} = n(x)/6$}                                                    \vspace{0.15cm}\\ \hline \hline 
+			
+			
+		\end{tabular}
+	\end{center}
+	\caption{\label{tab:orion-parameters} \textbf{Smilei parameters to compare Section \ref{ch:3-sec:theory} analytical results to numerical simulation for ORION parameter space.} The PMMA ion distribution consists of carbon, oxygen and hydrogen ions with number densities $5n/54$, $2n/54$, $8n/54$ respectively, each with 1000 macroparticles per cell. }
+\end{table}
+Figure \ref{fig:orionsimfigs} presents typical simulation results for the SP1 laser geometry.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_sim_figs}
+	\caption[Typical 1D HHG Smilei simulation results]{\textbf{1D PIC simulation of the SP1 ORION beamline geometry at $\mathbf{a_0 = 7}$ interacting with a pre-ionised CVD target.} a) Ion density at initialisation ($t=0$), halfway ($t=T_\mathrm{sim}/2$) and at the simulation end ($t=T_\mathrm{sim}$) demonstrating hole boring. b) Absolute spectral intensity of the laser pulse and reflected harmonic beam obtained via Fourier transforms. The harmonic beam retains the laser pulse spectral width. Even harmonics are significantly suppressed at this polarisation. The large bump in the distribution around the 18\th\ harmonic is spuriously generated via numerical heating.}
+	\label{fig:orionsimfigs}
+\end{figure}
+Bump discuss why ok
+
+Then do theory vs parameters
+
+Then do heating 
+
+Then do full simulation
+
+
+
+A sharp density gradient was applied 
+
+Note that artificially increasing the plasma temperature to increase the Debye length and reduce numerical heating, while improving HHG accuracy, reduces hole boring accuracy since on sub-ps timescales, there is significant preplasma expansion. (Include plot demonstrating this)
+
+Full large res sim
+
+Discuss higher interp order.
+
+Note that hole boring theory relies on the assumption of a quasi-static equilibrium. This is only true for a circularly polarised incident pulse.
+(Include data point for circular pol sim)
 
 \subsection{Hydrodynamic simulations of preplasma formation}
 
