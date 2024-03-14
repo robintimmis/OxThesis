@@ -194,9 +194,9 @@ Include plots and fits for near roll off.
 
 \section{\label{ch:3-sec:simulations}Simulations}
 \subsection{1D PIC simulations of HHG}
-Numerical simulations of the SP1 and SP2 interactions with CVD and PMMA were performed using the Smilei PIC code to confirm the results of the previous section for ORION beamline parameters. Application of the Bourdier method enabled the accurate and computationally efficient reconstruction of the interactions in 1D, a necessity for the sub-ps ORION laser pulse duration. Despite the 1D geometry and optimised supercomputer architecture, resolution numerical heating and noise remained a serious issue. Edwards and Mikhailova noted for their single laser pulse cycle simulations that the highest resolved harmonic required 10 cells per wavelength and up to 5000 particles per cell was necessary for their noise requirements \cite{edwardsXRayEmissionEffectiveness2020} while numerical heating scales linearly with time. The fourth interpolation order for the particle shape function was found to be an efficient choice for the minimisation of numerical heating.
+Numerical simulations of the SP1 and SP2 interactions with CVD and PMMA were performed using the Smilei PIC code to confirm the results of the previous section for ORION beamline parameters. Application of the Bourdier method (plasma initialised streaming at $\mathbf{v}= c\sin\theta \mathbf{\hat{y}}$) enabled the accurate and computationally efficient reconstruction of the interactions in 1D, a necessity for the sub-ps ORION laser pulse duration. Despite the 1D geometry and optimised supercomputer architecture, resolution numerical heating and noise remained a serious issue. Edwards and Mikhailova noted for their single laser pulse cycle simulations that the highest resolved harmonic required 10 cells per wavelength and up to 5000 particles per cell was necessary for their noise requirements \cite{edwardsXRayEmissionEffectiveness2020} while numerical heating scales linearly with time. The fourth interpolation order for the particle shape function was found to be an efficient choice for the minimisation of numerical heating.
 
-Fortunately, to make comparisons to the derivations of the previous section only a low resolution is necessary. Simulation parameters are details in Table \ref{tab:orion-parameters}.
+Fortunately, to make comparisons to the derivations of Section \ref{ch:3-sec:theory} only a low resolution is necessary. Simulation parameters are detailed in Table \ref{tab:orion-parameters}. 
 \begin{table}[]
 	\begin{center}
 		\begin{tabular}{lll}
@@ -205,63 +205,118 @@ Fortunately, to make comparisons to the derivations of the previous section only
 			Parameters                                        & Real                                 & Smilei                         \\ \hline
 			Wavelength, $\lambda$ (nm)                        & 527                                 & 2$\pi$                      \\
 			Angular frequency, $\omega_\mathrm{L}$ (fs$^{-1}$)         & 3.58                                  & 1                           \\
-			Polarisation, $\phi$ (\unit{\degree})        & -42.2                                 &                           \\
-			Normalised vector potential, $a_0$     & 7 - 10                               &                           \\
+			Polarisation, $\phi$ (\unit{\degree})        & -42.2                                 &    -42.2                         \\
+			Normalised vector potential, $a_0$     & 7 - 10                               &    7 - 10                           \\
 			Temporal FWHM, $t_\mathrm{FW}$ (fs)       & 470                                 &      1690                    \\
 			Temporal envelope, $E_t$                          & \multicolumn{2}{l}{$E_t \sim e^{-(t-t_\mathrm{FW})^2\ln 2 /t_\mathrm{FW}^2}$} \vspace{0.15cm}\\ \hline \hline
 			\multicolumn{3}{c}{SP2 Laser (1D, \qty{16}{\degree} angle of incidence)}      \\ \hline
 			Wavelength, $\lambda$ (nm)                        & 1053                                 & 2$\pi$                      \\
 			Angular frequency, $\omega_\mathrm{L}$ (fs$^{-1}$)         & 1.79                                  & 1                           \\
-			Polarisation, $\phi$ (\unit{\degree})          &        19.6                           &                            \\
-			Normalised vector potential, $a_0$     & 7 - 10                               &                           \\
-			Temporal FWHM, $t_\mathrm{FW}$ (fs)       & 470                                 &      1690                    \\
+			Polarisation, $\phi$ (\unit{\degree})          &        19.6                           &     19.6                        \\
+			Normalised vector potential, $a_0$     & 20 - 30                               &    20 - 30                        \\
+			Temporal FWHM, $t_\mathrm{FW}$ (fs)       & 470                                 &      843                    \\
 			Temporal envelope, $E_t$                          & \multicolumn{2}{l}{$E_t \sim e^{-(t-t_\mathrm{FW})^2\ln 2 /t_\mathrm{FW}^2}$} \vspace{0.15cm}\\ \hline \hline
 			\multicolumn{3}{c}{Simulation box}   \\ \hline
 			Size, $x $ (nm)                           & $10 \lambda$          & $20\pi$         \\
-			Sim length (fs)                                   & 35.22                                & 20$\pi$                     \\
-			Spatial resolution, $\Delta x$ (nm)               & $\lambda/128$ = 8.28                 & 0.0491                      \\
-			Temporal resolution, $\Delta t$ (as)              & $\Delta x/11c$ = 2.51               & 0.00446         \\          			Macro-electrons per cell                       & \multicolumn{2}{l}{1000}                                                               \\
+			Sim length, $T_\mathrm{sim}$ (fs)                                   & $2t_\mathrm{FW} + 5 \lambda/c$                                &                    \\
+			Spatial resolution, $\Delta x$ (nm)               & $\lambda/128$                 &                      \\
+			Temporal resolution, $\Delta t$ (as)              & $\Delta x/2c$               &          \\          			Macro-electrons per cell                       & \multicolumn{2}{l}{1000}                                                               \\
 			Macro-ions per cell                               & 1000                                   &  \\
 			Ion temperature, $T_\mathrm{i}$ (keV)              &     0             &  0                         \\
 			Electron temperature, $T_\mathrm{e}$ (keV)              &     0.115             &  \num{2.25e-4}                         \vspace{0.15cm}  \\ \hline \hline
 			\multicolumn{3}{c}{Collisionless, pre-ionised, randomly-initialised plasma}                                               \\ \hline
-			CVD density, $n_\mathrm{e}$                               & \num{1.05e24}                                   &  \\
-			PMMA density, $n_\mathrm{e}$                               & \num{1.05e24}                                   &  \\
-			Electron $x$ profile, $n(x)$                             & \multicolumn{2}{l}{$n_\mathrm{e} \text{ for $\lambda \le x \le 9\lambda$}$}                                               \\
-			CVD carbon ion profile, $n_\mathrm{i}(x)$                                & \multicolumn{2}{l}{$n_\mathrm{i} = n(x)/6$}                                                    \vspace{0.15cm}\\ \hline \hline 
-			
-			
+			CVD density, $n_\mathrm{e}$  (\unit{m^{-3}})                                & \num{1.05e24}                                   & $\begin{cases}
+				294 \text{ for SP1}\\
+				1175 \text{ for SP2} \\
+			\end{cases}$ \\
+			PMMA density, $n_\mathrm{e}$  (\unit{m^{-3}})                                & \num{3.90e23}                                   & $\begin{cases}
+				109 \text{ for SP1}\\
+				435 \text{ for SP2} \\
+			\end{cases}$ \\
+			Electron $x$ profile, $n(x)$                             & \multicolumn{2}{l}{$n_\mathrm{e} \text{ for $\lambda \le x \le 9\lambda$}$}                             \vspace{0.15cm}\\ \hline \hline 
 		\end{tabular}
 	\end{center}
-	\caption{\label{tab:orion-parameters} \textbf{Smilei parameters to compare Section \ref{ch:3-sec:theory} analytical results to numerical simulation for ORION parameter space.} The PMMA ion distribution consists of carbon, oxygen and hydrogen ions with number densities $5n/54$, $2n/54$, $8n/54$ respectively, each with 1000 macroparticles per cell. }
+	\caption{\label{tab:orion-parameters} \textbf{Smilei parameters to compare Section \ref{ch:3-sec:theory} analytical results to numerical simulation for ORION parameter space.} Real parameters are taken in the laboratory frame with the given units, while Smilei parameters are in the boosted frame with normalised units. The CVD ion distribution consists of carbon ions with number density $n/6$ while the PMMA ion distribution consists of carbon, oxygen and hydrogen ions with number densities $5n/54$, $2n/54$, $8n/54$ respectively, each with 1000 macroparticles per cell. }
 \end{table}
-Figure \ref{fig:orionsimfigs} presents typical simulation results for the SP1 laser geometry.
+%
+%\begin{table}[]
+%	\begin{center}
+%	\begin{tabular}{lllll}
+%		\hline \hline
+%		Laser                                & \multicolumn{2}{c}{SP1}                                                 & \multicolumn{2}{c}{SP2}                                                \\ 
+%		Parameters                           & Real                                   & Smilei                         & Real                                  & Smilei                         \\ \hline
+%		$\lambda_\mathrm{L}$ (nm)            & 527                                    & $2\pi$                         & 1053                                  & $2\pi$                         \\
+%		$\omega_\mathrm{L}$ (\unit{fs^{-1}})  & 3.58                                   & 1                              & 1.79                                  & 1                              \\
+%		$\phi$ (\unit{\degree})              & -42.2                                  & -42.2                          & 19.6                                  & 19.6                           \\
+%		$a_0$                                & 7 - 10                                 & 7 - 10                         & 20 - 30                               & 20 - 30                        \\
+%		$t_\mathrm{FW}$                      & 470                                    & 1690                           & 470                                   & 843                            \\
+%		$\mathbf{E}(t)$                      & \multicolumn{4}{c}{$\mathbf{E}(t)\sim a_0 e^{-(t-t_\mathrm{FW})^2\ln 2/t_\mathrm{FW}^2}(\cos\phi \mathbf{\hat{y}} + \sin\phi \mathbf{\hat{z}})$}\vspace{0.15cm} \\ \hline \hline
+%		Plasma                               &                                        &                                &                                       &                                \\ \hline
+%		$n_\mathrm{e}$(CVD) (\unit{m^{-3}})  & \num{1.05e24}                          & 294                            & \num{1.05e24}                         & 1175                           \\
+%		$n_\mathrm{e}$(PMMA) (\unit{m^{-3}}) & \num{3.90e23}                          & 109                            & \num{3.90e23}                         & 435      \vspace{0.15cm}  \\   \hline \hline                 
+%	\end{tabular}
+%	\end{center}
+%\caption{\label{tab:orion-parameters1} \textbf{Smilei parameters to compare Section \ref{ch:3-sec:theory} analytical results to numerical simulation for ORION parameter space.} The PMMA ion distribution consists of carbon, oxygen and hydrogen ions with number densities $5n/54$, $2n/54$, $8n/54$ respectively, each with 1000 macroparticles per cell. }
+%\end{table}
+%
+Parameters are given in real units in the laboratory frame and normalised Smilei units in the boosted Bourdier frame. Note that polarisation angles and normalised vector potentials are unchanged by the frame transformation. 
+
+Figure \ref{fig:orionsimfigs} presents typical simulation results for the SP1 laser geometry, SP2 simulations produced similar results.
 \begin{figure}
 	\centering
 	\includegraphics{figures/orion/orion_sim_figs}
 	\caption[Typical 1D HHG Smilei simulation results]{\textbf{1D PIC simulation of the SP1 ORION beamline geometry at $\mathbf{a_0 = 7}$ interacting with a pre-ionised CVD target.} a) Ion density at initialisation ($t=0$), halfway ($t=T_\mathrm{sim}/2$) and at the simulation end ($t=T_\mathrm{sim}$) demonstrating hole boring. b) Absolute spectral intensity of the laser pulse and reflected harmonic beam obtained via Fourier transforms. The harmonic beam retains the laser pulse spectral width. Even harmonics are significantly suppressed at this polarisation. The large bump in the distribution around the 18\th\ harmonic is spuriously generated via numerical heating.}
 	\label{fig:orionsimfigs}
 \end{figure}
-Bump discuss why ok
+Figure \ref{fig:orionsimfigs}a illustrates how the ion density profile evolves via hole boring. While the density increases to several times its initial level near the plasma surface, this need not be accounted for in the hole boring calculation since these additional ions have already acquired the necessary momentum and are simply propagating inwards with the surface. Figure \ref{fig:orionsimfigs}b clearly shows the harmonic content of the specularly reflected beam with harmonics retaining the spectral shape of the incident beam. Even harmonics are significantly supressed relative to odd harmonics. The bump in the distribution around the 18\th\ harmonic is an entirely numerical effect, increasing the simulation resolution shifts the bump to the right. These simulations had a resolution of 128 cells per laser wavelength, following Edwards and Mikhailova one can only trust this distribution up to the 12\th\ harmonic, at which point the distribution begins to change its shape. Clearly energy conservation does not hold for this simulation, however it is still possible to extract $I_0$ if we make the reasonable assumption that Debye heating does not affect the HHG process and that the spectrum is simply the sum of the two contributions (justified by the observation of the continuation of harmonics over the bump in the distribution). Thus, $I_0$ can simply be extracted as the the peak intensity of the distribution corresponding to the intensity at $\omega/\omega_\mathrm{L} = 1$).
 
-Then do theory vs parameters
+Figure \ref{fig:orioncombinedi0ds} compares the analytically calculated parameters with those extracted from the simulations demonstrating excellent agreement for the parameter space accessible with the ORION laser facility and for the assumptions made in the analysis.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_combined_I0_ds}
+	\caption[Comparison between simulation and analytical predictions of hole boring and HHG normalisation factor.]{\textbf{Comparison between simulation and analytical predictions of hole boring and HHG normalisation factor in the ORION laser facility parameter space for CVD and PMMA targets.} a) The normalisation factor, $I_0$, where the spectral intensity, $I = I_0 n^{-p}$ for low order harmonics. b) The depth of hole boring compared to the initialised plasma surface. Note that the steep density gradient as visible in Figure \ref{fig:orionsimfigs}a ensures the surface position is well defined. Both parameters are expressed in the laboratory frame.}
+	\label{fig:orioncombinedi0ds}
+\end{figure}
+% TODO get new plot of above with circ pol point included. Then write following
+%Note that hole boring theory relies on the assumption of a quasi-static equilibrium. This is only true for a circularly polarised incident pulse.
+The effect of numerical heating on the hole boring extent is evident in Figure X where the change in the surface position is plotted over time for the analytical calculation and PIC simulations with 2\nd\ and 4\th\ order shape function. 
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_compare_ion_denting_to_theory}
+	\caption[The effect of the PIC code particle shape function on numerical heating.]{\textbf{The effect of the PIC code particle shape function on numerical heating demonstrated via the extent of hole boring.} The deviation from the theoretical prediction increases with time, the error decreases for increasing order of the shape function.}
+	\label{fig:orioncompareiondentingtotheory}
+\end{figure}
+The deviation from the theoretical prediction increases with time. Numerical heating leads to higher electron temperatures at the plasma surface and correspondingly a spurious preplasma expansion analogous to the prepulse preplasma expansion. This is why artificially increasing the plasma temperature to increase the Debye length and reduce numerical heating, while improving HHG accuracy, reduces hole boring accuracy since on sub-ps timescales, there is the potential for significant preplasma expansion.
 
-Then do heating 
+The X-ray harmonic spectrum produced from a CVD target irradiated by an SP1 type laser pulse is resolved in Figure \ref{fig:orionxrayharmonics}.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_xray_harmonics}
+	\caption[Reflected beam harmonic content up to the keV range in a high resolution 1D PIC simulation.]{\textbf{Reflected beam harmonic content up to the keV range in a high resolution 1D PIC simulation of a test pulse with SP1 ORION beam geometry incident on a CVD target.} The absolute spectral intensity is calculated from the Fourier transform of the reflected beam electric field. The s- and p-polarised components of the beam are analysed separately for both a) the full spectrum and b) the X-ray harmonics accessible with the OHREX quartz ($10\bar{1}1$) crystal.}
+	\label{fig:orionxrayharmonics}
+\end{figure}
+The simulation has 16384 cells per laser wavelength, the minimum multiple of 2 required to resolve the harmonics accessed with the OHREX quartz crystals. It was necessary to use a short test laser pulse with a $5\lambda_\mathrm{L}$ FWHM. The simulation time before the peak of laser pulse was increased to reduce the error in the spectrum from unphysical hard cutoffs to the laser pulse profile. A steep preplasma scale length was applied to the plasma distribution of $0.04\lambda_\mathrm{L}$ to model the peak of the ORION pulse and suppress \ac{CWE}. At the X-ray intensities of Figure \ref{fig:orionxrayharmonics}b, no harmonic structure is visible, indeed for the non-optimal ORION target chamber geometry, harmonics begin to merge from around the 20\th . Note the s-polarised part of the reflected beam is over 50 times weaker than the p-polarised beam at the 1000\th\ harmonic.
+It would be interesting to extract the reflected beam temporal profile after filtering of sub X-ray harmonics. This can be achieved by applying the inverse Fourier transform to the Fourier transformed temporal profile with the lower order harmonics removed. Unfortunately, beyond $n=50$, the contribution in the signal from noise prevented the structure from being observed. Figure \ref{fig:orionattosecondpulse} compares the reflected pulse structure to the reflected pulse structure with harmonics below $n = 50$ removed. 
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_attosecond_pulse}
+	\caption[Attosecond pulse train from the filtered reflected laser pulse.]{\textbf{Attosecond pulse train from the filtered reflected laser pulse.} The filtered beam contains only harmonics above $n = 50$.}
+	\label{fig:orionattosecondpulse}
+\end{figure}
+The filtered beam consists of a series of attosecond pulses of radiation, the brightest pulse is of duration 30.3 as. Note that the intensity of the first few laser cycles is insufficient for the generation of harmonics above $n = 50$ and there is therefore no signal here, reducing the pulse train length.
 
-Then do full simulation
 
 
 
-A sharp density gradient was applied 
 
-Note that artificially increasing the plasma temperature to increase the Debye length and reduce numerical heating, while improving HHG accuracy, reduces hole boring accuracy since on sub-ps timescales, there is significant preplasma expansion. (Include plot demonstrating this)
+% TDO A sharp density gradient was applied - return to this once reported on hydro sims.
 
-Full large res sim
 
-Discuss higher interp order.
 
-Note that hole boring theory relies on the assumption of a quasi-static equilibrium. This is only true for a circularly polarised incident pulse.
-(Include data point for circular pol sim)
+
+
+
+Beamlet sim
 
 \subsection{Hydrodynamic simulations of preplasma formation}
 
