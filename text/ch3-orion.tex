@@ -305,21 +305,86 @@ It would be interesting to extract the reflected beam temporal profile after fil
 \end{figure}
 The filtered beam consists of a series of attosecond pulses of radiation, the brightest pulse is of duration 30.3 as. Note that the intensity of the first few laser cycles is insufficient for the generation of harmonics above $n = 50$ and there is therefore no signal here, reducing the pulse train length.
 
-
-
-
-
-% TDO A sharp density gradient was applied - return to this once reported on hydro sims.
-
-
-
-
-
-
-Beamlet sim
+% TODO Confident now that in the theory of ROM HHG for ORION parameters, there is one final consideration that cannot be observed in 1D. The SP1 beamline consists of two beamlets. Am I including this or no?
+% TODO For this simulation, the Bouchard solver was applied.
+% TODO A sharp density gradient was applied - return to this once reported on hydro sims.
 
 \subsection{Hydrodynamic simulations of preplasma formation}
+Following Dollar \textit{et al} \cite{dollarScalingHighorderHarmonic2013}, hydrodynamic simulations of the ORION laser systems were performed using HYADES to confirm the suitability of the contrast conditions.
 
+To do: calculate intensity on target and PM. Discuss how there is potentially a range of laser intensities thus had `high' intensity and `low' intensity sims (state what these mean for the two beamlines.)
+All simulations were performed with s- and p-polarisation.
+
+Parameters:
+1D planar geometry
+Mesh of 511 evenly space points covering \qty{20}{\mu m} of the target (SiO2, PMMA, CVD, etc)
+Equation of state data taken from the in built HYADES data tables. For low temperatures and pressures, the data for the minimum value in the tables is used, for temperatures and pressures above the highest value in the tables, the values are linearly extrapolated from the edge.
+The local thermal equilibrium average atom model is used for ionisation. 
+At low temperatures ($T < 0.15 eV$) the absoprtion and refractive indices are input.
+The threshold for laser energy absorption is set to \qty{1e6}{ergs.cm^{-2}} = \qty{0.1}{W.cm^{-2}}.
+Electrons and ions are initialised at a temperature \qty{1.551e-2}{eV}.
+
+
+
+
+Results:
+No pre-ionisation or preplasma formation was observed in the simulations of the high contrast SP1 laser pulse with any target materials. This is in stark contrast with the SP2 laser, in the absence of a PM, the preplasma expansion of the targets is huge. Necessitating the use of a PM and further HYADES simulations.
+First, the interaction between the SP2 and SiO$_2$ plasma mirror was simulated. Note that it is not possible to model the AR coating in hydrodynamic codes, instead it was assumed that the thin coating has minimal impact on the interaction. No ionisation was observed from the high intensity laser prepulse starting from 10 ns out from the main pulse. Figure \ref{fig:orionpmirradiation} plots the interaction between a low intensity main pulse and the plasma mirror. 
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_PM_irradiation}
+	\caption[Silicon dioxide plasma mirror switch on from irradiation by the SP2 main pulse.]{\textbf{Silicon dioxide plasma mirror switch on from irradiation by the SP2 main pulseat \qty{45}{\degree} angle of incidence and p-polarisation.} The laser pulse travels in the $+\mathbf{\hat{x}}$-direction. The main pulse peak intensity is marked at 500 ps into the simulation. a) Material density as a function of time, a short preplasma is formed alongside hole boring. b) Electron number density as a function of time. The contours map the ionisation level.}
+	\label{fig:orionpmirradiation}
+\end{figure}
+% TODO add comment about at this point jsut getting to that ionisation threshold?
+Similar results were obtained for s- and p-polarisation. These simulations suggest ionisation begins at the start of the main pulse with some preplasma expansion but more significantly is the hole boring. Note that hole boring on the PM need not be accounted for since the spot size is significantly larger and therefore this change in surface curvature has minimal effect. The collisionless skin depth and plasma frequency can be calculated at each point in the plasma  via the electron densoty and the corresponding laser attenuation at each point as in Figure \ref{fig:orionpmreflection} at the peak of the main pulse.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_PM_reflection}
+	\caption[The attenuation of the SP2 laser pulse as it propagates through a switched-on PM.]{\textbf{The attenuation of the SP2 laser pulse calculated as it propagates through a switched-on PM.}}
+	\label{fig:orionpmreflection}
+\end{figure}
+The laser is rapidly attenuated and therefore `switched-on' despite not attaining total ionisation at the front surface (reducing its reflectivity).
+
+Satisfied that the PM operates as anticipated, a parameter scan of the targets was then conducted. Figure \ref{fig:oriontargetpreplasma}a describes the typical evolution of target density with the application of the SP2 prepulse, in this case after that prepulse has been attenuated by a plasma mirror with a reflectivity of 0.004.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_target_preplasma}
+	\caption[Typical preplasma formation from the incidence of the ORION SP2 laser prepulse on a plastic target.]{\textbf{Typical preplasma formation from the p-polarised \qty{16}{\degree} angle of incidence of the ORION SP2 laser prepulse on an HDPE target.} In this simulation the laser is modelled from 10 ns before the main pulse with $a_0 = 30$ and attenuated by a PM of reflectivity 0.004. a) Typical preplasma expansion elucidated via target density. By the time of the main pulse, hole boring is dominant over plasma expansion. b) An exponetial fit ($\rho \sim e^{x/L}$) for the preplasma scale length, $L$, at the time of arrival of the main pulse. For this simulation the optimum fit is $L = 0.12 \lambda_\mathrm{L}$.}
+	\label{fig:oriontargetpreplasma}
+\end{figure}
+By the time of the main pulse arrival in this simulation, hole boring has overtaken preplasma expansion. Figure \ref{fig:oriontargetpreplasma}b demonstrates the exponential fit to obtain the corresponding close to optimal preplasma scale length of $L = 0.12 \lambda_\mathrm{L}$ at the time of arrival of the SP2 main pulse.
+
+Figure \ref{fig:orionscalelengthparameterscan} repeats the analysis of \ref{fig:oriontargetpreplasma} for a variety of target materials, reflectivities, polarisations and laser intensities.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_scale_length_parameter_scan}
+	\caption[Preplasma scale length parameter scan.]{\textbf{Preplasma scale length parameter scan for a variety of plastic targets.} Target materials are a) HDPE, b) PVA, c) PC and d) PMMA. The dashed line highlights the reflectivity of the SiO$_2$ AR coated PM for the SP2 wavelength. Preplasma scale length remains small for the range of parameters explored.}
+	\label{fig:orionscalelengthparameterscan}
+\end{figure}
+The s-polarised light simulations follow a clear trend: increasing incident laser energy leads to an increased scale length up to a transition point that will be determined by the point at which hole boring overcomes plasma expansion. This will depend on the interplay of target ion density, ionisation potential and heating. Interestingly, the trend is much less consistent for p-polarised light. It is known that heating increases for p-polarised light as there is now a component of the laser pulse electric field acting into the plasma, however, the crossing of the high and low intensities suggests a dynamic balance between hole boring and plasma heating. Regardless, the change in scale length is not significant at these PM reflectivities. Unfortunately, it was not possible to conduct a similar parameter scan for the CVD targets, it would appear that the EOS tables for such a target material are not suited for this interaction type, the two tables offered provided inconsistent and unphysical results with specific simulations crashing at random. However, one can assume that the preplasma scale lengths of irradiated CVD targets would be lower than those established in Figure \ref{fig:orionscalelengthparameterscan} due to the high damage threshold of the material. 
+
+% TODO state somewhere that we can expect hole boring to establish itself at the time where the laser becomes relativistic since at this point electrons at the surface can be compressed and ions can follow.
+%TODO ensure methodology clear
+
+It is interesting to return to the question of temperature raised with regards to the initialisation of PIC code main pulse simulations as presented in Chapter \ref{ch:zvp}. Figure \ref{fig:oriontemperature} plots the plasma electron temperature from 40 ps before the main pulse arrives.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_temperature}
+	\caption[Typical electron temperature of a plastic target after irradiation by a petawatt class laser prepulse.]{\textbf{The typical electron temperature of a plastic target after irradiation by a petawatt class laser prepulse.} This is the same simulation as presented in Figure \ref{fig:oriontargetpreplasma}. Namely, an $a_0 = 30$ p-polarised laser pulse attenuated by a plasma mirror of reflectivity 0.004 incident on an HDPE target at \qty{16}{\degree}. The bulk and preplasma temperatures differ by multiple orders of magnitude.}
+	\label{fig:oriontemperature}
+\end{figure}
+Once plasma expansion initiates the extent of heating rapidly diverges across the preplasma and bulk. Arguably it does not make sense to define a temperature for a system clearly not in equilibrium. Indeed, there is no standard practice and yet it can have significant effect such as has been seen in simulations on hole boring and \textbf{ paper on prepulses and cooler being better}. Clearly, plasma temperature will be highly sensitive to the precise experimental conditions. At the time of the main pulse arrival at plasma surface (as defined by the peak of the electron density distribution), the temperature is 112 eV, consistent with the value chosen for PIC simulations. Note that hydrodynamic codes would be unsuitable for the prediction of the plasma temperature increase from the main pulse interaction given the highly non-linear dynamics in this regime could not be accurately captured by such a code.
+
+% TODO cite that paper that looks at prepulses and cooler prepulses being more suitable
+% TODO (add to discussion of results) Then say unfortunately due to debris we were unable to do what we wanted with the IR laser. Comment about recompression with the SiN thin PM.
+% TODO in intro explain local thermal equilibrium average atom model for ionisation.
+% TODO look at book to get the absorption and refractive indices references.
+% TODO Thingy about polarisation why we cant do combo. All performed in s and p and for the range of possible peak intensities. add to the intro to this section once I have found where I explained this in my notes
+%TODO Still to do: chapter intro and theory, brems
+
+
+To do tomorrow: final reuslts of this section, presentation, paper? then aim to finish theory by end of the conference?? then its jsut the experimental layout which should be quick enough
 
 \section{\label{ch:3-sec:data_processing}Experimental data processing}
 
