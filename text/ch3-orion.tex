@@ -18,6 +18,16 @@ The early developments in the field are outlined by Teubner \textit{et al} \cite
 HHG from solids has demonstrated significantly higher conversion efficiencies than for HHG from gases nor are there any limitations to the applied laser intensity \cite{teubnerHighorderHarmonicsLaserirradiated2009}. SHHG has thus been a field of huge interest over the past three decades for the production of bright coherent attosecond harmonics.
 
 
+
+SOme applications
+Applications
+Bright high harmonics of the laser pulse
+Novel bright attosecond duration X-ray diagnostics
+Improved penetration of dense targets  auxiliary heating of ICF targets
+Coherent focusing of high harmonics to their diffraction limit  1000 times intensity gain at focus (Vincenti, PRL, 2019)
+Accessing the Schwinger Limit in vacuum
+Photon-photon scattering
+
 \section{The experiment}
 The experiment goal was
 
@@ -539,6 +549,7 @@ where $\phi$ is the angle out of the interaction plane,
 \end{equation}
 where $F(h\nu) =  (G_\mathrm{s}(h\nu)\sin^2\phi + G_\mathrm{p}(h\nu)\cos^2\phi$ is the energy dependent calibration factor for this OHREX orientation.
 
+\section{Experimental results}
 
 Figure \ref{fig:orionq1011} is a typical calibrated signal from the quartz ($10\bar{1}1$) crystal, ready for comparison to the theoretical prediction.
 \begin{figure}
@@ -547,18 +558,30 @@ Figure \ref{fig:orionq1011} is a typical calibrated signal from the quartz ($10\
 	\caption[Typical ORION experiment calibrated IP response for the quartz ($10\bar{1}1$) crystal.]{Typical (SP1, PMMA) ORION experiment calibrated IP response for the quartz ($10\bar{1}1$) crystal.}
 	\label{fig:orionq1011}
 \end{figure}
+For each shot the mean signal across the dispersion axis was calculated and the errors from statistics, the fade time (11 \%), the IP sensitivity (1.5 \%), the dispersion axis (2.9 \%) and the OHREX crystal reflectivity (11 \%) accounted for.
+% TODO Shots were also taken through the OHREX port, we had hoped to capture the beam divergence however, the beam was larger than initially expected and we were unable to distinguish much. Mention saturation.
+
+As demonstrated in Section \ref{ch:3-sec:theory}, the intensity of X-ray harmonics is highly sensitive to the intensity of individual pulse cycles due to the proximity of the measurement to the exponential roll off in the spectrum. However, even neglecting the shot-to-shot variation, it is not possible to know the precise sub-cycle spatio-temporal struture of a petawatt-class laser pulse. Indeed, the simple measurement of the peak intensity of such a pulse remains an open problem \cite{perevalovLaserPeelerRegime2023,ouatuIonizationStatesMultipetawatt2022}. Instead we must rely on our assumptions and approximations, that is that the SP1 and SP2 beamlines can be adequately described by spatial Gaussians and temporal sech$^2$ and sech profiles respectively, and that the duration and energy are well defined. The tight focused laser spot is subject to jitter on a shot-to-shot basis. This was routinely monitored via a KBRXM diagnostic that measures X-ray emission from the target. The spot measured by this diagnostic will always be larger than the actual laser pulse focal spot due to the energy transport of electrons moving away from the interaction area. This upper limit on laser pulse spot size corresponds to a lower limit on laser pulse intensity and therefore also of HHG efficiency. Figure \ref{fig:orionintensitycurves} plots HHG spectral intensity curves for the quartz ($10\bar{1}1$) crystal central energy as a function of laser spot size for the targets and laser pulse configurations explored in the experiment. 
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_intensity_curves}
+	\caption[Dependence of the harmonic beam spectral intensity on laser spot size at 2.405 keV.]{\textbf{Dependence of the harmonic beam spectral intensity on laser spot size at 2.405 keV.} Targets and beamlines relevant to the experiment are plotted. The half energy single beamlet SP1 laser is demarcated by $E/2$. The thick lines indicate likely values for the laser spot sizes in this experiment. The SP1 harmonic beams are strongly affected by the exponential roll off unlike the SP2 beamline.}
+	\label{fig:orionintensitycurves}
+\end{figure}
+The thick lines range from the uppper limits of spot size as measured by the KBRXM diagnostic to the spot area being halved. The spectral intensity of the harmonic beam from the SP1 beamline sits in a delicate balance between beam divergence via hole boring and the exponential roll off. Note that only the roll off leads to a reduction in the total energy contained within the harmonic beam. The strong non-linearity of the interaction leads to the single beamlet SP1 beamline producing a harmonic beam over 6 times weaker than the double beamlet configuration. Interestingly, the higher intensity of the SP2 beamline leads to a greater divergence and a lower spectral intensity of the harmonic beam than for the SP1 laser pulse.
+
+Figure \ref{fig:orionexperimentresults} plots the experimental results with comparison to theory and simulation. 
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_experiment_results}
+	\caption[X-ray harmonic intensities measured on the ORION experiment compared to theory and simulation.]{\textbf{X-ray harmonic spectral intensities at 2.405 keV measured on the ORION experiment compared to theory and simulation.} The analytical calculation corresponds to the thick lines marked in Figure \ref{fig:orionintensitycurves}. The 1D PIC simulation result is derived from Figure \ref{fig:orionxrayharmonics} and scaled to the ORION laser pulse duration.}
+	\label{fig:orionexperimentresults}
+\end{figure}
+Experimental data points are consistent within their errors with one another, the theory and the simulation, however, large uncertainty remains with such a low shot number. It is notable that the SP2 beamline on average almost 6 times brighter than the SP1 beamline despite having over twice the energy content while the single beamlet shot is over 7 times weaker in intensity compared to the mean intensity of the full SP2 beamline. These scaling are consistent with HHG theory and not bremmstrahlung lending credibility to these results.
 
 
+Then write up the new peak intensity and the efficiencies.
 
-Shots were also taken through the OHREX port, we had hoped to capture the beam divergence however, the beam was larger than initially expected and we were unable to distinguish much. Mention saturation.
-
-
-Once done all this analysis, present the data.. Integrated signal across crystal, discuss no harmonics but that is expected and then present the final table and discuss. 
-
-Include a table detailing error contributions? Also need to add reflectivity error to the rest.
-
-Discuss mirrored targets and brems emission.
-
-Then go back and do the theory. then sims.
-
-Also in sims look at reconstructing a filtered pulse
+% TODO Additional things: approximate reflectivity of the plasma mirror at switch on, merging of harmonics at the X-ray regime
+% TODO describe KBRXM diagnostic 
+% TODO Discuss mirrored targets and brems emission.
