@@ -3,7 +3,8 @@
 \minitoc
 
 \section{A plan}
-This chapter reports on the March 2023 experiment at the ORION laser facility, AWE, Aldermaston. The UK's most powerful sub-picosecond laser.
+
+While simulations are relatively cost effective and experiments cumbersome and technically challenging, the proliferation of errors in simulation codes lead to their deviation from reality while reality itself deviates from the idealistic conditions of the codes. At least for these first few decades of the 21st Century, experimentation remains an essential component of the scientific method. Thus, our expectations must also be scaled back to reality. This chapter reports on our March 2023 experiment on the ORION laser facility, AWE, Aldermaston. The UK's most powerful sub-picosecond laser. Yet, one cannot access the ZVP parameter space at these intensities and pulse durations: the $S$ parameter is too large and the preplasma scale length too steep. Instead, this Chapter will focus on the ROM model of HHG.
 
 Important sections include:
 HYADES scale length sims, ORION parameters and description of the setup, targets etc, data analysis after, beamlet sims, HHG theory
@@ -23,10 +24,15 @@ SOme applications
 Applications
 Bright high harmonics of the laser pulse
 Novel bright attosecond duration X-ray diagnostics
-Improved penetration of dense targets  auxiliary heating of ICF targets
-Coherent focusing of high harmonics to their diffraction limit  1000 times intensity gain at focus (Vincenti, PRL, 2019)
+%Improved penetration of dense targets  auxiliary heating of ICF targets
+%Coherent focusing of high harmonics to their diffraction limit  1000 times intensity gain at focus (Vincenti, PRL, 2019)
 Accessing the Schwinger Limit in vacuum
 Photon-photon scattering
+
+
+For CWE: https://iopscience.iop.org/article/10.1088/0953-4075/43/21/213001/pdf
+Note that somewhere in this paper they say CWE optimises for 0.02 lambda (use this to explain why in ORION short sim I used a lambda slightly larger than this)
+
 
 \section{The experiment}
 The experiment goal was
@@ -577,10 +583,26 @@ Figure \ref{fig:orionexperimentresults} plots the experimental results with comp
 	\caption[X-ray harmonic intensities measured on the ORION experiment compared to theory and simulation.]{\textbf{X-ray harmonic spectral intensities at 2.405 keV measured on the ORION experiment compared to theory and simulation.} The analytical calculation corresponds to the thick lines marked in Figure \ref{fig:orionintensitycurves}. The 1D PIC simulation result is derived from Figure \ref{fig:orionxrayharmonics} and scaled to the ORION laser pulse duration.}
 	\label{fig:orionexperimentresults}
 \end{figure}
-Experimental data points are consistent within their errors with one another, the theory and the simulation, however, large uncertainty remains with such a low shot number. It is notable that the SP2 beamline on average almost 6 times brighter than the SP1 beamline despite having over twice the energy content while the single beamlet shot is over 7 times weaker in intensity compared to the mean intensity of the full SP2 beamline. These scaling are consistent with HHG theory and not bremmstrahlung lending credibility to these results.
+Experimental data points are consistent within their errors with one another, the theory and the simulation, albeit with large uncertainties with such a low shot number. It is highly significant that the SP2 beamline is on average almost 6 times brighter than the SP1 beamline despite the greater energy content and greater component of the laser pulse electric field directed into the plasma for the SP2 beamline while the single beamlet shot is over 7 times weaker in intensity compared to the mean intensity of the full SP2 beamline. These highly non-linear (with respect to energy) scalings are consistent with HHG theory but cannot be understood as originating from bremmstrahlung lending huge credibility to these results. Bremsstrahlung emission scales sub-linearly with temperature and temperature scales sub-linearly with energy on target. The total energy is well-constrained and this is far more relevant for Bremsstrahlung than the uncertain intensity (dependent on the variable spot size). Thus, at best case scenario one could anticipate twice the intensity being observed for the double beamlet SP2 compared to the single.
 
 
+
+
+
+Bremsstrahlung emission from steep density profile low-Z solid density targets irradiated by relativistic laser pulses remains an area of active research with experiments to explore this in the planning stages at the University of York. However, provided a few assumptions it is possible to derive approximate best case scenario scalings of spectral intensity with incident energy. First, assume that energy absorption into the plasma target does not increase with increasing energy. From Equation
+% TODO add derivation of plasma temperature from start of Chen to intro then reference here
+the plasma temperature scales linearly with the incident energy. Now, assuming the target can be treated as a radiating black body, Equation 
+% TODO add note on black body and and reference spectral radiance here
+increases most rapidly with temperature when $h\nu \ll k_\mathrm{B}T$ at which point the spectral radiance scales linearly with temperature. Thus, at best case we could expect a linear increase in the spectral intensity measured from the double beamlet compared to the single if that signal originated from Bremsstrahlung emission. Note further that this scaling depends not on the incident intensity but only on the incident energy which is a well-constrained quantity on ORION, \textit{i.e.} we do not anticipate significant shot-to-shot variation.
+
+The above discussion relied on the assumptions of equilibrium and a black-body radiation spectrum.
+While this is valid for the long radiating period after the interaction, in much of this thesis, emphasis has been placed on the non-equilibrium state of the interaction itself. There are two species of relevance during this time: the hot electrons around the front surface directly heated by the laser pulse and prepulse, and the hot electrons that are reflected specularly and are responsible for the HHG. In \cite{zulickHighResolutionBremsstrahlung2013}, bremsstrahlung of these species are measured experimentally for a 30 fs laser pulse and $a_0$ = 2.8. As the populations of each of these species are so small, the peak contribution to the photon spectrum is many orders of magnitude smaller than that of the experimental signal and can therefore be neglected.
+% TODO check in the above that they used a circualrly pol pulse so that HHG would be supperssed?
+
+These findings are highly significant. 
 Then write up the new peak intensity and the efficiencies.
+Comment on flying focus
+
 
 % TODO Additional things: approximate reflectivity of the plasma mirror at switch on, merging of harmonics at the X-ray regime
 % TODO describe KBRXM diagnostic 
