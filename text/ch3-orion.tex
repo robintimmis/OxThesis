@@ -48,6 +48,7 @@ Typical ORION and GEMINI beam paramaters are presented in Table \ref{tab:laser_p
 		Power (PW)               & 0.5         & 1           & 0.5    \\
 		Energy (J)               & 200         & 500         & 12     \\
 		Wavelength (nm)          & 527         & 1053        & 800    \\
+		Parabola, $f/\#$ & $f/3$        & $f/3$        & $f/2$      \\
 		Focal spot FWHM ($\mu$m) & < 20        & < 10        & 2      \\
 		Duration (fs)            & 500         & 500         & 40     \\
 		Shot rate                & 5/day       & 5/day       & 3/min  \\
@@ -79,7 +80,7 @@ where the constants are detailed in Table \ref{tab:orion_pedestals}.
 		Picosecond pedestal, ps      & \num{5e-5}  & 8 ps   \\
 		Nanosecond pedestal, ns      & $10^{-11}$  & 3 ns  \\ \hline \hline
 	\end{tabular}
-	\caption{The ORION SP2 pulse and prepulse pedestal constants as defined in Equation \ref{eq:orion_SP2_temporal}.}
+	\caption{The native ORION SP2 pulse and prepulse pedestal constants as defined in Equation \ref{eq:orion_SP2_temporal}.}
 	\label{tab:orion_pedestals}
 \end{table}
 The picosecond pump residual arises from parametric fluorescence in the ps OPA, the picosecond pedestal from scatter in the stretchers and noise on the OPA pump laser and the nanosecond pedestal from parametric fluorescence from the nanosecond OPAs. 
@@ -161,6 +162,18 @@ The surface roughness of a selection of low density plastic targets were analyse
 	\label{fig:oriontargets}
 \end{figure}
 % TODO confirm I can include the PMMA scan from TFAB
+
+\subsection{Contrast and plasma mirrors}
+As illustrated in Figure \ref{fig:orioncad}, a plasma mirror optic is included before the main target to improve the contrast of the SP2 beamline. HYADES simulations of the effect of this optic are detailed in Section \ref{sec:orion-hydro}. The distance between the PM and the main target is \qty{15}{mm}, thus the beam diameter at the PM is $\approx 15/(f/3) = \qty{5}{mm}$ and the intensity on PM can be calculated. Provided the harmonic beam divergence is less than or equal to the $f/3$ cone, as is anticipated, the harmonic beam should not be clipped by the PM in this setup. 
+%TODO calculate that intensity and show it is where it should be.
+
+The intention was to use \ac{AR}-coated fused silica optimised for \qty{45}{\degree} \ac{AOI} and the SP2 pulse wavelength (BCP45R) \cite{45AOIBeamsplitter}. This has a reflectance of \qty{0.398}{\%} at $\lambda_\mathrm{L} = \qty{1053}{nm}$ for unpolarised light. Unfortunately the debris from the PM caused damage to the parabola. For the second SP2 shot a silicon nitride thin foil . The reduced material of the thin foil reduced the risk of debris.
+
+
+Include details of the two PMs used
+
+%TODO intro section on laser contrast included function of DPM
+
 
 PMs
 
@@ -449,7 +462,7 @@ The filtered beam consists of a series of attosecond pulses of radiation, the br
 % TODO For this simulation, the Bouchard solver was applied.
 % TODO A sharp density gradient was applied - return to this once reported on hydro sims.
 
-\subsection{Hydrodynamic simulations of preplasma formation}
+\subsection{Hydrodynamic simulations of preplasma formation}\ref{sec:orion-hydro}
 Following Dollar \textit{et al} \cite{dollarScalingHighorderHarmonic2013}, hydrodynamic simulations of the ORION laser systems were performed using HYADES to confirm the suitability of the contrast conditions.
 
 To do: calculate intensity on target and PM. Discuss how there is potentially a range of laser intensities thus had `high' intensity and `low' intensity sims (state what these mean for the two beamlines.)
