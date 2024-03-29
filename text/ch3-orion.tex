@@ -4,7 +4,7 @@
 
 \section{A plan}
 
-While simulations are relatively cost effective and experiments cumbersome and technically challenging, the proliferation of errors in simulation codes lead to their deviation from reality while reality itself deviates from the idealistic input conditions to the codes. At least for these first few decades of the 21st Century, experimentation remains an essential component of the scientific method. Thus, our expectations must also be scaled back to reality. This chapter reports on our March 2023 experiment on the ORION laser facility, AWE, Aldermaston. The UK's most powerful sub-picosecond laser. Yet, one cannot access the ZVP parameter space at these intensities and pulse durations: the $S$ parameter is too large and the preplasma scale length too steep. Instead, this chapter will focus on the ROM model of HHG.
+While simulations are relatively cost effective and experiments cumbersome and technically challenging, the proliferation of errors in simulation codes lead to their deviation from reality while reality itself deviates from the idealistic input conditions to the codes. At least for these first few decades of the 21st Century, experimentation remains an essential component of the scientific method. Thus, our expectations must also be scaled back to reality. This chapter reports on our March 2023 experiment on the ORION laser facility, AWE, Aldermaston. The UK's most powerful sub-picosecond laser. Yet, one cannot access the ZVP parameter space at these intensities and pulse durations: the $S$ parameter is too large and the preplasma scale length too steep. Instead, this chapter will focus on the ROM model of HHG. 
 
 Important sections include:
 HYADES scale length sims, ORION parameters and description of the setup, targets etc, data analysis after, beamlet sims, HHG theory
@@ -35,12 +35,136 @@ Note that somewhere in this paper they say CWE optimises for 0.02 lambda (use th
 
 
 \section{The experiment}
-The experiment goal was
+The two experimental goals were to resolve and measure the absolute intensity of X-ray harmonics produced with the ORION SP2 beamline. After debris from the plasma mirror optic damaged the parabola we were required to switch to the higher contrast but lower energy SP1 beamline and only after the experiment did we established it was not possible to resolve X-ray harmonics with the ORION target chamber geometry. However, we were able to measure the absolute intensity for both SP1 and SP2 beamlines and for CVD and PMMA targets.
 
-The ORION target chamber
+% TODO move this to appendix or intro
+Typical ORION and GEMINI beam paramaters are presented in Table \ref{tab:laser_params}.
+\begin{table}[]
+	\centering
+	\begin{tabular}{lccc}
+		\hline \hline
+		Parameter                & \multicolumn{2}{c}{ORION} & GEMINI \\ 
+		Beamlines                & SP1         & SP2         & N \& S  \\ \hline
+		Power (PW)               & 0.5         & 1           & 0.5    \\
+		Energy (J)               & 200         & 500         & 12     \\
+		Wavelength (nm)          & 527         & 1053        & 800    \\
+		Focal spot FWHM ($\mu$m) & < 20        & < 10        & 2      \\
+		Duration (fs)            & 500         & 500         & 40     \\
+		Shot rate                & 5/day       & 5/day       & 3/min  \\
+		Peak $a_0$ (approx)      & 10          & 30          & 20    \\ \hline \hline
+	\end{tabular}
+	\caption{The ORION and GEMINI petawatt class short pulse beamlines for comparison. The GEMINI North (N) and South (S) beamlines are equivalent.}
+	\label{tab:laser_params}
+\end{table}
+The ORION SP1 is produced by passing the SP2 through two frequency doubling crystals creating two equivalent beamlets that are then overlaid at the target. The double beamlet structure at the near-field is imaged in Figure \ref{fig:oriondoublebeamletsnearfield}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/orion/orion_doublebeamlets_near_field}
+	\caption[Image of the ORION SP1 double beamlet structure in the near-field.]{Image of the ORION SP1 double beamlet structure in the near-field. The two beamlets are then superimposed at the target.}
+	\label{fig:oriondoublebeamletsnearfield}
+\end{figure}
 
-Details and layout
+The ORION SP2 beamline intensity temporal profile can be modelled as
+\begin{equation}\label{eq:orion_SP2_temporal}
+	I_\mathrm{SP2} \sim (I_{0 \ \mathrm{p}}\sech(t/t_\mathrm{p})^2 + I_{0 \ \mathrm{pp}}e^{-(t/t_\mathrm{pp})^2} + I_{0 \ \mathrm{ps}}e^{-\mathrm{abs}(t)/t_\mathrm{ps}} + I_{0 \ \mathrm{ns}}e^{-(t/t_\mathrm{ns})^8}),
+\end{equation}
+where the constants are detailed in Table \ref{tab:orion_pedestals}.
+\begin{table}[]
+	\centering
+	\begin{tabular}{lcc}
+		\hline\hline
+		Pedestal, $i$                & $I_{0 \ i}$ & $t_i$  \\ \hline
+		Main pulse, p                & 1           & 0.2 ps \\
+		Picosecond pump residual, pp & $10^{-3}$   & 3 ps   \\
+		Picosecond pedestal, ps      & \num{5e-5}  & 8 ps   \\
+		Nanosecond pedestal, ns      & $10^{-11}$  & 3 ns  \\ \hline \hline
+	\end{tabular}
+	\caption{The ORION SP2 pulse and prepulse pedestal constants as defined in Equation \ref{eq:orion_SP2_temporal}.}
+	\label{tab:orion_pedestals}
+\end{table}
+The picosecond pump residual arises from parametric fluorescence in the ps OPA, the picosecond pedestal from scatter in the stretchers and noise on the OPA pump laser and the nanosecond pedestal from parametric fluorescence from the nanosecond OPAs. 
+% TODO understand the above.
+The SP1 temporal intensity profile is
+\begin{equation}
+	I_\mathrm{SP1} \sim (I_\mathrm{SP2}^2 + I_\mathrm{SP2} \times 10^{-8}).
+\end{equation}
+The second term is due to limitations of the harmonic separation system. The frequency doubling mechanism is not 100 \% efficient, \textit{i.e.} some of SP2 beamline remains and must be filtered out. The main pulse of the GEMINI beamlines is more approriately modelled as a Gaussian.
+% TODO add a plot of the gemini contrast
 
+The experimental design is relatively straightforward. CAD drawings of the experimental setup are presented in Figure \ref{fig:orioncad}.
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/orion/orion_cad}
+	\caption[ORION HHG experiment target chamber set up.]{\textbf{CAD images of the ORION target chamber set up for this experiment.} a) and b) SP1 and SP2 beamlines respectively from parabola to TCC to OHREX spectrometer. c) and d) SP1 and SP2 beamlines respectively looking from OHREX to TCC. e) Annotated ORION target chamber model. f) SP2 beamline reflecting off plasma mirror before main target incidence.}
+	\label{fig:orioncad}
+\end{figure}
+The laser is focused onto the target at \ac{TCC} with the \ac{OHREX} spectrometer positioned along the specular reflection direction. Additional X-ray pinhole diagnostics monitor the spot size. The SP2 beamline reflects off an additional \ac{PM} optic at \qty{45}{\degree} \ac{AOI} to improve the laser prepulse contrast. Then both the SP1 and SP2 beamlines arrive at \ac{TCC} along the same axis.
+
+Both the non-linear HHG interaction and the linear OHREX crystal spectrometer are sensitive to the polarisation of incident light. It is therefore important to track the polarisations of the beamlines as they propagate through the system.
+
+The ORION target chamber has its own defined geometry with the target located at the origin (\ac{TCC}), described in Figure \ref{fig:miscoriontargetchambergeometry}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/misc/misc_ORION_target_chamber_geometry}
+	\caption[ORION target chamber geometry]{ORION target chamber geometry with the location of the target, OHREX spectrometer and the SP1 (green) and SP2 (infra-red) beamlines and their corresponding polarisations, $\phi_1$ = \qty{11.8}{\degree} and $\phi_2$ = \qty{16.4}{\degree}.}
+	\label{fig:miscoriontargetchambergeometry}
+\end{figure}
+The polarisation angles are $\phi_1 = \qty{11.8}{\degree}$ and $\phi_2 = \qty{16.4}{\degree}$. Following reflection of the SP2 beam off the plasma mirror, both the SP1 and SP2 beamlines propagate in the -$\hat{\mathbf{x}}$-direction  towards the origin. The OHREX crystal is located at 
+\begin{equation}
+	\mathbf{r}_\mathrm{OHREX} = r_0(\cos B\cos A,-\cos B\sin A, \sin B),
+\end{equation}
+where $r_0 = \qty{2.4}{m}$, $A = \qty{26.82} {\degree} $ and $B = \qty{18.15}{\degree}$, setting the rotation angle of the target. This was achieved using the ORION Multi-Target-Mounts. Alignment was performed offline by Dr Ed Gumbrell and no further details will be provided here on that process. As in Figure \ref{fig:orioncad}e, the OHREX spectrometer sits on the outside of the target chamber tilted an angle \qty{18}{\degree} to the vertical.
+
+The interaction plane is defined by the vector
+\begin{equation}
+	\mathbf{n} = \frac{\mathbf{r}_\mathrm{OHREX}}{r_0} \times  \hat{\mathbf{x}} = (0,\sin B, \cos B\sin A).
+\end{equation}
+The cosine rule can be applied to determine the polarisation of the laser pulses in the interaction plane, for polarisation vector $\hat{\mathbf{E}}$,
+\begin{equation}
+	\frac{\mathbf{n}}{|\mathbf{n}|}\cdot\hat{\mathbf{E}} = \cos\theta,
+\end{equation}
+where $\theta$ defines the angle between the polarisation vector and the vector normal to the interaction plane. This corresponds to angles out of the interaction plane of \qty{42.2}{\degree} for the SP1 beam (rotating anticlockwise out of the interaction plane when looking from TCC to parabola) and \qty{19.6}{\degree} for the SP2 beam (rotating clockwise out of the interaction plane when looking from TCC to parabola). Again applying the cosine rule, the angle of incidence is \qty{16}{\degree}.
+
+The polarisation vector can then be split into s- and p-polarised components. The s-polarised component remains unchanged by the interaction but the p-polarised component must be rotated, its direction along $\mathbf{n} \times \mathbf{r}_\mathrm{OHREX}$. In Section \ref{ch:3-sec:simulations}, I show the s-polarisation component is suppressed at the X-ray photon energies of interest and therefore can be neglected.
+
+The OHREX spectrometer sits flat on the target chamber wall but is rotated an angle $C= $ \qty{18}{\degree} to the vertical. The OHREX interation plane is correspondingly rotated. Again, applying the cross-product, the OHREX interaction plane is 
+\begin{equation}
+	\mathbf{n}_\mathrm{O} = [-\cos(A)\sin(B)\sin(C)-\sin(A)\cos(B)\cos(C),-\cos(A)\cos(B)\cos(C)+\sin(A)\sin(B)\sin(C),\cos(B)\sin(C)].
+\end{equation}
+Applying the cosine rule between the p-polarised vector and $\mathbf{n}_\mathrm{O}$, the angle of the polarisation vector of the harmonic beam out of the plane of the OHREX interaction is \qty{77.23}{\degree} for both SP1 and SP2.
+
+% TODO Also discuss the fabulous result that generally one can simply extract the results in the Smilei units and multiply by the relevant factors of the frame of interest and thus not worry too much about frame transformations. (add this to bourdier discussion)
+
+% TODO I must redo boosted section since I have made a mistake there and rethink a bit about optimum theta.
+
+% TODO I must also at some point just state that a hat indicates a normalised vector.
+
+%TODO Note that this section needs redoing, there is a new jupyter lab notebook for calculating values in ORION_analysis_sims/experiment_data_analysis on archer2 and called polarisations.ipynb
+
+% TODO READ https://www.nature.com/articles/s42005-024-01575-z
+% TODO https://www.nature.com/articles/ncomms12515
+\subsection{Targets}
+Specialised target holders were designed and built by the AWE and CLF target fabrication teams. These hold the targets at the required angle out of the horizontal plane with an additional fiducial wire for alignment. Targets were mounted on the ORION Multi-Target-Mount and alignment performed offline by Dr Ed Gumbrell.
+
+One might assume that target surface variation, root-mean-square roughness, $\Delta s$, need be less than the highest harmonic order that one wished to generate, however, Dromey \textit{et al} demonstrated categorically in both experiment and simulation that surface roughness need only be less than the excursion amplitude of the oscillating electrons at the target front surface thus ensuring specular reflection and preventing scattering into the wings of the harmonic beam \cite{dromeyDiffractionlimitedPerformanceFocusing2009}. This is generally satisfied by $\Delta s \ll \lambda_\mathrm{L}$. In their experiment, harmonics were visible provided $\Delta s < \lambda_\mathrm{L}/16$. Furthermore, preplasma expansion leads an increase in target smoothness prior to the main pulse arrival.
+
+There are multiple considerations when it comes to target density. Simulations have repeatedly emphasised the improvement of harmonic efficiency for reduced similarity parameter, $S$, \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011, edwardsXRayEmissionEffectiveness2020} corresponding to low electron density solid targets. However, the 2007 Vulcan experiment successfully reproduced the $8/3$ scaling up to the X-ray regime for $S \approx 25 $ \cite{dromeyBrightMultikeVHarmonic2007}. At the same time, as discussed in Section \ref{ch:3-sec:theory}, target hole boring leads to an increased harmonic beam divergence. High electron density targets are perhaps therefore more suited to the petawatt class laser system thereby maintaining beaming of harmonics.
+% TODO find that paper where they show that CSE lowers the roll off point, I definitely did read this somewhere...
+% Vulcan had CH targets, a0 on target of approx 6.2, normalised density approx 161.
+%TODO comment on improvement of S parameter for PMMA leading to an increase in signal strength?
+
+The surface roughness of a selection of low density plastic targets were analysed by the CLF target fabrication team leading to the choice of PMMA plastic targets. CVD targets were also selected, having the highest ionisation potential (and therefore lowest susceptibility to laser prepulse) of solids that can be polished optically flat albeit at a higher $S$ parameter. Scans performed by AWE and CLF of the target surfaces are given in Figure \ref{fig:oriontargets}.
+\begin{figure}
+	\centering
+	\includegraphics{figures/orion/orion_targets}
+	\caption[ORION HHG experiment targets]{\textbf{ORION experiment 3D scans of target roughness.} a) CVD with roughness $\Delta s$ = \qty{4}{nm} and $S \approx$ 26, 35 for SP1 and SP2 beamlines respectively. b) PMMA with roughness $\Delta s$ = \qty{11.2}{nm} and $S \approx$ 10, 13 for SP1 and SP2 beamlines respectively.}
+	\label{fig:oriontargets}
+\end{figure}
+% TODO confirm I can include the PMMA scan from TFAB
+
+PMs
+
+KBRXM
 
 \section{\label{ch:3-sec:theory}Theory}
 
@@ -403,7 +527,7 @@ Once plasma expansion initiates the extent of heating rapidly diverges across th
 To do tomorrow: final reuslts of this section, presentation, paper? then aim to finish theory by end of the conference?? then its jsut the experimental layout which should be quick enough
 
 \section{\label{ch:3-sec:data_processing}Experimental data processing}
-
+%TODO update plots in this section
 \subsection{Image plate calibration}
 Image plates (IPs) are reusable recording media that detect ionising radiation and are particularly suitable for the detection of X-rays produced in laser-plasma interactions. Their response is well understood and their sensitivities to a wide spectrum photon energies have been absolutely calibrated on the ORION facility \cite{meadowcroftEvaluationSensitivityFading2008}. Albeit for the FLA3000 scanner not the FLA7000 used in this experiment. However, the deviation in response is negligible for the photon energies measured. In this experiment the Fuji Biological Analysis System (BAS) TR-type IPs were used. They have a phosphor layer composed of $\mathrm{BaFBr_{0.085}I_{0.15}}$ with density \qty{2.61}{g.cm^{-3}} and thickness \qty{60}{\mu m} but no mylar layer. This makes them suitable for low energy X-ray detection. When scanned, the IP releases blue photons via photostimuated luminescence (PSL), which is then collected by a photomultiplier tube. The PSL value is generalised across scanner types from the measured `Grey' ($G$) value by
 \begin{equation}
@@ -444,7 +568,7 @@ In summary, the number of PSL measured on an IP can be converted to an incident 
 
 \subsection{OHREX calibration}
 % TODO Reword note on illuminating crystal once I have written up about hole boring.
-The Orion High REsolution X-ray spectrometer (OHREX), housed on the ORION laser target chamber outer wall, utilises a spherically bent crystal geometry to spatially focus and spectrally analyse photons from the target chamber \cite{beiersdorferLineshapeSpectroscopyVery2016} with a high signal-to-noise ratio. The measured signal has been absolutely calibrated for a range of energies using a variety of crystals \cite{macdonaldAbsoluteThroughputCalibration2021}. The OHREX can hold two crystals at a time. At each crystal's spatial focal plane a two-dimensional image is formed, one dimension is spatial, the other spectral. The energy range accessed by a given crystal is determined by the crystal rotation but all OHREX crystals are designed for operation at a nominal central Bragg angle of $\theta_\mathrm{B} = 51.3$\degree with the corresponding wavelength determined from Bragg's Law, $n\lambda = 2d\sin\theta_\mathrm{B}$, for the appropriate crystal plane. The range around that central photon energy is determined by the crystal width in the spectral dimension.
+The Orion High REsolution X-ray (OHREX) spectrometer, housed on the ORION laser target chamber outer wall, utilises a spherically bent crystal geometry to spatially focus and spectrally analyse photons from the target chamber \cite{beiersdorferLineshapeSpectroscopyVery2016} with a high signal-to-noise ratio. The measured signal has been absolutely calibrated for a range of energies using a variety of crystals \cite{macdonaldAbsoluteThroughputCalibration2021}. The OHREX spectrometer can hold two crystals at a time. At each crystal's spatial focal plane a two-dimensional image is formed, one dimension is spatial, the other spectral. The energy range accessed by a given crystal is determined by the crystal rotation but all OHREX crystals are designed for operation at a nominal central Bragg angle of $\theta_\mathrm{B} = 51.3$\degree with the corresponding wavelength determined from Bragg's Law, $n\lambda = 2d\sin\theta_\mathrm{B}$, for the appropriate crystal plane. The range around that central photon energy is determined by the crystal width in the spectral dimension.
 
 MacDonald \textit{et al} determined a quadratic fit for each crystal's dispersion relation to connect position along the image to photon energy \cite{macdonaldAbsoluteThroughputCalibration2021}. Unfortunately in this experiment, the image lengths varied from those in the previous experiment, a likely consequence of slight defocusing of the optic. Note that the OHREX geometry is designed such that precise focus is not necessary to achieve good results \cite{beiersdorferLineshapeSpectroscopyVery2016}.
 
@@ -607,3 +731,6 @@ Comment on flying focus
 % TODO Additional things: approximate reflectivity of the plasma mirror at switch on, merging of harmonics at the X-ray regime
 % TODO describe KBRXM diagnostic 
 % TODO Discuss mirrored targets and brems emission.
+
+% Note that if you replace the spatial gaussian with a sinc^2 profile with the same FWHM, they look almost identical to exponential. The spatial integral is approx 1.06 times larger thus minimal impact on the profile
+ 
