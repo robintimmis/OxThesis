@@ -82,8 +82,9 @@ and
 \end{equation}
 respectively.
 
-\section{\label{sec:plasma_def}The definition of a plasma}
+\section{\label{sec:plasma_def}The definition of a classical plasma}
 As outlined in F. Chen's definitive textbook `Introduction to Plasma Physics and Controlled Fusion' \cite{chenIntroductionPlasmaPhysics2016}, a plasma must fulfil three criteria, namely,
+% TODO make a note that in a quantum plasma one actually does not want lots of particles in the Debye sphere
 
 \begin{enumerate}
 	\item Ionisation: a plasma must consist of both charged and neutral particles, of course this alone cannot define a plasma, any gas will contain some degree of ionisation, however, with reference to figure \ref{fig:intro_lasersystems}, clearly, modern high power laser systems will instantaneously fully ionise a target upon incidence;
@@ -159,6 +160,8 @@ Equation \ref{eq:intro_sho} clearly describes a simple harmonic oscillator with 
 \begin{equation}
 	\omega_\mathrm{p} = \sqrt{\frac{e^2n_\mathrm{e}}{m_\mathrm{e} \epsilon_0}}.
 \end{equation}
+
+% TODO Scheck's notes cover that the collisionality condition is always satisfied for a classical plasma (Archie Bott to send the notes)
 
 \section{The Lawson-Woodward theorem}\label{sec:intro-lawson_woodward}
 The Lawson-Woodward theorem states that there can be no net electron energy gain using laser fields \cite{esareyPhysicsLaserdrivenPlasmabased2009}, quite at odds with one of the primary aims of this thesis, that is, the acceleration of electrons. There are, however, several conditions that must be met, namely,
@@ -361,11 +364,13 @@ since
 	\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial \dot{x}_j}\right) = \frac{\partial L}{\partial x_j}.
 \end{equation}
 
-Consider a linearly polarised Gaussian laser pulse, with axis of polarisation along $x$ incident on a solid target at rest. Then $A_x$ is approximately constant along $x$ near the beam centre\footnote{Constant relative to the scale of typical electron trajectories in such an interaction.}. Integrating equation \ref{eq:intro-transverse_momentum_conservation_no_initial_momentum} and noting that initially there is no linear or electromagnetic momentum at the target, the generalised transverse momentum conservation equation for an electron in the laser field is
+Taking the Lorenz gauge, consider a linearly polarised Gaussian laser pulse, with axis of polarisation along $x$ incident on a solid target at rest. Then $A_x$ is approximately constant along $x$ near the beam centre\footnote{Constant relative to the scale of typical electron trajectories in such an interaction.}. Integrating equation \ref{eq:intro-transverse_momentum_differential_equation}, fully constraining the gauge by setting the potential to zero at initially, and noting that there is no linear momentum at the target, the generalised transverse momentum conservation equation for an electron in the laser field is
 \begin{equation}\label{eq:intro-transverse_momentum_conservation_no_initial_momentum}
 	p_\mathrm{T} = eA,
 \end{equation}
 where $p_\mathrm{T}$ is the electron momentum along the polarisation axis of the laser pulse and $A$ it the laser pulse 3-vector potential amplitude. As a sanity check, this expression complies with the ultra-relativistic similarity result of equation \ref{eq:intro-p_similarity}.
+% TODO note that setting the boundary conditions is the final requirement to fix the gauge in the lorenz gauge formalism.
+
 
 Note that this is only valid provided the electron does not radiate along the direction of polarisation as discussed by Sokolov \textit{et al} \cite{sokolovDynamicsEmittingElectrons2009}. The implications of \textit{Radiation Reaction }are discussed in the following section.
 
