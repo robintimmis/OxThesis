@@ -171,13 +171,19 @@ The intention was to use \ac{AR}-coated fused silica optimised for \qty{45}{\deg
 The ORION SP1 and SP2 spot size was routinely monitored on shot by the AWE laser team via two X-ray pinhole cameras and the time-integrating Kirkpatrick-Baez X-ray microscope (KBXRM) diagnostic, sat on the target chamber Port 21 and pointed at the notional \ac{TCC}. This reflective X-ray microscope optic has a ten times magnification and spatial resolution of \qty{15}{\mu m}, comfortably resolving the laser spot size. Images were again recorded with TR-type IP. While direct mapping between the recorded images and real laser irradiance profiles is a highly non-trivial problem with any proposed model depending strongly on the assumptions made. However, by making the very reasonable assumption of spatial and temporal blurring of the spot size in the X-ray image due to electron transport away from the laser spot, clearly the measured spot size will be an upper bound on the real spot size. It follows that the upper bound on optical spot widths corresponds to a lower limit of irradiance (since the on shot energy is well-defined). These diagnostics determine sensible upper bounds for the laser spot size are \qty{20}{\mu m} and \qty{10}{\mu m} for the SP1 and SP2 beamlines respectively.
 
 \section{\label{ch:3-sec:theory}Theory}
-For the moderately relativistic sub-picosecond ORION SP1 and SP2 beamlines the most appropriate description of their non-linear interaction with a solid density target is the Relativistic Oscillating Mirror (ROM) model. The full mathematical formation of which forms the main body of Baeva's 2008 thesis \cite{baevaHighHarmonicGeneration2008}, a notably more rigorous derivation than her original paper on the same topic \cite{baevaTheoryHighorderHarmonic2006}, applying the highly general Aparent Reflection Point formulism to the case of $S>1$ in relativistic similarity theory. The following covers the more qualitative, physically motivated understanding of why this theory works. One starts with relativistic similarity theory and Equation \ref{{eq:intro-p_similarity}}. Provided constant $S$, electrons follow similar relativistic trajectories with 
+For the moderately relativistic sub-picosecond ORION SP1 and SP2 beamlines the most appropriate description of their non-linear interaction with a solid density target is the Relativistic Oscillating Mirror (ROM) model. The full mathematical formation of which forms the main body of Baeva's 2008 thesis \cite{baevaHighHarmonicGeneration2008}, a notably more rigorous derivation than her original paper on the same topic \cite{baevaTheoryHighorderHarmonic2006}, applying the highly general Apparent Reflection Point formulism to the case of $S>1$ in relativistic similarity theory. The following covers the more qualitative, physically motivated understanding of why this theory works. One starts with relativistic similarity theory and Equation \ref{{eq:intro-p_similarity}}. Provided constant $S$, electrons follow similar relativistic trajectories with 
 \begin{equation}
 	\gamma = \frac{E}{m_\mathrm{e}c^2}  = \sqrt{1+a_0^2} \sim a_0
 \end{equation}
-as $a_0 \to \infty$. 
-
-
+as $a_0 \to \infty$. Macroscopically, the well-defined critical density surface within the skin depth (located at $S =1$), has a gamma factor that follows the electrons' velocity along the $x$-direction (\textit{i.e.} normal to the plasma surface for a normally incident laser pulse),
+\begin{equation}
+	\gamma_\mathrm{s} = \gamma_x = \frac{1}{\sqrt{1-\beta_x^2},
+\end{equation}
+here the subscript $x$ refers to electrons and s to the critical density surface. For large $a_0$, $\sqrt{1-v_x^2} \approx v_y = p_y/E$ and hence,
+\begin{equation}\ref{eq:orion-gammas}
+	\gamma_\mathrm{s} \approx \frac{\sqrt{1 + (p_x^2 + p_y^2)/(m_\mathrm{e}c)^2}{1 + (p_y^2)/(m_\mathrm{e}c)^2}.
+\end{equation}
+While it is true that microscopically at all times electrons in the skin depth are relativistic, Equation \ref{eq:orion-gammas} demonstrates that under similarity theory, for large $a_0$, $\gamma_\mathrm{s}$ is order unity except when the transverse momentum of the electrons passes through zero, from conservation of transverse momentum, corresponding to the zeros of the vector potential, $A_y$, identified in the previous chapter. When $A_y$ vanishes, $\gamma_x = \sqrt{1+p_x^2/(m_\mathrm{e}c)^2} \sim a_0$
 
 \subsection{The ROM model}
 % TODO Bourdier methodology in introduction
