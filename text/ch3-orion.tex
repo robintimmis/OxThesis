@@ -152,9 +152,10 @@ There are multiple considerations when it comes to target density. Simulations h
 %TODO comment on improvement of S parameter for PMMA leading to an increase in signal strength?
 
 The surface roughness of a selection of low density plastic targets were analysed by the CLF target fabrication team leading to the choice of PMMA plastic targets. CVD targets were also selected, having the highest ionisation potential (and therefore lowest susceptibility to laser prepulse) of solids that can be polished optically flat albeit at a higher $S$ parameter. Scans performed by AWE and CLF of the target surfaces are given in Figure \ref{fig:oriontargets}.
+% TODO add this back in, its annoying me currently by disappearing
 \begin{figure}
 	\centering
-	\includegraphics{figures/orion/orion_targets}
+	%\includegraphics{figures/orion/orion_targets}
 	\caption[ORION HHG experiment targets]{\textbf{ORION experiment 3D scans of target roughness.} a) CVD with roughness $\Delta s$ = \qty{4}{nm} and $S \approx$ 26, 35 for SP1 and SP2 beamlines respectively. b) PMMA with roughness $\Delta s$ = \qty{11.2}{nm} and $S \approx$ 10, 13 for SP1 and SP2 beamlines respectively.}
 	\label{fig:oriontargets}
 \end{figure}
@@ -171,20 +172,85 @@ The intention was to use \ac{AR}-coated fused silica optimised for \qty{45}{\deg
 The ORION SP1 and SP2 spot size was routinely monitored on shot by the AWE laser team via two X-ray pinhole cameras and the time-integrating Kirkpatrick-Baez X-ray microscope (KBXRM) diagnostic, sat on the target chamber Port 21 and pointed at the notional \ac{TCC}. This reflective X-ray microscope optic has a ten times magnification and spatial resolution of \qty{15}{\mu m}, comfortably resolving the laser spot size. Images were again recorded with TR-type IP. While direct mapping between the recorded images and real laser irradiance profiles is a highly non-trivial problem with any proposed model depending strongly on the assumptions made. However, by making the very reasonable assumption of spatial and temporal blurring of the spot size in the X-ray image due to electron transport away from the laser spot, clearly the measured spot size will be an upper bound on the real spot size. It follows that the upper bound on optical spot widths corresponds to a lower limit of irradiance (since the on shot energy is well-defined). These diagnostics determine sensible upper bounds for the laser spot size are \qty{20}{\mu m} and \qty{10}{\mu m} for the SP1 and SP2 beamlines respectively.
 
 \section{\label{ch:3-sec:theory}Theory}
-For the moderately relativistic sub-picosecond ORION SP1 and SP2 beamlines the most appropriate description of their non-linear interaction with a solid density target is the Relativistic Oscillating Mirror (ROM) model. The full mathematical formation of which forms the main body of Baeva's 2008 thesis \cite{baevaHighHarmonicGeneration2008}, a notably more rigorous derivation than her original paper on the same topic \cite{baevaTheoryHighorderHarmonic2006}, applying the highly general Apparent Reflection Point formulism to the case of $S>1$ in relativistic similarity theory. The following covers the more qualitative, physically motivated understanding of why this theory works. One starts with relativistic similarity theory and Equation \ref{{eq:intro-p_similarity}}. Provided constant $S$, electrons follow similar relativistic trajectories with 
+For the moderately relativistic sub-picosecond ORION SP1 and SP2 beamlines the most appropriate description of their non-linear interaction with a solid density target is the Relativistic Oscillating Mirror (ROM) model. The full mathematical formation of which forms the main body of Baeva's 2008 thesis \cite{baevaHighHarmonicGeneration2008}, a notably more rigorous derivation than her original paper on the same topic \cite{baevaTheoryHighorderHarmonic2006}, applying the highly general Apparent Reflection Point formulism to the case of $S>1$ in relativistic similarity theory, showing that it coincides with the motion of the relativistic critical density surface. The following covers the more qualitative, physically motivated understanding of why this theory works, which is fundamentally that while the surface motion is generally complex and parameter space dependent, at the important point the surface motion is always parabolic. By application of the Bourdier method, Baeva demonstrated that the envelope of the spectral content of the reflected beam does not deviate from the normal incidence linearly polarised case for either s- or p-polarised incidence. Thus the following discussion will be restricted to normal incidence. One starts with relativistic similarity theory and Equation \ref{{eq:intro-p_similarity}}, $\mathbf{p} \sim a_0$. As discussed in Section \ref{sec:zvp-intro}, microscopically electrons follow similar relativistic trajectories yet from Equation \ref{eq:zvp-vprop}, $v_\mathrm{prop}$, the velocity of electrons along the propagation axis of the laser pulse, not necessarily relativistic except at the passing of the zero of the vector potential where $v_\mathrm{prop} \to c$. Macroscopically, the well-defined critical density surface within the skin depth (located at $S =1$), has a gamma factor that tracks the electrons' velocity along the propagation direction ($x$-direction) at that point,
+\begin{equation}\label{eq:orion-gamma_s}
+	\gamma_\mathrm{s} = \frac{1}{\sqrt{1-v_\mathrm{prop}^2/c^2}} = \sqrt{ \frac{1 + a(t,x)^2 +  p_\mathrm{prop}^2/(m_\mathrm{e}c)^2}{1 + a(t,x)^2}}.
+\end{equation}
+Equation \ref{eq:orion-gamma_s} indicates surface gamma factors of order unity except at zeros in the vector potential at which point $\gamma_\mathrm{s} \sim a_0$. In the viscinity of the zero, $a \sim a_0\sin(\omega_L t) \approx a_0\omega_\mathrm{L}t$. Thus, while the velocity of the surface is a smoothly varying function around the maximum, $v_\mathrm{s,\, max} \sim 1 - \mathcal{O}(a_0^{-2})$, the \textit{gamma factor spikes} as the vector potential passes through zero and it is at this point that the surface emits high frequency photons. One can then approximate the duration of this high frequency component of the pulse. The surface will begin radiating such photons at some point near the gamma spike and continue radiating until the gamma factor drops down again after the gamma spike. In ZVP we observe the zero overtaking the emitted photons and thus radiation from the extended electron bunch that is emitted first arrives at the observer last. Here, we consider one point in the sub-light speed surface emitting radiation, thus the radiation overtakes the surface and points emitted first are observed first. The radiation emitted therefore has a duration of
 \begin{equation}
-	\gamma = \frac{E}{m_\mathrm{e}c^2}  = \sqrt{1+a_0^2} \sim a_0
+	\Delta l \approx (c-|\mathbf{v}_\mathrm{s,\, max}|)\Delta t \approx \frac{\Delta t}{\gamma_\mathrm{s,\, max}^2},
 \end{equation}
-as $a_0 \to \infty$. Macroscopically, the well-defined critical density surface within the skin depth (located at $S =1$), has a gamma factor that follows the electrons' velocity along the $x$-direction (\textit{i.e.} normal to the plasma surface for a normally incident laser pulse),
-\begin{equation}
-	\gamma_\mathrm{s} = \gamma_x = \frac{1}{\sqrt{1-\beta_x^2},
-\end{equation}
-here the subscript $x$ refers to electrons and s to the critical density surface. For large $a_0$, $\sqrt{1-v_x^2} \approx v_y = p_y/E$ and hence,
-\begin{equation}\ref{eq:orion-gammas}
-	\gamma_\mathrm{s} \approx \frac{\sqrt{1 + (p_x^2 + p_y^2)/(m_\mathrm{e}c)^2}{1 + (p_y^2)/(m_\mathrm{e}c)^2}.
-\end{equation}
-While it is true that microscopically at all times electrons in the skin depth are relativistic, Equation \ref{eq:orion-gammas} demonstrates that under similarity theory, for large $a_0$, $\gamma_\mathrm{s}$ is order unity except when the transverse momentum of the electrons passes through zero, from conservation of transverse momentum, corresponding to the zeros of the vector potential, $A_y$, identified in the previous chapter. When $A_y$ vanishes, $\gamma_x = \sqrt{1+p_x^2/(m_\mathrm{e}c)^2} \sim a_0$
+where $\Delta t$ is the temporal duration of the gamma spike. 
 
+Writing the surface velocity as a smooth function around its maximum,
+\begin{equation}\label{eq:orion-vs}
+	\mathbf{v}_\mathrm{s}(t) = -(v_\mathrm{s,\, max} - c\alpha(\omega_\mathrm{L}t)^2) \mathbf{\hat{x}}.
+\end{equation}
+Without loss of generality the peak of the gamma spike is set to $t=0$ for cleaner notation. Around the gamma spike, the surface gamma factor is thus
+\begin{equation}
+	\gamma_\mathrm{s}(t) \approx \frac{1}{\sqrt{1-(\mathbf{v}_\mathrm{s,\, max}/c)^2 - 2\alpha(\omega_\mathrm{L}t)^2}}.
+\end{equation}
+Since $1-(\mathbf{v}_\mathrm{s,\, max}/c)^2 = 1/\gamma_\mathrm{s,\, max}^2$, one can calculate the FWHM of the gamma spike is
+\begin{equation}
+	\Delta t \sim \frac{1}{\sqrt{\alpha }\omega_\mathrm{L} \gamma_\mathrm{s,\, max}}.
+\end{equation}
+%TODO change this from looking at the FWHM to an arbitrary change in gamma
+Hence, $\Delta t_\mathrm{FWHM} \sim a_0^{-1}$ and $\Delta l \sim 1/a_0^{-3}$ and the cut off frequency corresponding to the highest frequency accesible for a pulse of that duration is
+\begin{equation}\label{eq:orion-omegac}
+	\frac{\omega_\mathrm{c}}{\omega_\mathrm{L}} \sim \sqrt{\alpha}\gamma_\mathrm{s,\, max}^3 \sim a_0^3.
+\end{equation}
+Within the ROM model these high frequency pulses are coherently produced with the low order harmonics and at intensities that require filtration to access the possible attosecond duration of these pulses.
+
+One can access the harmonic spectrum envelope for lower energies than the harmonic cut off. From the Leontovich boundary conditions
+% TODO cite this and add it,
+corresponding to zero energy flux at the reflection point.
+This corresponds to a balance of the electric fields at the plasma surface, $x_\mathrm{s}$, hence for the incoming and reflected waves,
+\begin{equation}\label{eq:orion-Ei_Er}
+	E_\mathrm{i}(x_\mathrm{s}(t) - ct) = - E_\mathrm{r}(x_\mathrm{s}(t) + ct)
+\end{equation}
+for all $t$. Since we are making the approximation of a plane wave, the phase structure at the reflection point will be maintained as the reflected wave propagates away from the interaction region to our observation point ($E_\mathrm{r}(x_\mathrm{s}(t) - ct) = E_\mathrm{r}(x' - ct')$ for an obesrvation point $(x',t')$ near an electric field peak.). Thus, determining the modulation of the reflected beam is akin to solving Equation \ref{eq:orion-Ei_Er}. Writing $\Phi = x_\mathrm{s}(t) - ct$, $\Psi = x_\mathrm{s}(t) + ct$ and taking the time derivative of Equation \ref{{eq:orion-Ei_Er}},
+\begin{equation}
+	\frac{\mathrm{d}E_\mathrm{r}(\Psi)}{\mathrm{d}\Psi} = \frac{c - \mathbf{v}_\mathrm{s}(t)}{c+\mathbf{v}_\mathrm{s}(t)}\frac{\mathrm{d}E_\mathrm{i}(\Phi)}{\mathrm{d}\Phi}
+\end{equation}
+where $v_\mathrm{s}(t)$ is given in Equation \ref{eq:orion-vs}. Integrating Equation \ref{eq:orion-vs} the reflected wave phase is
+\begin{equation}
+	\Psi(t) = \Psi(0) + \frac{ct}{\gamma_\mathrm{s,\, max}^2} + \frac{1}{3}c\alpha \omega_\mathrm{L}t^3.
+\end{equation}
+Very close to the gamma spike peak the linear term will dominate the interaction, corresponding to the highest order harmonics as discussed previously. The non-linear term dominates for 
+\begin{equation}\label{eq:orion-deltaphi}
+	\delta \Psi = |\Psi(t) - \Psi(0)| \gg \left(\frac{3}{\alpha}\right)^{1/2}\frac{c}{\omega_\mathrm{L}\gamma_\mathrm{s,\, max}^3}.
+\end{equation}
+Note the correspondence between Equation \ref{eq:orion-omegac} and the right hand side of Equation \ref{eq:orion-deltaphi}. In this regime we can write
+\begin{equation}
+	t = \left(\frac{3\delta \Psi }{c\alpha \omega_\mathrm{L}}\right)^{1/3}
+\end{equation}
+
+For these intermediate times around the gamma spike the linear term can be neglected, this is equivalent to writing $v_\mathrm{s,\, max} = c$. Thus,
+\begin{equation}
+	\frac{\mathrm{d}E_\mathrm{r}(\Psi)}{\mathrm{d}\Psi} = \left(\frac{2c - c\alpha (\omega_\mathrm{L}t)^2}{c\alpha (\omega_\mathrm{L}t)^2}\right)\frac{\mathrm{d}E_\mathrm{i}(\Phi)}{\mathrm{d}\Phi}
+\end{equation}
+We assume the incoming radiation is slowly varying around the short duration of the gamma spike, $\mathrm{d}E_\mathrm{i}(\Phi)/\mathrm{d}\Phi \approx \mathrm{d}E_\mathrm{i}(\Phi)/\mathrm{d}\Phi|_{\Phi = \Phi(0)}$ and so we arrive at an equation we can integrate,
+\begin{equation}
+	\frac{\mathrm{d}E_\mathrm{r}(\Psi)}{\mathrm{d}(\delta \Psi)} = \frac{2}{\alpha^{1/3}} \left(\frac{c}{3\omega_\mathrm{L}^2 \delta \Psi}\right)^{2/3}\frac{\mathrm{d}E_\mathrm{i}(\Phi)}{\mathrm{d}\Phi}|_{\Phi = \Phi(0)}
+\end{equation}
+obtaining
+\begin{equation}
+	E_\mathrm{r}(\Psi) = -E_\mathrm{i}(\Phi(0)) - \left(\frac{3c^2}{\alpha \omega_\mathrm{L}^2}\right)^{1/3}\frac{\mathrm{d}E_\mathrm{i}(\Phi)}{\mathrm{d}\Phi}|_{\Phi = \Phi(0)} \times (\delta \Psi)^{1/3}.
+\end{equation}
+One can the see therefore that the reflected radiation gets the quasi-singularity
+\begin{equation}
+	E_\mathrm{r}(x,t) = \mathrm{const}_1 - \mathrm{const_2}\times (ct - x)^{1/3}.
+\end{equation}
+Consequently, the harmonic content follows the envelope obtained by the Fourier transform,
+\begin{equation}
+	|E(\omega)|^2 \sim \left|\int (ct-x)^{1/3}e^{-i\omega t} \mathrm{d} t\right|^2 \sim \frac{1}{\omega^{8/3}}.
+\end{equation}
+
+% TODO add in the full baeva expressions and discuss.
+% TODO note about in ROM the zero propagates at c thus no advance time bunch width.
+% TODO approximate pulse duration of filtered pulse and compare it to the theory.
+% TODO add a note to say this is envelope and we note that to get the periodicity we need haromics of hte thickess of the incoming laser pulse.
+Explain that since we are in the 1D model, Er does not evolve from where it starts at the surface.
 \subsection{The ROM model}
 % TODO Bourdier methodology in introduction
 
