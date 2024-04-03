@@ -1,0 +1,78 @@
+\chapter{\label{ch:4-gemini}Attosecond electron bunches and X-ray pulses on GEMINI PW} 
+
+\minitoc
+
+\section{Overview}
+
+We successfully measured the intensity of the attosecond duration X-ray harmonics on the ORION SP1 and SP2 beamlines. However, the uncertainties remained large, the geometry sub-optimal and the pulse train exceedingly far from an isolated attosecond pulse. Indeed none of the proposed mechanisms for isolation (polarisation gating, lighthouse technique, etc.) could have any hope of success. The high shot rate, few femtosecond, highly customisable GEMINI PW facility at CLF can address all these points while also providing conditions suitable for the production of attosecond ZVP electron bunches. Naturally accompanied by its own repertoire of technical challenges. The work of the prior chapters of this thesis formed the body of a successful proposal for five weeks of beam time at the facility with shot dates planned for Summer 2024. This chapter outlines the extensive planning process initiated over a year before the experiment itself.
+
+There are three main experimental goals. First, to repeat the ORION experiment on GEMINI PW using optimised geometry and thus resolve and measure the absolute intensity of X-ray harmonics, detailed in Section X. Second, to simultaneously observe ZVP electron bunches in transmission and the HHG signal they generate in reflection detailed in Section X. Finally, to apply the X-ray harmonic beam in a proof of principle Laue diffraction setting described in Section X. In Section X I address laser contrast, a much thornier issue for the few fs GEMINI beamline compared to ORION and describe the parallel experiment proposed by collaborators at Queen's University Belfast to hopefully illuminate the problem. This section will also detail the contingency plan of action should the contrast prove to be too low.
+
+CAD drawings overview where to put you?
+
+\section{X-ray harmonics on GEMINI PW}
+
+This is a repeat of the ORION experiment, where the absolute intensity was calculated but the harmonics were not resolved. We anticipate that the parameter space accessed by GEMINI will be more favourable.
+
+The setup is relatively straightforward: the N beam with $f/2$ focusing hits the target with AoI 45 degrees and p-polarisation, directing the X-ray beam to the West side of the chamber. Diagnostics are aligned to the target in the specular direction to observe the reflected harmonic beam.
+
+A parameter scan of XHHG as a function of $S$ can be performed by varying the laser intensity and target material.
+
+By comparing the XHHG signal observed for p and circularly polarised light, we can rule out Bremmstrahlung or other X-ray sources as circularly polarised light suppresses HHG (however note that at 45 degrees incidence, HHG is not fully suppressed for circular polarisation AND heating is reduced therefore cannot make a direct comparison.)
+
+
+We will start with shot on demand with the relatively high damage threshold glass targets (pure SiO$_2$, BK7 and AR coated SiO$_2$). A debris shield as with the plasma mirrors would be beneficial. We anticipate the pure targets will produce the best harmonics. We will start with the standard DPM setup and no added prepulse with the XUV spectrometer in line with specular reflection from the target and the line of sight surrounded by a scintillating screen to catch the beam if it is slightly off specular. 
+
+Once we have establish optimal prepulse for the lower order harmonics, we can switch to the OHREX, a high res X-ray spectrometer. AWE have confirmed we can use their KAP crystal to study 0.6 keV and 1.2 keV harmonics in first and second order harmonics. I have calculated anticipated signals for each of these and it looks like we cannot get to higher orders before signal becomes too noisy so this should be fine.
+
+There is concern that this will be low. Predictions have been made using HHG theory (see Jupyter notebook)
+
+If we use a CCD to detect the X-rays, so the pixel size will be of order 10um, and the array say 1000x1000 pixels (perhaps more pixels in practice, but the pixel size won’t be much different to 10um).
+If, with the OHREX, we assume we image ~100eV of bandwidth and this is spread over ~1cm or 1000 pixels, then we’d have an effective resolution of 0.1eV/pixel in the spectral direction. Thus, we’d have ~16 pixels between the harmonics (800nm is ~1.6eV), with each harmonic occupying 1-2 pixels on average (assuming delta_lamda /lambda ~0.1). This is all fine.
+
+For KAP second order, 2 uJ/m2/harmonic is at the OHREX crystal, this corresponds to approx. 200 photons per mm at the image plane. Integrating our signal across the spatial direction, we get 2 photons per line of pixels. That might be too low - very very low number of photons per pixel? For KAP 1st order we get 0.62 photons per pixel. For Quartz 1011 1st order we get a similar photon number to KAP 2nd order, ie low.
+
+Note also that the mPSL/mm (Note this is wrt to image plate only, for CCDs we expect QE approx 1 and therefore KAP 2nd is 100 times less signal than KAP 1) for KAP 2nd order is 28 times lower than for the KAP 1st order thus it will be challenging to find a suitable filter to shield 1st order without substantially reducing the 2nd order contribution also. → TBC.
+
+Another concern is these signals are assuming no preplasma scale length. These could lead to even larger divergences (since we plan to optimise). This necessitates independent measurement of divergence and spot size on target, since we now cannot apply the hole boring theory to calculate either from the other since we will have the unknown of preplasma scale length.
+
+### KAP crystal filtering
+
+*We may need to use a filter in front of the OHREX crystal to reject laser light - an aluminized mylar or similar. The filter will be very thin (~few microns) so would easily damage from debris. We’ll definitely have to use such filters over the image plane.*
+
+
+
+
+Sims of HHGS kapton and resolved harmonics
+
+
+
+\section{First observation of ZVP electron bunches}
+
+
+
+ZVP bunches 
+3 omega imaging line
+CTR theory
+
+
+\section{Application of HHG to Laue diffraction}
+Laue diffraction
+
+
+
+\section{Contrast}
+
+Contrast DPM, GEMINI issues, probe beam, potential solutions, contingency (currently in Resolve X-ray HHG section)
+
+Kahaly prepulse
+
+
+In this initial stage we will use a UV spectrometer. As of 2019, no experiment to confirm HB theory had been performed on a PW system \cite{vincentiAchievingExtremeLight2019}. These UV spectrometer measurements could be very interesting both to confirm the HB theory in the PW regime and to infer the intensity increase at PM focus, for this we would ideally resolve the first 50 orders.
+\section{Conclusion}
+
+
+
+% TODO add optimal HHG conditions somewhere
+
+% TODO compare as pulse brightness to gas as source
