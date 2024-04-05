@@ -59,16 +59,20 @@ For target edge shots, high edge precision is absolutely essential. To overcome 
 \begin{figure}
 	\centering
 	\includegraphics{figures/gemini/gemini_silicon_wafer}
-	\caption[Attosecond ZVP electron bunch targets]{\textbf{Targets designed for observation of ZVP electron bunches.} a) Target array design with conical array holder and tapered finger design, lengths in mm. b) Scan of etched wafer, striations develop towards target rear due to etching technique. c) A 3D plot of surface variation. Scalloping and striations are visible but too small to interfer with laser pulse transmission at \qty{45}{\degree}. d) Lineouts of c), the $y$-profile is taken close to the target edge of interest.}
+	\caption[Attosecond ZVP electron bunch targets]{\textbf{Targets designed for observation of ZVP electron bunches.} a) Target array design with conical array holder and tapered finger design, lengths in mm. b) Scan of etched wafer, striations develop towards target rear due to etching technique. c) A 3D plot of surface variation. Scalloping and striations are visible but too small to interfere with laser pulse transmission at \qty{45}{\degree}. d) Lineouts of c), the $y$-profile is along the target edge of interest.}
 	\label{fig:geminisiliconwafer}
 \end{figure}
 The tapered finger design adds a failure point to the target to mitigate damage to adjacent targets via shock propagation. The cone of the array holder is of sufficient size for the full laser pulse to access the target edge. Scans, detailed in Figure \ref{fig:geminisiliconwafer} found an average surface roughness of \qty{74.4}{nm}. The etching technique leads to scalloping of the surface parallel to the target surface and striations perpendicular to the surface towards the target rear. Neither pose any issue with regards to interfering with the laser pulse in transmission. Scans were performed and targets designed by Sam Astbury \cite{astburyTargetFabricationGroup2024}. Before firing target edges, HHG production will be optimised for unstructured silicon wafer targets, providing information on bulk propagating ZVP electron bunches. Again, a quarter-wave plate can be implemented to suppress the ZVP mechanism in the absence of vector potential zeroes.
 
 %TODO add pictures of silicon targets.
-It is anticipated there is some relaxation of the requirement for sub-micron precision from target smoothing via preplasma expansion and the smoothing effect of the main pulse interaction as noted by Dromey \textit{et al} \cite{dromeyDiffractionlimitedPerformanceFocusing2009}. Furthermore, transmission direction is dictated by laser vector potential and not surface angle, unlike reflection. At worst ZVP energy scalings will be mildly affected by the change in angle. Thus tape drives will also be explored as an option. However, the \qty{50}{\mu m} jitter of such devices suggests a success rate of $\sim$ 4 \%. This is not necessarily unreasonable. Shot-to-shot variations in laser pulse focal spot position are typically on the order of the focal spot itself. Therefore only a third of silicon target shots will be successful and will depend on the gathering of sufficient statistics as will be possible with the high repetition rate of the GEMINI PW laser facility. Successful shots will be identified using a third harmonic imaging line \cite{dromeyDiffractionlimitedPerformanceFocusing2009}. This can also be used to reduce uncertainty in the hole boring calculations since it is typically a must closer match to the real laser spot size than the X-ray emission spot since the non-linearity of the interaction reduces any background noise giving a clear signal. For high resolution, the collimating reflective optic, must be placed roughly the distance of the f/2 parabola focal length from the main interaction. So close to the interaction, the B-integral is typically large and ND filters and lenses cannot be used. Instead, a wedge, typically double passed acts as an attenuator. A hole allows the less divergent higher orders through, enabling on-shot measurement. Far from the interaction, the third harmonic signal can be extracted, filtered, refocused and imaged. Note that while some of the light is reflected back to the target via the wedge, this is not a concern since the focal length of the new optic will be larger than that of the $f/2$ parabola and typical path lengths are about a nanometre at which time the target does not reflect specularly. This imaging line has been modelled by the ORION laser scientists using Zemax \cite{AnsysZemaxOpticStudio}. 
+It is anticipated there is some relaxation of the requirement for sub-micron precision from target smoothing via preplasma expansion and the smoothing effect of the main pulse interaction as noted by Dromey \textit{et al} \cite{dromeyDiffractionlimitedPerformanceFocusing2009}. Furthermore, transmission direction is dictated by laser vector potential and not surface angle, unlike reflection. At worst ZVP energy scalings will be mildly affected by the change in angle. Thus tape drives will also be explored as an option. However, the \qty{50}{\mu m} jitter of such devices suggests a success rate of $\sim$ 4 \%. This is not necessarily unreasonable. Shot-to-shot variations in laser pulse focal spot position are typically on the order of the focal spot itself. Therefore only a third of silicon target shots will be successful and will depend on the gathering of sufficient statistics as will be possible with the high repetition rate of the GEMINI PW laser facility. Successful shots will be identified using a third harmonic imaging line \cite{dromeyThirdHarmonicOrder2009}. This can also be used to reduce uncertainty in the hole boring calculations since it is typically a must closer match to the real laser spot size than the X-ray emission spot since the non-linearity of the interaction reduces any background noise giving a clear signal. For high resolution, the collimating reflective optic, must be placed roughly the distance of the f/2 parabola focal length from the main interaction. So close to the interaction, the B-integral is typically large and ND filters and lenses cannot be used. Instead, a wedge, typically double passed acts as an attenuator. A hole allows the less divergent higher orders through, enabling on-shot measurement. Far from the interaction, the third harmonic signal can be extracted, filtered, refocused and imaged. Note that while some of the light is reflected back to the target via the wedge, this is not a concern since the focal length of the new optic will be larger than that of the $f/2$ parabola and typical path lengths are about a nanometre at which time the target does not reflect specularly. 
 
+Resolving the \qty{16}{\mu m} GEMINI PW spot is significantly more challenging that the \qty{6}{\mu m} spot of the 1 J Astra-GEMINI laser system. This imaging line has been modelled by the ORION laser scientists using Zemax \cite{AnsysZemaxOpticStudio} accounting for all diffraction and spherical aberation. They have identified a set up using an \ac{OAP} for collimation and a spherical mirror for imaging that provides \qty{1.7}{\mu m} resolution with 20 times magnification, comfortably resolving the spot. However, this setup is highly sensitive to the \ac{OAP} position taking a significant time to align, ideally this should only be performed once. Note that while path lengths vary between atmospheric pressure and under vacuum, there is no hysteresis from cycling the chamber. While the high spatial orders associated with the clipping of the reflected beam at the target edge could not be resolved, this should significantly alter the image structure, enough to identify the surface edge. 
+
+The main concern of this method is that over time the wedge will be coated by material ablated from the main target interaction and will need to be replaced to prevent absorption increases and corresponding heat damage. The sensitivity to wedge position is being investigated.
+
+The size of the wedge hole must be established. Sitting somewhere between the near and far field, to first order, rays from all parts of the spot are lost equally through the hole in the wedge. After passing through the optical system, therefore, the wedge hole should simply reduce the signal at the image plane and not affect the resolution but should also be modelled. Potentially, one could argue that the wedge can reduce the spherical aberation since only paraxial rays are removed. The larger the hole the less likely the clipping of the the potentially highly divergence high harmonic beam eventually this will impact the third harmonic image resolution. At the very least we must fully illuminate the OHREX crystal requiring a half angle of \qty{0.71}{\degree}.
 %TODO decribe B integral
-
 
 %TODO double check these numbers
 Applying the extended ZVP theory to the oblique incidence case for GEMINI PW parameters predicts electron bunches with a charge of $\approx$10 nC and energy of $\approx$30 MeV.
@@ -77,27 +81,29 @@ First a LANEX screen will be imaged to identify mass-limited and bulk electron b
 
 While resolving attosecond durations remains a serious technical challenge of experimental science, we hope to measure the production of Coherent Transition Radiation from a secondary target and therefore infer the presence of a bunch train \cite{linIsolatedAttosecondElectron2020}. 
  
- 3 omega imaging line
- COTR
- Predictions
- Add nice pictures of targets
- Edit
+
+ COTR - awaiting papers from peter
+ 
+ When electrons pass from one medium to another they emit transition radiation, in this case the aluminium filter. If they are arranged into temporally regular spaced bunches that radiation becomes coherent and harmonics of the temporal spacing of the bunches can be observed. Both bulk propagating and mass-limited ZVP electron bunches will produce COTR, however, the attosecond duration should mean the mass-limited bunches produce significantly brighter COTR that extends to XUV energies but that can be distinguished even at the optical range.
+
  
  % TODO add somewhere: Note that in the absence of attosecond resolution diagnostics, measuring the harmonic spectrum of the coherent \ac{HHG} is the only way to reconstruct the temporal shape of the pulse. Simulations have suggested that the reflected spectrum produced by Coherent Synchrotron Emission of the electron bunches is approximately Fourier-limited \cite{cousensElectronTrajectoriesAssociated2020}.
 
-\subsubsection{Preplasma scale lengths and prepulse control}
-Observation of the ZVP mechanism requires a sufficiently steep density gradients at the laser-plasma interface. An inevitable challenge of \ac{CPA} laser systems is the existence of prepulses that heat targets, causing them to expand significantly before arrival of the main pulse. To increase the laser contrast, to the point where there is no preplasma formation, GEMINI-PW utilises a Double Plasma Mirror setup prior to the main interaction \cite{doumyCompleteCharacterizationPlasma2004}. Each mirror is an anti-reflection coated optic placed in the path of the laser beam, acting as an optical switch. As the laser fluence passes the damage threshold of the optic, plasma forms on the front surface and the mirror starts to reflect. Investigation of preplasma generation will occur in parallel to the main experimental goals.
+\section{Application of HHG to white light Laue diffraction}
+The ultimate goal is the generation of an attosecond X-ray diagnostic to illuminate crystal dynamics on such timescales. This remains a distant goal. Inspired by Laue diffraction measurements demonstrating dislocation microstructure of shocked crystals \cite{suggitNanosecondWhitelightLaue2012}, this will be a proof of principle test of Laue diffraction using an X-ray harmonic beam of a single unshocked crystal.
 
+The first X-ray crystal diffraction experiment was Laue diffraction and it was Laue diffraction that led to the arrival of Bragg's law,
+\begin{equation}\label{eq:gemini-braggs_law}
+	n\lambda = 2d\sin\theta
+\end{equation}
+for diffraction order, $n$, incident wavelength, $\lambda$, distance between crystal planes, $d$, and angle between the crystal plane and the incident photon, $\theta$ \cite{braggDiffractionWaves1915}. In Laue diffraction, by irradiating a crystal target with a `white light', \textit{i.e. } a broadband X-ray source, Equation \ref{eq:gemini-braggs_law} is satisfied by a range of crystal planes and angles simultaneously, producing Laue spots accordingly. The quasi-broadband X-ray harmonic beam is suited to such an experiment if enough signal can be obtained.
 
-
-
-
-\section{Application of HHG to Laue diffraction}
-Laue diffraction
-
-
+This will be attempted using the \ac{BBXRD} placed in the path of the specularly reflected beam roughly 50 cm from the target. This lead shielded box contains the crystal sample with image plate lining the inner walls. A hole allows the harmonic beam into the box. Placed at an angle on a rotatable washer enables a range of angles and corresponding energies to be investigated. Starting with quartz to investigate the photon energies of 1.7 - 2.5 keV and moving to silicon to explore energies of 2.4 - 3.3 keV. The IP must be shielded to reject laser light, beryllium would be most suitable. It may be necessary to integrate over many shots to produce the Laue spot.
 
 \section{Contrast}
+
+\subsubsection{Preplasma scale lengths and prepulse control}
+Observation of the ZVP mechanism requires a sufficiently steep density gradients at the laser-plasma interface. An inevitable challenge of \ac{CPA} laser systems is the existence of prepulses that heat targets, causing them to expand significantly before arrival of the main pulse. To increase the laser contrast, to the point where there is no preplasma formation, GEMINI-PW utilises a Double Plasma Mirror setup prior to the main interaction \cite{doumyCompleteCharacterizationPlasma2004}. Each mirror is an anti-reflection coated optic placed in the path of the laser beam, acting as an optical switch. As the laser fluence passes the damage threshold of the optic, plasma forms on the front surface and the mirror starts to reflect. Investigation of preplasma generation will occur in parallel to the main experimental goals.
 
 Contrast DPM, GEMINI issues, probe beam, potential solutions, contingency (currently in Resolve X-ray HHG section)
 
@@ -107,9 +113,12 @@ Kahaly prepulse
 In this initial stage we will use a UV spectrometer. As of 2019, no experiment to confirm HB theory had been performed on a PW system \cite{vincentiAchievingExtremeLight2019}. These UV spectrometer measurements could be very interesting both to confirm the HB theory in the PW regime and to infer the intensity increase at PM focus, for this we would ideally resolve the first 50 orders.
 
 
-\section{Future extensions}
+\section{Beyong GEMINI PW}
+Vulcan 2020
 
 Expand the range of targets A range of thick, flat solid targets are proposed to probe the density parameter space: diamond, a selection of plastics (polymethyl methacrylate, low and high density polyethylene and polycarbonate) and mirrored targets, which produced interesting and slightly unexpected results in the ORION experiment. It would also be interesting to produce foam targets gaining access the optimal low $S$ regime \cite{bataniPhysicsIssuesShock2014}.
+
+Image the XUV harmonics from the attosecond electron bunches.
 
 Write about PIC simulations here.
 
