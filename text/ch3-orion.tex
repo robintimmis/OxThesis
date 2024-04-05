@@ -54,6 +54,8 @@ Typical ORION and GEMINI beam paramaters are presented in Table \ref{tab:laser_p
 	\caption{The ORION and GEMINI petawatt class short pulse beamlines for comparison. The GEMINI North (N) and South (S) beamlines are equivalent.}
 	\label{tab:laser_params}
 \end{table}
+The GEMINI-PW laser facility of the \ac{CLF} at Harwell Campus, Oxfordshire is a petawatt class facility consisting of two 30 fs beams, \ac{N} and \ac{S}, each delivering a maximum focused intensity of \qty{2e21}{W.cm^{-2}} at a repetition rate of 0.05 Hz. Such high frequency of operation has led to a paradigm shift in high power laser physics experimentation with the arrival of statistically significant results.
+
 The ORION SP1 is produced by passing the SP2 through two frequency doubling crystals creating two equivalent beamlets that are then overlaid at the target. The double beamlet structure at the near-field is imaged in Figure \ref{fig:oriondoublebeamletsnearfield}.
 \begin{figure}
 	\centering
@@ -146,11 +148,12 @@ Specialised target holders were designed and built by the AWE and CLF target fab
 
 One might assume that target surface variation, root-mean-square roughness, $\Delta s$, need be less than the highest harmonic order that one wished to generate, however, Dromey \textit{et al} demonstrated categorically in both experiment and simulation that surface roughness need only be less than the excursion amplitude of the oscillating electrons at the target front surface thus ensuring specular reflection and preventing scattering into the wings of the harmonic beam \cite{dromeyDiffractionlimitedPerformanceFocusing2009}. This is generally satisfied by $\Delta s \ll \lambda_\mathrm{L}$. In their experiment, harmonics were visible provided $\Delta s < \lambda_\mathrm{L}/16$. Furthermore, preplasma expansion leads an increase in target smoothness prior to the main pulse arrival.
 
-There are multiple considerations when it comes to target density. Simulations have repeatedly emphasised the improvement of harmonic efficiency for reduced similarity parameter, $S$, \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011, edwardsXRayEmissionEffectiveness2020} corresponding to low electron density solid targets. In practice accessing the $S\approx 1$ regime is not possible using a petawatt class laser system with even the lowest density solid plastic targets. However, the 2007 Vulcan experiment successfully reproduced the $8/3$ scaling up to the X-ray regime for $S \approx 25 $ \cite{dromeyBrightMultikeVHarmonic2007}. At the same time, as discussed in Section \ref{ch:3-sec:theory}, target hole boring leads to an increased harmonic beam divergence. High electron density targets are perhaps therefore more suited to the petawatt class laser system thereby maintaining beaming of harmonics.
+There are multiple considerations when it comes to target density. Simulations have repeatedly emphasised the improvement of harmonic efficiency for reduced similarity parameter, $S$, \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011, edwardsXRayEmissionEffectiveness2020} corresponding to low electron density solid targets. In practice accessing the $S\approx 1$ regime is not possible using a petawatt class laser system with even the lowest density solid plastic targets. However, the 2007 Vulcan experiment successfully reproduced the $8/3$ scaling up to the X-ray regime for $S \approx 50 $ \cite{dromeyBrightMultikeVHarmonic2007}. At the same time, as discussed in Section \ref{ch:3-sec:theory}, target hole boring leads to an increased harmonic beam divergence. High electron density targets are perhaps therefore more suited to the petawatt class laser system thereby maintaining beaming of harmonics.
 % TODO find that paper where they show that CSE lowers the roll off point, I definitely did read this somewhere...
-% Vulcan had CH targets, a0 on target of approx 6.2, normalised density approx 161.
+% Vulcan had CH targets, a0 on target of approx 6.2, normalised density approx 308.
 %TODO comment on improvement of S parameter for PMMA leading to an increase in signal strength?
 
+% TODO use the word perturbation for surface roughness
 The surface roughness of a selection of low density plastic targets were analysed by the CLF target fabrication team leading to the choice of PMMA plastic targets. CVD targets were also selected, having the highest ionisation potential (and therefore lowest susceptibility to laser prepulse) of solids that can be polished optically flat albeit at a higher $S$ parameter. Scans performed by AWE and CLF of the target surfaces are given in Figure \ref{fig:oriontargets}.
 % TODO add this back in, its annoying me currently by disappearing
 \begin{figure}

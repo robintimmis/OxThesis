@@ -3,10 +3,11 @@
 \minitoc
 
 \section{Overview}
+We successfully measured the intensity of the attosecond duration X-ray harmonics on the ORION SP1 and SP2 beamlines. However, the uncertainties remained large, the geometry sub-optimal and the pulse train exceedingly far from an isolated attosecond pulse. Indeed none of the proposed mechanisms for isolation (polarisation gating, lighthouse technique, etc.) could have any hope of success. The high shot rate, few femtosecond, highly customisable GEMINI PW facility at CLF can address all these points while also providing conditions suitable for the production of attosecond ZVP electron bunches, of course attended by its own suite of technical challenges. The work of the prior chapters of this thesis formed the body of a successful proposal for five weeks of beam time at the facility with shot dates planned for Summer 2024. This chapter outlines the extensive planning process initiated over a year before the experiment itself.
 
-We successfully measured the intensity of the attosecond duration X-ray harmonics on the ORION SP1 and SP2 beamlines. However, the uncertainties remained large, the geometry sub-optimal and the pulse train exceedingly far from an isolated attosecond pulse. Indeed none of the proposed mechanisms for isolation (polarisation gating, lighthouse technique, etc.) could have any hope of success. The high shot rate, few femtosecond, highly customisable GEMINI PW facility at CLF can address all these points while also providing conditions suitable for the production of attosecond ZVP electron bunches. Naturally accompanied by its own repertoire of technical challenges. The work of the prior chapters of this thesis formed the body of a successful proposal for five weeks of beam time at the facility with shot dates planned for Summer 2024. This chapter outlines the extensive planning process initiated over a year before the experiment itself.
+There are three primary experimental goals. First, to repeat the ORION experiment on GEMINI PW with optimised geometry and thus resolve and measure the absolute intensity of X-ray harmonics, detailed in Section X. Second, to simultaneously observe ZVP electron bunches in transmission and the HHG signal they generate in reflection, detailed in Section X. Finally, to apply the X-ray harmonic beam in a proof of principle Laue diffraction setting described in Section X. Section X addresses the subject of laser contrast, a much thornier issue for the few femtosecond GEMINI beamline compared to ORION and covers the parallel experiment proposed by collaborators at Queen's University Belfast to provide some illumination to the problem at hand. Note that no petawatt class few femtosecond laser facility has observed harmonics at oblique incidence. This section will also detail the strategy of contingency should the contrast prove to be too poor for the production of harmonics. Not discussed in this chapter is the work undertaken by Elliot Denis to perform spectro-spatial encoding and thus temporally resolve chirped HHG.
 
-There are three primary experimental goals. First, to repeat the ORION experiment on GEMINI PW with optimised geometry and thus resolve and measure the absolute intensity of X-ray harmonics, detailed in Section X. Second, to simultaneously observe ZVP electron bunches in transmission and the HHG signal they generate in reflection, detailed in Section X. Finally, to apply the X-ray harmonic beam in a proof of principle Laue diffraction setting described in Section X. Section X addresses the subject of laser contrast, a much thornier issue for the few femtosecond GEMINI beamline compared to ORION and covers the parallel experiment proposed by collaborators at Queen's University Belfast to provide some illuniation to the problem at hand. Note that no petawatt class few femtosecond laser facility has observed harmonics at oblique incidence. This section will also detail the strategy of contingency should the contrast prove to be too poor for the production of harmonics.
+% TODO get the name of what Ellit it doing.
 
 % TODO replace HHG with SHHG
 
@@ -28,7 +29,7 @@ The alignment of the crystal planes to the crystal surface enables the relative 
 
 A parameter scan of \ac{XHHG} as a function of $S$ can be performed by varying the laser intensity, via beam apodisation, and the target material. The majority of shots will use target wheels of the relatively high damage threshold fused silica with the plan to advance to a kapton tape. The fused silica targets are chemically etched in one corner to aide alignment.
 % TODO cite the below
-Since HHG is suppressed for circularly polarised light, bremmstrahlung emission and/or other X-ray production mechanisms can somewhat be ruled out by comparing the \ac{XHHG} signal observed for p- and circularly- polarised light. However, this is not fully the case at \qty{45}{\degree} \ac{AOI} and plasma heating is reduced, reducing the temperature of the emitting plasma.
+Since HHG is suppressed for circularly polarised light, bremmstrahlung emission and/or other X-ray production mechanisms can somewhat be ruled out by comparing the \ac{XHHG} signal observed for p- and circularly- polarised light, produced via a quarter wave plate. However, this is not fully the case at \qty{45}{\degree} \ac{AOI} and plasma heating is reduced, reducing the temperature of the emitting plasma.
 
 Filtering is necessary to reject the high intensity low order harmonics, however, for photon energies in the 600 eV range, the standard beryllium filter transmission is too low. Instead 400 nm of aluminium flash-coated onto 1 micron of mylar will be used for the KAP crystal, corresponding to a transmission of \qty{16}{\%} at 600 eV.
 
@@ -41,12 +42,45 @@ Running new SiO2 HHG sim, hopefully this will show that we have a better efficie
 A previous experiment measured the GEMINI DPM setup produced a reduction in peak pulse intensity of \qty{50}{\%}. Applying ROM and hole boring theory to a fused silica target and accounting for filtering and assuming no merging of harmonics, one can anticipate signals at the OHREX crystal position of \qty{19.6}{\mu J.sr^{-1}} per harmonic at 0.6 keV for the KAP crystal and \qty{1.89}{\mu J.sr^{-1}} per harmonic at 2.405 keV for the quartz ($10\bar{1}1$) crystal. Orienting the OHREX for s-polarisation to maximise the signal at the image plane, this corresponds to an average of 3.4 photons per pixel and 0.20 photons per pixel respectively. The quantum efficiency of the detector is close to \qty{100}{\%}. These numbers are no smaller than the ORION experiment while the background will be lower due to the order of magnitude lower energy on target. Thus, there should be adequate statistics to observe these signals.
 
 \section{First observation of ZVP electron bunches}
+The second phase of the GEMINI PW experiment is to observe ZVP electron bunches (both mass-limited and bulk) for the first time. There has been some experimental evidence of attosecond and nano-Coulomb electron bunch generation from nano-targets \cite{cardenasSubcycleDynamicsRelativistic2019,hornyGenerationSingleAttosecond2021} and in reflection from solids \cite{linIsolatedAttosecondElectron2020, thevenetVacuumLaserAcceleration2016} with the latter demonstrating satisfaction of the precise conditions for \ac{VLA} to 10 MeV for a mildly relativistic laser pulse ($a_0 \approx 3.1$). These experiments have guided the planning process for this experiment stage.
+
+This experiment aspires to produce mass-limited ZVP electron bunches in the configuration simulated in Figure \ref{fig:experimentsetuphhgbunches2}. % TODO repeat this simulation with Silicon wafer target
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/zvp/Experiment_setup_HHG_bunches2}
+	\caption[Planned GEMINI-PW experimental setup for the measurement of ZVP electron bunches.]{A simulation of the planned GEMINI-PW experimental setup for the measurement of ZVP electron bunches. This novel setup enables the simultaneous measurement of attosecond ZVP electron bunches and their coherent emission of X-ray light. The GEMINI-PW laser pulse is incident at \qty{45}{\degree} on the low density polyethylene target with a preplasma scale length of $0.2\lambda_\mathrm{L}$. For this angle of incidence, transmitted bunches and specularly reflected X-ray harmonics are produced at a frequency of $\omega_\mathrm{L}$.}
+	\label{fig:experimentsetuphhgbunches2}
+\end{figure}
+By focusing the laser pulse onto the edge of a transversely mass-limited target, the emitted electron bunch energies will be maximised. Simulations suggest it should be possible to simultaneously measure the specularly reflected \ac{HHG} and the attosecond electron bunches that produce it. Note via equations \ref{eq:zvp_N} and \ref{eq:zvp_T}, the low density target of Figure \ref{fig:experimentsetuphhgbunches2} will produce larger and more energetic bunches. They are therefore a more practical choice for the experiment relative to the aluminium targets of predominant use in Chapter \ref{ch:2-zvp}. Both bulk and mass-limited ZVP electron bunches will be generated but should be spatially separated at the observation point via conservation of transverse momentum with bulk bunches experiencing no further acceleration phases post ZVP.
+
+It is necessary to conduct PIC code parameter scans for this new geometry. While normal incidence was most convenient for the initial ZVP simulations, oblique incidence is more optimal for \ac{HHG} \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011, edwardsXRayEmissionEffectiveness2020} and as can be understood from equations \ref{eq:zvp_Tzvp_theta} and \ref{eq:zvp_Uzvp_theta}, the new energy scaling expressions, for the ZVP mechanism. Not only is oblique preferable but it is essential to mitigate damage to the laser optics via back-reflection. The \ac{HHG} beam intensity at focus can be over 1000 times that of the incident laser pulse \cite{quereReflectingPetawattLasers2021}. It is indispensable, therefore, to test the new predictions for oblique incidence energy scalings and total electron bunch charge along with the angle of bunch ejection, the non-zero transverse vector potential of the laser will prevent the bunch from propagating directly along the transmission axis. It would also be useful to perform a parameter scan of preplasma scale length. In this work so far, it was assumed that the optima for electron bunch production are simply those for \ac{HHG}, as was shown to be true for preplasma scale length in the Supplementary Information of \cite{thevenetVacuumLaserAcceleration2016} for their electron bunches in reflection.
+
+For target edge shots, high edge precision is absolutely essential. To overcome this challenge CLF Target Fabrication have created 300 $\mu$m cryo-etched silicon wafer targets with well-defined edges of sub-micron precision. Before firing target edges, HHG production will be optimised for unstructured silicon wafer targets, providing information on bulk propagating ZVP electron bunches. Again, a quarter-wave plate can be implemented to suppress the ZVP mechanism in the absence of vector potential zeroes.
+
+%TODO add pictures of silicon targets.
+It is anticipated there is some relaxation of the requirement for sub-micron precision from target smoothing via preplasma expansion and the smoothing effect of the main pulse interaction as noted by Dromey \textit{et al} \cite{dromeyDiffractionlimitedPerformanceFocusing2009}. Furthermore, transmission direction is dictated by laser vector potential and not surface angle, unlike reflection. At worst ZVP energy scalings will be mildly affected by the change in angle. Thus tape drives will also be explored as an option. However, the \qty{50}{\mu m} jitter of such devices suggests a success rate of $\sim$ 4 \%. This is not necessarily unreasonable. Shot-to-shot variations in laser pulse focal spot position are typically on the order of the focal spot itself. Therefore only a third of silicon target shots will be successful and will depend on the gathering of sufficient statistics as will be possible with the high repetition rate of the GEMINI PW laser facility. Successful shots will be identified using a third harmonic imaging line \cite{dromeyDiffractionlimitedPerformanceFocusing2009}. 
+
+%TODO double check these numbers
+Applying the extended ZVP theory to the oblique incidence case for GEMINI PW parameters predicts electron bunches with a charge of $\approx$10 nC and energy of $\approx$30 MeV.
+% TODO calculate angle of electron bunch and divergence in sim
+
+First a LANEX screen will be imaged to identify mass-limited and bulk electron bunch trajectories and beam divergences, anticipated to be significant. An MeV electron spectrometer aligned to the target edge can then measure the time-integrated energy spectrum. The spatially separated bunch types can be independently measured by adjusting the spectrometer position. Mordovanakis \textit{et al} used Image Plate stacks to obtain the electron bunch structure and emission angle, it may be necessary to perform this if the bunch types overlap due to high divergence for accurate spectrometer positioning \cite{mordovanakisQuasimonoenergeticElectronBeams2009}. 
+
+While resolving attosecond durations remains a serious technical challenge of experimental science, we hope to measure the production of Coherent Transition Radiation from a secondary target and therefore infer the presence of a bunch train \cite{linIsolatedAttosecondElectron2020}. 
+ 
+ 3 omega imaging line
+ COTR
+ Predictions
+ Add nice pictures of targets
+ Edit
+ 
+ % TODO add somewhere: Note that in the absence of attosecond resolution diagnostics, measuring the harmonic spectrum of the coherent \ac{HHG} is the only way to reconstruct the temporal shape of the pulse. Simulations have suggested that the reflected spectrum produced by Coherent Synchrotron Emission of the electron bunches is approximately Fourier-limited \cite{cousensElectronTrajectoriesAssociated2020}.
+
+\subsubsection{Preplasma scale lengths and prepulse control}
+Observation of the ZVP mechanism requires a sufficiently steep density gradients at the laser-plasma interface. An inevitable challenge of \ac{CPA} laser systems is the existence of prepulses that heat targets, causing them to expand significantly before arrival of the main pulse. To increase the laser contrast, to the point where there is no preplasma formation, GEMINI-PW utilises a Double Plasma Mirror setup prior to the main interaction \cite{doumyCompleteCharacterizationPlasma2004}. Each mirror is an anti-reflection coated optic placed in the path of the laser beam, acting as an optical switch. As the laser fluence passes the damage threshold of the optic, plasma forms on the front surface and the mirror starts to reflect. Investigation of preplasma generation will occur in parallel to the main experimental goals.
 
 
 
-ZVP bunches 
-3 omega imaging line
-CTR theory
 
 
 \section{Application of HHG to Laue diffraction}
@@ -62,7 +96,21 @@ Kahaly prepulse
 
 
 In this initial stage we will use a UV spectrometer. As of 2019, no experiment to confirm HB theory had been performed on a PW system \cite{vincentiAchievingExtremeLight2019}. These UV spectrometer measurements could be very interesting both to confirm the HB theory in the PW regime and to infer the intensity increase at PM focus, for this we would ideally resolve the first 50 orders.
+
+
+\section{Future extensions}
+
+Expand the range of targets A range of thick, flat solid targets are proposed to probe the density parameter space: diamond, a selection of plastics (polymethyl methacrylate, low and high density polyethylene and polycarbonate) and mirrored targets, which produced interesting and slightly unexpected results in the ORION experiment. It would also be interesting to produce foam targets gaining access the optimal low $S$ regime \cite{bataniPhysicsIssuesShock2014}.
+
+Write about PIC simulations here.
+
+Measuring the HHG from attosecond electron bunches.
+
+
 \section{Conclusion}
+
+
+
 
 
 
