@@ -41,6 +41,8 @@ Running new SiO2 HHG sim, hopefully this will show that we have a better efficie
 
 A previous experiment measured the GEMINI DPM setup produced a reduction in peak pulse intensity of \qty{50}{\%}. Applying ROM and hole boring theory to a fused silica target and accounting for filtering and assuming no merging of harmonics, one can anticipate signals at the OHREX crystal position of \qty{19.6}{\mu J.sr^{-1}} per harmonic at 0.6 keV for the KAP crystal and \qty{1.89}{\mu J.sr^{-1}} per harmonic at 2.405 keV for the quartz ($10\bar{1}1$) crystal. Orienting the OHREX for s-polarisation to maximise the signal at the image plane, this corresponds to an average of 3.4 photons per pixel and 0.20 photons per pixel respectively. The quantum efficiency of the detector is close to \qty{100}{\%}. These numbers are no smaller than the ORION experiment while the background will be lower due to the order of magnitude lower energy on target. Thus, there should be adequate statistics to observe these signals.
 
+% TODO compare these results to the sims: currently sims predict 50 times lower intensity, comment that at least for the KAP crystal we have room to apodise and reduce beam divergence and increase signal so we should get this at least
+
 \section{First observation of ZVP electron bunches}
 The second phase of the GEMINI PW experiment is to observe ZVP electron bunches (both mass-limited and bulk) for the first time. There has been some experimental evidence of attosecond and nano-Coulomb electron bunch generation from nano-targets \cite{cardenasSubcycleDynamicsRelativistic2019,hornyGenerationSingleAttosecond2021} and in reflection from solids \cite{linIsolatedAttosecondElectron2020, thevenetVacuumLaserAcceleration2016} with the latter demonstrating satisfaction of the precise conditions for \ac{VLA} to 10 MeV for a mildly relativistic laser pulse ($a_0 \approx 3.1$). These experiments have guided the planning process for this experiment stage.
 
@@ -101,19 +103,34 @@ for diffraction order, $n$, incident wavelength, $\lambda$, distance between cry
 This will be attempted using the \ac{BBXRD} placed in the path of the specularly reflected beam roughly 50 cm from the target. This lead shielded box contains the crystal sample with image plate lining the inner walls. A hole allows the harmonic beam into the box. Placed at an angle on a rotatable washer enables a range of angles and corresponding energies to be investigated. Starting with quartz to investigate the photon energies of 1.7 - 2.5 keV and moving to silicon to explore energies of 2.4 - 3.3 keV. The IP must be shielded to reject laser light, beryllium would be most suitable. It may be necessary to integrate over many shots to produce the Laue spot.
 
 \section{Contrast}
+Before this section discuss HHG optima and write: 
+% TODO add extra citations
+
+High power laser systems have inherent prepulses of ionising intensities. This preheats a target leading to thermal expansion prior to arrival of the main pulse, producing an exponential preplasma, $n_\mathrm{e} \sim e^{x/L}$. HHG is exceedingly sensitive to this preplasma formation and has evolked particular interest in the field \cite{behmkeControllingSpacingAttosecond2011, rodelHarmonicGenerationRelativistic2012, dollarScalingHighorderHarmonic2013, kahalyDirectObservationDensityGradient2013, vincentiAchievingExtremeLight2019,behmkeControllingSpacingAttosecond2011} with both simulation and experimental evidence. While there is some variation in optimal values, optima are typically small with respect to the laser wavelegnth, with scale lengths, $L \approx 0.1 \lambda_\mathrm{L}$. The difficulty in measuring such small lengths perhaps going some of the way to explain the variety of suggested optima. 
+
+For very short preplasma scale lengths \ac{CWE} dominates over HHG. Kahaly \textit{et al} demonstrated in experiment harmonic emission varied smoothly with reducing laser contrast from the CWE regime to the HHG regime to HHG suppression \cite{kahalyDirectObservationDensityGradient2013}. As can be understood increasing the preplasma scale length increases the amplitude of surface oscillations, increasing HHG production, however, there reaches point where parametric instabilities in the underdense region begin to dominate \cite{dollarScalingHighorderHarmonic2013}.
+
+The use of 1D hydrodynamic codes to measure prepulses from laser contrast trace measurements has become standard practice \cite{behmkeControllingSpacingAttosecond2011, dollarScalingHighorderHarmonic2013, liExperimentalDemonstrationEfficient2022}, however this shall be called into question in the following.
+
+Fortunately there are several approaches to control various aspects of hte process of preplasma expansion. Plasma mirrors are effective tools for increasing laser contrast. These single use optics typically have an \ac{AR} coating of reflectivity $R_1$. As the laser fluence passes the damage threshold of the optic, plasma forms on the front surface. The laser is focused onto the optic such that only the main pulse will ionise the optic, leading to a high reflectivity $R_2$ when `switched-on'. The \ac{PM} therefore ups the contrast by a factor $R_2/R_1$. The heating effect of the prepulse can be reduced by reducing the angle of incidence or the prepulse itself can be reduced by reducing the intensity of the beam through apodisation or use of a frequency doubling crystal. A secondary beamline can generate a controllable prepulse \cite{kahalyDirectObservationDensityGradient2013}, the surface can be recompressed using a circularly polarised prepulse that will cause minimal heating \cite{liExperimentalDemonstrationEfficient2022}.
+
+
+An underlying current of this thesis has been the subject of prepulse and corresponding preplasma expansion. While X-ray harmonics have been observed on both the Vulcan \cite{dromeyBrightMultikeVHarmonic2007} and ORION sub-ps laser systems, few cycles laser pulse systems routinely underperform. Harmonics have only been observed on GEMINI PW for normal incidence \cite{dromeyCoherentSynchrotronEmission2013}. The only parameter that has been shown to suppress HHG from a p-polarised relativistic laser pulse is an overlarge preplasma \cite{dollarScalingHighorderHarmonic2013}. 
+
+
 
 \subsubsection{Preplasma scale lengths and prepulse control}
-Observation of the ZVP mechanism requires a sufficiently steep density gradients at the laser-plasma interface. An inevitable challenge of \ac{CPA} laser systems is the existence of prepulses that heat targets, causing them to expand significantly before arrival of the main pulse. To increase the laser contrast, to the point where there is no preplasma formation, GEMINI-PW utilises a Double Plasma Mirror setup prior to the main interaction \cite{doumyCompleteCharacterizationPlasma2004}. Each mirror is an anti-reflection coated optic placed in the path of the laser beam, acting as an optical switch. As the laser fluence passes the damage threshold of the optic, plasma forms on the front surface and the mirror starts to reflect. Investigation of preplasma generation will occur in parallel to the main experimental goals.
+Observation of the ZVP mechanism requires a sufficiently steep density gradients at the laser-plasma interface. An inevitable challenge of \ac{CPA} laser systems is the existence of prepulses that heat targets, causing them to expand significantly before arrival of the main pulse. To increase the laser contrast, to the point where there is no preplasma formation, GEMINI-PW utilises a Double Plasma Mirror setup prior to the main interaction \cite{doumyCompleteCharacterizationPlasma2004}. Investigation of preplasma generation will occur in parallel to the main experimental goals.
 
 Contrast DPM, GEMINI issues, probe beam, potential solutions, contingency (currently in Resolve X-ray HHG section)
 
-Kahaly prepulse
+
 
 
 In this initial stage we will use a UV spectrometer. As of 2019, no experiment to confirm HB theory had been performed on a PW system \cite{vincentiAchievingExtremeLight2019}. These UV spectrometer measurements could be very interesting both to confirm the HB theory in the PW regime and to infer the intensity increase at PM focus, for this we would ideally resolve the first 50 orders.
 
 
-\section{Beyong GEMINI PW}
+\section{Beyond GEMINI PW}
 Vulcan 2020
 
 Expand the range of targets A range of thick, flat solid targets are proposed to probe the density parameter space: diamond, a selection of plastics (polymethyl methacrylate, low and high density polyethylene and polycarbonate) and mirrored targets, which produced interesting and slightly unexpected results in the ORION experiment. It would also be interesting to produce foam targets gaining access the optimal low $S$ regime \cite{bataniPhysicsIssuesShock2014}.
