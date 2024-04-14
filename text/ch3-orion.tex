@@ -3,36 +3,16 @@
 \minitoc
 
 \section{A plan}
+The simulations of Chapter \ref{ch:2-zvp} are a relatively efficient and cost effective means of study. High power laser experiments are a cumbersome technical challenge. However, the proliferation of errors in simulation codes inevitably generate significant deviation from reality, while reality itself diverges from the idealistic conditions modelled by the codes. For now, at least, experimentation remains an essential component of the scientific method. Expectations must also be scaled back to reality. This chapter reports on the March 2023 experiment on the ORION laser facility, AWE, Aldermasto, the UK's most powerful laser system. And yet, it cannot access the ZVP parameter space at these intensities and pulse durations: the $S$ parameter is too large and the preplasma scale length too steep. Instead, this chapter will focuses on the ROM model of HHG. This model describes the properties of  radiation reflected from a relativistic laser pulse interaction with a solid density plasma, another related route to bright attosecond light sources. 
 
-While simulations are relatively cost effective and experiments cumbersome and technically challenging, the proliferation of errors in simulation codes lead to their deviation from reality while reality itself deviates from the idealistic input conditions to the codes. For now, at least, experimentation remains an essential component of the scientific method. Thus, our expectations must also be scaled back to reality. This chapter reports on our March 2023 experiment on the ORION laser facility, AWE, Aldermaston. The UK's most powerful sub-picosecond laser. Yet, one cannot access the ZVP parameter space at these intensities and pulse durations: the $S$ parameter is too large and the preplasma scale length too steep. Instead, this chapter will focus on the ROM model of HHG. 
+A fundamentally different mechanism to its Nobel prize winning counterpart, SHHG from solids has demonstrated significantly higher conversion efficiencies and, relying on plasma oscillations not ionisation, does not suffer from the same limits to applied intensity \cite{teubnerHighorderHarmonicsLaserirradiated2009}. SHHG has thus become a field of considerabe interest for the production of bright coherent attosecond harmonics. It was first observed from the interaction of a CO$_2$ laser-solid interaction in 1981 \cite{carmanVisibleHarmonicEmission1981}, followed shortly by the theoretical justification \cite{bezzeridesPlasmaMechanismUltraviolet1982}. Interest in HHG was revived by the arrival of CPA technology enabling access to unprecedented laser pulse intensities and ever higher harmonic orders. To describe this relativistic interaction, 1994 saw the arrival of a new theory, the \ac{OMM} \cite{bulanovInteractionUltrashortRelativistically1994}. In this regime harmonics were seen to be formed by the Doppler effect induced by a thin reflecting charge sheet at the plasma surface oscillating periodically with the laser pulse. This theory predicts a cutoff harmonic number of $n_\mathrm{c} = 4\gamma_\mathrm{s}^2 $, where $\gamma_\mathrm{s}$ is the maximum gamma factor of the charge sheet. This relatively low cutoff is at odds with experimental results, the current record standing at the 3200\th harmonic observed on the Vulcan PW laser system in 2007 \cite{dromeyBrightMultikeVHarmonic2007}. It was after the development of similarity theory which formed the basis of Baeva's ROM model that the experimentally observed cut off could now be explained \cite{baevaTheoryHighorderHarmonic2006}. Since ORION and Vulcan parameter spaces are similar, this is the most appropriate description of SHHG and is described in more detial in Section \ref{ch:3-sec:theory}.
 
+There are many fascinating applications for SHHG beyond that of attosecond physics. The high photon energy content of the harmonic beam has excellent penetration into dense materials with preliminary studies indicating notable improvement in energy absorption, suitable for auxiliary heating of ICF targets \cite{paddockEnergyGainWettedfoam2024}. This high energy content also enables focusing of the harmonic beam to significantly smaller spot sizes than the incident diffraction limited laser pulse. All optical coherent focusing of high harmonics with realistic laser parameters has been shown to produce over 1000 times intensity gain \cite{vincentiAchievingExtremeLight2019}, thus providing a realistic route to the Schwinger limit \cite{quereReflectingPetawattLasers2021}, perhaps also improving the odds of observation of photon-photon scattering \cite{aboushelbayaOrbitalAngularMomentum2019} or gravitational waves from twisted light \cite{atongaGravitationalWavesHighpower2023}. Simulations have shown how a harmonic beam can probe \ac{SF-QED} if a solid target is placed at the new focal position \cite{fedeliProbingStrongfieldQED2020}.
 
-Have a look at the intro in baeva's thesis, good outline, include first solid HHG observation and oscillating mirror model.
+This chapter reports on the March 2023 experimental campaign at ORION to observe and measure the absolute intensity of X-ray harmonics generated via ROM HHG. Section \ref{ch:3-sec:theory} covers the theory of the ROM model of HHG from relativistic laser solid interactions. Section \ref{ch:3-sec:experiment} outlines the experiment design while \ref{ch:3-sec:simulations} presents simulation results that guided both that design and the data analysis. 
 
-The early developments in the field are outlined by Teubner \textit{et al} \cite{teubnerHighorderHarmonicsLaserirradiated2009}.
-
-%`The first experimental observations of femtosecond high-order harmonics were made independently by Kohlweyer et al. 􏰀1995􏰁 and von der Linde et al. 􏰀1995􏰁'
-
-HHG from solids has demonstrated significantly higher conversion efficiencies than for HHG from gases nor are there any limitations to the applied laser intensity \cite{teubnerHighorderHarmonicsLaserirradiated2009}. SHHG has thus been a field of huge interest over the past three decades for the production of bright coherent attosecond harmonics.
-
-
-
-SOme applications
-Applications
-Bright high harmonics of the laser pulse
-Novel bright attosecond duration X-ray diagnostics
-%Improved penetration of dense targets  auxiliary heating of ICF targets
-%Coherent focusing of high harmonics to their diffraction limit  1000 times intensity gain at focus (Vincenti, PRL, 2019)
-Accessing the Schwinger Limit in vacuum
-Photon-photon scattering
-
-
-For CWE: https://iopscience.iop.org/article/10.1088/0953-4075/43/21/213001/pdf
-Note that somewhere in this paper they say CWE optimises for 0.02 lambda (use this to explain why in ORION short sim I used a lambda slightly larger than this)
-
-
-\section{The experiment}
-The two experimental goals were to resolve and measure the absolute intensity of X-ray harmonics produced with the ORION SP2 beamline. After debris from the plasma mirror optic damaged the parabola we were required to switch to the higher contrast but lower energy SP1 beamline and only after the experiment did we established it was not possible to resolve X-ray harmonics with the ORION target chamber geometry. However, we were able to measure the absolute intensity for both SP1 and SP2 beamlines and for CVD and PMMA targets.
+\section{\label{ch:3-sec:experiment}The experiment}
+The two experimental goals were to resolve and measure the absolute intensity of X-ray harmonics produced with the ORION SP2 beamline. After debris from the plasma mirror optic damaged the parabola it was necessary to switch to the higher contrast but lower energy SP1 beamline and only after the experiment was it established that it was not possible to resolve X-ray harmonics with the ORION target chamber geometry. However, absolute intensities were measured for both the SP1 and SP2 beamlines and for CVD and PMMA targets.
 
 % TODO move this to appendix or intro
 Typical ORION and GEMINI beam paramaters are presented in Table \ref{tab:laser_params}.
@@ -274,6 +254,10 @@ The following outlines the key ideas
 
 Ok: assume I have the expression from Baeva's paper (do this tomorrow)
 
+
+For CWE: https://iopscience.iop.org/article/10.1088/0953-4075/43/21/213001/pdf
+Note that somewhere in this paper they say CWE optimises for 0.02 lambda (use this to explain why in ORION short sim I used a lambda slightly larger than this)
+
 \subsection{The normalisation factor}
 Baeva's theory provides us with the relative intensity of harmonics. However, for comparison with the absolute spectral intensity of harmonics in experiment, the normalisation factor is required. This can be calculated from conservation of energy. For arbitrary harmonic order scaling, $n^{-p}$, the spectral intensity of the harmonic beam is
 \begin{equation}
@@ -451,7 +435,7 @@ Fortunately, to make comparisons to the derivations of Section \ref{ch:3-sec:the
 			Macro-ions per cell                               & 1000                                   &  \\
 			Ion temperature, $T_\mathrm{i}$ (keV)              &     0             &  0                         \\
 			Electron temperature, $T_\mathrm{e}$ (keV)              &     0.115             &  \num{2.25e-4}                         \vspace{0.15cm}  \\ \hline \hline
-			\multicolumn{3}{c}{Collisionless, pre-ionised, randomly-initialised plasma}                                               \\ \hline
+			\multicolumn{3}{c}{Collisionless, pre-ionised, regularly-initialised plasma}                                               \\ \hline
 			CVD density, $n_\mathrm{e}$  (\unit{m^{-3}})                                & \num{1.05e24}                                   & $\begin{cases}
 				294 \text{ for SP1}\\
 				1175 \text{ for SP2} \\
@@ -707,7 +691,7 @@ where $(h\nu)$ is the photon energy measured in eV, determined for both p- and s
 There is unfortunately no spectrometer response data for the $10\bar{1}0$ crystal to first order due to the Si K edge sitting within the energy range and the dramatic effect this has on absorption in its vicinity \cite{hellCalibrationOHREXHighresolution2016}.
 
 
-The OHREX is equipped with a \qty{50}{\mu m} Beryllium filter to protect the crystals. The corresponding signal attenuation can be calculated using X-ray transmission data \cite{henkeXRayInteractionsPhotoabsorption1993a}.
+The OHREX is equipped with a \qty{50}{\mu m} Beryllium filter to protect the crystals. The corresponding signal attenuation can be calculated using X-ray transmission data \cite{henkeXRayInteractionsPhotoabsorption1993}.
 
 \subsection{Extracting the data}
 The quartz OHREX crystals $10\bar{1}0$ and $10\bar{1}1$ were fielded on the experiment. Crystal images were recorded with BasTR2040 Fuji Image Plate. A typical shot image scanned with the FLA7000 scanner and converted to photostimulated luminescence units (PSLs) is given in Figure \ref{fig:orionohrexshot28psl}.
@@ -766,7 +750,7 @@ where $\phi$ is the angle out of the interaction plane,
 \end{equation}
 where $F(h\nu) =  (G_\mathrm{s}(h\nu)\sin^2\phi + G_\mathrm{p}(h\nu)\cos^2\phi$ is the energy dependent calibration factor for this OHREX orientation.
 
-\section{Experimental results}
+\section{\label{ch:3-sec:results}Experimental results}
 
 Figure \ref{fig:orionq1011} is a typical calibrated signal from the quartz ($10\bar{1}1$) crystal, ready for comparison to the theoretical prediction.
 \begin{figure}
@@ -822,3 +806,4 @@ Comment on flying focus
 
 % Note that if you replace the spatial gaussian with a sinc^2 profile with the same FWHM, they look almost identical to exponential. The spatial integral is approx 1.06 times larger thus minimal impact on the profile
  
+ % TODO Note that Equation \ref{eq:I_n_hhg} only takes into account the contribution from one gamma spike. In general, and especially for the long pulse duration on ORION, the slow envelope of the spectrum is unchanged \cite{baevaHighHarmonicGeneration2008} but there can be destructive interference between spikes leading to modulations in the spectrum for specific harmonics. This can lead to certain orders vanishing such as is the case for even order harmonics in the case of s-polarisation (https://pubs.aip.org/aip/pop/article-abstract/3/9/3425/442980/Short-pulse-laser-harmonics-from-oscillating). This results from symmetries in the equations of motion (insert ref to raoul Trines paper here).
