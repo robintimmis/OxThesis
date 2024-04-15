@@ -102,16 +102,6 @@ This will be attempted using the \ac{BBXRD} diagnostic placed in the path of the
 
 \section{Contrast}\label{sec:ch4-contrast}
 
-\subsection{Contrast intro}
-% TODO move this elsewhere and add to HHG optima discussion
-High-power laser systems have inherent prepulses of ionising intensities. They will preheat a target leading to thermal expansion prior to the arrival of the main pulse, producing an exponential preplasma, $n_\mathrm{e} \sim e^{x/L}$. HHG is exceedingly sensitive to this preplasma formation, evoking particular interest in the field \cite{behmkeControllingSpacingAttosecond2011, rodelHarmonicGenerationRelativistic2012, dollarScalingHighorderHarmonic2013, kahalyDirectObservationDensityGradient2013, vincentiAchievingExtremeLight2019,behmkeControllingSpacingAttosecond2011}. While there is some variation in quoted optimal values, they are generally small relative to the laser wavelength, with scale lengths, $L \approx 0.1 \lambda_\mathrm{L}$. The difficulty in measuring such small lengths perhaps goes some of the way to explain the variety of suggested optima. 
-
-% TODO find out where CWE dominates
-For $L \leqq 0.01 \lambda_\mathrm{L}$, \ac{CWE} dominates over HHG. Kahaly \textit{et al} demonstrated experimentally that harmonic emission varied smoothly from the CWE regime to the HHG regime to HHG suppression as the laser contrast was reduced  \cite{kahalyDirectObservationDensityGradient2013}. Increasing the preplasma scale length increases the amplitude of surface oscillations, increasing HHG production. However, if the scale length is too large, parametric instabilities in the underdense region begin to dominate and HHG is suppressed \cite{dollarScalingHighorderHarmonic2013}. The use of 1D hydrodynamic codes to measure prepulses from laser contrast trace measurements has become standard practice \cite{behmkeControllingSpacingAttosecond2011, dollarScalingHighorderHarmonic2013, liExperimentalDemonstrationEfficient2022}. Although, this shall be called into question in the following.
-
-Fortunately, there are many approaches to control the various steps of preplasma generation. The heating effect of the prepulse can be reduced by reducing the angle of incidence or the prepulse itself can be reduced by reducing the intensity of the beam through apodisation or use of a frequency doubling crystal. A secondary beamline can generate a controllable prepulse \cite{kahalyDirectObservationDensityGradient2013}, and the surface can be recompressed using a circularly polarised prepulse that will cause minimal heating \cite{liExperimentalDemonstrationEfficient2022}.
-
-Plasma mirrors are effective and now standardised tools for the improvement of laser contrast. These single-use optics initially have an \ac{AR} coating of reflectivity $R_1$. As the incident laser fluence passes the damage threshold of the optic, plasma forms on the front surface. The optic is `switched on' with a reflectivity $R_2$. The \ac{PM} therefore improves the contrast by a factor $R_2/R_1$. There is a balancing act in choosing the peak intensity on the \ac{PM}. Too early and the PM will switch on before the arrival of the main pulse. Too low and switch on occurs too late and $R_2$ is reduced. A peak intensity around \qty{1e16}{W.cm^{-2}} is best \cite{caiTimeresolvedMeasurementsReflectivity2009}. PMs act as a low-pass spatial filter, improving the quality of the focal spot on target \cite{doumyCompleteCharacterizationPlasma2004}. 
 
 \subsection{Contrast on GEMINI PW}
 % Observation of the ZVP mechanism and HHG production requires a sufficiently steep density gradient at the laser-plasma interface. An inevitable challenge of \ac{CPA} laser systems is the existence of prepulses that heat targets, causing them to expand significantly before the arrival of the main pulse. To increase the laser contrast, to the point where there is no preplasma formation, GEMINI-PW utilises a Double Plasma Mirror setup prior to the main interaction \cite{doumyCompleteCharacterizationPlasma2004}. Investigation of preplasma generation will occur in parallel to the main experimental goals.
@@ -174,6 +164,7 @@ Perhaps in the summary of work of the thesis (new chapter), note that some of th
 %TODO add a comment about the use of HHG as a heating source, highly efficient highly penetrating
 % TODO hyades (hmm no maybe PIC? but then cant do heating effect.. can use heaths code for tempeerature in smilei) sim of ORION hhg beam entering a plasma and heating vs ORION laser.
 
+GPU 1D simulations of X-ray HHG
 
 % TODO add optimal HHG conditions somewhere
 
