@@ -35,9 +35,9 @@ We sit on the verge of the exascale revolution both in terms of computing \cite{
 	\label{fig:intro_lasersystems}
 \end{figure}
 
-\ac{HED} physics is the laboratory study of the behaviour of matter with a pressure above \qty{10}{GPa}, approximately one million atmospheres and containing free electrons not confined to a solid state \cite{drakeFocusHighEnergy2014}, typically in the plasma state of matter. \ac{HED} conditions are found for a vast range of densities and temperatures (from zero to a million million Kelvin) operating in both the quantum and relativistic realms. The applications are equally diverse, including but not limited to inertial confinement fusion, particle acceleration for scientific or medical purposes and light sources for diagnostic tools. Ubiquitous in the natural universe, beyond our solar system, all that can be observed in the sky is radiation emitted from \ac{HED} plasmas \cite{chen}.
+\ac{HED} physics is the laboratory study of the behaviour of matter with a pressure above \qty{10}{GPa}, approximately one million atmospheres and containing free electrons not confined to a solid state \cite{drakeFocusHighEnergy2014}, typically in the plasma state of matter. \ac{HED} conditions are found for a vast range of densities and temperatures (from zero to a million million Kelvin) operating in both the quantum and relativistic realms. The applications are equally diverse, including but not limited to inertial confinement fusion, particle acceleration for scientific or medical purposes and light sources for diagnostic tools. Ubiquitous in the natural universe, beyond our solar system, all that can be observed in the sky is radiation emitted from \ac{HED} plasmas \cite{chenIntroductionPlasmaPhysics2016}.
 
-This thesis concerns itself with a specific interaction, that of a high-power short-pulse laser incident on a flat solid target. Through the process discussed in this thesis, using state-of-the-art 10 PW laser facilities such as \cite{galesExtremeLightInfrastructure2018}, electron bunches and light pulse of unprecedented charge and brightness can be produced, both with attosecond duration, thus uncovering new avenues for attosecond resolution diagnostics and to access the Schwinger limit. Seemingly counter-intuitively, as the laser power increases, via relativistic effects and for certain conditions, greater coherency in the electron dynamics can be observed and the signals amplified. The red dashed line of figure \ref{fig:intro_lasersystems} could be accessed using next-generation sub-etawatt facilities. Before delving into this fascinating phenomenon, the remainder of this chapter will provide some of the relevant background information. Chapter \ref{ch:2-zvp} introduces the Zero Vector Potential of attosecond absorption in this laser-solid interaction. The following chapter discusses the associated process of Surface High Harmonic Generation and the results of a recent experiment at the ORION laser facility where the absolute intensity of individual X-ray harmonics was measured and compared to the theory.
+Independently, the field of attosecond physics has flourished \cite{krauszAttosecondPhysics2009}. By irradiating gas targets with near ionising laser pulse intensities, pulses of attosecond radiation composed of high order harmonics of the laser have been generated. Recognised by the award of the 2023 Nobel Prize for Physics, the work of Agostini, Krausz and Huillier has pulled back the curtain to reveal the fundamental electronic dynamics within atoms and molecules \cite{ElectronilluminatingLaserPulses2023}. At the union of HED and attosecond physics, there is another method for the generation of harmonics with the potential to produce brighter and shorter pulses than those produced from gases. This thesis concerns itself with that interaction, that of a high-power short-pulse laser incident on a flat solid target. Through the processes discussed in this thesis, using state-of-the-art 10 PW laser facilities such as \cite{galesExtremeLightInfrastructure2018}, electron bunches and light pulses of unprecedented charge and brightness can be produced, both with attosecond duration, thus uncovering new avenues for attosecond resolution diagnostics and to access the Schwinger limit. Seemingly counter-intuitively, as the laser power increases, via relativistic effects and for certain conditions, greater coherency in the electron dynamics can be observed and the signals amplified. The red dashed line of figure \ref{fig:intro_lasersystems} could be accessed using next-generation sub-etawatt facilities. Before delving into this fascinating phenomenon, the remainder of this chapter will provide some of the relevant background information. Chapter \ref{ch:2-zvp} introduces the Zero Vector Potential of attosecond absorption in this laser-solid interaction. The following chapter discusses the associated process of Surface High Harmonic Generation and the results of a recent experiment at the ORION laser facility where the absolute intensity of individual X-ray harmonics was measured and compared to the theory.
 
 % TODO reword the intro a little bit. Want to make more of the story. Perhaps discuss the recent Nobel prize and interest in attosecond physics, add an extra line on computing power, and talk about GEMINI.
 
@@ -561,85 +561,93 @@ A hydrodynamic code approximates the plasma distribution as a fluid. This is ach
 \end{equation}
 the fluid velocity, $\mathbf{u}_s$ and momentum,
 \begin{equation}
-	\mathbf{p_s} = m_sn_s\mathbf{u}_s = \int f_s \mathbf{v)\mathrm{d}\mathbf{v},
-	\end{equation}
-	and the pressure tensor
-	\begin{equation}
-		P_s = m_s\int f_s (\mathbf{v}-\mathbf{u}_s)(\mathbf{v}-\mathbf{u}_s)\mathbf{v}.
-	\end{equation}
-	The fluid equations that govern the evolution of these quantities can be extracted from the Vlasov equation, Equation \ref{eq:intro-vlasov} by taking the appropriate moment. Correspondingly producing the continuity equation
-	\begin{equation}
-		\frac{\partial n_s}{\partial t} + \nabla \cdot (n_s \mathbf{u}_s) = 0,
-	\end{equation}
-	the equation of motion
-	\begin{equation}
-		m_sn_s\left(\frac{\partial \mathbf{u}_s}{\partial t} + (\mathbf{u}_s\cdot \nabla) \mathbf{u}_s \right) = q_sn_s(\mathbf{E}+\mathbf{u}_s \times \mathbf{B}) - \nabla \cdot P_s
-	\end{equation}
-	
-	ADD ENERGY TRANSPORT.
-	
-	The reduction of dimensionality achieved through this approximation dramatically reduces computational cost. However, much of this thesis relies on the precise velocity distribution of particles, naturally such a code cannot model these phenomena and the primary tool is the PIC code.
-	% TODO add fluid equations as in Rob's thesis
-	In this thesis, HYADES is the code of choice. HYADES is a 1D three fluid (electrons, ions and radiation) radiative hydrodynamic code \cite{larsenHYADESPlasmaHydrodynamics1994}. The equations of mass and energy transport are solved in a Lagrangian coordinate system, \textit{i.e.}, unlike strictly Eulerian PIC codes, the mesh defining regions of the simulation moves with the plasma it describes.
-	
-	\section{Powering the interaction}
-	Two experiments are discussed in this thesis, one performed on ORION, and one planned on GEMINI. Their typical beam parameters are presented in Table \ref{tab:laser_params}.
-	\begin{table}[]
-		\centering
-		\begin{tabular}{lccc}
-			\hline \hline
-			Parameter                & \multicolumn{2}{c}{ORION} & GEMINI \\ 
-			Beamlines                & SP1         & SP2         & N \& S  \\ \hline
-			Power (PW)               & 0.5         & 1           & 0.5    \\
-			Energy (J)               & 200         & 500         & 12     \\
-			Wavelength (nm)          & 527         & 1053        & 800    \\
-			Parabola, $f/\#$ & $f/3$        & $f/3$        & $f/2$      \\
-			Focal spot FWHM ($\mu$m) & < 20        & < 10        & 2      \\
-			Duration (fs)            & 500         & 500         & 40     \\
-			Shot rate                & 5/day       & 5/day       & 3/min  \\
-			Peak $a_0$ (approx)      & 10          & 30          & 24    \\ \hline \hline
-		\end{tabular}
-		\caption{The ORION and GEMINI petawatt class short pulse beamlines for comparison. The GEMINI North (N) and South (S) beamlines are equivalent.}
-		\label{tab:laser_params}
-	\end{table}
-	The GEMINI-PW laser facility of the \ac{CLF} at Harwell Campus, Oxfordshire is a petawatt class facility consisting of two 30 fs beams, \ac{N} and \ac{S}, each delivering a maximum focused intensity of \qty{2e21}{W.cm^{-2}} at a repetition rate of 0.05 Hz. Such a high frequency of operation has led to a paradigm shift in high-power laser physics experimentation with the arrival of statistically significant results.
-	
-	The ORION SP1 is produced by passing the SP2 through two frequency doubling crystals creating two equivalent beamlets that are then overlaid at the target. The double beamlet structure at the near-field is imaged in Figure \ref{fig:oriondoublebeamletsnearfield}.
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.5\linewidth]{figures/orion/orion_doublebeamlets_near_field}
-		\caption[Image of the ORION SP1 double beamlet structure in the near-field.]{Image of the ORION SP1 double beamlet structure in the near-field. The two beamlets are then superimposed on the target.}
-		\label{fig:oriondoublebeamletsnearfield}
-	\end{figure}
-	
-	The ORION SP2 beamline intensity temporal profile can be modelled as
-	\begin{equation}\label{eq:orion_SP2_temporal}
-		I_\mathrm{SP2} \sim (I_{0 \ \mathrm{p}}\sech(t/t_\mathrm{p})^2 + I_{0 \ \mathrm{pp}}e^{-(t/t_\mathrm{pp})^2} + I_{0 \ \mathrm{ps}}e^{-\mathrm{abs}(t)/t_\mathrm{ps}} + I_{0 \ \mathrm{ns}}e^{-(t/t_\mathrm{ns})^8}),
-	\end{equation}
-	where the constants are detailed in Table \ref{tab:orion_pedestals} \cite{dhillierModelORIONContrast2022}.
-	\begin{table}[]
-		\centering
-		\begin{tabular}{lcc}
-			\hline\hline
-			Pedestal, $i$                & $I_{0 \ i}$ & $t_i$  \\ \hline
-			Main pulse, p                & 1           & 0.2 ps \\
-			Picosecond pump residual, pp & $10^{-3}$   & 3 ps   \\
-			Picosecond pedestal, ps      & \num{5e-5}  & 8 ps   \\
-			Nanosecond pedestal, ns      & $10^{-11}$  & 3 ns  \\ \hline \hline
-		\end{tabular}
-		\caption{The native ORION SP2 pulse and prepulse pedestal constants as defined in Equation \ref{eq:orion_SP2_temporal}.}
-		\label{tab:orion_pedestals}
-	\end{table}
-	The picosecond pump residual arises from parametric fluorescence in the ps OPA, the picosecond pedestal from scatter in the stretchers and noise on the OPA pump laser and the nanosecond pedestal from parametric fluorescence from the nanosecond OPAs. 
-	% TODO understand the above, perhaps add more comments
-	The SP1 temporal intensity profile is
-	\begin{equation}
-		I_\mathrm{SP1} \sim (I_\mathrm{SP2}^2 + I_\mathrm{SP2} \times 10^{-8}).
-	\end{equation}
-	The second term is due to the limitations of the harmonic separation system. The frequency doubling mechanism is not 100 \% efficient, \textit{i.e.} some of SP2 beamline remains and must be filtered out. The main pulse of the GEMINI beamlines is more appropriately modelled as a Gaussian.
-	% TODO add a plot of the Gemini contrast
-	
-	\subsection{Laser contrast}
-	% TODO In here add details about laser contrast and PMs
-	
-	% TODO: \textbf{INTRO CONCLUSION}
+	\mathbf{p_s} = m_sn_s\mathbf{u}_s = \int f_s \mathbf{v}\mathrm{d}\mathbf{v},
+\end{equation}
+and the pressure tensor
+\begin{equation}
+	P_s = m_s\int f_s (\mathbf{v}-\mathbf{u}_s)(\mathbf{v}-\mathbf{u}_s)\mathrm{d}\mathbf{v}.
+\end{equation}
+The fluid equations that govern the evolution of these quantities can be extracted from the Vlasov equation, Equation \ref{eq:intro-vlasov} by taking the appropriate moments \footnote{Of course, these equations can also be derived by first principles by considering the dynamics of a fluid element \cite{chenIntroductionPlasmaPhysics2016}}. Likewise  producing the continuity equation
+\begin{equation}
+	\frac{\partial n_s}{\partial t} + \nabla \cdot (n_s \mathbf{u}_s) = 0,
+\end{equation}
+for conservation of particle number and the equation of motion
+\begin{equation}\label{eq:intro_eom_fluid}
+	m_sn_s\left(\frac{\partial \mathbf{u}_s}{\partial t} + (\mathbf{u}_s\cdot \nabla) \mathbf{u}_s \right) = q_sn_s(\mathbf{E}+\mathbf{u}_s \times \mathbf{B}) - \nabla \cdot P_s
+\end{equation}
+for conservation of momentum. This equation is analogous to the Navier-Stokes equation except for the addition of the electromagnetic fields. The viscosity term is bundled into the pressure tensor \cite{chenIntroductionPlasmaPhysics2016}.
+
+Here lies a problem. The presence of the pressure tensor in Equation \ref{eq:intro_eom_fluid} prevents the closure of the system of equations. Taking the second moment of the Vlasov equation to obtain the energy transport equation would then contain the third moment of the distribution function presenting the same issue. Instead, a \textit{closure relation} is introduced, enabling the construction of a self-contained theory using a finite number of moments.
+
+HYADES is a 1D three fluid (electrons, ions and radiation) radiative hydrodynamic code \cite{larsenHYADESPlasmaHydrodynamics1994} and is the code of choice in this thesis. The equations of mass and energy transport are solved in a Lagrangian coordinate system, \textit{i.e.}, unlike strictly Eulerian PIC codes, the mesh defining regions of the simulation moves with the plasma it describes. To complete the system to the second moment, the \textit{equation of state}, describing pressure in terms of the temperature and density of the system, and the heat transfer equation are added. 
+
+%TODO justification for the vlasov equation
+% This is some good notes on this http://www.pmaweb.caltech.edu/Courses/ph136/yr2012/1222.3.K.pdf
+% Also see here https://www2.mps.mpg.de/solar-system-school/lectures/space_plasma_physics_2007/Lecture_6.pdf
+% Actual full derivation is given here: https://www.ucolick.org/~enrico/ast111/material_files/kinetic.pdf
+
+The reduction of dimensionality achieved through this approximation dramatically reduces the computational cost of the simulation. However, much of this thesis relies on the precise velocity distribution of particles, naturally such a code cannot model these phenomena and the primary tool is the PIC code.
+
+% TODO there are some additional equations on HYADES in that 1994 paper that might be useful to include
+
+\section{Powering the interaction}
+Two experiments are discussed in this thesis, one performed on ORION, and one planned on GEMINI. Their typical beam parameters are presented in Table \ref{tab:laser_params}.
+\begin{table}[]
+	\centering
+	\begin{tabular}{lccc}
+		\hline \hline
+		Parameter                & \multicolumn{2}{c}{ORION} & GEMINI \\ 
+		Beamlines                & SP1         & SP2         & N \& S  \\ \hline
+		Power (PW)               & 0.5         & 1           & 0.5    \\
+		Energy (J)               & 200         & 500         & 12     \\
+		Wavelength (nm)          & 527         & 1053        & 800    \\
+		Parabola, $f/\#$ & $f/3$        & $f/3$        & $f/2$      \\
+		Focal spot FWHM ($\mu$m) & < 20        & < 10        & 2      \\
+		Duration (fs)            & 500         & 500         & 40     \\
+		Shot rate                & 5/day       & 5/day       & 3/min  \\
+		Peak $a_0$ (approx)      & 10          & 30          & 24    \\ \hline \hline
+	\end{tabular}
+	\caption{The ORION and GEMINI petawatt class short pulse beamlines for comparison. The GEMINI North (N) and South (S) beamlines are equivalent.}
+	\label{tab:laser_params}
+\end{table}
+The GEMINI-PW laser facility of the \ac{CLF} at Harwell Campus, Oxfordshire is a petawatt class facility consisting of two 30 fs beams, \ac{N} and \ac{S}, each delivering a maximum focused intensity of \qty{2e21}{W.cm^{-2}} at a repetition rate of 0.05 Hz. Such a high frequency of operation has led to a paradigm shift in high-power laser physics experimentation with the arrival of statistically significant results.
+
+The ORION SP1 is produced by passing the SP2 through two frequency doubling crystals creating two equivalent beamlets that are then overlaid at the target. The double beamlet structure at the near-field is imaged in Figure \ref{fig:oriondoublebeamletsnearfield}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/orion/orion_doublebeamlets_near_field}
+	\caption[Image of the ORION SP1 double beamlet structure in the near-field.]{Image of the ORION SP1 double beamlet structure in the near-field. The two beamlets are then superimposed on the target.}
+	\label{fig:oriondoublebeamletsnearfield}
+\end{figure}
+
+The ORION SP2 beamline intensity temporal profile can be modelled as
+\begin{equation}\label{eq:orion_SP2_temporal}
+	I_\mathrm{SP2} \sim (I_{0 \ \mathrm{p}}\sech(t/t_\mathrm{p})^2 + I_{0 \ \mathrm{pp}}e^{-(t/t_\mathrm{pp})^2} + I_{0 \ \mathrm{ps}}e^{-\mathrm{abs}(t)/t_\mathrm{ps}} + I_{0 \ \mathrm{ns}}e^{-(t/t_\mathrm{ns})^8}),
+\end{equation}
+where the constants are detailed in Table \ref{tab:orion_pedestals} \cite{dhillierModelORIONContrast2022}.
+\begin{table}[]
+	\centering
+	\begin{tabular}{lcc}
+		\hline\hline
+		Pedestal, $i$                & $I_{0 \ i}$ & $t_i$  \\ \hline
+		Main pulse, p                & 1           & 0.2 ps \\
+		Picosecond pump residual, pp & $10^{-3}$   & 3 ps   \\
+		Picosecond pedestal, ps      & \num{5e-5}  & 8 ps   \\
+		Nanosecond pedestal, ns      & $10^{-11}$  & 3 ns  \\ \hline \hline
+	\end{tabular}
+	\caption{The native ORION SP2 pulse and prepulse pedestal constants as defined in Equation \ref{eq:orion_SP2_temporal}.}
+	\label{tab:orion_pedestals}
+\end{table}
+The picosecond pump residual arises from parametric fluorescence in the ps OPA, the picosecond pedestal from scatter in the stretchers and noise on the OPA pump laser and the nanosecond pedestal from parametric fluorescence from the nanosecond OPAs. 
+% TODO understand the above, perhaps add more comments
+The SP1 temporal intensity profile is
+\begin{equation}
+	I_\mathrm{SP1} \sim (I_\mathrm{SP2}^2 + I_\mathrm{SP2} \times 10^{-8}).
+\end{equation}
+The second term is due to the limitations of the harmonic separation system. The frequency doubling mechanism is not 100 \% efficient, \textit{i.e.} some of SP2 beamline remains and must be filtered out. The main pulse of the GEMINI beamlines is more appropriately modelled as a Gaussian.
+% TODO add a plot of the Gemini contrast
+
+\subsection{Laser contrast}
+% TODO In here add details about laser contrast and PMs
+
+% TODO: \textbf{INTRO CONCLUSION}
