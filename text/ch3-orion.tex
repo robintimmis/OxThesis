@@ -13,7 +13,7 @@ This chapter reports on the March 2023 experimental campaign at ORION to observe
 
 \section{\label{ch:3-sec:theory}Theory}
 \subsection{The ROM model}
-For the moderately relativistic sub-picosecond ORION SP1 and SP2 beamlines, the most appropriate description of their non-linear interaction with a solid density target is the Relativistic Oscillating Mirror (ROM) model. The full technical formulation constitutes the main body of Baeva's 2008 thesis \cite{baevaHighHarmonicGeneration2008}. A notably more rigorous derivation than the original paper on the same topic \cite{baevaTheoryHighorderHarmonic2006}. This is achieved via application of the highly generalised \ac{ARP} formalism to the case of $S>1$ in relativistic similarity theory, showing that the \ac{ARP} coincides with the relativistic critical density surface. This section provides a more qualitative, physically motivated description of this theory. The salient point of Baeva's thesis is that, while the surface motion is generally complex and parameter space dependent, at the moment relevant for HHG, the surface motion is always parabolic. By application of the Bourdier method \cite{bourdierObliqueIncidenceStrong1983}, Baeva demonstrated that the envelope of the spectral content of the reflected beam does not deviate from the normal incidence linearly polarised case for either s- or p-polarised incidence. Hence, the following discussion is restricted to normal incidence. Starting with relativistic similarity theory and Equation \ref{{eq:intro-p_similarity}}, $\mathbf{p} \sim a_0$. As discussed in Section \ref{sec:zvp-intro}, microscopically electrons follow similar relativistic trajectories. However, from Equation \ref{eq:zvp-vprop}, $v_\mathrm{prop}$, the velocity of electrons along the propagation axis of the laser pulse, is not necessarily relativistic except at the passing of the zero of the vector potential where $v_\mathrm{prop} \to c$. Macroscopically, the well-defined critical density surface within the skin depth (located at $S =1$), has a gamma factor that tracks the electrons' velocity along the propagation direction ($x$-direction) at that point,
+For the moderately relativistic sub-picosecond ORION SP1 and SP2 beamlines, the most appropriate description of their non-linear interaction with a solid density target is the Relativistic Oscillating Mirror (ROM) model. The full technical formulation constitutes the main body of Baeva's 2008 thesis \cite{baevaHighHarmonicGeneration2008}. A notably more rigorous derivation than the original paper on the same topic \cite{baevaTheoryHighorderHarmonic2006}. This is achieved via application of the highly generalised \ac{ARP} formalism to the case of $S>1$ in relativistic similarity theory, showing that the \ac{ARP} coincides with the relativistic critical density surface. This section provides a more qualitative, physically motivated description of this theory. The salient point of Baeva's thesis is that, while the surface motion is generally complex and parameter space dependent, at the moment relevant for HHG, the surface motion is always parabolic. By application of the Bourdier method, detailed in Appendix \ref{sec:app-bourdier} \cite{bourdierObliqueIncidenceStrong1983}, Baeva demonstrated that the envelope of the spectral content of the reflected beam does not deviate from the normal incidence linearly polarised case for either s- or p-polarised incidence. Hence, the following discussion is restricted to normal incidence. Starting with relativistic similarity theory and Equation \ref{{eq:intro-p_similarity}}, $\mathbf{p} \sim a_0$. As discussed in Section \ref{sec:zvp-intro}, microscopically electrons follow similar relativistic trajectories. However, from Equation \ref{eq:zvp-vprop}, $v_\mathrm{prop}$, the velocity of electrons along the propagation axis of the laser pulse, is not necessarily relativistic except at the passing of the zero of the vector potential where $v_\mathrm{prop} \to c$. Macroscopically, the well-defined critical density surface within the skin depth (located at $S =1$), has a gamma factor that tracks the electrons' velocity along the propagation direction ($x$-direction) at that point,
 \begin{equation}\label{eq:orion-gamma_s}
 	\gamma_\mathrm{s} = \frac{1}{\sqrt{1-v_\mathrm{prop}^2/c^2}} = \sqrt{ \frac{1 + a(t,x)^2 +  p_\mathrm{prop}^2/(m_\mathrm{e}c)^2}{1 + a(t,x)^2}}.
 \end{equation}
@@ -40,7 +40,7 @@ Hence, $\Delta t \sim a_0^{-1}$ and $\Delta l \sim 1/a_0^{-3}$ and the cut-off f
 \begin{equation}\label{eq:orion-omegac}
 	\frac{\omega_\mathrm{c}}{\omega_\mathrm{L}} \sim \sqrt{\alpha}\gamma_\mathrm{s,\, max}^3 \sim a_0^3.
 \end{equation}
-Equation \label{eq:orion-omegac} reproduces the cut-off of the full derivation. Within the ROM model, this sharp pulse of radiation is masked by the low-order harmonics. Filtration is necessary to realise the attosecond duration of the high harmonic pulse.
+Equation \ref{eq:orion-omegac} reproduces the cut-off of the full derivation. Within the ROM model, this sharp pulse of radiation is masked by the low-order harmonics. Filtration is necessary to realise the attosecond duration of the high harmonic pulse.
 
 The harmonic spectrum envelope for photon energies below the cut-off can be calculated from examination of the fields at the surface. Consider the Poynting vector
 \begin{equation}
@@ -111,7 +111,6 @@ Above the cut-off, the spectrum decays exponentially.
 Note that Equation \ref{eq:I_n} only accounts for the contribution from a single gamma spike. In general, the slow envelope of the spectrum is unchanged \cite{baevaHighHarmonicGeneration2008} but there can be destructive interference between spikes leading to modulations in the spectrum for specific harmonics. This can cause certain orders to vanish such as is the case for even order harmonics for s-polarised incident light \cite{lichtersShortpulseLaserHarmonics1996}. This results from symmetries in the equations of motion \cite{trinesLaserHarmonicGeneration2023}.
 
 % TODO approximate pulse duration of the filtered pulse and compare it to the theory.
-% TODO Bourdier methodology in the introduction
 % TODO For CWE: https://iopscience.iop.org/article/10.1088/0953-4075/43/21/213001/pdf
 % Note that somewhere in this paper they say CWE optimises for 0.02 lambda (use this to explain why in ORION short sim I used a lambda slightly larger than this)
 
@@ -124,7 +123,6 @@ up to the cut-off, $n_\mathrm{C}$. Here $S_n(\omega/\omega_\mathrm{L}-n)$ is the
 \begin{equation}
 	\int I_\omega(\omega) \mathrm{d}\omega \mathrm{d} A = ER,
 \end{equation}
-% TODO Simulation showing long pulse vs short pulse spectral shape functions relative sizes to demonstrate correctness of intuition
 where $E$ the total energy of the laser pulse and $R$ is the reflectivity of the \ac{RPM}. Intuition suggests the spectral shape function for the $n^\mathrm{th}$ harmonic retains the spectral shape of the incident laser pulse, \textit{i.e.} for a laser pulse with a Gaussian temporal profile, this corresponds to a Gaussian centred at $n\omega_\mathrm{L}$ of width $\sigma_\mathrm{L} = 1/t_\mathrm{L}$, where $t_\mathrm{L}$ is the laser pulse width. Simulations show this is a reasonable approximation for ORION parameters \footnote{Hole boring discussed in the following section can lead to a Doppler shift in harmonic energy across the laser pulse corresponding to a Doppler broadening of the spectral shape function in reciprocal space, however, unlike the ZVP simulations of the previous chapter, this is negligible for ORION parameters.}.
 
 Simulations also show that for the SP1 laser, the incident laser pulse significantly suppresses the even harmonics, hence,
@@ -146,8 +144,7 @@ where $\zeta(p)$ and $\zeta(p,(n_\mathrm{C} + 1)/2)$ are the Riemann Zeta and Hu
 For the \ac{ROM} regime, $p = 8/3$ and the \ac{RPM} is extremely efficient, $R \approx 1$. Thus, $I_0$ can be estimated from the system parameters.
 
 \subsection{Hole boring}
-% TODO adds a reference to ZVP plots demonstrating hole boring.
-As observed in the ZVP plots, on long timescales relative to the laser pulse cycles, via the ponderomotive pressure of the laser, the plasma front moves inwards. This is hole boring \cite{wilksAbsorptionUltraIntenseLaser1992}. The velocity of hole boring can be derived by consideration of conservation of momentum in this quasi-static state. Since the hole boring velocity is laser pulse intensity dependent, the spatial profile of the laser will be imprinted on the surface. Typically Gaussian in shape, for high-power laser systems, this can to first order generate a focusing \ac{RPM} and a beaming of the specularly reflected signal, as in Figure \ref{fig:orionholeboring}.
+On long timescales relative to the laser pulse cycles, via the ponderomotive pressure of the laser, the plasma front moves inwards. This is hole boring \cite{wilksAbsorptionUltraIntenseLaser1992}. The velocity of hole boring can be derived by consideration of conservation of momentum in this quasi-static state. Since the hole boring velocity is laser pulse intensity dependent, the spatial profile of the laser will be imprinted on the surface. Typically Gaussian in shape, for high-power laser systems, this can to first order generate a focusing \ac{RPM} and a beaming of the specularly reflected signal, as in Figure \ref{fig:orionholeboring}.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\linewidth]{figures/orion/orion_hole_boring}
@@ -156,7 +153,7 @@ As observed in the ZVP plots, on long timescales relative to the laser pulse cyc
 \end{figure}
 To access the highest possible electromagnetic field intensities, the laser pulse is focused on target to the diffraction limit. However, since the diffraction limit scales linearly with the wavelength, higher-order harmonics can be refocused to a smaller spot via this mechanism allowing access to unprecedented peak intensities. Vincenti \textit{et al} demonstrated intensity gains of over 1000 with currently accessible parameters in \ac{3D} \ac{PIC} simulations \cite{vincentiAchievingExtremeLight2019}, suggesting a realistic route to the Schwinger Limit using next-generation laser facilities. Regardless of any blue-skied pursuits, it is evident that any prediction of \ac{HHG} beam intensity must account for hole boring and is therefore an essential component of the ORION experiment analysis.
 
-% TODO I might want to flesh out the hole boring analysis but it already takes up so much space so idk...
+% TODO NO I might want to flesh out the hole boring analysis but it already takes up so much space so idk...
 Applying momentum balance between the laser pulse and particles in the rest frame of the \ac{RPM} surface, the hole boring velocity is
 \begin{equation}\label{eq:v_HB}
 	\frac{v_\mathrm{HB}}{c} = \sqrt{\frac{R\cos\theta}{2}\frac{Zm_\mathrm{e}}{Am_\mathrm{p}}\frac{n_\mathrm{c}}{n_\mathrm{e}(x_\mathrm{i}(t,y))}}a_L(t,y) = \Pi a_L(t,y),
@@ -254,16 +251,13 @@ At the new \ac{RPM} focal point, $z = z_\mathrm{f}$, the demagnification factor 
 this determines the new peak intensity yielded by hole boring.
 
 \subsection{Harmonic source size}
-% TODO come back to this section.......
-Include plots and fits for near roll-off.
-There is some harmonic source size shrinkage inherent to the interaction. Perhaps surprisingly, at photon energies below the harmonic cut-off, Vincenti \textit{et al} demonstrated a weak dependence on harmonic order \cite{vincentiOpticalPropertiesRelativistic2014}, finding $w_n \approx 0.5 w_\mathrm{L}$ from their 1D PIC simulation parameter scan. Approaching the cut-off the harmonic source size shrinkage will be enhanced by the roll-off. While it is unfeasible to perform a similar parameter scan to confirm this dependence, at least the magnification factor is only weakly dependent on $w_n$ and hence this uncertainty does not pose a huge issue for calculation of the signal at OHREX nor for the calculation of the peak intensity at the new focus since the wings of the spectrum do not contribute.
+There is some harmonic source size shrinkage inherent to the interaction. Perhaps surprisingly, at photon energies below the harmonic cut-off, Vincenti \textit{et al} demonstrated a weak dependence on harmonic order \cite{vincentiOpticalPropertiesRelativistic2014}, finding $w_n \approx 0.5 w_\mathrm{L}$ from their 1D PIC simulation parameter scan. Approaching the cut-off, the harmonic source size shrinkage is enhanced by the roll-off. While it is unfeasible to perform a similar parameter scan to confirm this dependence, at least the magnification factor is only weakly dependent on $w_n$ and hence this uncertainty does not pose a huge issue for calculation of the signal at OHREX nor for the calculation of the peak intensity at the new focus since the wings of the spectrum do not contribute. Applying the theory to ORION beamline parameters and fitting a Gaussian to the new spot size, there is no additional shrinkage for the SP2 spot and at worst case for the SP1 laser, $w_{1000} = 0.21w_\mathrm{L}$.
 
 Incidentally, source size shrinkage reduces the error on the parabolic mirror approximation. The fractional error between the approximation and the true surface as a function of the distance from the centre of the mirror is
 \begin{equation}
 	\mathrm{err} = e^{y^2/w^2_\mathrm{L}}\left(1-\frac{y^2}{w^2_\mathrm{L}}\right)-1.
 \end{equation}
 At $y=0.5 w_\mathrm{L}$ is 4\%, compared to 104\% at $y= w_\mathrm{L}$. This suggests minimal leakage of X-ray harmonics around the main beam.
-% TODO what is the size for roll off? get up the calculations on archer
 
 \subsection{The SHHG optimal parameter space}
 Interest in SHHG has prompted many numerical and experimental studies for the determination of its optimal parameters. The interaction efficiency increases with laser pulse intensity \cite{pukhovRelativisticHighHarmonics2009, edwardsXRayEmissionEffectiveness2020} with a relativistic similarity parameter close to unity being preferable \cite{edwardsXRayEmissionEffectiveness2020, gonoskovUltrarelativisticNanoplasmonicsRoute2011}. The effective similarity parameter can be reduced with a finite preplasma scale length. The transverse coherence of the incident beam should be as good as possible to mitigate phase errors, this is best achieved with a diffraction-limited beam \cite{dromeyHighHarmonicGeneration2006}. While HHG in transmission from thin foils is the optimum for currently accessible laser pulse intensities, HHG in reflection is more efficient for next-generation systems \cite{edwardsElectronNanobunchWidthDominatedSpectralPower2020}. 
@@ -276,8 +270,7 @@ Waveform tailoring with the inclusion of multiple laser wavelengths can improve 
 
 High-power laser systems have inherent prepulses of ionising intensities. They will preheat a target leading to thermal expansion prior to the arrival of the main pulse, producing an exponential preplasma, $n_\mathrm{e} \sim e^{x/L}$. HHG is exceedingly sensitive to this preplasma formation, evoking particular interest in the field \cite{behmkeControllingSpacingAttosecond2011, rodelHarmonicGenerationRelativistic2012, dollarScalingHighorderHarmonic2013, kahalyDirectObservationDensityGradient2013, vincentiAchievingExtremeLight2019,behmkeControllingSpacingAttosecond2011}. While there is some variation in quoted optimal values, they are generally small relative to the laser wavelength, with scale lengths, $L \approx 0.1 \lambda_\mathrm{L}$. The difficulty in measuring such small lengths perhaps goes some of the way to explain the variety of suggested optima. 
 
-% TODO find out where CWE dominates
-For $L \leqq 0.01 \lambda_\mathrm{L}$, \ac{CWE} dominates over HHG. Kahaly \textit{et al} demonstrated experimentally that harmonic emission varied smoothly from the CWE regime to the HHG regime to HHG suppression as the laser contrast was reduced  \cite{kahalyDirectObservationDensityGradient2013}. Increasing the preplasma scale length increases the amplitude of surface oscillations, increasing HHG production. However, if the scale length is too large, parametric instabilities in the underdense region begin to dominate and HHG is suppressed \cite{dollarScalingHighorderHarmonic2013}. The use of 1D hydrodynamic codes to measure prepulses from laser contrast trace measurements has become standard practice \cite{behmkeControllingSpacingAttosecond2011, dollarScalingHighorderHarmonic2013, liExperimentalDemonstrationEfficient2022}. Although, this shall be called into question in the following.
+For $L \leqq 0.02 \lambda_\mathrm{L}$, \ac{CWE} dominates over HHG. Kahaly \textit{et al} demonstrated experimentally that harmonic emission varied smoothly from the CWE regime to the HHG regime to HHG suppression as the laser contrast was reduced  \cite{kahalyDirectObservationDensityGradient2013}. Increasing the preplasma scale length increases the amplitude of surface oscillations, increasing HHG production. However, if the scale length is too large, parametric instabilities in the underdense region begin to dominate and HHG is suppressed \cite{dollarScalingHighorderHarmonic2013}. The use of 1D hydrodynamic codes to measure prepulses from laser contrast trace measurements has become standard practice \cite{behmkeControllingSpacingAttosecond2011, dollarScalingHighorderHarmonic2013, liExperimentalDemonstrationEfficient2022}. Although, this shall be called into question in the following.
 
 Fortunately, there are many approaches to control the various steps of preplasma generation. The heating effect of the prepulse can be reduced by reducing the angle of incidence or the prepulse itself can be reduced by reducing the intensity of the beam through apodisation or use of a frequency doubling crystal. A secondary beamline can generate a controllable prepulse \cite{kahalyDirectObservationDensityGradient2013}, and the surface can be recompressed using a circularly polarised prepulse that will cause minimal heating \cite{liExperimentalDemonstrationEfficient2022}.
 
@@ -389,7 +382,7 @@ The X-ray harmonic spectrum produced from a CVD target irradiated by an SP1-type
 \end{figure}
 The simulation has 16384 cells per laser wavelength, the minimum multiple of 2 required to resolve the harmonics accessed with the OHREX quartz crystals. It was necessary to use a short test laser pulse with a $5\lambda_\mathrm{L}$ FWHM. The simulation time before the peak of the laser pulse was increased to reduce the error in the spectrum from unphysical hard cutoffs to the laser pulse profile. A steep preplasma scale length was applied to the plasma distribution of $0.04\lambda_\mathrm{L}$ to model the peak of the ORION pulse and suppress \ac{CWE}. 
 % TODO cite here the optimal length for CWE
-At the X-ray intensities of Figure \ref{fig:orionxrayharmonics}b, no harmonic structure is visible, indeed for the non-optimal ORION target chamber geometry, harmonics begin to merge from around the 20\th . Note the s-polarised part of the reflected beam is over 50 times weaker than the p-polarised beam at the 1000\th\ harmonic.
+At the X-ray intensities of Figure \ref{fig:orionxrayharmonics}b, no harmonic structure is visible, indeed for the non-optimal ORION target chamber geometry, harmonics begin to merge from around the 20\th and this must be accounted for in the calculation of the signal intensity. Note the s-polarised part of the reflected beam is over 50 times weaker than the p-polarised beam at the 1000\th\ harmonic.
 It would be interesting to extract the reflected beam temporal profile after filtering sub-X-ray harmonics. This can be achieved by applying the inverse Fourier transform to the Fourier-transformed temporal profile with the lower-order harmonics removed. Unfortunately, beyond $n=50$, noise overwhelms the signal of interest (from ROM theory, the X-ray harmonic intensity is at least 8 orders of magnitude below the laser pulse intensity). A substantially larger simulation would be required to produce the filtered signal. Figure \ref{fig:orionattosecondpulse} compares the reflected pulse structure to the reflected pulse structure with harmonics below $n = 50$ removed. 
 \begin{figure}
 	\centering
@@ -399,7 +392,7 @@ It would be interesting to extract the reflected beam temporal profile after fil
 \end{figure}
 The filtered beam consists of a series of attosecond pulses of radiation, the brightest pulse is of duration 30.3 as. This is an order of magnitude above the duration of the X-ray pulse as predicted from the cut-off expression. Note that the intensity of the first few laser cycles is insufficient for the generation of harmonics above $n = 50$ and there is therefore no signal here, effectively reducing the pulse train length.
 
-% TODO Confident now that in the theory of ROM HHG for ORION parameters, there is one final consideration that cannot be observed in 1D. The SP1 beamline consists of two beamlets. Am I including this or not? For this simulation, the Bouchard solver was applied.
+% TODO NO Confident now that in the theory of ROM HHG for ORION parameters, there is one final consideration that cannot be observed in 1D. The SP1 beamline consists of two beamlets. Am I including this or not? For this simulation, the Bouchard solver was applied.
 
 \subsection{Hydrodynamic simulations of preplasma formation}\ref{sec:orion-hydro}
 Following Dollar \textit{et al} \cite{dollarScalingHighorderHarmonic2013}, hydrodynamic simulations of the ORION laser systems were performed using HYADES to confirm the suitability of the contrast conditions.
@@ -458,8 +451,6 @@ Once plasma expansion initiates the extent of heating rapidly diverges across th
 Plasma temperature is highly sensitive to the precise experimental conditions. At the time of the main pulse arrival at the plasma surface (as defined by the peak of the electron density distribution), the temperature is 112 eV, consistent with the value chosen for PIC simulations. Hydrodynamic codes are unsuitable for the prediction of the plasma temperature increase induced by the main pulse interaction given the high non-linearity of the dynamics in this regime that could not be adequately captured by such a code.
 
 % TODO in the intro explains the local thermal equilibrium average atom model for ionisation.
-% TODO Look at the book to get the absorption and refractive indices references.
-%TODO Still to do: Brems
 
 \section{\label{ch:3-sec:experiment}The experiment}
 The two experimental goals were to resolve and measure the absolute intensity of X-ray harmonics produced with the ORION SP2 beamline. After debris from the plasma mirror optic damaged the parabola it was necessary to switch to the higher contrast but lower energy SP1 beamline and only after the experiment was it established that it was not possible to resolve X-ray harmonics with the ORION target chamber geometry. However, absolute intensities were measured for both the SP1 and SP2 beamlines and for CVD and PMMA targets. ORION short pulse beamline parameters are provided in Figure \ref{tab:laser_params}
@@ -506,14 +497,6 @@ The OHREX spectrometer sits flat on the target chamber wall but rotated an angle
 \end{equation}
 Applying the cosine rule between the p-polarised vector and $\mathbf{n}_\mathrm{O}$, the angle of the polarisation vector of the harmonic beam out of the plane of the OHREX interaction is \qty{77.23}{\degree} for both SP1 and SP2.
 
-% TODO Also discuss the fabulous result that generally one can simply extract the results in the Smilei units and multiply by the relevant factors of the frame of interest and thus not worry too much about frame transformations. (add this to Bourdier discussion)
-
-% TODO I must redo the boosted section since I made a mistake there and rethink a bit about optimum theta.
-
-% TODO I must also at some point just state that a hat indicates a normalised vector.
-% TODO READ https://www.nature.com/articles/s42005-024-01575-z
-% TODO https://www.nature.com/articles/ncomms12515
-
 \subsection{Targets}
 Specialised target holders were designed and built by the AWE and CLF target fabrication teams. These hold the targets at the required angle out of the horizontal plane with an additional fiducial wire for alignment. Targets were mounted on the ORION Multi-Target-Mount and alignment was performed offline by Dr Ed Gumbrell.
 
@@ -524,7 +507,6 @@ There are multiple considerations when it comes to target density. In practice a
 
 % TODO use the word perturbation for surface roughness
 The surface roughness of a selection of low-density plastic targets was analysed by the CLF target fabrication team leading to the choice of PMMA plastic targets. CVD targets were also selected, having the highest ionisation potential (and therefore lowest susceptibility to laser prepulse) of solids that can be polished optically flat albeit at a higher $S$ parameter. Scans performed by AWE and CLF of the target surfaces are given in Figure \ref{fig:oriontargets}.
-% TODO add this back in, it's annoying me currently by disappearing
 \begin{figure}
 	\centering
 	%\includegraphics{figures/orion/orion_targets}
@@ -535,17 +517,14 @@ The surface roughness of a selection of low-density plastic targets was analysed
 
 \subsection{Contrast and plasma mirrors}
 As illustrated in Figure \ref{fig:orioncad}, a plasma mirror optic is included before the main target to improve the contrast of the SP2 beamline \cite{doumyCompleteCharacterizationPlasma2004}. HYADES simulations of the effect of this optic are detailed in Section \ref{sec:orion-hydro}. The distance between the PM and the main target is \qty{15}{mm}, thus the beam diameter at the PM is $\approx 15/(f/3) = \qty{5}{mm}$ and the intensity on PM can be calculated. Provided the harmonic beam divergence is less than or equal to the $f/3$ cone, as is anticipated, the harmonic beam should not be clipped by the PM in this setup. 
-%TODO calculates that intensity and shows it is where it should be, ie move that section.
 
 The intention was to use \ac{AR}-coated fused silica optimised for \qty{45}{\degree} \ac{AOI} and the SP2 pulse wavelength (BCP45R) \cite{45AOIBeamsplitter}. This has a reflectance of \qty{0.398}{\%} at $\lambda_\mathrm{L} = \qty{1053}{nm}$ for unpolarised light. Unfortunately, the debris from the PM caused damage to the parabola. For the second SP2 shot, the high reflectivity fused silica PM was replaced with a thin foil of silicon nitride. The reduction in available material of the thin foil reduces the risk of damaging debris. At \qty{45}{\degree} \ac{AOI}, $\lambda = \qty{1.053}{\mu m}$ and $\phi_2 = \qty{16.4}{\degree}$, the silicon nitride PM pre-switch-on has a reflectivity of \qty{5.55}{\%} \cite{polyanskiyRefractiveindexInfoDatabase2024}. One can assume its behaviour after switch-on is consistent with the other PM since it is simply a plasma interaction now.
-%TODO intro section on laser contrast included the function of DPM
 
 \subsection{KBRXM}
 The ORION SP1 and SP2 spot size was routinely monitored on shot by the AWE laser team via two X-ray pinhole cameras and the time-integrating Kirkpatrick-Baez X-ray microscope (KBXRM) diagnostic, sat on the target chamber Port 21 and pointed at the notional \ac{TCC}. This reflective X-ray microscope optic has a ten times magnification and spatial resolution of \qty{15}{\mu m}, comfortably resolving the laser spot size. Images were again recorded with TR-type IP. Direct mapping between the recorded images and real laser irradiance profiles is a highly non-trivial problem with any proposed model depending strongly on the assumptions made. However, by making the very reasonable assumption of spatial and temporal blurring of the spot size in the X-ray image due to electron transport away from the laser spot, the measured spot size will be an upper bound on the real spot size. It follows that the upper bound on optical spot widths corresponds to a lower limit of irradiance (since the on-shot energy is well-defined). These diagnostics determine sensible upper bounds for the laser spot size are \qty{20}{\mu m} and \qty{10}{\mu m} for the SP1 and SP2 beamlines respectively.
 
 
 \section{\label{ch:3-sec:data_processing}Experimental data processing}
-%TODO update plots in this section
 \subsection{Image plate calibration}
 Image plates (IPs) are reusable recording media that detect ionising radiation and are particularly suitable for the detection of X-rays produced in laser-plasma interactions. Their response is well understood and their sensitivities to a wide spectrum of photon energies have been absolutely calibrated on the ORION facility \cite{meadowcroftEvaluationSensitivityFading2008}. Albeit for the FLA3000 scanner, not the FLA7000 used in this experiment. However, the deviation in response is negligible for the photon energies measured. In this experiment, the Fuji Biological Analysis System (BAS) TR-type IPs were used. They have a phosphor layer composed of $\mathrm{BaFBr_{0.085}I_{0.15}}$ with density \qty{2.61}{g.cm^{-3}} and thickness \qty{60}{\mu m} but no mylar layer. This makes them suitable for low-energy X-ray detection. When scanned, the IP releases blue photons via photostimulated luminescence (PSL), which are then collected by a photomultiplier tube. The PSL value is generalised across scanner types from the measured `Grey' ($G$) value by
 \begin{equation}
@@ -585,7 +564,6 @@ In summary, the number of PSL measured on an IP can be converted to an incident 
 \end{equation}
 
 \subsection{OHREX calibration}
-% TODO Reword note on illuminating crystal once I have written up about hole boring.
 The Orion High REsolution X-ray (OHREX) spectrometer, housed on the ORION laser target chamber outer wall, utilises a spherically bent crystal geometry to spatially focus and spectrally analyse photons from the target chamber \cite{beiersdorferLineshapeSpectroscopyVery2016} with a high signal-to-noise ratio. The measured signal has been absolutely calibrated for a range of energies using a variety of crystals \cite{macdonaldAbsoluteThroughputCalibration2021}. The OHREX spectrometer can hold two crystals at a time. At each crystal's spatial focal plane, a two-dimensional image is formed, one dimension is spatial, the other spectral. The energy range accessed by a given crystal is determined by the crystal rotation but all OHREX crystals are designed for operation at a nominal central Bragg angle of $\theta_\mathrm{B} = 51.3$\degree with the corresponding wavelength determined from Bragg's Law, $n\lambda = 2d\sin\theta_\mathrm{B}$, for the appropriate crystal plane. The range around that central photon energy is determined by the crystal width in the spectral dimension.
 
 MacDonald \textit{et al} determined a quadratic fit for each crystal's dispersion relation to connect position along the image to photon energy \cite{macdonaldAbsoluteThroughputCalibration2021}. Unfortunately in this experiment, the image lengths varied from those in the previous experiment, a likely consequence of slight defocusing of the optic. Note that the OHREX geometry is designed such that precise focus is not necessary to achieve good results \cite{beiersdorferLineshapeSpectroscopyVery2016}.
@@ -603,7 +581,7 @@ Instead, a simple linear dispersion relation based on the known maximum and mini
 	\caption{\label{tab:dispersion} Photon energy ranges captured by the three lowest energy OHREX crystals when operating at their nominal central Bragg angle of 51.3\degree for first and second diffraction orders, $n$.}
 \end{table}
 
-Provided full illumination of the \qty{6}{cm} $\times$ \qty{4}{cm} crystal, the spatial dimension can be safely integrated over to calculate the measured signal, $M(h\nu)$ in \unit{J.mm^{-1}} and remove uncertainty from the IP drifting from the ideal focal plane. (In this experiment we assume that the harmonic beam width at the crystal position is larger than the size of the crystal, a reasonable assumption since beam divergence $\approx$ \qty{10}{\degree} and the \qty{6}{cm} x \qty{4}{cm} crystal sits \qty{2.4}{m} from the target.). This corresponds to a source spectral intensity incident on the crystal $S(h\nu)$ measured in \unit{J.keV^{-1}.sr^{-1}} via the spectrometer response, $G(h\nu)$, explicitly,
+Provided full illumination of the \qty{6}{cm} $\times$ \qty{4}{cm} crystal, as can be assured for harmonic beams at 2.4 m from the target, the spatial dimension can be safely integrated over to calculate the measured signal, $M(h\nu)$ in \unit{J.mm^{-1}} and remove uncertainty from the IP drifting from the ideal focal plane. (In this experiment we assume that the harmonic beam width at the crystal position is larger than the size of the crystal, a reasonable assumption since beam divergence $\approx$ \qty{10}{\degree} and the \qty{6}{cm} x \qty{4}{cm} crystal sits \qty{2.4}{m} from the target.). This corresponds to a source spectral intensity incident on the crystal $S(h\nu)$ measured in \unit{J.keV^{-1}.sr^{-1}} via the spectrometer response, $G(h\nu)$, explicitly,
 \begin{equation}
 	M(h\nu) = S(h\nu)G(h\nu).
 \end{equation}
@@ -637,12 +615,11 @@ where $(h\nu)$ is the photon energy measured in eV, determined for both p- and s
 \end{table}
 There is unfortunately no spectrometer response data for the $10\bar{1}0$ crystal to first order due to the Si K edge sitting within the energy range and the dramatic effect this has on absorption in its vicinity \cite{hellCalibrationOHREXHighresolution2016}.
 
-
 The OHREX is equipped with a \qty{50}{\mu m} Beryllium filter to protect the crystals. The corresponding signal attenuation can be calculated using X-ray transmission data \cite{henkeXRayInteractionsPhotoabsorption1993}.
 
 \subsection{Extracting the data}
 The quartz OHREX crystals $10\bar{1}0$ and $10\bar{1}1$ were fielded on the experiment. Crystal images were recorded with BasTR2040 Fuji Image Plate. A typical shot image scanned with the FLA7000 scanner and converted to photostimulated luminescence units (PSLs) is given in Figure \ref{fig:orionohrexshot28psl}.
-%todo point out both crystal images and label them
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{figures/orion/orion_OHREX_shot28_psl}
@@ -667,10 +644,6 @@ No sensitivity data is available for the $10\bar{1}0$ quartz crystal, instead, t
 \end{figure}
 
 \subsubsection{Calibration and polarisation}
-% TODO reference simulation figure that shows only p pol light reflected.
-% TODO write up the OHREX polarisation stuff
-% TODO put the efficiency of only p pol reflected into the theory prediction, I think at this moment I am coming at it from the wrong experiment side.
-% TODO add in polarisations of SP1 and SP2 for the OHREX angles out of the plane.
 The choice of the spectrometer response function, $G(h\nu)$, is non-trivial. One must first be assured that the second-order contribution is small relative to the first, true for this source spectrum. And also think carefully about the anticipated polarisation in the OHREX interaction plane. The OHREX response to p-polarised light is approximately an order of magnitude lower than for s-polarised light. From Figure X we are assured that only the p-polarised (with respect to the target interaction plane) X-rays are specularly reflected to the OHREX. The corresponding polarisation out of the OHREX interaction plane is calculated in the Appendix. The polarisation of the HHG beam relative to the OHREX plane of incidence and reflection is \qty{10.5}{\degree} out of the plane. Unlike the RPM interaction, the OHREX crystal reflection is an entirely linear process and it is therefore acceptable to decompose the laser pulse into its constituents, explicitly, the field incident on the crystal is
 \begin{equation}
 	\mathbf{E_\mathrm{O}} = \mathbf{E}_\mathrm{O,\, s} + \mathbf{E}_\mathrm{O,\, p}.
@@ -707,68 +680,91 @@ Figure \ref{fig:orionq1011} is a typical calibrated signal from the quartz ($10\
 	\label{fig:orionq1011}
 \end{figure}
 For each shot the mean signal across the dispersion axis was calculated and the errors from statistics, the fade time (11 \%), the IP sensitivity (1.5 \%), the dispersion axis (2.9 \%) and the OHREX crystal reflectivity (11 \%) accounted for.
-% TODO Shots were also taken through the OHREX port, we had hoped to capture the beam divergence however, the beam was larger than initially expected and we were unable to distinguish much. Mention saturation.
 
-As demonstrated in Section \ref{ch:3-sec:theory}, the intensity of X-ray harmonics is highly sensitive to the intensity of individual pulse cycles due to the proximity of the measurement to the exponential roll-off in the spectrum. However, even neglecting the shot-to-shot variation, it is not possible to know the precise sub-cycle spatio-temporal structure of a petawatt-class laser pulse. Indeed, the simple measurement of the peak intensity of such a pulse remains an open problem \cite{perevalovLaserPeelerRegime2023,ouatuIonizationStatesMultipetawatt2022}. Instead, we must rely on our assumptions and approximations, that is that the SP1 and SP2 beamlines can be adequately described by spatial Gaussians and temporal sech$^2$ and sech profiles respectively, and that the duration and energy are well defined. The tight focused laser spot is subject to jitter on a shot-to-shot basis. This was routinely monitored via a KBRXM diagnostic that measures X-ray emission from the target. The spot measured by this diagnostic will always be larger than the actual laser pulse focal spot due to the energy transport of electrons moving away from the interaction area. This upper limit on laser pulse spot size corresponds to a lower limit on laser pulse intensity and therefore also of HHG efficiency. Figure \ref{fig:orionintensitycurves} plots HHG spectral intensity curves for the quartz ($10\bar{1}1$) crystal central energy as a function of laser spot size for the targets and laser pulse configurations explored in the experiment. 
+As demonstrated in Section \ref{ch:3-sec:theory}, the intensity of X-ray harmonics is highly sensitive to the intensity of individual pulse cycles due to the proximity of the measurement to the exponential roll-off in the spectrum. However, even neglecting the shot-to-shot variation, it is not possible to know the precise sub-cycle spatio-temporal structure of a petawatt-class laser pulse. Indeed, the simple measurement of the peak intensity of such a pulse remains an open problem \cite{perevalovLaserPeelerRegime2023,ouatuIonizationStatesMultipetawatt2022}. Approximations and assumptions must be made, that is, that the SP1 and SP2 beamlines can be adequately described by spatial Gaussians and temporal sech$^2$ and sech profiles respectively, and that the duration and energy are well-defined. The tight focused laser spot is subject to jitter on a shot-to-shot basis. This was routinely monitored via a KBRXM diagnostic that measures X-ray emission from the target. The spot measured by this diagnostic will always be larger than the real laser pulse focal spot due to the energy transport of electrons moving away from the interaction area. This upper limit on laser pulse spot size corresponds to a lower limit on laser pulse intensity and therefore also of XHHG efficiency. Figure \ref{fig:orionintensitycurves} plots XHHG spectral intensity curves for the quartz ($10\bar{1}1$) crystal central energy as a function of laser spot size for the targets and laser pulse configurations explored in the experiment. 
 \begin{figure}
 	\centering
 	\includegraphics{figures/orion/orion_intensity_curves}
 	\caption[Dependence of the harmonic beam spectral intensity on laser spot size at 2.405 keV.]{\textbf{Dependence of the harmonic beam spectral intensity on laser spot size at 2.405 keV.} Targets and beamlines relevant to the experiment are plotted. The half-energy single beamlet SP1 laser is demarcated by $E/2$. The thick lines indicate likely values for the laser spot sizes in this experiment. The SP1 harmonic beams are strongly affected by the exponential roll-off, unlike the SP2 beamline.}
 	\label{fig:orionintensitycurves}
 \end{figure}
-The thick lines range from the upper limits of spot size as measured by the KBRXM diagnostic to the spot area being halved. The spectral intensity of the harmonic beam from the SP1 beamline sits in a delicate balance between beam divergence via hole boring and the exponential roll-off. Note that only the roll-off leads to a reduction in the total energy contained within the harmonic beam. The strong non-linearity of the interaction leads to the single beamlet SP1 beamline producing a harmonic beam over 6 times weaker than the double beamlet configuration. Interestingly, the higher intensity of the SP2 beamline leads to a greater divergence and a lower spectral intensity of the harmonic beam than for the SP1 laser pulse.
+The thick lines range from the upper limits of spot size as measured by the KBRXM diagnostic to the spot area being halved, a reasonable lower bound on the spot size. The spectral intensity of the harmonic beam from the SP1 beamline sits in a delicate balance between beam divergence via hole boring and the exponential roll-off. Note that only the roll-off leads to a reduction in the total energy contained within the harmonic beam. The strong non-linearity of the interaction leads to the single beamlet SP1 beamline producing a harmonic beam over 6 times weaker than the double beamlet configuration. Interestingly, the higher intensity of the SP2 beamline leads to a greater divergence and a lower spectral intensity of the harmonic beam than for the SP1 laser pulse.
 
-Figure \ref{fig:orionexperimentresults} plots the experimental results with comparison to theory and simulation. 
+Figure \ref{fig:orionexperimentresults} plots the experimental results with comparison to theory and the simulation of Figure \ref{fig:orionxrayharmonics}. 
 \begin{figure}
 	\centering
 	\includegraphics{figures/orion/orion_experiment_results}
 	\caption[X-ray harmonic intensities measured on the ORION experiment compared to theory and simulation.]{\textbf{X-ray harmonic spectral intensities at 2.405 keV measured on the ORION experiment compared to theory and simulation.} The analytical calculation corresponds to the thick lines marked in Figure \ref{fig:orionintensitycurves}. The 1D PIC simulation result is derived from Figure \ref{fig:orionxrayharmonics} and scaled to the ORION laser pulse duration.}
 	\label{fig:orionexperimentresults}
 \end{figure}
-Experimental data points are consistent within their errors with one another, the theory and the simulation, albeit with large uncertainties with such a low shot number. Significantly, the SP2 beamline is on average almost 6 times brighter than the SP1 beamline despite the greater energy content and greater component of the laser pulse electric field directed into the plasma for the SP2 beamline while the single beamlet shot is over 7 times weaker in intensity compared to the mean intensity of the full SP2 beamline. These highly non-linear (with respect to energy) scalings are consistent with HHG theory but cannot be understood as originating from bremsstrahlung lending huge credibility to these results. Bremsstrahlung emission scales sub-linearly with temperature and temperature scales sub-linearly with energy on target. The total energy is well-constrained and this is far more relevant for Bremsstrahlung than the uncertain intensity (dependent on the variable spot size). Thus, at the best-case scenario, one could anticipate twice the intensity being observed for the double beamlet SP2 compared to the single.
+Experimental data points are consistent within their errors with one another, the theory and the simulation, albeit with large uncertainties with such a low shot number. Notably, for the CVD targetsl the SP1 beamline is on average almost 10 times brighter than the SP2 beamline despite the greater energy content and greater component of the laser pulse electric field directed into the plasma for the SP2 beamline while the single beamlet shot is over 5 times weaker in intensity compared to the mean intensity of the full SP2 beamline. These highly non-linear scalings are consistent with HHG theory but cannot be understood to be from bremsstrahlung emission. 
+
+Bremsstrahlung emission from steep density profile low-Z solid density targets irradiated by relativistic laser pulses remains an area of active research with experiments to explore this in the planning stages at the University of York. However, it is possible to derive approximate best-case scenario scalings of spectral intensity with incident energy. A plasma in equilibrium has a kinetic energy $E = 3/2 k_\mathrm{B}T$ \cite{chenIntroductionPlasmaPhysics2016}. Now, assuming the target can be treated as a radiating black body, the spectral radiated intensity increases most rapidly with temperature when $h\nu \ll k_\mathrm{B}T$ at which point the spectral radiance scales linearly with temperature \cite{zangwillGuidedConfinedWaves2012}. Thus, in the best case, one could expect a linear increase in the spectral intensity measured from the double beamlet compared to the single if that signal originated from bremsstrahlung emission. Note further that this scaling depends not on the incident intensity but only on the incident energy which is a well-constrained quantity on ORION.
+
+The above discussion relied on the assumptions of equilibrium and a black-body radiation spectrum. While this is valid for the long radiating period after the interaction, in much of this thesis, emphasis has been placed on the non-equilibrium state of the interaction itself. There are two species of relevance during this time: the hot electrons around the front surface directly heated by the laser pulse and prepulse, and the hot electrons that are reflected specularly and are responsible for SHHG. In \cite{zulickHighResolutionBremsstrahlung2013}, bremsstrahlung of these species is measured experimentally for a 30 fs laser pulse and $a_0$ = 2.8. As the populations of each of these species are so small, the peak contribution to the photon spectrum is many orders of magnitude smaller than that of the experimental signal and can therefore be neglected.
+
+Efficiency
+Magnification
+Total energy per Joule
+Result in context, add lasers plot here.
+
+Flying focus
+
+
+Magnification = 20.072674842184274
+M SP2 = 1022.6686243613655
+
+
+Due to harmonic source size shrinkage and the roll-off, the efficiency of the SP1 beamline is very low.
+
+
+Note that that this dramatic magnification at focus is not unrealistic and is indeed consistent with the literature. Vicenti et al 2019 demonstrated a 3 order of magnitude gain of 1000 for a 3 PW 20 fs system. The longer duration of the pulse here leads to greater hole boring and therefore a correspondingly larger magnification factor.
+Note that the factor derived here is for spatial magnification only, it does not account for the additional temporal compression, however the 1D PIC simulations suggest that for this regime (ie ROM) we do not get extra intensity from this (Leontovich boundary conditions).
+Calculate the corresponding peak intensity.
+
+Stick to SP2 beamline.
+
+0.102 microJ per harmonic - 0.044 + 0.1733
+
+The SP1 beamline efficiency is lower due to the roll-off and the harmonic source size shrinkage
+
+Efficiency 
+2.043661294970399e-10
+plus 3.466922061995753e-10
+minus 8.627647263599505e-11
+
+Magnification = 1774.6373284921292
+Magnification = 1039.2824774016885
+Magnification = 746.5830067717158
+
+
+Spot size from data is 
+wl = 4.669182775447931e-06
+wLow = 5.331391232110277e-06
+w high = 3.718791008941786e-06
 
 
 
+Conservative estimate of power of focused beam since 1000 predictd for ORION paramaters. And there is also the temporal compression in the CSE regime due to the non-satisfactoion of Leontovich
 
-
-Bremsstrahlung emission from steep density profile low-Z solid density targets irradiated by relativistic laser pulses remains an area of active research with experiments to explore this in the planning stages at the University of York. However, provided a few assumptions it is possible to derive approximate best-case scenario scalings of spectral intensity with incident energy. First, assume that energy absorption into the plasma target does not increase with increasing energy. From Equation
-% TODO adds derivation of plasma temperature from the start of Chen to intro then reference here
-the plasma temperature scales linearly with the incident energy. Now, assuming the target can be treated as a radiating black body, the Equation 
-% TODO add a note on the black body and reference spectral radiance here
-increases most rapidly with temperature when $h\nu \ll k_\mathrm{B}T$ at which point the spectral radiance scales linearly with temperature. Thus, in the best case, we could expect a linear increase in the spectral intensity measured from the double beamlet compared to the single if that signal originated from Bremsstrahlung emission. Note further that this scaling depends not on the incident intensity but only on the incident energy which is a well-constrained quantity on ORION, \textit{i.e.} we do not anticipate significant shot-to-shot variation.
-
-The above discussion relied on the assumptions of equilibrium and a black-body radiation spectrum.
-While this is valid for the long radiating period after the interaction, in much of this thesis, emphasis has been placed on the non-equilibrium state of the interaction itself. There are two species of relevance during this time: the hot electrons around the front surface directly heated by the laser pulse and prepulse, and the hot electrons that are reflected specularly and are responsible for the HHG. In \cite{zulickHighResolutionBremsstrahlung2013}, bremsstrahlung of these species is measured experimentally for a 30 fs laser pulse and $a_0$ = 2.8. As the populations of each of these species are so small, the peak contribution to the photon spectrum is many orders of magnitude smaller than that of the experimental signal and can therefore be neglected.
-% TODO check in the above that they used a circular pol pulse so that HHG would be suppressed.
-
-These findings are highly significant. 
-Then write up the new peak intensity and the efficiencies.
-Comment on flying focus
-
-% TODO reference beam on Vulcan, it was 2 orders of magnitude above the background from Brems, thus we can assume above Brems even if the beam has more divergence than ORION (would need to be 10 times as divergent)
-
-% TODO Additional things: approximate reflectivity of the plasma mirror at switch on, merging of harmonics at the X-ray regime
-% TODO describe KBRXM diagnostic 
-% TODO Discuss mirrored targets and brems emission.
+Also note that on the plot this is power averaged over the full pulse. The X-ray peak power, will be more like that power divided by the number of laser pulse cycles and then divide by the attosecond duration. Wowza.
 
 % Note that if you replace the spatial Gaussian with a sinc^2 profile with the same FWHM, they look almost identical to exponential. The spatial integral is approx 1.06 times larger thus minimal impact on the profile
 
-% TODO Note that Equation \ref{eq:I_n_hhg} only takes into account the contribution from one gamma spike. In general, and especially for the long pulse duration on ORION, the slow envelope of the spectrum is unchanged \cite{baevaHighHarmonicGeneration2008} but there can be destructive interference between spikes leading to modulations in the spectrum for specific harmonics. This can lead to certain orders vanishing such as is the case for even order harmonics in the case of s-polarisation (https://pubs.aip.org/aip/pop/article-abstract/3/9/3425/442980/Short-pulse-laser-harmonics-from-oscillating). This results from symmetries in the equations of motion (insert ref to Raoul Trines paper here).
+
 
 \section{Summary}
-This chapter has described in full the experimental methods and results of the recent ORION experiment. The X-ray harmonic intensities were measured using the OHREX spectrometer. Finding X and X. To descibe the results, the ROM model of SHHG was laid out, combining all pieces of the puzzle to reconstruct the measured intensities analytically. The experimental campaign was supported by PIC and hydrodynamic simulations of the main pulse and prepulse interactions respectively. PIC simulations agree with the analytical results for the ORION parameter space. No preplasma expansion was observed for the SP1 beamline and reasonable preplasma scale lengths for the SP2 beamline provided the use of a single PM optic. Some discussion of plasma temperature was provided.
+This chapter has described in full the experimental methods and results of the recent ORION experiment. The X-ray harmonic intensities were measured using the OHREX spectrometer. Finding X and X. To describe the results, the ROM model of SHHG was laid out, combining all pieces of the puzzle to reconstruct the measured intensities analytically. The experimental campaign was supported by PIC and hydrodynamic simulations of the main pulse and prepulse interactions respectively. PIC simulations agree with the analytical results for the ORION parameter space. No preplasma expansion was observed for the SP1 beamline and reasonable preplasma scale lengths for the SP2 beamline provided the use of a single PM optic. Some discussion of plasma temperature was provided.
 
 SUmmery of the X-ray harmonic beam produced: include efficiencies, include duration
 
-
-
-
-ADD MOST EFFICIENT HHG CONDITIONS SECTION - 30 mins - done
-Go through the HYADES section - 30 mins - done
-Harmonic source size - 30 mins
 Finish off discussion of results - 30 mins
 Summarise findings of the chapter, including presentation of the result in context - 30 mins
 misc stuff to main body - 30 mins
-HYADES outline - 30 mins
 
 Tomorrow:  assess state of TODOs, check sims
+
+% TODO I must redo the boosted section since I made a mistake there and rethink a bit about optimum theta.
+% TODO I must also at some point just state that a hat indicates a normalised vector.
+% TODO READ https://www.nature.com/articles/s42005-024-01575-z
+% TODO https://www.nature.com/articles/ncomms12515
