@@ -42,6 +42,13 @@ It is essential to check there is the required resolution in both the spectromet
 sims:
 Running a new SiO2 HHG sim, hopefully, will show that we have a better efficiency than the previous simulation. Then pop that in here.
 
+The optimised conditions of the GEMINI PW system enables access to the ZVP regime. Here, due to the presence of the preplasma, there is significant energy storage in the pseudo-capacitor at the front surface of the plasma that can then be re-emitted during the expansion phase \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011}. This is reflected in the spectrum of the reflected radiation, the conservation of energy boundary conditions no longer apply and attosecond spikes can be observed even without the presence of a filter.
+
+While ROM does not strictly apply for the optimised theory of the GEMINI PW laser system, the spectrum does not deviate significantly from it. Hole boring theory still applies.
+
+% TODO use simulation intensities instead of ROM calculated ones.
+
+
 Signals at the detector can be predicted using the theory of Chapter \ref{ch:3-orion} using GEMINI PW parameters. Applying ROM and hole boring theory to a fused silica target and accounting for filtering and assuming no merging of harmonics, one can anticipate signals at the OHREX crystal position of \qty{19.6}{\mu J.sr^{-1}} per harmonic at 0.6 keV for the KAP crystal and \qty{1.89}{\mu J.sr^{-1}} per harmonic at 2.405 keV for the quartz ($10\bar{1}1$) crystal. Orienting the OHREX for s-polarisation, to maximise the signal at the image plane, corresponds to an average of 3.4 photons per pixel and 0.20 photons per pixel respectively. The quantum efficiency of the detector is close to \qty{100}{\%}. These photon numbers are no less than those measured in the ORION experiment while the background will be lower due to the order of magnitude lower energy on target. Implying adequate statistics for the observation of such signals.
 
 % TODO compare these results to the sims: currently sims predict 50 times lower intensity, comment that at least for the KAP crystal we have room to apodized and reduce beam divergence and increase signal so we should get this at least
@@ -154,47 +161,15 @@ At some point, the signal will overshoot and enter the CWE regime, preferably ea
 
 Kahaly \textit{et al} show a linear relationship between main pulse delay relative to prepulse and scale length (due to more time for the preplasma to expand) but also note that for the same scale length, a larger delay (accompanied by smaller energy in the prepulse) produces higher quality harmonics. This could be understood as a natural consequence of the lower plasma temperatures, which improve the ability of the system to perform coherent SHHG behaviour. If harmonics are accessed using the Kahaly method, the signal can be improved our signal by moving the prepulse mirror further from the main pulse mirror while also reducing the fraction of overlap between the two mirrors to reduce the energy in the prepulse. The Kahaly mirror should be placed before the final mirror before the parabola. The further back in the chain it is placed, diffraction from the mount can cause greater danger to the optical system. The linear relationship between main pulse delay and scale length coupled with the XUV HHG signal measurements can be applied to discrete changes to the system to quantify contrast improvements.
 
-\section{Beyond GEMINI PW and future work}\label{sec:ch4-beyond}
-% TODO chapter summary
-This experiment will hopefully be only the start. Contrast measurements will certainly be interesting and influential if cracked.
 
-Expand the range of targets A range of thick, flat solid targets are proposed to probe the density parameter space: diamond, a selection of plastics (polymethyl methacrylate, low and high-density polyethylene and polycarbonate) and mirrored targets, which produced interesting and slightly unexpected results in the ORION experiment. It would also be interesting to produce foam targets gaining access to the optimal low $S$ regime \cite{bataniPhysicsIssuesShock2014}.
+\section{Summary}
+This chapter has detailed the strategy, goals and hypotheses surrounding the upcoming GEMINI PW experiment, including supporting PIC and hydrodynamic simulations. It may prove that the contrast of GEMINI is insufficient to enable access to the highly interesting regime of SHHG. However, should this be the case a strong plan of action has been laid out that should both enable some level of success in harmonic generation and provide invaluable insights that could change the approach to SHHG experiments in the future. If harmonics can be resolved, there are many exciting avenues for new physics. Namely, the main experimental goals are the resolution of X-ray harmonics, the observation of ZVP electron bunches, the application of the harmonic beam as a diagnostic tool and the measurement of attosecond chirp on optical and XUV harmonics.
 
-It is indispensable, to test the new predictions for oblique incidence energy scalings and total electron bunch charge along with the angle of bunch ejection, the non-zero transverse vector potential of the laser will prevent the bunch from propagating directly along the transmission axis. It would also be useful to perform a parameter scan of the preplasma scale length. In this work so far, it was assumed that the optima for electron bunch production are simply those for \ac{HHG}, as was shown to be true for preplasma scale length in the Supplementary Information of \cite{thevenetVacuumLaserAcceleration2016} for their electron bunches in reflection. To truly demonstrate the attosecond duration of the ZVP electron bunches would require imaging of their XUV CTR harmonics.
-
-The return of HHG study to CLF after more than a decade hiatus is certainly indicative of a wider renewed interest in the field, perhaps spurred on by the recent Nobel Prize for attosecond physics and the rapid adoption of multi-petawatt class faciliites. Vulcan 20-20 is only around the corner. Set to be the worlds most powerful laser, this ambitious laser facility will provide 200 J in 20 fs. With the capability to access triple digits of peak normalised vector potentials it is ideally suited to the study of X-ray HHG and ZVP. This experiment will build expertise providing poof of principle results with a bright future in mind.
-
-Perhaps in the summary of work of the thesis (new chapter), note that some of the actions laid out by Savin in his future work have been achieved, ie, experiment to measure ZVP electron bunches and theoretical model for the scaling of absorption efficiency with S
-
-
-Other future work: 
-Return to the QED ZVP theory to understand the rapid rise in BW energy and to explore the transition to QED and look further for the tranistion to SF-QED.
-Electron bunches XUV CTR
-Parameter scan of bunch energies to confirm ZVP scaling
-Combine X-ray measurement on GEMINI with some of the single attosecond pulse ideas eg polarisation gating to generate an isolated X-ray pulse 
-Explroe heating with an HHG beam in experiment
-Take GEMINI experiment to Vulcan and beyond
-Explore options for guiding of ZVP attosecond electron bunches.
-GPU 1D simulations of X-ray HHG
+% TODO PIC sims heating effect
+%TODO add a comment about the use of HHG as a heating source, highly efficient highly penetrating
+% TODO hyades (hmm no maybe PIC? but then cant do heating effect.. can use heaths code for tempeerature in smilei) sim of ORION hhg beam entering a plasma and heating vs ORION laser.
+% TODO hyper spectral imaging
 
 % TODO CHECK IN THE TARGETS LIST THERE IS ALSO SIMPLE SILICON WAFER UNSTRUCTURED TARGETS
 
-Summary:
-Since savin where we at? His suggestions were
-- Campaign to observe ZVP underway
-- An analytical model for the observed inverse scaling of absorption with similarity theory has been developed.
-- And the relation of this model to HHG has been discussed
-- An extensive QED parameter scan was initiated, however, this identified further points that needed addressing, now we have understanding of the transition point to QED
-- TODO: PIC simulation of HHG beam interacting with matter
-
-Aside from this, electron bunches have been directly related to the scaling equations, not just overall energy absorption, attosecond bunch mechanism under ZVP framework has been discussed, X-ray harmonics generated and measured and GEMINI experiment planned.
-
-
-%TODO add a comment about the use of HHG as a heating source, highly efficient highly penetrating
-% TODO hyades (hmm no maybe PIC? but then cant do heating effect.. can use heaths code for tempeerature in smilei) sim of ORION hhg beam entering a plasma and heating vs ORION laser.
-
-
-
-% TODO add optimal HHG conditions somewhere
-
-% TODO compares as pulse brightness to gas as a source
+% TODO discuss CSE theory and modified thing and optimised scale length and show pic of pulse structure

@@ -699,70 +699,30 @@ Figure \ref{fig:orionexperimentresults} plots the experimental results with comp
 \end{figure}
 Experimental data points are consistent within their errors with one another, the theory and the simulation, albeit with large uncertainties with such a low shot number. Notably, for the CVD targetsl the SP1 beamline is on average almost 10 times brighter than the SP2 beamline despite the greater energy content and greater component of the laser pulse electric field directed into the plasma for the SP2 beamline while the single beamlet shot is over 5 times weaker in intensity compared to the mean intensity of the full SP2 beamline. These highly non-linear scalings are consistent with HHG theory but cannot be understood to be from bremsstrahlung emission. 
 
-Bremsstrahlung emission from steep density profile low-Z solid density targets irradiated by relativistic laser pulses remains an area of active research with experiments to explore this in the planning stages at the University of York. However, it is possible to derive approximate best-case scenario scalings of spectral intensity with incident energy. A plasma in equilibrium has a kinetic energy $E = 3/2 k_\mathrm{B}T$ \cite{chenIntroductionPlasmaPhysics2016}. Now, assuming the target can be treated as a radiating black body, the spectral radiated intensity increases most rapidly with temperature when $h\nu \ll k_\mathrm{B}T$ at which point the spectral radiance scales linearly with temperature \cite{zangwillGuidedConfinedWaves2012}. Thus, in the best case, one could expect a linear increase in the spectral intensity measured from the double beamlet compared to the single if that signal originated from bremsstrahlung emission. Note further that this scaling depends not on the incident intensity but only on the incident energy which is a well-constrained quantity on ORION.
+Bremsstrahlung emission from steep density profile low-Z solid density targets irradiated by relativistic laser pulses remains an area of active research with experiments to explore this in the planning stages at the University of York. However, it is possible to derive approximate best-case scenario scalings of spectral intensity with incident energy. A plasma in equilibrium has a kinetic energy $E = 3/2 k_\mathrm{B}T$ \cite{chenIntroductionPlasmaPhysics2016}. In the ROM regime, energy absoprtion does not depend on incident energy, thus the plasma temperature increases linearly with incident energy. Now, assuming the target can be treated as a radiating black body, the spectral radiated intensity increases most rapidly with temperature when $h\nu \ll k_\mathrm{B}T$ at which point the spectral radiance scales linearly with temperature \cite{zangwillGuidedConfinedWaves2012}. Thus, in the best case, one could expect a linear increase in the spectral intensity measured from the double beamlet compared to the single if that signal originated from bremsstrahlung emission. Note further that this scaling depends not on the incident intensity but only on the incident energy which is a well-constrained quantity on ORION.
 
 The above discussion relied on the assumptions of equilibrium and a black-body radiation spectrum. While this is valid for the long radiating period after the interaction, in much of this thesis, emphasis has been placed on the non-equilibrium state of the interaction itself. There are two species of relevance during this time: the hot electrons around the front surface directly heated by the laser pulse and prepulse, and the hot electrons that are reflected specularly and are responsible for SHHG. In \cite{zulickHighResolutionBremsstrahlung2013}, bremsstrahlung of these species is measured experimentally for a 30 fs laser pulse and $a_0$ = 2.8. As the populations of each of these species are so small, the peak contribution to the photon spectrum is many orders of magnitude smaller than that of the experimental signal and can therefore be neglected.
 
-Efficiency
-Magnification
-Total energy per Joule
-Result in context, add lasers plot here.
-
-Flying focus
+Applying hole boring theory, the measured intensity of the SP2 beamline implies an energy \qty{0.102 - 0.044 + 0.1733}{\mu J} per harmonic at 2.405 keV, corresponding to a total efficiency of \num{(2.04+3.47-0.86)e-10} into each harmonic at these photon energies. Applying these efficiencies and integrating over the spectrum \cite{gordienkoCoherentFocusingHigh2005}, at the new focal position the peak intensity is increased by a factor \num{1040+ 740 - 290}, corresponding to peak powers higher than any other light source globally at this time. Note that this dramatic magnification at focus is not unrealistic and is indeed consistent with the literature. Vincenti \textit{et al} demonstrated a 3 order of magnitude gain of 1000 for a 3 PW 20 fs system \cite{vincentiAchievingExtremeLight2019}. The longer duration of the pulse here leads to greater hole boring and therefore a correspondingly larger magnification factor. It is interesting that from Equation \ref{eq:orion-magnification}, for the ROM regime, the harmonics constitutes an unending series that is only terminated by the roll-off. Thus while simulations have demonstrated this gain of 1000 for a 3D simulation it is unlikely that it had the necessary resolution to resolve the full peak in intensity. Due to harmonic source size shrinkage and the roll-off, the efficiency of the SP1 beamline will be significantly lower and corresondingly the magnification also.
 
 
-Magnification = 20.072674842184274
-M SP2 = 1022.6686243613655
-
-
-Due to harmonic source size shrinkage and the roll-off, the efficiency of the SP1 beamline is very low.
-
-
-Note that that this dramatic magnification at focus is not unrealistic and is indeed consistent with the literature. Vicenti et al 2019 demonstrated a 3 order of magnitude gain of 1000 for a 3 PW 20 fs system. The longer duration of the pulse here leads to greater hole boring and therefore a correspondingly larger magnification factor.
-Note that the factor derived here is for spatial magnification only, it does not account for the additional temporal compression, however the 1D PIC simulations suggest that for this regime (ie ROM) we do not get extra intensity from this (Leontovich boundary conditions).
-Calculate the corresponding peak intensity.
-
-Stick to SP2 beamline.
-
-0.102 microJ per harmonic - 0.044 + 0.1733
-
-The SP1 beamline efficiency is lower due to the roll-off and the harmonic source size shrinkage
-
-Efficiency 
-2.043661294970399e-10
-plus 3.466922061995753e-10
-minus 8.627647263599505e-11
-
-Magnification = 1774.6373284921292
-Magnification = 1039.2824774016885
-Magnification = 746.5830067717158
-
-
-Spot size from data is 
-wl = 4.669182775447931e-06
-wLow = 5.331391232110277e-06
-w high = 3.718791008941786e-06
-
-
-
-Conservative estimate of power of focused beam since 1000 predictd for ORION paramaters. And there is also the temporal compression in the CSE regime due to the non-satisfactoion of Leontovich
-
-Also note that on the plot this is power averaged over the full pulse. The X-ray peak power, will be more like that power divided by the number of laser pulse cycles and then divide by the attosecond duration. Wowza.
+Flying focus discussion here.
 
 % Note that if you replace the spatial Gaussian with a sinc^2 profile with the same FWHM, they look almost identical to exponential. The spatial integral is approx 1.06 times larger thus minimal impact on the profile
 
+\section{Summary and discussion}
+This chapter has described in full the experimental methods and results of the recent ORION SHHG experiment. The X-ray harmonic intensities were measured using the OHREX spectrometer finding  To describe the results, the ROM model of SHHG was laid out, combining all pieces of the puzzle to reconstruct the measured intensities analytically. The experimental campaign was supported by PIC and hydrodynamic simulations of the main pulse and prepulse interactions respectively. PIC simulations agree with the analytical results for the ORION parameter space. No preplasma expansion was expected for the SP1 beamline and reasonable preplasma scale lengths for the SP2 beamline provided the addition of a single PM optic. Some discussion of plasma temperature was presented.
 
-
-\section{Summary}
-This chapter has described in full the experimental methods and results of the recent ORION experiment. The X-ray harmonic intensities were measured using the OHREX spectrometer. Finding X and X. To describe the results, the ROM model of SHHG was laid out, combining all pieces of the puzzle to reconstruct the measured intensities analytically. The experimental campaign was supported by PIC and hydrodynamic simulations of the main pulse and prepulse interactions respectively. PIC simulations agree with the analytical results for the ORION parameter space. No preplasma expansion was observed for the SP1 beamline and reasonable preplasma scale lengths for the SP2 beamline provided the use of a single PM optic. Some discussion of plasma temperature was provided.
-
-SUmmery of the X-ray harmonic beam produced: include efficiencies, include duration
-
-Finish off discussion of results - 30 mins
-Summarise findings of the chapter, including presentation of the result in context - 30 mins
-misc stuff to main body - 30 mins
-
-Tomorrow:  assess state of TODOs, check sims
+The SP2 result is plotted in context with other laser systems in Figure \ref{fig:lasersystems}.
+\begin{figure}
+	\centering
+	\includegraphics{figures/intro/laser_systems}
+	\caption[The ORION result in context.]{The ORION SP2 result in context with other high power laser systems. This is the only measurement to date of the absolute intensity of XHHG. Dashed lines indicate the power of the ORION SHHG beam and the SHHG beam that could be anticipated from the use of a sub-exawatt scale facility as will soon become available.}
+	\label{fig:lasersystems}
+\end{figure}
+The XHHG beam sits in the viscinity of betatron radiation from laser wakefield experiments. Betatron radiation, however, is typically on the order of a few femtoseconds in duration. The stated power of the XHHG beam is averaged over the entire laser pulse to enable comparison to the dashed line of ROM scaling. In reality the peak power of this X-ray radiation, from Figure \ref{fig:orionattosecondpulse}, is at most 30 as and the beam is broadband, corresponding to a peak power of at least \qty{2e10}{W.keV^{-1}}, this is comparable to the LCLS, the most power XFEL.
+% approx 140 cycles in SP2 laser pulse
+Figure \ref{fig:lasersystems} also indicates the power spectrum that could be obtained with a next-generation sub-etawatt facility as are being commisioned currently or could be produced via Raman Amplification \cite{trinesSimulationsEfficientRaman2011}. Simulations have suggested the Coherent Synchrotron Emission regime can be accessed for these laser pulse intensities up to the X-ray regime \cite{edwardsXRayEmissionEffectiveness2020}, hence the shallower scaling. Thus an entirely new parameter space becomes available both from the individual harmonics and for the conservative estimate of the intensity at the new focus. The figure is somewhat misleading with regard to the Schwinger Limit. This is for f/1 focusing. The RPM from an exawatt laser would have a must tighter focus and would access the Schwinger limit at the new focus. These exciting opportunities have contributed to the success of the recent proposal to study SHHG at GEMINI PW.
 
 % TODO I must redo the boosted section since I made a mistake there and rethink a bit about optimum theta.
 % TODO I must also at some point just state that a hat indicates a normalised vector.
