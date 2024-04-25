@@ -620,7 +620,9 @@ The ORION laser facility of AWE, Aldermaston is the UK's most powerful laser sys
 	\label{fig:oriondoublebeamletsnearfield}
 \end{figure}
 
-Laser contrast is a major concern for the interaction discussed in this thesis. There is always some spurious signal arriving before the main pulse of interest. In high-power laser systems, this \textit{prepulse} can be itself of ionising intensities, dramatically altering the initial conditions of the system. The ORION SP2 beamline temporal intensity envelope can be modelled as
+Laser contrast is a major concern for the interaction discussed in this thesis. There is always some spurious signal arriving before the main pulse of interest. In high-power laser systems, this \textit{prepulse} can be itself of ionising intensities, dramatically altering the initial conditions of the system. Generally, the prepulse preheats the plasma leading to expansion. This is catastrophic if one's aim is to interact a laser with a solid density plasma.
+
+The ORION SP2 beamline temporal intensity envelope can be modelled as
 \begin{equation}\label{eq:orion_SP2_temporal}
 	I_\mathrm{SP2} \sim (I_{0 \ \mathrm{p}}\sech(t/t_\mathrm{p})^2 + I_{0 \ \mathrm{pp}}e^{-(t/t_\mathrm{pp})^2} + I_{0 \ \mathrm{ps}}e^{-\mathrm{abs}(t)/t_\mathrm{ps}} + I_{0 \ \mathrm{ns}}e^{-(t/t_\mathrm{ns})^8}),
 \end{equation}
@@ -647,10 +649,9 @@ The SP1 temporal intensity profile is
 The second term arises from limitations in the harmonic separation system. The frequency doubling mechanism is not 100 \% efficient, \textit{i.e.} some of SP2 beamline remains and must be filtered out. The main pulse of the GEMINI beamlines is more appropriately modelled as a Gaussian.
 % TODO add a plot of the Gemini contrast
 % TODO return to this section once I have read ORION chapter and figured out how I am going to do contrast.
-\subsection{Laser contrast}
-% TODO In here add details about laser contrast and PMs
 
-% TODO: \textbf{INTRO CONCLUSION}
+
+A \ac{PM} is an effective and now standardised tool for the improvement of laser contrast. These single-use optics initially have an \ac{AR} coating of reflectivity $R_1$. As the incident laser fluence passes the damage threshold of the optic, reflecting plasma forms on the front surface. The optic is `switched on' with a reflectivity $R_2$. The \ac{PM} therefore improves the contrast by a factor $R_2/R_1$. There is a balancing act in choosing the peak intensity on the \ac{PM}. Too early and the PM will switch on before the arrival of the main pulse. Too low and there is not enough plasma at the surface at the arrival of the main pulse and $R_2$ is lowered. A peak intensity around \qty{1e16}{W.cm^{-2}} is best \cite{caiTimeresolvedMeasurementsReflectivity2009}. PMs also act as a low-pass spatial filter, improving the quality of the focal spot on target \cite{doumyCompleteCharacterizationPlasma2004}. The use of PMs before the main target ensure the required conditions for a relativistic laser pulse to produce a \ac{RPM}, the main focus of this thesis.
 
 \section{Summary}
 This chapter has introduced the field of HED physics. The basic equations that govern the system have been supplied and some simple derivations performed to describe the dynamics of particles in this regime. Details have been given of both suitable simulation codes and laser systems that enable the modelling and generation of the interaction of interest in this thesis. It is now time to present that interaction.
