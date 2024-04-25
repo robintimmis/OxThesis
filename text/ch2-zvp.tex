@@ -19,7 +19,7 @@ Here is presented one model for the interaction between a relativistic laser pul
 
 An explanation for the absorption of laser energy into dense plasmas was first suggested by Wilks and Kruer \cite{wilksAbsorptionUltraIntenseLaser1992}, a ponderomotive mechanism where plasma electrons are heated directly by the laser pulse via the $\mathbf{J}\times \mathbf{B}$ force. This thesis is interested in the so-called `post-ponderomotive' regime where the frequency of relativistic plasma oscillations ($\omega_\mathrm{p} \sim \sqrt{S}$) are greater than the $\mathbf{J}\times \mathbf{B}$ induced plasma electron oscillations at $2\omega_\mathrm{L}$. The plasma electrons' response is then sufficiently rapid to compensate for the ponderomotive pressure of the laser pulse with the formation of electrostatic fields between electrons and ions and so respond adiabatically to the applied $\mathbf{J}\times \mathbf{B}$ force. Hence, plasma electrons cannot be heated directly by the laser pulse. Interestingly, this condition suggests a criterion for the \ac{ZVP} regime, $S > 4$, slightly more constraining than $S>1$ as is typically stated for the \ac{ZVP} regime \cite{savinModellingLaserPlasmaInteractions2019}. The bulk plasma must have $S>1$ to prevent relativistic transparency and so ensure a laser-surface interaction. Then the ponderomotive pressure of the laser will typically compress the front surface to densities such that the overdensity condition is satisfied, provided the target is of sufficient thickness. Note that neglecting the pre-adiabatic formation phase requires a sufficiently steep density gradient around the relativistic critical density surface (where $S=1$) to shift the main interaction to a region where this condition on the overdensity is satisfied. Preplasma formation and scale length will be discussed in great detail in the later chapters. For now, assume the technology exists to sufficiently control this phenomenon. 
 
-Provided all conditions are met, the ponderomotive pressure of the laser pulse compresses electrons at the front surface of the plasma and so shifts the laser-plasma surface interaction to plasma densities well beyond the relativistic critical density, leaving in its wake a positive space charge of ions. This electron-ion charge separation leads to the formation of a \textit{pseudo-capacitor} electrostatic field. Having entered a regime of adiabaticity, the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure of the laser pulse and the Coulomb potential of the pseudocapacitor field. Thus is formed a high-density and longitudinally thin electron bunch (sometimes referred to as an electron sheath in the literature \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011}) at the plasma surface.
+Provided all conditions are met, the ponderomotive pressure of the laser pulse compresses electrons at the front surface of the plasma and so shifts the laser-plasma surface interaction to plasma densities well beyond the relativistic critical density, leaving in its wake a positive space charge of ions. This electron-ion charge separation leads to the formation of a \textit{pseudocapacitor} electrostatic field. Having entered a regime of adiabaticity, the plasma skin layer is confined within a potential well consisting of the ponderomotive pressure of the laser pulse and the Coulomb potential of the pseudocapacitor field. Thus is formed a high-density and longitudinally thin electron bunch (sometimes referred to as an electron sheath in the literature \cite{gonoskovUltrarelativisticNanoplasmonicsRoute2011}) at the plasma surface.
 
 To understand this system, consider now a relativistic linearly polarised laser pulse obliquely incident, at an angle of incidence $\theta$, on a semi-infinite plasma, existing for $x\ge 0$ as in Figure \ref{fig:zvpforcesppol}.
 
@@ -33,7 +33,7 @@ The Hamiltonian of a single electron confined within the potential well \cite{go
 \begin{equation}\label{eq:hamiltonian_general}
 	\mathcal{H} = c\sqrt{m^2_\mathrm{e}c^2 + |\mathbf{p}|^2} - e\Phi.
 \end{equation}
-Here, the second term of Equation \ref{eq:hamiltonian_general} describes the contribution to the electron's energy from the electrostatic potential, $\Phi$, of the pseudo-capacitor. The first term is the electron energy, $U$, extracted from the invariant of the relativistic 4-momentum of the electron, $\mathbf{P^\mu} = (U/c, \mathbf{p})$,
+Here, the second term of Equation \ref{eq:hamiltonian_general} describes the contribution to the electron's energy from the electrostatic potential, $\Phi$, of the pseudocapacitor. The first term is the electron energy, $U$, extracted from the invariant of the relativistic 4-momentum of the electron, $\mathbf{P^\mu} = (U/c, \mathbf{p})$,
 \begin{equation}\label{eq:zvp-energy_invariant}
 	\mathbf{P_\mu  P^\mu} = \frac{U^2}{c^2} - |\mathbf{p}|^2 = m^2_\mathrm{e}c^2.
 \end{equation}
@@ -45,7 +45,7 @@ Explicitly, the Hamiltonian can be written as
 \begin{equation}\label{eq:hamiltonian_specific}
 	\mathcal{H} = c\sqrt{m^2_ec^2 + p^2_\mathrm{prop} + e^2A^2} - e\Phi.
 \end{equation}
-Equation \ref{eq:hamiltonian_specific} describes a potential well that constrains the electrons: on one side is a longitudinal space charge $- e\Phi$ that prevents further propagation into the target while on the other, a term associated with the vector potential of the laser pulse, $ e^2A^2$. It is clear that should the vector potential pass through zero\footnote{Note that in writing $p_\mathrm{pol} = eA$ one has determined the gauge in which the zero becomes a defined quantity}, one of the potential well walls is totally suppressed, enabling electrons in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeros for this violent reconstruction of the plasma surface led Baeva to coin the term `Zero Vector Potential' mechanism to describe this process \cite{baevaZeroVectorPotential2011}. Indeed, while elementary electromagnetism tells us a laser pulse will exponentially decay within a skin layer of a plasma without passing through zero, Baeva \textit{et al} \cite{baevaZeroVectorPotential2011} demonstrated in \ac{PIC} simulations that in this non-linear regime, zeros do exist and do propagate through the skin layer. The explanation relies on a Doppler shift in the laser field due to the relativistic motion of the ablating plasma electrons, and a mathematical formalism of this process proceeds as follows.
+Equation \ref{eq:hamiltonian_specific} describes a potential well that constrains the electrons: on one side is a longitudinal space charge $- e\Phi$ that prevents further propagation into the target while on the other, a term associated with the vector potential of the laser pulse, $ e^2A^2$. It is clear that should the vector potential pass through zero\footnote{Note that in writing $p_\mathrm{pol} = eA$ one has determined the gauge in which the zero becomes a defined quantity}, one of the potential well walls is totally suppressed, enabling electrons in the skin layer to escape the plasma, breaking adiabaticity. The necessity of vector potential zeroes for this violent reconstruction of the plasma surface led Baeva to coin the term `Zero Vector Potential' mechanism to describe this process \cite{baevaZeroVectorPotential2011}. Indeed, while elementary electromagnetism tells us a laser pulse will exponentially decay within a skin layer of a plasma without passing through zero, Baeva \textit{et al} \cite{baevaZeroVectorPotential2011} demonstrated in \ac{PIC} simulations that in this non-linear regime, zeroes do exist and do propagate through the skin layer. The explanation relies on a Doppler shift in the laser field due to the relativistic motion of the ablating plasma electrons, and a mathematical formalism of this process proceeds as follows.
 
 %TODO classical interaction with a plasma and skin depth
 % TODO: \textbf{**Must also discuss the impact of relativity in creating the observed phenomena, probably at the energy scaling section.**}
@@ -76,7 +76,7 @@ where the primed symbols indicate that these quantities are measured in the rest
 
 % TODO PIC simulation of surface ripples?
 
-While previous demonstrations of the existence of vector potential zeros assumed that the ablation occurs normally to the plasma surface, it is necessary to confirm that zeros are still predicted for specular ablation. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in Figure \ref{fig:zvp_ablatingfront}.
+While previous demonstrations of the existence of vector potential zeroes assumed that the ablation occurs normally to the plasma surface, it is necessary to confirm that zeroes are still predicted for specular ablation. Consider a p-polarised laser pulse confined to the $x$-$y$ plane incident with an angle of incidence $\theta$ on an ablating overdense plasma expanding with velocity $-v_f\hat{\mathbf{x}}$ in the lab frame, as in Figure \ref{fig:zvp_ablatingfront}.
 
 \begin{figure}
 	\centering
@@ -126,7 +126,7 @@ where
 \begin{equation}
 	\delta = \frac{\delta'}{\gamma}.
 \end{equation}
-The oscillatory term in Equation \ref{eq:zvp_labAfull} demonstrates the propagation of vector potential zeros within the plasma target. From the structure of this term, it would appear that these zeros are expelled from the plasma along the specular direction at a speed
+The oscillatory term in Equation \ref{eq:zvp_labAfull} demonstrates the propagation of vector potential zeroes within the plasma target. From the structure of this term, it would appear that these zeroes are expelled from the plasma along the specular direction at a speed
 \begin{equation}\label{eq:zvp-zero_v}
 	v_\phi = \frac{\omega_L}{k} = \frac{c}{\beta} = -\frac{c^2}{v_\mathrm{f}}.
 \end{equation}
@@ -145,7 +145,7 @@ Consider again the semi-infinite block of plasma presented in Figure \ref{fig:in
 \begin{equation}
 	\mathbf{P}_\mathrm{L} = \epsilon_0 E^2_\mathrm{L} \hat{\mathbf{x}} = \epsilon_0 \left(\frac{a_0\omega_\mathrm{L}m_\mathrm{e}c}{e}\right)^2 \hat{\mathbf{x}}
 \end{equation}
-is equal and opposite to the pressure exerted by the pseudo-capacitor field,
+is equal and opposite to the pressure exerted by the pseudocapacitor field,
 \begin{equation}
 	\mathbf{P}_\mathrm{C} = \frac{QE_\mathrm{C}}{\sigma} \hat{\mathbf{x}}= -\frac{(en_\mathrm{e}\Delta x)^2}{\epsilon_0}\hat{\mathbf{x}}
 \end{equation} 
@@ -157,7 +157,7 @@ where $k$ is the wavevector of the laser pulse. Correspondingly,
 \begin{equation}\label{eq:zvp_E}
 	E_\mathrm{C} = \frac{en_\mathrm{e}}{\epsilon_0}\Delta x = \frac{\omega_\mathrm{L}cm_\mathrm{e}a_0}{e} = E_\mathrm{L}.
 \end{equation}
-Applying the results of Equations \ref{eq:zvp_dx} and \ref{eq:zvp_E}, when the ponderomotive pressure vanishes and the electron bunch is launched across the pseudo-capacitor, the relativistic kinetic energy gained by a single electron is
+Applying the results of Equations \ref{eq:zvp_dx} and \ref{eq:zvp_E}, when the ponderomotive pressure vanishes and the electron bunch is launched across the pseudocapacitor, the relativistic kinetic energy gained by a single electron is
 \begin{equation}\label{eq:zvp_T}
 	T =  \int \mathbf{F}\cdot\mathrm{d}\mathbf{s} = \int^0_{\Delta x} -eE_\mathrm{C}dx = \int^0_{\Delta x}-\frac{en_\mathrm{e}x}{\epsilon_0}dx = \frac{1}{2}m_\mathrm{e}c^2\frac{a^2_0}{\bar{n}_\mathrm{e}}
 \end{equation}
@@ -177,7 +177,7 @@ It is now interesting to compare Equation \ref{eq:zvp_U} to the laser energy dep
 \begin{equation}
 	U_\mathrm{ZVP} = \frac{1}{2\omega_\mathrm{L} S}\sigma c \epsilon_0 E^2_\mathrm{L}.
 \end{equation}
-The expressions for energies in Equations \ref{eq:zvp_T} and \ref{eq:zvp_U} require the electron bunch to fully discharge the pseudo-capacitor before interaction with the subsequent laser pulse peak. Since the electron bunch travels at speed $\approx c$, the peak displacement (and thus the pseudo-capacitor width) must satisfy
+The expressions for energies in Equations \ref{eq:zvp_T} and \ref{eq:zvp_U} require the electron bunch to fully discharge the pseudocapacitor before interaction with the subsequent laser pulse peak. Since the electron bunch travels at speed $\approx c$, the peak displacement (and thus the pseudocapacitor width) must satisfy
 \begin{equation}\label{eq:zvp-deltax_condition}
 	\Delta x \le \frac{\lambda}{8}.
 \end{equation}
@@ -259,14 +259,14 @@ As anticipated, oblique incidence can increase laser absorption efficiency for h
 \subsection{Defining characteristics of the ZVP mechanism}\label{sec:zvp-characteristics}
 In her original paper on the ZVP mechanism, T. Baeva \textit{et al} \cite{baevaZeroVectorPotential2011} outlined 6 defining characteristics of the \ac{ZVP} mechanism, namely,
 \begin{enumerate}
-	\item The existence of vector potential zeros moving through the skin layer in the laboratory frame;
+	\item The existence of vector potential zeroes moving through the skin layer in the laboratory frame;
 	\item The existence of zeroes in the incident laser pulse vector potential required for the formation of fast electron bunches;
 	\item The generation of fast electron bunches with ultra-short temporal duration;
 	\item That such fast electron bunches follow the energy scalings of equations \ref{eq:zvp_T} and total energy \ref{eq:zvp_U};
 	\item Injection of the fast electron bunches is along the propagation axis of the laser pulse;
 	\item There must be an intrinsic link between the fast electron bunches and coherent \ac{HHG};
 \end{enumerate}
-with the moving zeros within the skin layer being the key delineator between this post-ponderomotive regime of laser pulse energy absorption and other proposed mechanisms. While such observational requirements are far beyond the reaches of current experimental capacities, numerical simulations in both 1- \cite{baevaZeroVectorPotential2011} and 2-dimensions \cite{savinAttosecondscaleAbsorptionExtreme2017} have confirmed the above points. Now is presented the first \ac{3D} simulations attempting to demonstrate these criteria.
+with the moving zeroes within the skin layer being the key delineator between this post-ponderomotive regime of laser pulse energy absorption and other proposed mechanisms. While such observational requirements are far beyond the reaches of current experimental capacities, numerical simulations in both 1- \cite{baevaZeroVectorPotential2011} and 2-dimensions \cite{savinAttosecondscaleAbsorptionExtreme2017} have confirmed the above points. Now is presented the first \ac{3D} simulations attempting to demonstrate these criteria.
 
 \section{Numerical simulations of the ZVP mechanism}
 \subsection{The ZVP mechanism in 3D3V}\label{sec:zvp-3Dsimulations}
@@ -353,9 +353,9 @@ Further simulation results a presented in Figure \ref{fig:zvp3ddynamics}.
 	\caption[Electron dynamics in 3D PIC simulation for both linear and circularly polarised relativistic laser pulses.]{Electron dynamics in a 3D PIC simulation. a) and b) Electron energy density for linearly and circularly polarised laser pulses respectively. c) and d) Electron longitudinal momentum for linearly and circularly polarised laser pulses respectively.  e) Electron density at the plasma surface streaked in time. f) Electron energy density at the plasma surface streaked in time.}
 	\label{fig:zvp3ddynamics}
 \end{figure}
-In Figures \ref{fig:zvp3ddynamics}a)-d), comparisons are made of the electron energy distributions for simulations with zeros present in the vector potential (linearly polarised) and without (circularly polarised). Evidently, zeroes are required for the formation of high energy, short duration attosecond bunches. From Figure \ref{fig:zvp3ddynamics}a) it is clear that electron bunches are injected, propagating through the plasma bulk in the laser propagation direction. Figure \ref{fig:zvp3ddynamics}c) demonstrates the quasi-monoenergeticity of the high-energy electron bunches as initially identified in 1D by Baeva. Although the shape in the phase space is more complex in 3D, the attosecond duration at a given energy is retained. Figures \ref{fig:zvp3ddynamics}e) and f) describe the surface dynamics in the linearly polarised case. One can observe the high-density bunches on the front surface with the peak in energy density occuring after acceleration across the pseudocapacitor.
+In Figures \ref{fig:zvp3ddynamics}a)-d), comparisons are made of the electron energy distributions for simulations with zeroes present in the vector potential (linearly polarised) and without (circularly polarised). Evidently, zeroes are required for the formation of high energy, short duration attosecond bunches. From Figure \ref{fig:zvp3ddynamics}a) it is clear that electron bunches are injected, propagating through the plasma bulk in the laser propagation direction. Figure \ref{fig:zvp3ddynamics}c) demonstrates the quasi-monoenergeticity of the high-energy electron bunches as initially identified in 1D by Baeva. Although the shape in the phase space is more complex in 3D, the attosecond duration at a given energy is retained. Figures \ref{fig:zvp3ddynamics}e) and f) describe the surface dynamics in the linearly polarised case. One can observe the high-density bunches on the front surface with the peak in energy density occuring after acceleration across the pseudocapacitor.
 
-Finally, Figure \ref{fig:zvphhgbeamfourier} compares the spectra of the reflected light in the presence and absence of zeros of the vector potential.
+Finally, Figure \ref{fig:zvphhgbeamfourier} compares the spectra of the reflected light in the presence and absence of zeroes of the vector potential.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/zvp/zvp_hhg_beam_fourier}
