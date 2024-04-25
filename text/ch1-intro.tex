@@ -64,7 +64,7 @@ The electromagnetic fields can be obtained from the scalar, $\phi$, and vector, 
 	\mathbf{B} = \nabla \times \mathbf{A}.
 \end{equation}
 
-\subsubsection{The Vlasov-Maxwell system of equations}
+\subsubsection{The Vlasov-Maxwell system of equations}\label{sec:ch1-vlasov}
 A collisionless and fully ionised plasma is fully described in the kinetic description by the Vlasov-Maxwell system of equations \cite{derouillatSmileiCollaborativeOpensource2018}. Each plasma species, $s$, of particles with mass $m_s$ and charge $q_s$ is represented by its distribution function $f_s(t,\mathbf{x},\mathbf{p})$ at time $t$, position $\mathbf{x}$ and momentum $\mathbf{p} = m_s \gamma \mathbf{v}$. The distribution satisfies the Vlasov equation, that is,
 \begin{equation}\label{eq:intro-vlasov}
 	(\partial_t + \frac{\mathbf{p}}{m_s\gamma} \cdot \nabla + \mathbf{F}_\mathrm{L} \cdot \nabla_\mathbf{p})f_s = 0,
@@ -72,11 +72,11 @@ A collisionless and fully ionised plasma is fully described in the kinetic descr
 where $\mathbf{F}_\mathrm{L}$ is the Lorentz force given in equation \ref{eq:intro-Lorentz_force}. The electric $\mathbf{E}(t,\mathbf{x})$ and magnetic $\mathbf{B}(t,\mathbf{x})$ fields that generate the force must satisfy Maxwell's Equations (Equations \ref{eq:intro-maxwell}).
 
 This self-consistent system of equations describes the dynamics of plasma particles within electromagnetic fields. The particles modify the fields via their charge and current densities,
-\begin{equation}\ref{eq:intro-rho}
+\begin{equation}\label{eq:intro-rho}
 	\rho(t,\mathbf{x}) = \sum_s q_s \int \mathrm{d}^3pf_s(t,\mathbf{x},\mathbf{p}),
 \end{equation}
 and 
-\begin{equation}\ref{eq:intro-J}
+\begin{equation}\label{eq:intro-J}
 	\mathbf{J}(t,\mathbf{x}) = \sum_s q_s \int d^3\mathrm{p}\mathbf{v}f_s(t,\mathbf{x},\mathbf{p}),
 \end{equation}
 respectively.
@@ -610,7 +610,7 @@ Two experiments are discussed in this thesis, one on ORION, and one planned on G
 	\caption{\textbf{The ORION and GEMINI petawatt class short pulse beamlines for comparison.} The GEMINI North (N) and South (S) beamlines are equivalent.}
 	\label{tab:laser_params}
 \end{table}
-The GEMINI-PW laser facility of the \ac{CLF} at Harwell Campus, Oxfordshire is a petawatt class facility consisting of two 30 fs beams, \ac{N} and \ac{S}, each delivering a maximum focused intensity of \qty{2e21}{W.cm^{-2}} at a repetition rate of 0.05 Hz. The commissioning of such high-frequency facilities has ushered in a paradigm shift in high-power laser physics experimentation with the entry of statistically significant results.
+The GEMINI-PW laser facility of the \ac{CLF} at Harwell Campus, Oxfordshire is a petawatt class facility consisting of two 30 fs beams, North and South, each delivering a maximum focused intensity of \qty{2e21}{W.cm^{-2}} at a repetition rate of 0.05 Hz. The commissioning of such high-frequency facilities has ushered in a paradigm shift in high-power laser physics experimentation with the entry of statistically significant results.
 
 The ORION laser facility of AWE, Aldermaston is the UK's most powerful laser system with two short pulse beamlines, SP1 and SP2 and ten `long pulse' beams. The ORION SP1 beamline is produced by passing the SP2 beamline through two frequency doubling crystals creating two equivalent beamlets that are then superimposed at the target. The double beamlet structure at the near-field is imaged in Figure \ref{fig:oriondoublebeamletsnearfield}.
 \begin{figure}
@@ -626,7 +626,7 @@ The ORION SP2 beamline temporal intensity envelope can be modelled as
 \begin{equation}\label{eq:orion_SP2_temporal}
 	I_\mathrm{SP2} \sim (I_{0 \ \mathrm{p}}\sech(t/t_\mathrm{p})^2 + I_{0 \ \mathrm{pp}}e^{-(t/t_\mathrm{pp})^2} + I_{0 \ \mathrm{ps}}e^{-\mathrm{abs}(t)/t_\mathrm{ps}} + I_{0 \ \mathrm{ns}}e^{-(t/t_\mathrm{ns})^8}),
 \end{equation}
-where the constants are detailed in Table \ref{tab:orion_pedestals} \cite{dhillierModelORIONContrast2022}.
+where the constants are detailed in Table \ref{tab:orion_pedestals} \cite{dhillierModelORIONContrast22}.
 \begin{table}[]
 	\centering
 	\begin{tabular}{lcc}
