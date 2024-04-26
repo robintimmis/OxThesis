@@ -2,7 +2,6 @@
 
 \minitoc
 
-% TODO 
 %{A plan}
 
 
@@ -37,8 +36,6 @@ Independently, the field of attosecond physics has flourished \cite{krauszAttose
 At the intersection of HED and attosecond physics, there is another course for the generation of harmonics with the potential to produce brighter and shorter pulses than those of the laser-gas interaction. This thesis concerns itself with that interaction, that of a high-power short-pulse laser incident on a flat solid target. Through this \ac{SHHG}, state-of-the-art 10 PW laser facilities such as ELI-np \cite{galesExtremeLightInfrastructure2018} can produce electron bunches and light pulses of exceptional charge and brightness, and of attosecond duration, thus uncovering new avenues for attosecond resolution diagnostics and for probing vacuum non-linearities. 
 
 Seemingly counter-intuitively, as the laser power increases, via relativistic effects and for particular initial conditions, greater coherency in electron dynamics can be observed and signals are amplified. Before delving into this fascinating phenomenon, the remainder of this chapter provides some of the relevant background information. Chapter \ref{ch:2-zvp} introduces the \ac{ZVP} model of attosecond absorption to describe this laser-solid interaction. Chapter \ref{ch:3-orion} focuses instead on the reflected radiation and its high harmonic content, specifically with regard to the measurement of X-ray harmonics on the March 2023 ORION experiment. This chapter accessed a moderately different regime to that of \ac{ZVP}. Chapter \ref{ch:4-gemini} brings together both absorption and reflection in the ZVP regime, detailing the upcoming GEMINI PW experiment. Finally, Chapter \ref{ch:5-summary} summarises the body of work covered by this thesis and discusses potential future work.
-
-% TODO add an extra line on computing power
 
 \section{Electromagnetism fundamentals}
 The spatiotemporal propagation of electric $\mathbf{E}(t,\mathbf{x})$ and magnetic $\mathbf{B}(t,\mathbf{x})$ fields must satisfy Maxwell's equations \cite{chenIntroductionPlasmaPhysics2016}
@@ -85,8 +82,6 @@ respectively.
 
 \section{\label{sec:plasma_def}The definition of a classical plasma}
 As outlined in F. Chen's definitive textbook `Introduction to Plasma Physics and Controlled Fusion' \cite{chenIntroductionPlasmaPhysics2016}, a plasma must fulfil three criteria, namely,
-% TODO make a note that in a quantum plasma, one does not want lots of particles in the Debye sphere
-
 \begin{enumerate}
 	\item Ionisation: a plasma must consist of both charged and neutral particles. Of course, this alone cannot define a plasma, any gas will contain some degree of ionisation. Note, with reference to figure \ref{fig:intro_lasersystems} \cite{umstadterRelativisticLaserPlasma2003}, that upon incidence a modern high-power laser system will instantaneously fully ionise a target.
 	\item Quasineutrality: while locally there can be (often extreme) electromagnetic forces and charge concentrations at work, over the length scales of the plasma, such forces are screened out and the plasma bulk remains net neutral in charge.
@@ -131,6 +126,7 @@ where, $N_\mathrm{D}$ is the \textit{plasma parameter}. Note that, as discussed 
 \begin{equation}\label{eq:plasma_parameter_condition}
 	N_\mathrm{D} \ggg 1.
 \end{equation}
+Quite the reverse is necessary for the creation of a quantum plasma.
 
 \subsection{\label{sec:plasma_frequency}Collisionality and the plasma frequency}
 Collective behaviour depends not only on the ability for large numbers of particles to interact via electromagnetic forces but also that these forces dominate over collisions in describing particle trajectories. Taking $\omega$ as the typical frequency of plasma oscillations and $\tau$ as the average time between collisions, for a plasma (as opposed to a gas)
@@ -162,8 +158,7 @@ Equation \ref{eq:intro_sho} clearly describes a simple harmonic oscillator with 
 \begin{equation}
 	\omega_\mathrm{p} = \sqrt{\frac{e^2n_\mathrm{e}}{m_\mathrm{e} \epsilon_0}}.
 \end{equation}
-
-% TODO Scheck's notes cover that the collisionality condition is always satisfied for a classical plasma (Archie Bott to send the notes)
+Interestingly, the collisionality condition is always satisfied for a classical Maxwellian plasma.
 
 \section{The Lawson-Woodward theorem}\label{sec:intro-lawson_woodward}
 The Lawson-Woodward theorem states that there can be no net electron energy gain from laser fields \cite{esareyPhysicsLaserdrivenPlasmabased2009}, quite at odds with one of the primary aspects of this thesis, that is, the acceleration of electrons. There are, however, several conditions that are frequently met, namely,
@@ -278,7 +273,7 @@ Four-vectors relevant to this thesis are listed in Table \ref{tab:intro-four-vec
 	\end{center}
 \end{table}
 Transformations of electromagnetic fields under reference frame boosts are given in Appendix \ref{sec:app_lorentzEM}. Maxwell's equations are Lorentz covariant.
-% TODO ensure all mentions of energy use U for bulk and T for individual
+% TODO ~ ensure all mentions of energy use U for bulk and T for individual
 
 Focusing now on the 4-potential $\mathbf{A}^\mu$ and choosing the Lorenz gauge,
 \begin{equation}
@@ -294,7 +289,7 @@ Equation \ref{eq:intro-wave_equation} can be solved to yield
 \end{equation}
 where $t_\mathrm{a} = t- |\mathbf{x}-\mathbf{x}'|/c$ is the advanced time. Hence, electromagnetic fields radiated from charged particles in motion can be calculated\footnote{Or even, as is performed in the full technical derivation relevant for the work of Chapter \ref{ch:3-orion}, electromagnetic fields can be described in terms of the future charge motions they will incite \cite{baevaHighHarmonicGeneration2008}.}.
 
-% TODO I think this is a good spot for the relativistic Larmor frequency
+% TODO ~ I think this is a good spot for the relativistic Larmor frequency
 
 \subsection{Ultra-relativistic similarity theory}
 Consider a relativistically intense laser pulse normally incident on a collisionless plasma as in Figure \ref{fig:introplasmafrequency}. Again neglect ion motion. The electron distribution is fully described by the Vlasov equation (Equation \ref{eq:intro-vlasov}) with the self-consistent electric and magnetic fields satisfying Maxwell's equations (Equations \ref{eq:intro-maxwell}). Suppose the incident laser pulse has an initial vector potential 
@@ -359,7 +354,7 @@ and hence the system is described by the Lagrangian \cite{goldsteinClassicalMech
 \end{equation}
 The generalised momentum corresponding to coordinate $x_j$ is
 \begin{equation}
-	p_{j,x} = \frac{\partial L}{\partial \dot{x}_j} = \frac{m_j\dot{x}_j }{\gamma_j}+ e_jA_x,
+	p_{j,x} = \frac{\partial \mathcal{L} }{\partial \dot{x}_j} = \frac{m_j\dot{x}_j }{\gamma_j}+ e_jA_x,
 \end{equation}
 describing both the linear mechanical momentum and the momentum of the electromagnetic field. Via Noether's theorem, if $L$ is independent of $x_j$, \textit{i.e.} spatially homogeneous along $x$ for particle $j$, then 
 \begin{equation}\label{eq:intro-transverse_momentum_differential_equation}
@@ -367,7 +362,7 @@ describing both the linear mechanical momentum and the momentum of the electroma
 \end{equation}
 since
 \begin{equation}
-	\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial \dot{x}_j}\right) = \frac{\partial L}{\partial x_j}.
+	\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial \mathcal{L} }{\partial \dot{x}_j}\right) = \frac{\partial L}{\partial x_j}.
 \end{equation}
 
 Taking the Lorenz gauge, consider a linearly polarised Gaussian laser pulse, with an axis of polarisation along $x$ incident on a solid target at rest. Then $A_x$ is approximately constant along $x$ near the beam centre\footnote{Constant relative to the scale of typical electron trajectories in such an interaction.}. Integrating Equation \ref{eq:intro-transverse_momentum_differential_equation}, fully constraining the gauge by setting the potential to zero initially, and noting that there is no linear momentum at the target, the generalised transverse momentum conservation equation for an electron in the laser field is
@@ -375,12 +370,10 @@ Taking the Lorenz gauge, consider a linearly polarised Gaussian laser pulse, wit
 	p_\mathrm{T} = eA,
 \end{equation}
 where $p_\mathrm{T}$ is the electron momentum along the polarisation axis of the laser pulse and $A$ is the laser pulse 3-vector potential amplitude. As a sanity check, this expression complies with the ultra-relativistic similarity result of Equation \ref{eq:intro-p_similarity}.
-% TODO note that setting the boundary conditions is the final requirement to fix the gauge in the Lorenz gauge formalism.
 
 Note that this is only valid provided the electron does not radiate along the direction of polarisation as discussed by Sokolov \textit{et al} \cite{sokolovDynamicsEmittingElectrons2009}. The implications of \textit{Radiation Reaction }are discussed in the following section.
 
 \section{QED effects}
-% TODO cite Schwinger limit
 Next-generation laser facilities will enable the testing of decades-old theoretical predictions of \ac{SF-QED}. Already Fedeli \textit{et al} have shown in simulations that current PW-class laser facilities can access this regime using an all-optical set-up based on laser-solid surface interactions \cite{fedeliProbingStrongfieldQED2020}. The Schwinger Limit $E_\mathrm{S} = \qty{1.32e18}{V.m^{-1}}$ is the field intensity at which the vacuum non-linearity can produce real particles. If by some means an electron can be directed towards a plane electromagnetic wave, by consideration of the Lorentz transformations of electromagnetic fields (equations \ref{eq:app-maxwell_transformation}), it is possible that provided the electron is sufficiently relativistic, in its own reference frame it will `see' electromagnetic fields intense enough to access such vacuum non-linearities. The first two frontiers of SF-QED that will be accessed are Radiation Reaction and multi-photon Breit-Wheeler electron pair production. Brief introductions to these phenomena are now presented.
 
 \subsection{High-energy photon emission and radiation reaction}
@@ -410,8 +403,6 @@ Multi-photon Breit-Wheeler pair production, also known as non-linear Breit-Wheel
 \end{equation}
 The strength of the effect is dependent on the Lorentz invariant photon quantum parameter, Equation \ref{eq:intro-photonchi}. In a constant electric field, the rate of pair production increases rapidly up to $\chi_\gamma \approx 10$ at which point it saturates and slowly reduces.
 
-% TODO \textbf{Perhaps include Feynmann diagrams, see what Savin did.}
-
 \section{Simulating the interaction}
 Modelling laser-plasma interactions is a notoriously challenging endeavour. Due to the complexity of the many-bodied systems involved (a fully ionised centimetre cubed block of plastic contains on the order of $10^23$ particles) and the stochasticity of particle motion, it is frequently impossible to construct models \textit{ab initio}. Instead, hydrodynamic simulation codes such as HYADES \cite{larsenHYADESPlasmaHydrodynamics1994} and FLASH \cite{fryxellFLASHAdaptiveMesh2000} and Particle-In-Cell simulation codes such as Smilei \cite{derouillatSmileiCollaborativeOpensource2018}, Osiris \cite{fonsecaOSIRISThreeDimensionalFully2002} and EPOCH \cite{bennett2017users} are used to construct phenomenological models and to direct experimentation. 
 
@@ -439,7 +430,7 @@ After particle and field initialisation, fields are interpolated at particle pos
 	\caption[A representation of the staggered Yee grid.]{\textbf{A representation of the staggered 3D Yee grid.} For the cell at $(i\Delta x, j\Delta y, k\Delta z)$ for spatial centring of the curl operations, including the locations where all system properties are defined.}
 	\label{fig:introyeegrid}
 \end{figure}
-with electric fields defined at integer time steps and magnetic fields at half-integer time steps.
+with electric fields defined at integer time steps and magnetic fields at half-integer time steps. PIC codes can function in one-, two- and three-dimension spatially but always with three-dimensions in velocity.
 
 \subsubsection{Smilei}
 Smilei (for Simulating Matter Irradiated by Light at Extreme Intensities) is a modern, collaborative, massively parallel, fully relativistic and open source plasma physics PIC code and the major workhorse for this thesis\footnote{At points benchmarks against the EPOCH and Osiris PIC codes were performed.}. 
@@ -590,7 +581,7 @@ HYADES is a 1D three fluid (electrons, ions and radiation) radiative hydrodynami
 
 The reduction of dimensionality achieved through this approximation dramatically reduces the computational cost of the simulation. However, much of this thesis relies on the precise velocity distribution of particles. Naturally, such a code cannot model these phenomena and the primary tool is the PIC code.
 
-% TODO There are some additional equations on HYADES in that 1994 paper that might be useful to include
+% There are some additional equations on HYADES in that 1994 paper that might be useful to include
 
 \section{Generating the interaction}
 Two experiments are discussed in this thesis, one on ORION, and one planned on GEMINI. Their typical beam parameters are presented in Table \ref{tab:laser_params}.
@@ -643,17 +634,14 @@ where the constants are detailed in Table \ref{tab:orion_pedestals} \cite{dhilli
 	\label{tab:orion_pedestals}
 \end{table}
 The picosecond pump residual arises from parametric fluorescence in the ps OPA, the picosecond pedestal from scatter in the stretchers and noise on the OPA pump laser and the nanosecond pedestal from parametric fluorescence from the nanosecond OPAs. The `long' duration of the prepulse precludes the use of PIC codes. It is here that the hydrodynamic codes can be more appropriate.
-% TODO understand the above, perhaps add more comments
+
 The SP1 temporal intensity profile is
 \begin{equation}
 	I_\mathrm{SP1} \sim (I_\mathrm{SP2}^2 + I_\mathrm{SP2} \times 10^{-8}).
 \end{equation}
 The second term arises from limitations in the harmonic separation system. The frequency doubling mechanism is not 100 \% efficient, \textit{i.e.} some of SP2 beamline remains and must be filtered out. The main pulse of the GEMINI beamlines is more appropriately modelled as a Gaussian.
-% TODO add a plot of the Gemini contrast
-% TODO return to this section once I have read ORION chapter and figured out how I am going to do contrast.
 
-
-A \ac{PM} is an effective and now standardised tool for the improvement of laser contrast. These single-use optics initially have an \ac{AR} coating of reflectivity $R_1$. As the incident laser fluence passes the damage threshold of the optic, reflecting plasma forms on the front surface. The optic is `switched on' with a reflectivity $R_2$. The \ac{PM} therefore improves the contrast by a factor $R_2/R_1$. There is a balancing act in choosing the peak intensity on the \ac{PM}. Too early and the PM will switch on before the arrival of the main pulse. Too low and there is not enough plasma at the surface at the arrival of the main pulse and $R_2$ is lowered. A peak intensity around \qty{1e16}{W.cm^{-2}} is best \cite{caiTimeresolvedMeasurementsReflectivity2009}. PMs also act as a low-pass spatial filter, improving the quality of the focal spot on target \cite{doumyCompleteCharacterizationPlasma2004}. The use of PMs before the main target ensure the required conditions for a relativistic laser pulse to produce a \ac{RPM}, the main focus of this thesis.
+A \ac{PM} is an effective and now standardised tool for the improvement of laser contrast. These single-use optics have initially an \ac{AR} coating of reflectivity $R_1$. As the incident laser fluence passes the damage threshold of the optic, reflecting plasma forms on the front surface. The optic is `switched on' with a reflectivity $R_2$. The \ac{PM} therefore improves the contrast by a factor $R_2/R_1$. There is a balancing act in choosing the peak intensity on the \ac{PM}. Too early and the PM will switch on before the arrival of the main pulse. Too low and there is not enough plasma at the surface at the arrival of the main pulse and $R_2$ is lowered. A peak intensity around \qty{1e16}{W.cm^{-2}} is best \cite{caiTimeresolvedMeasurementsReflectivity2009}. PMs also act as a low-pass spatial filter, improving the quality of the focal spot on target \cite{doumyCompleteCharacterizationPlasma2004}. The use of PMs before the main target ensure the required conditions for a relativistic laser pulse to produce a \ac{RPM}, the main focus of this thesis.
 
 \section{Summary}
-This chapter has introduced the field of HED physics. The basic equations that govern the system have been supplied and some simple derivations performed to describe the dynamics of particles in this regime. Details have been given of both suitable simulation codes and laser systems that enable the modelling and generation of the interaction of interest in this thesis. It is now time to present that interaction.
+This chapter has introduced the field of HED physics. The rapid advancements towards the exascale in both supercomputing and laser power have been discussed. The basic equations that govern the system have been supplied and some simple derivations performed to describe the dynamics of particles in the classical, relativistic and QED regimes. Details have been given of two suitable simulation code types, PIC and hydrodynamic, and of laser systems that enable the modelling and generation respectively of the interaction of interest in this thesis. Some of the potential pitfalls and corresponding mitigations for each have also been highlighted. Thus, it is now time to introduce that interaction.
